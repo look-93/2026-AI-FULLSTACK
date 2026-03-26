@@ -88,7 +88,7 @@ TODO2:  JAVA SETTING
    1. eclips.org
    2. 다운로드
    3. 워크스페이스 - [깃허브저장소] - track003_java
-   4. 
+   4. .gitignore 설정확인
 
 
 
@@ -102,3 +102,20 @@ TODO2:  JAVA SETTING
 ※ 카톡은 무조건 보내기~!
 1. 설치가 잘안되셨다면~ 언제까지~ 도전! 
 2. 숙제완료!
+.classpath
+.project
+.settings/
+eclipse/
+portfolio/
+
+# 빌드 결과물 무시
+/bin/
+/build/
+
+# IDE 관련
+.idea/
+*.iml
+
+# OS별 임시파일
+*.DS_Store
+Thumbs.db
