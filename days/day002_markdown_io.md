@@ -11,3 +11,7 @@ day002
 ---
 ## Part002
 - TODO2 : JAVA
+
+1) 자바프로젝트만들기 : bankproject
+2) bankproject 안에
+   com.the703.v1
