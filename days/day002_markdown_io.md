@@ -6,8 +6,8 @@ day002
 ---
 ## Part001
 - TODO1 : GITHUB - PULL
-- 1.git pull origin main
-
+1. git pull origin main
+2. markdown
 ---
 ## Part002
 - TODO2 : JAVA
