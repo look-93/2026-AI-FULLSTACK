@@ -7,9 +7,9 @@ public class IfEx007 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int num1, num2;
-		double hab=0;
-		String result = "";		
+//		double sum = 0;
 		char ch;
+		String result = "";		
 		
 		System.out.print("정수를 하나 입력해주세요 > ");
 		num1 = sc.nextInt();
@@ -18,18 +18,37 @@ public class IfEx007 {
 		System.out.print("연산자를 입력해주세요 > ");
 		ch = sc.next().charAt(0);		
 		
+		//방법 1.
 		if(ch == '+') {
-			hab = num1 + num2;
+			result = (num1+num2)+"";
 		}else if(ch == '-'){
-			hab = num1 - num2;			
+			result = (num1-num2)+"";		
 		}else if(ch == '*') {
-			hab = num1 * num2;			
-		}else if(ch == '/') {
-			hab = (double)num1/num2;			
+			result = (num1*num2)+"";			
 		}
+		else if(ch == '/') {
+			result = String.format("%.2f", num1/(double)num2); // 소수점 둘째자리까지
+			result = result+"";		
+		}	
+		
+		//방법 2.
+//		if(ch == '+') {
+//			sum = num1+num2;
+//			result = String.valueOf(sum);
+//		}else if(ch == '-'){
+//			sum = num1-num2;
+//			result = String.valueOf(sum);	
+//		}else if(ch == '*') {
+//			sum = num1*num2;
+//			result = String.valueOf(sum);			
+//		}
+//		else if(ch == '/') {			
+//			sum = (double)num1/num2;	
+//			result = String.format("%.2f", sum);
+//			result = String.valueOf(result);
+//		}	
 
-		/* 나누기는 소수점 나오게 */
-		System.out.printf("%d %s %d = %.2f", num1, ch, num2, result);
+		System.out.printf("%d %s %d = %s", num1, ch, num2, result);
 	}
 
 }
@@ -43,3 +62,5 @@ public class IfEx007 {
 //2. 정수를 하나 입력해주세요 > 3
 //3. 연산자를 입력해주세요(+,-,*,/) > +
 //10+3=13
+
+//※나누기는 소수점 둘째자리까지
