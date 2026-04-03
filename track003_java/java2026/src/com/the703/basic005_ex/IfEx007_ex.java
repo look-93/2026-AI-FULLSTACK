@@ -2,13 +2,13 @@ package com.the703.basic005_ex;
 
 import java.util.Scanner;
 
-public class IfEx007 {
+public class IfEx007_ex {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int num1, num2;
 		char ch = '\u0000';
-		double result = 0;
+
 		
 		System.out.print("정수를 하나 입력해주세요 > ");
 		num1 = sc.nextInt();
@@ -17,31 +17,20 @@ public class IfEx007 {
 		System.out.print("연산자를 입력해주세요 > ");
 		ch = sc.next().charAt(0);		
 		
-		//방법 1.
+		String result = "" + num1 + ch + num2 + "=";
+		
 		if(ch == '+') {
-			result = (num1+num2);
+			result += (num1+num2);
 		}else if(ch == '-'){
-			result = (num1-num2);
+			result += (num1-num2);
 		}else if(ch == '*') {
-			result = (num1*num2);
+			result += (num1*num2);
 		}
 		else if(ch == '/') {
-			result = (num1/(double)num2);
+			result += String.format("%.2f", num1/(double)num2);
 		}	
 		
-		// 방법1
-		System.out.printf(ch == '/' ? "%d %s %d = %.2f" : "%d %s %d =  %.0f", num1, ch, num2, result);
-
-		// 방법2
-		System.out.printf("%d %s %d = " + (ch == '/' ? "%.2f" : "%.0f"), num1, ch, num2, result);
-		
-		// 방법3
-		if(ch=='/') {
-	    	  System.out.printf("%d%s%d=%.2f",num1,ch,num2,result);	            
-		}else {
-	    	  System.out.printf("%d%s%d=%d",num1,ch,num2,(int)result);
-	            
-		}
+		System.out.print(result);
 		
 	}
 
