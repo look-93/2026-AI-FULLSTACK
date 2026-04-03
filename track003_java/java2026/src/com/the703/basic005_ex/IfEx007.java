@@ -31,6 +31,8 @@ public class IfEx007 {
 			result = result+"";		
 		}	
 		
+		System.out.printf("%d %s %d = %s", num1, ch, num2, result);
+		
 		//방법 2.
 //		if(ch == '+') {
 //			sum = num1+num2;
