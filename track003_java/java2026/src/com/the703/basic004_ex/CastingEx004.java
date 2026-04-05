@@ -1,4 +1,4 @@
-package com.company.basic004_ex;
+package com.the703.basic004_ex;
 
 public class CastingEx004 {
 

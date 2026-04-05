@@ -9,7 +9,7 @@ public class BankProjectV1 {
 		int num=0;
 		int id = -1, pass = -1, balance=-1;
 		int tid = -1, tpass = -1; // 임시변수
-		String yn = "";
+		char yn;
 		
 		for (;;) {
 			System.out.println("WELCOME TO BANK SYSTEM");
@@ -75,6 +75,10 @@ public class BankProjectV1 {
 				
 			} else if (num == 4) {
 				System.out.println("출금기능입니다.");
+				System.out.print("ID 입력: ");
+				tid = sc.nextInt();
+				System.out.print("PASS 입력: ");
+				tpass = sc.nextInt();
 				if(id == tid && pass == tpass) {
 					System.out.print("출금잔액 : ");
 					
@@ -89,19 +93,22 @@ public class BankProjectV1 {
 				
 			} else if (num == 5) {
 				System.out.println("삭제기능입니다.");
-				
+				System.out.print("ID 입력: ");
+				tid = sc.nextInt();
+				System.out.print("PASS 입력: ");
+				tpass = sc.nextInt();
 				if(id == tid && pass == tpass) {
-					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");
-					yn = sc.next();
-					if(yn == "Y" || yn == "y") {
+
+					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");					
+					yn = sc.next().charAt(0);
+					
+					if(yn == 'Y' || yn == 'y') {
 						 id = -1;  
 						 pass = -1;
 						 balance=-1;
 						 tid = -1;
 						 tpass = -1;
-					
-					}else {
-						break;
+						System.out.println("삭제되었습니다.");
 					}
 					
 				}else {
