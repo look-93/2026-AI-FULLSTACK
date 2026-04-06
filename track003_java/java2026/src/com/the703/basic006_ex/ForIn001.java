@@ -12,90 +12,46 @@ public class ForIn001 {
 		
 		System.out.print("학번 입력 > ");
 		no = sc.next();
-		
-		//ver-1
-//		for(;;) {
-//			System.out.println("국어점수 입력 > ");
-//			kor = sc.nextInt();	
-//			if(kor>=0 && kor <= 100) {
-//				break;
-//			}
-//		}
-//		for(;;) {
-//			System.out.println("수학점수 입력 > ");
-//			math = sc.nextInt();	
-//			if(math>=0 && math <= 100) {
-//				break;
-//			}
-//		}
-//		for(;;) {
-//			System.out.println("영어점수 입력 > ");
-//			eng = sc.nextInt();	
-//			if(eng>=0 && eng <= 100) {
-//				break;
-//			}
-//		}		
-		
-		for(;;) {
-			if (kor > 0 && math > 0 && eng > 0) break;
-			
-			System.out.print("국어점수 입력 > ");
-			kor = sc.nextInt();
-			
-			if(kor > -1 && kor < 101) {
+
+		// ver-2
+		for(;;) {			
+			//점수가 0보다 작거나 100보다 크면 입력받음
+			if(kor < 0 || kor > 100) {
 				System.out.print("국어점수 입력 > ");
-				kor = sc.nextInt();					
-					
-			}else {
+				kor = sc.nextInt();				
 				continue;
-			}
-			
-			System.out.print("수학점수 입력 > ");
-			math = sc.nextInt();	
-			
-			if(math >= 0 && math <= 100) {
-				continue;	
-			
-			}else {
+			}			
+			if(math < 0 || math > 100) {
 				System.out.print("수학점수 입력 > ");
 				math = sc.nextInt();
-				
-			}		
-			
-			System.out.print("영어점수 입력 > ");
-			eng = sc.nextInt();	
-		
-			if(eng >= 0 && eng <= 100) {
 				continue;
-				
-			}else {
-				System.out.print("영어점수 입력 > ");
-				eng = sc.nextInt();			
 			}				
-
+			if(eng < 0 || eng > 100) {
+				System.out.print("영어점수 입력 > ");
+				eng = sc.nextInt();
+				continue;
+			}			
+			// break; 나오기  -  이위치까지 왔다면 잘입력한것!
+			break;
 		}
-	System.out.println("dd");
-//		total=kor+math+eng;
-//		avg = total/3f;
-//		
-//		pass = avg < 60 ? "불합격" : kor < 40 || eng < 40 || math < 40 ? "불합격" : "합격";
-//		
-//		goodStd = avg >= 95 ? "장학생" : "학생";
-//		
-//		level = avg >= 90 ? "수" : avg >= 80 ? "우" : avg >= 70 ? "미": avg >= 60 ? "양" : "가";
-//		
-//		result =  no 	+ "\t" + kor 	+ "\t" 
-//				+ eng 	+ "\t" + math 	+ "\t" 
-//				+ total + "\t" + String.format("%.2f",avg) 	+ "\t" 
-//				+ pass 	+ "\t" + level 	+ "\t" 
-//				+ goodStd;
-//		
-//		System.out.println("====================================================================\n"+
-//						   "학번\t국어\t영어\t수학\t총점\t평균\t합격여부\t레벨\t장학생\n" +
-//						   "====================================================================");
-//		System.out.printf(result);
-//		
+
+		total=kor+math+eng;
+		avg = total/3f;		
+		pass = avg < 60 ? "불합격" : kor < 40 || eng < 40 || math < 40 ? "불합격" : "합격";		
+		goodStd = avg >= 95 ? "장학생" : "학생";		
+		level = avg >= 90 ? "수" : avg >= 80 ? "우" : avg >= 70 ? "미": avg >= 60 ? "양" : "가";
 		
+		result =  no 	+ "\t" + kor 	+ "\t" 
+				+ eng 	+ "\t" + math 	+ "\t" 
+				+ total + "\t" + String.format("%.2f",avg) 	+ "\t" 
+				+ pass 	+ "\t" + level 	+ "\t" 
+				+ goodStd;
+		
+		System.out.println("====================================================================\n"+
+						   "학번\t국어\t영어\t수학\t총점\t평균\t합격여부\t레벨\t장학생\n" +
+						   "====================================================================");
+		System.out.printf(result);
+	
 	}
 
 }
@@ -122,3 +78,28 @@ public class ForIn001 {
 //학번   국어   영어   수학   총점   평균   합격여부   레벨   장학생
 //=================================================================================== 
 //std111   100   100   99   299   99.67   합격   수   장학생
+
+
+
+//ver-1
+//for(;;) {
+//	System.out.println("국어점수 입력 > ");
+//	kor = sc.nextInt();	
+//	if(kor>=0 && kor <= 100) {
+//		break;
+//	}
+//}
+//for(;;) {
+//	System.out.println("수학점수 입력 > ");
+//	math = sc.nextInt();	
+//	if(math>=0 && math <= 100) {
+//		break;
+//	}
+//}
+//for(;;) {
+//	System.out.println("영어점수 입력 > ");
+//	eng = sc.nextInt();	
+//	if(eng>=0 && eng <= 100) {
+//		break;
+//	}
+//}	
