@@ -29,7 +29,7 @@ public class IfEx008 {
 		
 		goodStudent = avg >= 95 ? "장학생" : "학생";
 		
-		level = avg >= 90 ? "수" : avg >= 90 ? "우" : avg >= 70 ? "미": avg >= 60 ? "양" : "가";
+		level = avg >= 90 ? "수" : avg >= 80 ? "우" : avg >= 70 ? "미": avg >= 60 ? "양" : "가";
 		
 		result =  no 	+ "\t" + kor 	+ "\t" 
 				+ eng 	+ "\t" + math 	+ "\t" 
