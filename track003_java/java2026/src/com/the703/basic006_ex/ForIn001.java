@@ -8,7 +8,7 @@ public class ForIn001 {
 		Scanner sc = new Scanner(System.in);
 		String no="", result= "", pass="", goodStd="",level="";
 		int kor=-1, eng=-1, math=-1, total=0;
-		double avg=0;
+		double avg=-1;
 		
 		System.out.print("학번 입력 > ");
 		no = sc.next();

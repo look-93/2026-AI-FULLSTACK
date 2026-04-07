@@ -134,13 +134,14 @@ std111 100 100 99 299 99.67 합격 수 장학생
    html 설정에 css를 적용하는 코드를 적으시오
 
    ```
-     <div class="portfolio p1" style="background-color:red;"></div>
-     <div class="portfolio p2" style="background-color:gold;"></div>
+     <div class="portfolio p1" ></div>
+     <div class="portfolio p2" ></div>
 
+     .p1{background-color:red;}
+     .p2{background-color:gold;}
    ```
 
-     <!-- .p1{background-color:red;}
-     .p2{background-color:gold;} -->
+
 
 4. .portfolio마우스를 올렸을때 확대 + 회전 + 밝기 + 그림자 강조 css를 적으시오.
    .portfoli0:hover{

@@ -2,7 +2,7 @@ package com.the703.basic005_ex;
 
 import java.util.Scanner;
 
-public class IfEx008 {
+public class IfEx008_2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
