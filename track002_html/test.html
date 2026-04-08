@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      ul{
-        overflow: hidden;
+      .container{
+        position: relative;
       }
-      li{
-        float: left;
-
+      .fixed .box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: aqua;
       }
     </style>
   </head>
 
   <body>
-    <ul>
-      <li>ONE</li>
-      <li>TWO</li>
-      <li>THREE</li>
-    </ul>
-  </body>
+    <div class="container fixed">
+      <h3>예제 4: position fixed</h3>
+      <div class="box">FIXED</div>
+      <p>브라우저 화면(viewport)을 기준으로 항상 같은 위치에 고정됩니다.</p>
+    </div>
 </html>
 
 
