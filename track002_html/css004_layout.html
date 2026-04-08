@@ -34,6 +34,15 @@
         .f3{
             clear:both /*속성끊기:딸려올라가지x*/
         }
+
+        .p{
+            position: relative;
+        }
+        .me{
+            position: absolute;
+            bottom: 0; 
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -62,6 +71,16 @@
         <p class="item f2">RIGHT<span>(오른쪽)</span></p>
         <p class="item f3">float속성끊기-clear:both / overflow:hidden</p>
     </div>
+
+    <div class="container p">
+        <h3>4. 배치(2) - positioin - relative(누구안에) + absolute(어디)</h3>
+        <p class="item me">WHERE I AM</p>
+        <p>종류 : static(기본값), relative(박스 위치o), absolute(박스 위치x),
+            fixed(브라우서고정), sticky(스크롤할때 특정지점에 붙기)
+        </p>
+        <p>부모 : relative(공간확보) / 자식: (원하는 위치 배치) - 좌표</p>
+    </div>
+
 
 </body>
 </html>
