@@ -2,7 +2,7 @@ package com.the703.basic006_ex;
 
 import java.util.Scanner;
 
-public class RepeatEx5_2 {
+public class RepeatEx005_1 {
 
 	public static void main(String[] args) {
 		//두개의 숫자를 입력받아 for문을 이용하여 다음과 같이 출력하시오		
