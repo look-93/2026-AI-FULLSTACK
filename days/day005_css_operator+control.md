@@ -63,7 +63,7 @@ The display: inline property prevents width from having an effect.
 Try setting display to something other than inline.
 
 display:block 박스 ( 갈치냄비 ) - width o , 줄바꿈 o
-예) div , p , pre
+예) div ,p ,pre, ul, li
 
 display:inline 박스 안에 내용물( 국물, 무 , 갈치) - width x(△) , 줄바꿈 x
 예) img , a , span , strong
