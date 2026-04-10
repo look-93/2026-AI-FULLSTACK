@@ -10,6 +10,7 @@ public class BankProjectV1_1 {
 		int id  = -1, pass = -1, balance=-1;
 		int tid = -1, tpass = -1; // 임시변수
 		char yn;
+		String st="";
 		
 		for (;;) {
 			System.out.println("WELCOME TO BANK SYSTEM");
@@ -100,9 +101,9 @@ public class BankProjectV1_1 {
 				if(id == tid && pass == tpass) {
 
 					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");					
-					yn = sc.next().charAt(0);
-					
-					if(yn == 'Y' || yn == 'y') {
+//					yn = sc.next().charAt(0);
+					st = sc.next();
+					if(st.equalsIgnoreCase("y")) {
 						 id = -1;  
 						 pass = -1;
 						 balance=-1;

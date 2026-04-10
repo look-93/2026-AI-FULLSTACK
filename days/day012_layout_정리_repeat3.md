@@ -52,9 +52,9 @@
    7.  li태그들을 가로방향으로 배치하려고 한다.  width를 줘야하는데 사용해야하는 방법은?
    - display: inline-block;
    8.  header 안에서 로고와 내비게이션을 양쪽 끝에 배치하고, 콘텐츠 간 간격을 일정하게 유지하려면 어떤 레이아웃 방식을 사용해야 하는가?
+   - display:flex
    - justify-content: space-between;
 ```
-
 ■ 2. java
 
 ```

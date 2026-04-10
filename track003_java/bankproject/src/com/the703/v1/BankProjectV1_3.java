@@ -21,8 +21,9 @@ public class BankProjectV1_3 {
 		Scanner sc = new Scanner(System.in);
 		int num = 0;
 		int id  = -1, pass = -1, balance=-1;
-
-		char yn;
+		
+//		char yn;
+		String st="";
 		boolean check = false;
 		
 		// menu  2~5번까지 코드가 반복되는 부분 줄이기~! 도전!
@@ -100,9 +101,9 @@ public class BankProjectV1_3 {
 					///////////////////////////////
 
 					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");					
-					yn = sc.next().charAt(0);
-					
-					if(yn == 'Y' || yn == 'y') {
+//					yn = sc.next().charAt(0);
+					st = sc.next();
+					if((st.equalsIgnoreCase("y") || st.equalsIgnoreCase("n"))) {
 						 id = -1;  
 						 pass = -1;
 						 balance=-1;

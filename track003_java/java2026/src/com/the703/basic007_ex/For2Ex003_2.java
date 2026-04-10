@@ -1,4 +1,4 @@
-package com.the703.basic007;
+package com.the703.basic007_ex;
 
 public class For2Ex003_2 {
 
@@ -28,3 +28,15 @@ public class For2Ex003_2 {
 	
 	}
 }
+
+/*
+
+패키지명 : ccom.the703.basic007
+클래스명 :  For2Ex003   (이중for 이용)
+
+#
+##
+###
+#### 
+
+*/

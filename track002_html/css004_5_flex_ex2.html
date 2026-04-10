@@ -53,7 +53,7 @@
         justify-content: center;
         align-items: center;
         height: 300px;
-        background-color: #ff6600;
+        background-color: #ba92db;
         color: white;
         font-size: 30px;
       }
@@ -62,7 +62,7 @@
       .cards {
         display: flex;
         flex-wrap: wrap; /*균등하게배치*/
-        gap: 20px;
+        gap: 20px; /*간격*/
         width: 80%;
         margin: 40px auto;
       }
@@ -70,7 +70,12 @@
       /* Q9. .card : flex 1 1 calc(33% - 20px), 배경 흰색, 모서리둥글게 8px, 
            그림자 효과, 안쪽여백 20px, 중앙정렬(text-align center) */
       .card {
-        flex: 1 1 calc(33% - 20px);
+        flex: 1 1 calc(33% - 60px); 
+        /* 1: 카드가남으면 커질수도있어 
+           1: 공간부족하면 줄어들수있어
+           calc(33% - 60px) : 카드의기본크기33% - 60px(왼쪽패딩20px, 오른쪽패딩20px, 갭20px)
+        */
+        /* width: 25%; */
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -87,14 +92,14 @@
       }
       /* Q11. .sidebar : flex 1, 배경 #eee, 안쪽여백 20px */
       .sidebar {
-        flex: 1;
+        flex: 1; /* 전체공간에서 1만큼 */
         background-color: #eee;
         padding: 20px;
       }
 
       /* Q12. .content : flex 3, 배경 흰색, 안쪽여백 20px, 그림자 효과 */
       .content {
-        flex: 3;
+        flex: 3; /* 전체공간에서 만큼 */
         background-color: #fff;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

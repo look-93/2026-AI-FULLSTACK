@@ -1,4 +1,4 @@
-package com.the703.basic007;
+package com.the703.basic007_ex;
 
 public class For2Ex003_1 {
 
