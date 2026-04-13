@@ -1,5 +1,7 @@
 package com.the703.basic008_ex;
 
+import java.util.Arrays;
+
 public class Array1Ex003 {
 
 	public static void main(String[] args) {
@@ -21,8 +23,12 @@ public class Array1Ex003 {
 
 		int cnt=0;
 		char [] ch2 = {'a', 'e', 'i', 'o','u','A','E','I','O','U'};
-		for(int i=0;i<ch2.length;i++) {
-			
+		for(int i=0;i<ch.length;i++) {
+			if(ch[i]=='a' || ch[i]=='e' || ch[i]=='i' || ch[i]=='o' || ch[i]=='u' ||
+			   ch[i]=='A' || ch[i]=='E' || ch[i]=='I' || ch[i]=='O' || ch[i]=='U'		
+			  ) {
+				cnt = cnt+1;
+			}
 
 		}		
 		System.out.println(cnt);
