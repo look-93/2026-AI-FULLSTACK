@@ -5,23 +5,42 @@ public class Array1Ex010 {
 	public static void main(String[] args) {
 		int []datas = {1,3,1,1,4,4,3,1,4,1,2};
 		int []stars = new int[4];
-		int num = 1; int cnt=0;
 		
-		//만약에 배열의 숫자가 1이면 갯수세기
-		//if(datas[i]==1){ cnt+1; }
-		for(int i=0;i<datas.length;i++) {
-			
+//		for(int i =0; i<=4; i++) {System.out.print("★");}System.out.println();
+//		for(int i =0; i<=0; i++) {System.out.print("★");}System.out.println();
+//		for(int i =0; i<=1; i++) {System.out.print("★");}System.out.println();
+//		for(int i =0; i<=2; i++) {System.out.print("★");}System.out.println();	
+		
+//		for(int i=0;i<datas.length;i++) {
+//			int num = datas[i];
+//			
+//			if(num==1) {
+//				stars[0] = ++stars[0];	
+//			}else if(num==2) {
+//				stars[1] = ++stars[1];
+//			}else if(num==3) {
+//				stars[2] = ++stars[2];				
+//			}else if(num==4) {
+//				stars[3] = ++stars[3];					
+//			}	
+//		}	
 
-			
-		}
-//		System.out.println(cnt);
-//		for(int i=0;i<stars.length;i++) {
-//			System.out.print(stars[i]);
-//		}
+		for(int i=0;i<datas.length;i++) {
+//			int num = datas[i];
+//			stars[num-1] = ++stars[num-1];	
+			stars[datas[i]-1]++;			
+		}	
 		
-		
-		
-				
+		for(int i=0;i<stars.length;i++) {
+//			System.out.println(stars[i]);
+			int j = stars[i];
+//			System.out.println(j);
+			for(int i2=0;i2<j;i2++) {
+				System.out.print("★");
+			}
+
+			System.out.println();
+		}			
 	}
 
 }
