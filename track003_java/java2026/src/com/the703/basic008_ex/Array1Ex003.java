@@ -26,23 +26,30 @@ public class Array1Ex003 {
 //		}		
 //		System.out.println(ch);
 		
-		for(int i=0;i<51;i++) {			
-			int add = i;
-			
-//			if(i<26) {
-//				 65~90 90=> 25(i) + 65(eng)
-//				chs[i] = (char)(eng+i); 			
-//			}else {
-//				 97~122  97 => 26 + 65(eng)+6
-//				chs[i] = (char)(eng+6+i); 
+//		for(int i=0;i<51;i++) {			
+//			int add = i;
+//			
+////			if(i<26) {
+////				 65~90 90=> 25(i) + 65(eng)
+////				chs[i] = (char)(eng+i); 			
+////			}else {
+////				 97~122  97 => 26 + 65(eng)+6
+////				chs[i] = (char)(eng+6+i); 
+////			}
+//			
+//			if(i>25) {
+//				add += 6;
 //			}
-			
-			if(i>25) {
-				add += 6;
-			}
-			chs[i] = (char)(eng+add);
+//			chs[i] = (char)(eng+add);
+//		}
+		
+		for(int i=0;i<chs.length/2;i++) {		
+			chs[i]    = eng;		
+			chs[i+26] = (char) (eng+32);
+			eng++;
 		}
-//		System.out.println(chs);
+		
+// 		System.out.println(  Arrays.toString(chs)    );
 		
 		int cnt=0;
 		char [] ch2s = {'a', 'e', 'i', 'o','u','A','E','I','O','U'};
