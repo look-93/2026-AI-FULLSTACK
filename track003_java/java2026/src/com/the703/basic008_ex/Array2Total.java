@@ -45,12 +45,12 @@ public class Array2Total {
 	    	}
 //	    	System.out.println(aver);
 	    }
-	    
+
 	    for(int i=0;i<avers.length;i++) {
 	    	for(int j=0;j<avers.length;j++) {
 	    		if(avers[i] <= avers[j]) {
-	    			ranks[i] = ranks[i]+cnt;	    			
-	    		}		    	
+	    			ranks[i] = ranks[i]+cnt;    			
+	    		}		    		
 	    	}
 //	    	System.out.println(rank);
 	    }	    
