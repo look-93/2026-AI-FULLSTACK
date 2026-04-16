@@ -8,12 +8,34 @@ public class Array2Ex004 {
 		int[][] datas = {  
 				{  10, 10, 10 ,10},             
 				{  20, 20, 20 ,20},     
-				{  30, 30, 30 ,30},   
+				{  30, 30, 30 ,30},
 				};  // 3층 4칸
 
 		String st="";
 		
-		int[][] result = new int[datas.length+1][datas[0].length+1];   
+		int[][] result = new int[datas.length+1][datas[0].length+1];  
+		
+		for(int ch=0;ch<datas.length;ch++) {		
+			int sum = 0;
+			for(int kan=0;kan<datas[ch].length;kan++) {
+				
+				result[ch][kan] = datas[ch][kan];
+				sum  += datas[ch][kan];
+				result[result.length-1][kan] += datas[ch][kan];
+//				System.out.print(result.length-1);
+//				System.out.print(",");
+//				System.out.print(ch);
+//				System.out.print("=");
+//				System.out.print(datas[ch][kan]);
+			}
+//			System.out.print(result[result.length-1][ch]);
+			result[ch][datas.length+1] = sum;
+			result[result.length-1][result[0].length-1] += sum;
+		}
+
+		for(int ch=0;ch<result.length;ch++) {
+			System.out.println(Arrays.toString(result[ch]));
+		}
 		
 //		for(int ch=0;ch<result.length;ch++) {
 //						int sum=0;
@@ -52,30 +74,6 @@ public class Array2Ex004 {
 //		0,0,0,0,0
 //		0,0,0,0,0
 //		0,0,0,0,0
-
-		for(int ch=0;ch<datas.length;ch++) {
-//			int[][] result = new int[datas.length+1][datas[0].length+1];
-//			
-			int sum = 0;
-			for(int kan=0;kan<datas[ch].length;kan++) {
-				
-				result[ch][kan] = datas[ch][kan];
-				sum  += datas[ch][kan];
-//				System.out.print(result.length-1);
-//				System.out.print(",");
-//				System.out.print(ch);
-//				System.out.print("=");
-//				System.out.print(datas[ch][kan]);
-				result[result.length-1][kan] += datas[ch][kan];
-			}
-//			System.out.print(result[result.length-1][ch]);
-			result[ch][datas.length+1] = sum;
-			result[result.length-1][result[0].length-1] += sum;
-		}
-
-		for(int ch=0;ch<result.length;ch++) {
-			System.out.println(Arrays.toString(result[ch]));
-		}
 
 	}
 
