@@ -62,7 +62,9 @@ public class BankProjectV1_1 {
 				tid = sc.nextInt();
 				System.out.print("PASS 입력: ");
 				tpass = sc.nextInt();
-				if(id == tid && pass == tpass) {
+				
+				
+				if(id== tid && pass == tpass) {
 					System.out.println("입금잔액 : ");
 					
 					balance += sc.nextInt();

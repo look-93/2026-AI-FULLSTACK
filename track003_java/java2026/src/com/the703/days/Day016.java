@@ -8,7 +8,7 @@ public class Day016 {
 		}
 		System.out.println();
 		
-<<<<<<< HEAD
+
 		int[][] arr = new int[2][3];
 		int num=101;
 		for(int ch=0;ch<arr.length;ch++) {
@@ -18,7 +18,7 @@ public class Day016 {
 			}
 			System.out.println();
 		}	
-=======
+
 		int i2=3;
 		while(i2>=1){
 			System.out.print(i2);
@@ -42,13 +42,13 @@ public class Day016 {
 		}
 		
 		//3
-		char [] arr = new char[3];
+		char [] arr1 = new char[3];
 		char ch = 'A';
 		for(int i=0;i<=2;i++) {
-			arr[i] = ch++;
-			System.out.print(arr[i]);
+			arr1[i] = ch++;
+			System.out.print(arr1[i]);
 		}			
->>>>>>> parent of 6704b62 (자기소개페이지)
+
 	}
 }
 
