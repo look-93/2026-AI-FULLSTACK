@@ -20,6 +20,7 @@ public class BankProjectV3 {
 	public static void checkInfo() {
 		System.out.print("🌟💰 WELCOME TO BANK SYSTEM 💰🌟\r\n"
 				+ "[1] ➕ 계좌 추가\n[2] 🔍 계좌 조회\n[3] 💵 입금하기\n[4] 💸 출금하기\n[5] 🗑️ 계좌 삭제\n[9] 종료\r\n" + "👉 번호를 선택하세요:");
+		menu = scanner.nextInt();
 	}
 
 	// 2. 유저 빈칸찾기 기능
@@ -66,11 +67,11 @@ public class BankProjectV3 {
 	// 6. 입금기능
 	// 7. 출금기능
 	// 8. 삭제기능
+	
 
 	public static void main(String[] args) {
 
 		checkInfo();		
-		menu = scanner.nextInt();
 		
 		
 		while (menu != 9) {
@@ -81,7 +82,6 @@ public class BankProjectV3 {
             
 			if (menu == 9) {
 				System.out.println("프로그램을 종료합니다.");
-				break; 
 			} else if (menu == 1) {
 				
 				num = checkArray();
@@ -90,7 +90,7 @@ public class BankProjectV3 {
 				balance[num] = checkBalance(scanner);
 				
 				checkInfo();
-				menu = scanner.nextInt();
+
 			}
 //			else if (menu >= 2 && menu <= 5) {
 //				// 2-1. 사용자가 맞는지 여부
