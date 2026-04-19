@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+.mycolor {
+  background: linear-gradient(135deg, #fff, #99bdec);
 }
 
 /*안보이게 숨김*/
@@ -19,11 +19,4 @@ body {
     0,
     0
   ); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
-}
-
-.ul-align li {
-  display: inline;
-  margin-right: 10px;
-  padding: 0.1em;
-  background-color: aqua;
 }
