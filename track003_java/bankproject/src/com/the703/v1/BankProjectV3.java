@@ -55,31 +55,66 @@ public class BankProjectV3 {
 		System.out.print("금액 입력: ");
 		return scanner.nextDouble();		
 	}		
-	// 3-4 아이디, 패스워드 체크
+	// 3-4 아이디와 비밀번호가 같은지 찾기
 	public static boolean checkIdPassword() {
-		System.out.print("금액 입력: ");
-		return false;
+		String tempid = "-1", temppass = "-1";
+		boolean confirm = false;
+		System.out.print("아이디  입력 > ");
+		tempid = scanner.next();
+		System.out.print("비밀번호 입력 > ");
+		temppass = scanner.next();
+		
+		for (int i = 0; i < balance.length; i++) {
+			if (tempid.equals(id[i]) && temppass.equals(pass[i])) {
+				num = i;
+				confirm = true;
+				break;
+			}
+		}
+		
+		return confirm;
 	}	
-
 	
 	// 4. 계좌추가기능
+
 	// 5. 조회기능
+	public static void acount() {
+		System.out.printf("ID : %s\nPASS: %s\nBALANCE: %.2f\n", id[num], pass[num], balance[num]);
+	}	
 	// 6. 입금기능
+	public static void acountAdd() {
+		System.out.print("입금할 금액 > ");
+		tempbalance = scanner.nextInt();
+		System.out.println("입금완료! 현재잔액 : " + (balance[num] += tempbalance));
+	}		
 	// 7. 출금기능
+	public static void acountMinus() {
+		System.out.print("출금할 금액 > ");
+		tempbalance = scanner.nextInt();
+		System.out.println(tempbalance > balance[num] ? "잔액부족! 출금불가"
+				: "출금완료! 현재잔액 : " + (balance[num] -= tempbalance));
+	}		
 	// 8. 삭제기능
-	
+	public static void acountDelete() {
+		System.out.print("계좌삭제 (Y/N) > ");
+		char again = scanner.next().charAt(0);
+		if (again == 'Y' || again == 'y') {
+			id[num] = "-1";
+			pass[num] = "-1";
+			balance[num] = -1;
+		}
+	}	
 
 	public static void main(String[] args) {
 
-		checkInfo();		
-		
-		
-		while (menu != 9) {
+		checkInfo();	
 
+		while (menu != 9) {
+			
 //            System.out.println( id[0] + "\t" + pass[0] + "\t" + balance[0]);  // 계좌의 1명분  확인용
 //            System.out.println( id[1] + "\t" + pass[1] + "\t" + balance[1]);  // 계좌의 1명분  확인용
 //            System.out.println( id[2] + "\t" + pass[2] + "\t" + balance[2]);  // 계좌의 1명분  확인용
-            
+			
 			if (menu == 9) {
 				System.out.println("프로그램을 종료합니다.");
 			} else if (menu == 1) {
@@ -91,56 +126,35 @@ public class BankProjectV3 {
 				
 				checkInfo();
 
+			}else if (menu >= 2 && menu <= 5) {
+				// 2-1. 사용자가 맞는지 여부
+				
+				if (checkIdPassword() == false) {
+					System.out.println("정보확인해주세요.");
+					menu=-1;
+					checkInfo();
+					continue;
+				}
+				// 2-2. 조회면 조회기능, 입력이면 사용자에게 입력받아서 입금, 출금이면 출금금액받아서 출금 , 계좌삭제라면 y,n입력받아서 계좌삭제
+				switch (menu) {
+				case 2:
+					acount();
+					checkInfo();
+					break;
+				case 3:
+					acountAdd();
+					checkInfo();
+					break;
+				case 4:
+					acountMinus();
+					checkInfo();
+					break;
+				case 5:
+					acountDelete();
+					checkInfo();
+					break;
+				}
 			}
-//			else if (menu >= 2 && menu <= 5) {
-//				// 2-1. 사용자가 맞는지 여부
-//				String tempid = "-1", temppass = "-1";
-//				System.out.print("아이디  입력 > ");
-//				tempid = scanner.next();
-//				System.out.print("비밀번호 입력 > ");
-//				temppass = scanner.next();
-//
-//				for (int i = 0; i < balance.length; i++) {
-//					if (tempid.equals(id[i]) && temppass.equals(pass[i])) {
-//						num = i;
-//						break;
-//					}
-//				}
-//
-//				if (!(tempid.equals(id[num]) || temppass.equals(pass[num]))) {
-//					System.out.println("정보확인해주세요.");
-//					continue;
-//				}
-//
-//				// 2-2. 조회면 조회기능, 입력이면 사용자에게 입력받아서 입금, 출금이면 출금금액받아서 출금 , 계좌삭제라면 y,n입력받아서 계좌삭제
-//				switch (menu) {
-//				case 2:
-//					System.out.printf("ID : %s\nPASS: %s\nBALANCE: %.2f\n", id[num], pass[num], balance[num]);
-//					break;
-//				case 3:
-//					System.out.print("입금할 금액 > ");
-//					tempbalance = scanner.nextInt();
-//					System.out.println("입금완료! 현재잔액 : " + (balance[num] += tempbalance));
-//
-//					break;
-//				case 4:
-//					System.out.print("출금할 금액 > ");
-//					tempbalance = scanner.nextInt();
-//					System.out.println(tempbalance > balance[num] ? "잔액부족! 출금불가"
-//							: "출금완료! 현재잔액 : " + (balance[num] -= tempbalance));
-//					break;
-//				case 5:
-//					System.out.print("계좌삭제 (Y/N) > ");
-//					char again = scanner.next().charAt(0);
-//					if (again == 'Y' || again == 'y') {
-//						id[num] = "-1";
-//						pass[num] = "-1";
-//						;
-//						balance[num] = -1;
-//					}
-//					break;
-//				}
-//			}
 		} // end while
 	}
 }

@@ -21,28 +21,11 @@
   ); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
 }
 
-/* body {
-  font-family: "Anaheim", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-} */
 body {
   font-family: "Text Me One", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-/* .myfont {
-  font-family: "Edu AU VIC WA NT Arrows", cursive;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-} */
-
-/* .myfont {
-  font-family: "Moirai One", system-ui;
-  font-weight: 400;
-  font-style: normal;
-} */
 
 .myfont {
   font-family: "Text Me One", sans-serif;

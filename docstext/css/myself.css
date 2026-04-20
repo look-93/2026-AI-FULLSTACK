@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+.mycolor {
+  background: linear-gradient(135deg, #fff, #99bdec);
 }
 
 /*안보이게 숨김*/
@@ -21,9 +21,49 @@ body {
   ); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
 }
 
-.ul-align li {
-  display: inline;
-  margin-right: 10px;
-  padding: 0.1em;
-  background-color: aqua;
+body {
+  font-family: "Text Me One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.myfont {
+  font-family: "Text Me One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mynav li:hover {
+  transform: translateY(-5px);
+}
+
+.typing {
+  font-size: 20px;
+  white-space: nowrap;
+  margin: 0 auto;
+  color: transparent; /*투명*/
+  display: inline-block;
+  position: relative;
+}
+
+.typing::before {
+  content: "안녕하세요. FullStack 개발자 김보라입니다.";
+  color: rgb(0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  border-right: 1px solid black;
+  animation: typing 5s steps(31) infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
