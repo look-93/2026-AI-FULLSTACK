@@ -24,6 +24,7 @@ public class ClassEx001 {
 		s1.eng = 100;
 		s1.math = 99;
 		s1.info();
+		
 	}
 }
 

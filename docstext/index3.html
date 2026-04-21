@@ -1,122 +1,84 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BORA KIM</title>
-    <!-- Latest compiled and minified CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <!--google font-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&display=swap"
-      rel="stylesheet"
-    />
-    <!--icons-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <!--my css-->
-    <link href="./css/myself.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <!--HEADER-->
-    <header>
-      <h1 class="myhidden">BORA KIM</h1>
-      <nav class="navbar navbar-expand-sm">
-        <h2 class="myhidden">주메뉴</h2>
-        <div class="container-fluid">
-          <a class="myfont navbar-brand" href="#">KIMBORA</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BORA KIM</title>
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <!--google font-->
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mynavbar"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!--collapse : 모바일버전기능-->
-          <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="mynav navbar-nav ms-auto">
-              <!--me-auto 마진앤드 ms-auto 마진스타트 ul태그 좌우이동-->
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Skills</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Projects</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8">
-            <h2>
-              Hi, i'm
-              <span style="color: rgb(163, 129, 162)">Bora Kim</span>
-            </h2>
-            <p>a Professional Coder.</p>
-          </div>
-          <div class="col-sm-4">2</div>
-        </div>
+  <!--icons-->
+
+  <!--my css-->
+  <link href="./css/myself.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <!--HEADER-->
+  <header>
+    <div class="logo">Bora Kim</div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICES</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--About-->
+  <section>
+    <div class="about">
+      <div>
+        <!-- <h2>
+          Hi, i'm
+          <span style="color: rgb(163, 129, 162)">Bora Kim</span>
+        </h2> -->
       </div>
+      <div>2</div>
+    </div>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>
+            Hi, i'm
+            <span style="color: rgb(163, 129, 162)">Bora Kim</span>
+          </h2>
+          <p>a Professional Coder.</p>
+        </div>
+        <div class="col-sm-4">2</div>
+      </div>
+    </div> -->
+  </section>
+
+  <!--WatIDo-->
+    <section class="cards">
+      <div class="card">카드 1</div>
+      <div class="card">카드 2</div>
+      <div class="card">카드 3</div>
+      <div class="card">카드 4</div>
+      <div class="card">카드 5</div>
+      <div class="card">카드 6</div>
     </section>
 
-    <!--INFO-->
-    <section></section>
+  <!--CONTACT-->
+  <section>
 
-    <!--CONTACT-->
-    <section class="p-5 mybg">
-      <h3 class="p-3 text-center text-white">Contact Me</h3>
-      <p class="text-center text-white">열정적인 개발자 보라에게 문의주세요!</p>
+  </section>
 
-      <div class="container shadow p-5 bg-white rounded">
-        <form action="/action_page.php">
-          <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Enter email"
-              name="email"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="comment">Comments:</label>
-            <textarea
-              class="form-control"
-              rows="5"
-              id="comment"
-              name="text"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </section>
-
-    <!--FOOTER-->
-    <!--글자를 페이지의 정중앙/배경색 좋아하는색상-->
-    <!-- <footer class="bg-secondary text-center p-5 text-white">
+  <!--FOOTER-->
+  <!--글자를 페이지의 정중앙/배경색 좋아하는색상-->
+  <!-- <footer class="bg-secondary text-center p-5 text-white">
       © copyrights bora 2026 all. rights reserved
     </footer> -->
-  </body>
+</body>
+
 </html>
 
 <!-- 

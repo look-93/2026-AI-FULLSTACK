@@ -1,7 +1,65 @@
 @charset "UTF-8";
 
-.mycolor {
-  background: linear-gradient(135deg, #fff, #99bdec);
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*css004_5_flex_ex2 참조*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 3px solid rgb(247, 244, 244);
+  /* color: white;
+  background-color: black; */
+}
+
+header .logo {
+  font-size: 15px;
+}
+
+header nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: black;
+  /* color: white; */
+}
+
+.about {
+  display: flex;
+  /* justify-content: center; */
+  width: 60%;
+  margin: 40px auto;
+  gap: 50%;
+  height: 300px;
+  background-color: #ba92db;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 60%;
+  margin: 40px auto;
+}
+
+.card {
+  flex: 1 1 calc(33% - 13.33px);
+  background:linear-gradient(180deg,#fff,#f1efef);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
 }
 
 /*안보이게 숨김*/
@@ -13,57 +71,9 @@
   overflow: hidden;
   border: 0;
   white-space: nowrap;
-  clip: rect(
-    0,
-    0,
-    0,
-    0
-  ); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
-}
-
-body {
-  font-family: "Text Me One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.myfont {
-  font-family: "Text Me One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.mynav li:hover {
-  transform: translateY(-5px);
-}
-
-.typing {
-  font-size: 20px;
-  white-space: nowrap;
-  margin: 0 auto;
-  color: transparent; /*투명*/
-  display: inline-block;
-  position: relative;
-}
-
-.typing::before {
-  content: "안녕하세요. FullStack 개발자 김보라입니다.";
-  color: rgb(0, 0, 0);
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  border-right: 1px solid black;
-  animation: typing 5s steps(31) infinite;
-}
-
-@keyframes typing {
-  0% {
-    width: 0%;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 0%;
-  }
+  clip: rect(0,
+      0,
+      0,
+      0);
+  /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
 }
