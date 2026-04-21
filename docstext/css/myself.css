@@ -6,12 +6,19 @@
 }
 
 /*css004_5_flex_ex2 참조*/
+/* .container {
+  width: 50%;
+  margin: 0 auto;
+} */
+
 header {
   display: flex;
   justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
   align-items: center;
-  padding: 20px 10px;
-  border-bottom: 3px solid rgb(247, 244, 244);
+  padding: 10px;
+  border-bottom: 1px solid rgb(247, 244, 244);
   /* color: white;
   background-color: black; */
 }
@@ -38,28 +45,96 @@ header nav a {
 .about {
   display: flex;
   /* justify-content: center; */
-  width: 60%;
+  /* justify-content: space-between; */
+  width: 50%;
   margin: 40px auto;
-  gap: 50%;
-  height: 300px;
-  background-color: #ba92db;
+  gap: 15%;
+  height: 270px;
+  /* background-color: #ba92db; */
+
+  border-bottom: 1px solid rgb(247, 244, 244);
 }
 
+/* .about p {
+  background-color: aquamarine;
+} */
+.about .introduce {
+  font-size: 10px;
+}
+
+/* .myimg {
+  margin-top: 50%;
+} */
+
+.myimg img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/*타이핑*/
+.typing {
+  /* font-size: 20px; */
+  white-space: nowrap;
+  margin: 0 auto;
+  color: transparent; /*투명*/
+  display: inline-block;
+  position: relative;
+}
+
+.typing::before {
+  content: "FullStack 개발자 김보라입니다.";
+  color: rgb(0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  border-right: 1px solid black;
+  animation: typing 6s steps(31) infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0%;
+    color: rgb(163, 129, 162);
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+.cardtitle {
+  width: 50%;
+  margin: 0 auto;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  width: 60%;
+  width: 50%;
   margin: 40px auto;
+  justify-content: center;
 }
 
 .card {
   flex: 1 1 calc(33% - 13.33px);
-  background:linear-gradient(180deg,#fff,#f1efef);
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1 / 1;
+  max-width: 200px;
+  background: linear-gradient(135deg, #ffffff, #f8f6f6);
+  /* border-radius: 8px;
+   */
+  border-radius: 5px;
+  padding: 20px;
+
+  box-shadow:
+    inset 5px 5px 8px #ffffff,
+    /* 어두운 그림자 */ inset -5px -5px 8px #ffffff; /* 밝은 그림자 */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
   padding: 20px;
   text-align: center;
+  overflow: hidden;
 }
 
 /*안보이게 숨김*/
@@ -71,9 +146,6 @@ header nav a {
   overflow: hidden;
   border: 0;
   white-space: nowrap;
-  clip: rect(0,
-      0,
-      0,
-      0);
+  clip: rect(0, 0, 0, 0);
   /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
 }
