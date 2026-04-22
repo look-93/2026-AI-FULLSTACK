@@ -31,9 +31,7 @@ class Calc {
 
 	void show() {
 		opcalc();
-		String result1 = "";
-		result1 = result1 + num1 + op + num2 +"="+ result;
-		System.out.println(result1);
+		System.out.printf("%d %s %d = " + (op == '/' ? "%.2f" : "%.0f"), num1, op, num2, result);
 	} // 연산출력
 
 	public Calc() {

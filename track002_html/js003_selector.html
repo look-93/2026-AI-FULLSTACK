@@ -1,283 +1,333 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <title>DBDBIG</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  //////////////////////////////
-  // 이벤트대상                     이벤트  = 이벤트핸들러
-  // 1. 아이디가 byidex 인것을  getElementById 이용해 선택
-  // 2. 클릭시 prompt이용해서 당신이 좋아하는 색상 물어보고
-  // 3. alert이용해서 알림창띄우기 
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    //////////////////////////////
+    // 이벤트대상                     이벤트  = 이벤트핸들러
+    // 1. 아이디가 byidex 인것을  getElementById 이용해 선택
+    // 2. 클릭시 prompt이용해서 당신이 좋아하는 색상 물어보고
+    // 3. alert이용해서 알림창띄우기 
 
-  //스크립트가 어느 위치에서든지 동작가능하게
-  //윈도우  이벤트연결  해당이벤트 이벤트핸들러
-  window.addEventListener("load", function(){
-    document.getElementById("byidex").onclick=function(){
-      let color = prompt("좋아하는 색상은? ")
-      alert("좋아하는 색상은 " + color)
-    }
-  });
-</script>
+    //스크립트가 어느 위치에서든지 동작가능하게
+    //윈도우  이벤트연결  해당이벤트 이벤트핸들러
+    window.addEventListener("load", function () {
+      document.getElementById("byidex").onclick = function () {
+        let color = prompt("좋아하는 색상은? ")
+        alert("좋아하는 색상은 " + color)
+      }
+    });
+  </script>
 
 </head>
+
 <body>
 
-<!--                                    -->
-<!--                                    -->
-<!--                                    -->
-<!--                                    -->
-<!--                                    -->
-<div class="mt-5  p-3 bg-primary text-white ">
-  <h1>005.선택자 </h1>
-  <ol>
-    <li>document.getElementById</li>
-    <li>window.addEventListener</li>
-    <li>document.getElementById / getElementsByTagName / querySelector</li>
-    <li>value, innerHTML </li>
-  </ol>
-</div>
-<div class="container card  my-5">
-  <h2  class="card-header">005.선택자 - STEP1. document.getElementById</h2>
-  <div class="card-body">
-    <h4 id="step">STEP1. document.getElementById</h4>
-    <input type="button" value="ById"  id="byid" title="버튼을 클릭하세요.(js)" 
-           class="btn btn-outline-primary"/>
-    <script>
+  <!--                                    -->
+  <!--                                    -->
+  <!--                                    -->
+  <!--                                    -->
+  <!--                                    -->
+  <div class="mt-5  p-3 bg-primary text-white ">
+    <h1>005.선택자 </h1>
+    <ol>
+      <li>document.getElementById</li>
+      <li>window.addEventListener</li>
+      <li>document.getElementById / getElementsByTagName / querySelector</li>
+      <li>value, innerHTML </li>
+    </ol>
+  </div>
+  <div class="container card  my-5">
+    <h2 class="card-header">005.선택자 - STEP1. document.getElementById</h2>
+    <div class="card-body">
+      <h4 id="step">STEP1. document.getElementById</h4>
+      <input type="button" value="ById" id="byid" title="버튼을 클릭하세요.(js)" class="btn btn-outline-primary" />
+      <script>
         //////////////////////////////
         //이벤트대상                      이벤트 = 이벤트핸들러
-        document.getElementById("byid").onclick = function(){alert("호호")}
-        document.getElementById("step").style.cursor="pointer"
-        document.getElementById("step").onclick = function(){alert("홍길동")}
-    </script>
-  </div>
-  <!--     -->
-  <!--     -->
-  <hr/>
-  <div class="card-body">
-    <h4>EX</h4>
-    <pre class="alert alert-warning">
+        document.getElementById("byid").onclick = function () { alert("호호") }
+        document.getElementById("step").style.cursor = "pointer"
+        document.getElementById("step").onclick = function () { alert("홍길동") }
+      </script>
+    </div>
+    <!--     -->
+    <!--     -->
+    <hr />
+    <div class="card-body">
+      <h4>EX</h4>
+      <pre class="alert alert-warning">
     1. 아이디가 byidex 인것을  getElementById 이용해 선택
     2. 클릭시 prompt이용해서 당신이 좋아하는 색상 물어보고
     3. alert이용해서 알림창띄우기 
-    </pre>    
-    <input type="button"  value="ByIdEx-당신이좋아하는색상"  title="버튼4"  id="byidex"   class="btn btn-success" />
-    <script>
-      //head에 안쪽에 실습완료
-    </script>
+    </pre>
+      <input type="button" value="ByIdEx-당신이좋아하는색상" title="버튼4" id="byidex" class="btn btn-success" />
+      <script>
+        //head에 안쪽에 실습완료
+      </script>
+    </div>
   </div>
-</div>
 
-<!--     -->
-<!--     -->
-<!--     -->
-<div class="container card  my-5">
-  <h2  class="card-header">005.선택자 - STEP2. window.addEventListener</h2>
-  <div class="card-body">
-    <h4>STEP2. window.addEventListener</h4>
-    <pre class="alert alert-warning">
+  <!--     -->
+  <!--     -->
+  <!--     -->
+  <div class="container card  my-5">
+    <h2 class="card-header">005.선택자 - STEP2. window.addEventListener</h2>
+    <div class="card-body">
+      <h4>STEP2. window.addEventListener</h4>
+      <pre class="alert alert-warning">
       0. 스크립트가 document어느위치에서든지 동작가능하게 <!-- window.addEventListener() -->
       1. 아이디가 addEvent인것을  getElementById 이용해 선택 <!-- 이벤트핸들러 안에서 벌어지는일 -->
       2. 클릭시 prompt이용해서 당신이 좋아하는 1~5사이의 숫자 물어보고
       3. alert이용해서 알림창띄우기 
-    </pre>        
-    <input type="button"  value="addEventListener"  title="버튼4"  id="addEvent"    class="btn btn-outline-primary"    />
-    <script>
+    </pre>
+      <input type="button" value="addEventListener" title="버튼4" id="addEvent" class="btn btn-outline-primary" />
+      <script>
         //////////////////////////////
-        window.addEventListener("load",function(){
-          document.getElementById("addEvent").onclick=function(){
+        window.addEventListener("load", function () {
+          document.getElementById("addEvent").onclick = function () {
             let num = prompt("좋아하는 숫자는?", "예) 1~5")
             alert("좋아하는 숫자는? " + num)
           }
         })
-    </script>
-  </div>
-  <!--     -->
-  <!--     -->
-  <hr/>
-  <div class="card-body">
-    <h4>EX</h4>
-    <pre class="alert alert-warning">
+      </script>
+    </div>
+    <!--     -->
+    <!--     -->
+    <hr />
+    <div class="card-body">
+      <h4>EX</h4>
+      <pre class="alert alert-warning">
       0. 스크립트가 document어느위치에서든지 동작가능하게
       1. 아이디가 addEventEx인것을  getElementById 이용해 선택
       2. 클릭시 prompt이용해서 당신이 좋아하는 1~5사이의 숫자 물어보고  예) 3
       3. alert이용해서 좋아하는 숫자만큼 알림창 띄우기     예)  alert(1)  alert(2)   alert(3)
-    </pre>   
-    <input type="button"  value="addEventEx-Five Count"  title="버튼5"  id="addEventEx"  class="btn btn-success" />
-    <script>
+    </pre>
+      <input type="button" value="addEventEx-Five Count" title="버튼5" id="addEventEx" class="btn btn-success" />
+      <script>
         //////////////////////////////
-        window.addEventListener("load",function(){
-          document.getElementById("addEventEx").onclick=function(){
-            let num = prompt("좋아하는 숫자는?","예)1~5");
-            for(let i=0;i<num;i++){   
-              alert(i+1)         
+        window.addEventListener("load", function () {
+          document.getElementById("addEventEx").onclick = function () {
+            let num = prompt("좋아하는 숫자는?", "예)1~5");
+            for (let i = 0; i < num; i++) {
+              alert(i + 1)
             }
           }
         })
-    </script>
+      </script>
+    </div>
   </div>
-</div>
 
 
-<!--     -->
-<!--     -->
-<!--     -->
-<div class="container card  my-5">
-  <h2  class="card-header">005.선택자 - Step3. document.getElementById / getElementsByTagName / querySelector  </h2>
-  <div class="card-body">
-    <h4>STEP3. document.getElementById / getElementsByTagName / querySelector</h4> .
-    <ul id="animal">
-      <li>DOG</li>
-      <li id="cat">CAT</li>
-      <li id="pig">PIG</li>
-    </ul>
-    <script>
-      window.addEventListener("load", function(){
-       //////////////////////////////
-       //1. step1 #animal 선택하기 (document.getElmentById)
-      let animal = document.getElementById("animal");
-        console.log(animal);
-       //2. 그 안에 동물들(li) 찾기 (dacument.getElementByTagName)
-      let anis = animal.getElementsByTagName("li");
-        console.log(anis, typeof(anis))
-       //3. 꾸미기 
-        anis[0].style.color="red";
-        anis[1].style.color="blue";
-        anis[2].style.color="skyblue"
-      });
-    </script>
-    <script>
-      window.addEventListener("load",function(){
-      //////////////////////////////
-      //4. 만능 querySelector (css 표현방법이 들어감 id="animal" #animal)
-      let animal = document.querySelector("#animal");
-        console.log(animal);
-        animal.style.border="5px dotted crimson";
-        animal.style.padding="20px";
-        animal.style.borderRadius="20px";
-      //5. 만능 모든요소가져오기 querySelectorAll
-      let alis = document.querySelectorAll("#animal li");
-        console.log(alis);
-        for(let i=0;i<alis.length;i++){
-          alis[i].style.backgroundColor="black";
-          alis[i].style.color="white";
-        }
-      });
-    </script>
-
-
-    <ul id="color">
-      <li>RED</li>
-      <li id="orange">ORANGE</li>
-      <li id="gold">GOLD</li>
-    </ul>
-    <script>
-        //////////////////////////////
-      // 6. querySelector
- 
-      //7. parentElement
- 
-      //8. 제일가까운 상위부모 
-
-      //9. 형제요소 
-      
-    </script>
-  </div>
   <!--     -->
   <!--     -->
-  <hr/>
-  <div class="card-body">
-    <h4>EX </h4>
-    <ul id="fruits">
-      <li>apple</li>
-      <li id="banana">banana</li>
-      <li id="coconut">coconut</li>
-    </ul>
-    <script>
-      window.addEventListener("load",function(){
+  <!--     -->
+  <div class="container card  my-5">
+    <h2 class="card-header">005.선택자 - Step3. document.getElementById / getElementsByTagName / querySelector </h2>
+    <div class="card-body">
+      <h4>STEP3. document.getElementById / getElementsByTagName / querySelector</h4> .
+      <ul id="animal">
+        <li>DOG</li>
+        <li id="cat">CAT</li>
+        <li id="pig">PIG</li>
+      </ul>
+      <script>
+        window.addEventListener("load", function () {
+          //////////////////////////////
+          //1. step1 #animal 선택하기 (document.getElmentById)
+          let animal = document.getElementById("animal");
+          console.log(animal);
+          //2. 그 안에 동물들(li) 찾기 (dacument.getElementByTagName)
+          let anis = animal.getElementsByTagName("li");
+          console.log(anis, typeof (anis))
+          //3. 꾸미기 
+          anis[0].style.color = "red";
+          anis[1].style.color = "blue";
+          anis[2].style.color = "skyblue"
+        });
+      </script>
+      <script>
+        window.addEventListener("load", function () {
+          //////////////////////////////
+          //4. 만능 querySelector (css 표현방법이 들어감 id="animal" #animal)
+          let animal = document.querySelector("#animal");
+          console.log(animal);
+          animal.style.border = "5px dotted crimson";
+          animal.style.padding = "20px";
+          animal.style.borderRadius = "20px";
+          //5. 만능 모든요소가져오기 querySelectorAll
+          let alis = document.querySelectorAll("#animal li");
+          console.log(alis);
+          for (let i = 0; i < alis.length; i++) {
+            alis[i].style.backgroundColor = "black";
+            alis[i].style.color = "white";
+          }
+        });
+      </script>
+
+
+      <ul id="color">
+        <li>RED</li>
+        <li id="orange">ORANGE</li>
+        <li id="gold">GOLD</li>
+      </ul>
+      <script>
+        window.addEventListener("load", function () {
+          //Q1. #color 선택하기  color라는 변수에 담기        
+          //Q2. 안에 있는 li태그들 선택        
+          //Q3. 첫번째 RED의 굵게   font-weight="bold"
+
+          //ver1
+          // let color = document.getElementById("color");
+          // let lis = color.getElementsByTagName("li");
+          // lis[0].style.fontWeight="bold";
+
+          //ver2
+          let color = document.querySelector("#color");
+          let lis = color.querySelectorAll("li");
+          lis[0].style.fontWeight = "bold";
+        })
         //////////////////////////////
-      //Q1) document.getElementsById 이용해서  #fruits 선택 
-        let fruit = document.getElementById("fruits");
-      //Q2) document.getElementsByTagName 이용해서
-        let fruits = fruit.getElementsByTagName("li");
+        window.addEventListener("load", function () {
+          //6. querySelector
+          let color = document.querySelector("#color");
+          color.style.backgroundColor = "pink"
 
-      // #fruits 안의 모든 li에 배경색 black, 글자색 white , 여백 10px주기
-        for(let i=0;i<fruits.length;i++){
-          fruits[i].style.backgroundColor="black";
-          fruits[i].style.color="white";
-          fruits[i].style.padding="10px";
-      } 
-        // fruits[0].style.backgroundColor="black";
-        // fruits[0].style.color="white";
-        // fruits[0].style.padding="10px";
-        // fruits[1].style.backgroundColor="black";
-        // fruits[1].style.color="white";
-        // fruits[1].style.padding="10px";
-        // fruits[2].style.backgroundColor="black";
-        // fruits[2].style.color="white";
-        // fruits[2].style.padding="10px";
-      //Q2) document.getElementsById 이용해서 banana 선택 배경색 gold
-        let banana = document.getElementById("banana");
-        banana.style.backgroundColor="gold";
-      //Q3) document.querySelector 이용해서 coconut 선택
-      //  coconut를 클릭하면 width:200px; 로 수정
-        let coconut = document.querySelector("#coconut");        
-        coconut.style.cursor="pointer";
+          //7. parentElement - 나의부모
+          let orange = document.querySelector("#orange");
+          orange.parentElement.style.border = "5px dashed orange";
+          orange.parentElement.style.padding = "20px";
+          orange.parentElement.style.borderRadius = "20px"
 
-        //방법1 
-        coconut.onclick=function(){
-          coconut.style.width ="200px";
+          //8. 제일가까운 상위부모 - orange 감싸고있는 ul이나 div 같은 경우
+          orange.closest("div").style.backgroundColor = "black";
+          orange.closest("div").style.color = "gold";
+
+          //9. 형제요소 
+          orange.previousElementSibling.style.textAlign = "center"; // orange 이전요소
+          orange.nextElementSibling.style.textAlign = "right"; // orange 다음요소
+        })
+      </script>
+    </div>
+    <!--     -->
+    <!--     -->
+    <hr />
+    <div class="card-body">
+      <h4>EX </h4>
+      <ul id="fruits">
+        <li>apple</li>
+        <li id="banana">banana</li>
+        <li id="coconut">coconut</li>
+      </ul>
+      <script>
+        window.addEventListener("load", function () {
+          //////////////////////////////
+          //Q1) document.getElementsById 이용해서  #fruits 선택 
+          let fruit = document.getElementById("fruits");
+          //Q2) document.getElementsByTagName 이용해서
+          let fruits = fruit.getElementsByTagName("li");
+
+          // #fruits 안의 모든 li에 배경색 black, 글자색 white , 여백 10px주기
+          for (let i = 0; i < fruits.length; i++) {
+            fruits[i].style.backgroundColor = "black";
+            fruits[i].style.color = "white";
+            fruits[i].style.padding = "10px";
+          }
+          // fruits[0].style.backgroundColor="black";
+          // fruits[0].style.color="white";
+          // fruits[0].style.padding="10px";
+          // fruits[1].style.backgroundColor="black";
+          // fruits[1].style.color="white";
+          // fruits[1].style.padding="10px";
+          // fruits[2].style.backgroundColor="black";
+          // fruits[2].style.color="white";
+          // fruits[2].style.padding="10px";
+          //Q2) document.getElementsById 이용해서 banana 선택 배경색 gold
+          let banana = document.getElementById("banana");
+          banana.style.backgroundColor = "gold";
+          //Q3) document.querySelector 이용해서 coconut 선택
+          //  coconut를 클릭하면 width:200px; 로 수정
+          let coconut = document.querySelector("#coconut");
+          coconut.style.cursor = "pointer";
+
+          //방법1 
+          coconut.onclick = function () {
+            coconut.style.width = "200px";
           }
         });
         //방법2
         // document.querySelector("#coconut").onclick=function(){
         //   this.style.width="200px";
         // };
-    </script>
-  </div>
-</div>
-
-<!--     -->
-<!--     -->
-<!--     -->
-<div class="container card  my-3">
-  <h2  class="card-header">005.선택자 - STEP4. value, innerHTML </h2>
-  <div class="card-body">
-    <h4>STEP4. value, innerHTML </h4>
-    <div class="row">
-      <div class="col"><input type="text"    id="value_target"  class="form-control"
-                         placeholder="input에서는 value"  readonly/></div>
-      <div class="col"><input type="button"  value="value"  title="value_target"  id="value"  class="btn btn-outline-primary" /></div>
+      </script>
     </div>
-    <hr/>
-    <div class="row">
-      <div class="col"> <div class="inner_target  alert alert-success"></div>  </div>
-      <div class="col"><input type="button"  value="value"  title="value_target"  id="inner"   class="btn btn-outline-primary" /></div>
-    </div>
-
-    <script>
-        //////////////////////////////
- 
-    </script>
   </div>
+
   <!--     -->
   <!--     -->
-  <hr/>
-  <div class="card-body">
-    <h4>EX</h4>
-    <input type="button"  value="click"         id="test1"    class="btn btn-success"   />
-    <input type="button"  value="value"         id="test2"    class="btn btn-success"   />
-    <input type="button"  value="innerHtml"     id="test3"    class="btn btn-success"   />
-    <input type="button"  value="MOUSEOVER-OUT" id="test4"    class="btn btn-success"   />
-    <div class="result_target  my-5">JAVASCRIPT</div>
+  <!--     -->
+  <div class="container card  my-3">
+    <h2 class="card-header">005.선택자 - STEP4. value, innerHTML </h2>
+    <div class="card-body">
+      <h4>STEP4. value, innerHTML </h4>
+      <div class="row">
+        <div class="col"><input type="text" id="value_target" class="form-control" placeholder="input에서는 value"
+            value="일반텍스트입력" /></div> <!--readonly 읽기전용-->
+        <div class="col"><input type="button" value="value" title="value_target" id="value"
+            class="btn btn-outline-primary" /></div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col">
+          <div class="inner_target  alert alert-success"></div>
+        </div>
+        <div class="col"><input type="button" value="value" title="value_target" id="inner"
+            class="btn btn-outline-primary" /></div>
+      </div>
 
-    <pre>
+      <script>
+        window.addEventListener("load", function () {
+          //#1. value - input(사용자에게 입력받는 값)
+          let value = document.querySelector("#value");
+          value.addEventListener("click", function () {
+            let value_target = document.querySelector("#value_target"); //대상(input)
+            alert(value_target.value); // input 태그에서 대상찾을때 value : 찾기
+            value_target.value = "abc"; //value : 셋팅
+          });
+
+          //#2. innerHtml - 대상
+          // inner 버튼클릭시 div(입력받는 용도가 아닌태그) inner_target 태그 안에 값
+          let inner = document.querySelector("#inner");
+
+          inner.addEventListener("click", function () {
+            let inner_target = document.querySelector(".inner_target");
+            // console.log(inner_target)
+            inner_target.innerHTML = "HELLO"; // 해당태그에 동적으로 값 넣기 A=B
+            alert(inner_target.innerHTML);
+          })
+        });
+
+      </script>
+    </div>
+    <!--     -->
+    <!--     -->
+    <hr />
+    <div class="card-body">
+      <h4>EX</h4>
+      <input type="button" value="click" id="test1" class="btn btn-success" />
+      <input type="button" value="value" id="test2" class="btn btn-success" />
+      <input type="button" value="innerHtml" id="test3" class="btn btn-success" />
+      <input type="button" value="MOUSEOVER-OUT" id="test4" class="btn btn-success" />
+      <div class="result_target  my-5">JAVASCRIPT</div>
+
+      <pre>
     브라우저가 로딩이 되면
     Q1) #test1를 클릭하면 본인이름 입력받고 입력받은 값 알림창 띄우기
     Q2) #test2를 클릭하면 #test2의 value값을 INPUT으로 수정
@@ -289,15 +339,45 @@
 
      https://www.w3schools.com/js/js_events.asp
     </pre>
-    <script>
-    
-        //////////////////////////////
-    </script>
+      <script>
+        window.addEventListener("load", function () {
+          let test1 = document.querySelector("#test1");
+          test1.addEventListener("click", function () {
+            let name = prompt("본인이름입력 > ");
+            alert(name);
+          })
+
+          let test2 = document.querySelector("#test2");
+          test2.addEventListener("click", function () {
+            test2.value = "INPUT";
+          })
+        })
+
+        let test3 = document.querySelector("#test3");
+        test3.addEventListener("click", function () {
+          let result_target = document.querySelector(".result_target");
+          alert(result_target.innerHTML);
+          result_target.innerHTML = "보라";
+        })
+
+        let test4 = document.querySelector("#test4");
+        test4.addEventListener("mouseover", function () {
+          let result_target = document.querySelector(".result_target");
+          result_target.style.backgroundColor = "crimson"
+        })
+
+        test4.addEventListener("mouseout", function () {
+          let result_target = document.querySelector(".result_target");
+          result_target.style.backgroundColor = "black"
+        })
+
+      </script>
+    </div>
   </div>
-</div>
 
 
 
 
 </body>
+
 </html>
