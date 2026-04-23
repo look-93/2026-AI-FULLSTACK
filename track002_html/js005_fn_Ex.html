@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>DBDBIG</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<div class="card-body">
+  <h4>EX3</h4>
+  <pre>
+    1. 문제: MOVE & COLOR 박스 만들기
+    아래 조건을 만족하는 HTML + JavaScript 코드를 작성하시오.
+    - 화면 중앙에 MOVE & COLOR라는 글자가 들어 있는 박스를 만든다.
+    - 박스는 Bootstrap의 bg-warning 색상을 기본으로 가진다.
+    - 박스 안의 글자는 흰색(text-white)이며 가운데 정렬한다.
+
+    2. 박스 아래에 세 개의 버튼을 만든다.
+    - MOVE LEFT 버튼: 박스를 왼쪽으로 50px씩 이동시킨다.
+    - MOVE RIGHT 버튼: 박스를 오른쪽으로 50px씩 이동시킨다.
+    - CHANGE COLOR 버튼: 박스의 배경색을 순서대로 바꾼다.
+    (bg-warning → bg-success → bg-danger → bg-info → bg-primary → 다시 bg-warning)
+
+    버튼 클릭 시 기본 동작(링크 이동)은 막아야 한다. (e.preventDefault() 사용)
+
+    
+    3. 출력 예시 화면:
+    - 초기 화면: 노란색 박스(bg-warning)가 중앙에 위치한다.
+    - MOVE LEFT 클릭 시 박스가 왼쪽으로 이동한다.
+    - MOVE RIGHT 클릭 시 박스가 오른쪽으로 이동한다.
+    - CHANGE COLOR 클릭 시 박스의 색상이 순서대로 바뀐다.
+  </pre>
+  <div class="w-25 bg-warning rounded p-2 mx-auto text-white text-center target_box2">
+    <h1>MOVE & COLOR</h1>
+  </div>
+  <div class="w-25 text-center m-2">
+    <a href="#" class="btnLeft2 btn btn-outline-warning">MOVE LEFT</a>
+    <a href="#" class="btnRight2 btn btn-outline-warning">MOVE RIGHT</a>
+    <a href="#" class="btnColor btn btn-outline-danger">CHANGE COLOR</a>
+  </div>
+  <script>
+    window.onload = () => {
+      let cnt = 0;
+      let target_box2 = document.querySelector(".target_box2");
+      let btnLeft2 = document.querySelector(".btnLeft2");
+      let btnRight2 = document.querySelector(".btnRight2");
+      let btnColor = document.querySelector(".btnColor");
+      let colors = ["bg-warning", "bg-success", "bg-danger", "bg-info", "bg-primary"]
+      let colorIndex = 0;
+
+      btnLeft2.onclick = (e) => {
+        target_box2.style.transform =  `translateX(${--cnt * 50}px)`; /*`translate(${--cnt * 50}px, 0px)`;*/
+        e.preventDefault()
+      }
+
+      btnRight2.onclick = (e) => {
+        target_box2.style.transform = `translateX(${++cnt * 50}px)`; /*`translate(${++cnt * 50}px,0px)`;*/
+        e.preventDefault()
+      }
+
+      btnColor.onclick = (e) => {
+        e.preventDefault();
+        target_box2.classList.remove(colors[colorIndex]);
+        //기존색상제거후 새로운색상 적용
+        colorIndex = (colorIndex + 1) % colors.length;
+        target_box2.classList.add(colors[colorIndex]);
+
+      }
+    }
+
+  </script>
+</div>
+
+</html>
