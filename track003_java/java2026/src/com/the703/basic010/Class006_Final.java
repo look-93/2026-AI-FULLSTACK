@@ -4,7 +4,7 @@ import java.awt.Color;
 
 //1. final 변경하지마
 //1) 클래스는 부품객체
-//2) 클래스는(상속:x) 상태(멤버변수:상수) 행위(멤버함수)
+//2) 클래스는(상속:x) 상태(멤버변수:속성) 행위(멤버함수)
 // final class 재사용하지마-상속
 class FinalEx extends Object{
 	static final String child = "5-5"; //클래스변수 - method area - new x - this x
