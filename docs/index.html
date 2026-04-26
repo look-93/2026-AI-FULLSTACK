@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BORA KIM</title>
+    <title>BORA</title>
     <!-- Latest compiled and minified CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -11,29 +11,22 @@
     />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <!--google font-->
     <link
-      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&family=Gowun+Dodum&family=Grape+Nuts&family=Namdhinggo:wght@400;500;600;700;800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!--icons-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <!--my css-->
-    <link href="./css/myself.css" rel="stylesheet" />
+
+    <link href="./css/my2.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
     <!--HEADER-->
-    <header>
-      <h1 class="myhidden">BORA KIM</h1>
-      <nav class="navbar navbar-expand-sm">
+    <header class="p-5">
+      <h1 class="myhidden">BORA</h1>
+      <nav class="navbar navbar-expand-sm fixed-top">
         <h2 class="myhidden">주메뉴</h2>
-        <div class="container-fluid">
-          <a class="myfont navbar-brand" href="#">KIMBORA</a>
-
+        <div class="container">
+          <a class="mynav navbar-brand" href="#">BORA</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -44,16 +37,42 @@
           </button>
           <!--collapse : 모바일버전기능-->
           <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="mynav navbar-nav ms-auto">
+            <ul class="mynavitem navbar-nav">
+              <!--ms-auto-->
               <!--me-auto 마진앤드 ms-auto 마진스타트 ul태그 좌우이동-->
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">About</a>
+                <a class="nav-link" href="#section1">ABOUT</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Skills</a>
+                <a class="nav-link" href="#section2">SKILLS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Projects</a>
+                <a class="nav-link" href="#section3">PROJECTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#section4">EXPERIENCE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#section5">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="collapse navbar-collapse"
+            id="mynavbar2"
+            style="font-size: 10px"
+          >
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <p class="nav-card">
+                  <a
+                    href="https://github.com/look-93/2026-AI-FULLSTACK.git"
+                    title="mygithub"
+                    target="_blank"
+                  >
+                    <img src="./img/github.png" alt="github" />
+                  </a>
+                </p>
               </li>
             </ul>
           </div>
@@ -61,113 +80,159 @@
       </nav>
     </header>
 
-    <!--About-->
-    <section class="p-5">
-      <h3 class="myhidden text-center">About</h3>
-      <div class="p-5 text-center">
-        <p class="typing">안녕하세요. FullStack 개발자 김보라입니다.</p>
-      </div>
-
-      <div class="container bg-white rounded shadow col-lg-6 mx-auto">
-        <h3 class="text-center p-5">About</h3>
-        <div class="row pb-5">
-          <div class="col-sm-5">
-            <p class="text-center">
-              <img src="./img/one.png" alt="프로필사진" class="w-50 mx-auto" />
+    <!--INFO-->
+    <section class="p-5" id="section1">
+      <div class="container">
+        <h3 class="text-center myhidden">About Me</h3>
+        <div class="row">
+          <div class="col-sm-6 p-3">
+            <h2>
+              Hi, i'm
+              <span style="color: rgb(163, 129, 162)">Bora Kim</span>
+            </h2>
+            <p class="typing">FullStack Developer</p>
+            <br /><br />
+            <div>
+              <p>
+                사용자 경험을 고민하는 개발자 김보라입니다. <br />
+                SQL을 활용한 데이터 분석과 백엔드 개발에 강점을 가지고
+                있습니다.<br />
+                단순히 기능을 구현하는 것을 넘어, 유지보수성과 확장성을 고려한
+                코드를 작성하는 개발자가 되기 위해 꾸준히 학습하고 있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6 p-5">
+            <p>
+              <img src="./img/one.png" alt="Los Angeles" class="w-50 mx-auto" />
             </p>
+
+            <!-- <h4 class="myhidden">Kim Bo Ra</h4> -->
           </div>
-          <div class="col-sm-7">
-            <ul style="list-style: none">
-              <li><i class="fa-solid fa-user"></i> 김보라</li>
-              <li><i class="fa-solid fa-cake-candles"></i> 1993.08.07</li>
-              <li><i class="fa-solid fa-at"></i> qhfk0961@gmail.com</li>
-              <br />
-              <li>
-                <i class="fa-brands fa-github"></i>
-                <a
-                  href="https://github.com/look-93"
-                  title="mygithublink"
-                  target="_blank"
-                  style="text-decoration: none; color: black"
-                  >https://github.com/look-93</a
-                >
-              </li>
-            </ul>
+        </div>
+      </div>
+    </section>
+    <section class="p-5" id="section2">
+      <h3 class="myhidden">SKILLS</h3>
+      <div class="container">
+        <div class="skills-card">
+          <div class="icons">
+            <!-- <p>SKILLS</p> -->
+            <h4>Skills</h4>
+            <div class="icon-group">
+              <h3>Frontend</h3>
+              <p class="icon-card">
+                <img src="./img/javascript.png" alt="javascript" />
+              </p>
+              <p class="icon-card">
+                <img src="./img/react.png" alt="react" />
+              </p>
+              <p class="icon-card">
+                <img src="./img/css3.png" alt="css3" />
+              </p>
+            </div>
+            <div class="icon-group">
+              <h3>Backend</h3>
+              <p class="icon-card">
+                <img src="./img/java.png" alt="java" />
+              </p>
+              <p class="icon-card">
+                <img src="./img/spring.png" alt="spring" />
+              </p>
+            </div>
+            <div class="icon-group">
+              <h3>Database</h3>
+              <p class="icon-card">
+                <img src="./img/mssql.png" alt="mssql" />
+              </p>
+            </div>
           </div>
-          <!-- <div class="col-sm-2 myhidden"></div> -->
         </div>
       </div>
     </section>
 
-    <!--INFO-->
-    <section></section>
-
-    <!--CONTACT-->
-    <section class="p-5 mybg">
-      <h3 class="p-3 text-center text-white">Contact Me</h3>
-      <p class="text-center text-white">열정적인 개발자 보라에게 문의주세요!</p>
-
-      <div class="container shadow p-5 bg-white rounded">
-        <form action="/action_page.php">
-          <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Enter email"
-              name="email"
-            />
+    <!--PROJECTS-->
+    <section class="p-5" id="section3">
+      <div class="container">
+        <h4 class="pb-4">Projects</h4>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="projects">
+              <h5>포트폴리오1</h5>
+              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
+            </div>
           </div>
-
-          <div class="mb-3">
-            <label for="comment">Comments:</label>
-            <textarea
-              class="form-control"
-              rows="5"
-              id="comment"
-              name="text"
-            ></textarea>
+          <div class="col-sm-4">
+            <div class="projects">
+              <h5>포트폴리오2</h5>
+              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
+            </div>
           </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+          <div class="col-sm-4">
+            <div class="projects">
+              <h5>포트폴리오3</h5>
+              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!--FOOTER-->
-    <!--글자를 페이지의 정중앙/배경색 좋아하는색상-->
-    <footer class="bg-secondary text-center p-5 text-white">
-      © copyrights bora 2026 all. rights reserved
-    </footer>
+    <!-- EXPERIENCE EUCATION-->
+    <section class="p-5" id="section4">
+      <div class="container">
+        <h4>Experience</h4>
+        <!-- <div style="display: flex">
+          <div class="experience-card">
+            <h2>2+</h2>
+            <p>Years Experience</p>
+            <p>SQL 중심</p>
+          </div>
+          <div class="experience-card">
+            <h3>AI Full-stack</h3>
+            <p>Bootcamp</p>
+            <span>In Progress</span>
+          </div>
+        </div> -->
+        <h4>Education</h4>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="p-5" id="section5">
+      <div class="container contact">
+        <h4>Contact With Me</h4>
+        <form action="/action_page.php">
+          <div class="row mb-3 mt-3">
+            <div class="col-sm-7">
+              <textarea
+                type="email"
+                class="form-control"
+                rows="2"
+                id="email"
+                placeholder="Email"
+                name="email"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row mb-3 mt-3">
+            <div class="col-sm-7">
+              <textarea
+                class="form-control"
+                rows="2"
+                id="comment"
+                placeholder="Message"
+                name="text"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row mb-3 mt-3">
+            <div class="col-sm-7" style="text-align: right">
+              <button type="button" class="btn">Stay Connected</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
   </body>
 </html>
-
-<!-- 
-1) https://look-93.github.io/2026-AI-FULLSTACK/ 
-2) https://본인아이디.github.io/저장소/
--->
-
-<!-- <영역잡기 - ./img/bootstrap004_self.png 참조>
-https://www.w3schools.com/bootstrap5/
-
-header  -h1 nav-h2
-
-section -h3 슬라이딩윈도우
-
-section : 의미있는내용
-    h3
-    div div idv
-
-section
-    h3
-    div
-        div div div
-
-section
-    h3
-    form
-
-footer
-
--->

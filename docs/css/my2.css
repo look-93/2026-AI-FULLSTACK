@@ -186,3 +186,7 @@ body {
   border-radius: 10px;
   background: #f8f9fc;
 }
+
+.contact textarea {
+  background: #f8f9fc;
+}
