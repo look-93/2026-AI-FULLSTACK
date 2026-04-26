@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.mycolor{
+    background: linear-gradient(135deg, #fff, #99bdec);
+}
+
+/*안보이게 숨김*/
+.myhidden{
+    position: absolute;
+    left:-9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    white-space: nowrap;
+    clip:rect(0,0,0,0); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
+}
+
+#demo{
+    height: 300px;
+    overflow: hidden;
+  
+}
+
+#demo img{  
+      object-fit:cover;
+}
+/*배경 body fixd하고 원하는 배경부분만 투명하게*/
+.mybg{
+    /*투명도*/
+    background-color: transparent;
+}
+
+body{
+    /* background-image: linear-gradient(135deg, #ffffff, #c9aeae); */
+    background-image: url(../img/heckimg-tree-7619791.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    background-attachment: fixed;
+}
+
+h3{
+    transition: all 0.5s;
+}
+h3:hover{
+
+    transform: translateY(-10px);
+}
+
+/* transform + transition */

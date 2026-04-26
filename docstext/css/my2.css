@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 940px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  background: #f5f7fb;
+  /*구글폰트*/
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(32, 18, 18, 0.8); /* 원하는 색 */
+}
+
+/*안보이게 숨김*/
+.myhidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(
+    0,
+    0,
+    0,
+    0
+  ); /*요소를 잘라서 시각적으로 완전히 숨김-구형브라우저 호환*/
+}
+
+.mynav {
+  font-size: 15px;
+}
+.mynav:hover {
+  font-weight: bold;
+}
+.mynavitem {
+  font-size: 10px;
+  margin-top: 3px;
+}
+.mynavitem ul li {
+  font-weight: bold;
+}
+
+.nav-card {
+  margin-top: 15px;
+}
+
+.nav-card img {
+  width: 20px;
+  transition: all 0.3s;
+}
+
+.nav-card img:hover {
+  /* transform: translateY(-3px); */
+  transform: rotateY(180deg);
+}
+
+/*타이핑*/
+.typing {
+  /* font-size: 20px; */
+  white-space: nowrap;
+  margin: 0 auto;
+  color: transparent; /*투명*/
+  display: inline-block;
+  position: relative;
+}
+
+.typing::before {
+  content: "FullStack Developer";
+  color: rgb(0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  border-right: 1px solid black;
+  animation: typing 6s steps(31) infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0%;
+    color: rgb(163, 129, 162);
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+/* 스킬 아이콘 */
+.skills-card {
+  margin-top: 40px;
+  /* width: 100%; */
+  /* background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); */
+}
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.icon-group h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-card {
+  width: 50px;
+  height: 45px;
+  text-align: center;
+  line-height: 40px;
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; */
+  /* background: #f8f9fc; */
+}
+
+.icon-card img {
+  width: 30px;
+}
+
+/* EXPERIENCE 카드 */
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 160px;
+  height: 150px;
+  /* background: #fff; */
+  /* border-radius: 16px; */
+  /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); */
+}
+
+.experience-card h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.experience-card p {
+  font-size: 13px;
+  color: #555;
+}
+
+.experience-card span {
+  font-size: 11px;
+  color: #999;
+}
+
+.projects {
+  width: 300px;
+  height: 280px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #f8f9fc;
+}

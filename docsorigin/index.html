@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>열정적인 개발자</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="./css/my.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <!-- Q1. h1 내용바꾸고 / a태그에 들어가 있는 LOGO 이름 바꾸기/ nav 좋아하는 색상으로 바꾸기 -->
+    <header>
+      <h1 class="myhidden">BORA</h1>
+      <nav class="mycolor navbar navbar-expand-sm">
+        <h2 class="myhidden">주메뉴</h2>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./img/two.png">BORA</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mynavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--collapse : 모바일버전기능-->
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav ms-auto">
+              <!--me-auto 마진앤드 ms-auto 마진스타트 ul태그 좌우이동-->
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">포트폴리오</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--VISUAL-->
+    <section>
+      <h3 class="myhidden">홍보</h3>
+      <!-- Carousel -->
+      <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators/dots 슬라이더-->
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#demo"
+            data-bs-slide-to="2"
+          ></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="./img/portfolio1.jpg"
+              alt="Los Angeles"
+              class="d-block w-50 mx-auto"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./img/portfolio2.jpg"
+              alt="Chicago"
+              class="d-block w-50 mx-auto"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./img/portfolio3.jpg"
+              alt="New York"
+              class="d-block w-50 mx-auto"
+            />
+          </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <!--INFO-->
+    <section>
+      <div class="container">
+        <h3 class="text-center">About Me</h3>
+        <div class="row">
+          <div class="col-sm-4 p-5">
+            <p>
+              <img src="./img/six.png" alt="Los Angeles" class="w-50 mx-auto" />
+            </p>
+            <h4>Kim Bo Ra</h4>
+            <ul>
+              <li>bora.github</li>
+              <li>
+                <a
+                  href="https://github.com/look-93/2026-AI-FULLSTACK.git"
+                  title="깃허브주소"
+                  target="_blank"
+                  >깃허브 포트폴리오</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4 p-3">
+            <h4>Education</h4>
+            <ul>
+              <li>
+                AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
+                (26.3.26 ~ 26.10.8)
+              </li>
+            </ul>
+            <h4>KeyWord</h4>
+            <ul>
+              <li class="btn btn-danger">열심</li>
+              <li class="btn btn-warning">성실</li>
+              <li class="btn btn-secondary">끈기</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4 p-3">
+            <h4>SKILLS</h4>
+            <div class="progress">
+              <div
+                class="progress-bar bg-secondary progress-bar-striped"
+                style="width: 80%"
+              >
+                JAVA 80%
+              </div>
+            </div>
+            <br />
+            <div class="progress">
+              <div
+                class="progress-bar bg-warning progress-bar-striped"
+                style="width: 90%"
+              >
+                SPRING 90%
+              </div>
+            </div>
+            <br />
+            <div class="progress">
+              <div
+                class="progress-bar bg-danger progress-bar-striped"
+                style="width: 90%"
+              >
+                ORACLE 90%
+              </div>
+            </div>
+            <br />
+            <div class="progress">
+              <div
+                class="progress-bar bg-success progress-bar-striped"
+                style="width: 85%"
+              >
+                REACT 80%
+              </div>
+            </div>
+            <br />
+            <div class="progress">
+              <div
+                class="progress-bar bg-info progress-bar-striped"
+                style="width: 80%"
+              >
+                AWS 80%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--PORTFOLID-->
+    <section class="mycolor p-5">
+      <h3 class="text-center">Portfolio</h3>
+      <div class="container bg-white rounded shadow">
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>동영상</h4>
+            <iframe
+              class="w-100"
+              src="https://www.youtube.com/embed/tXV7dfvSefo?si=DCZuzo9mTWpaZURK"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <button class="btn btn-secondary">포트폴리오 더보기</button>
+          </div>
+
+          <div class="col-sm-4">
+            <h4>spring boot + jpa + react portfolio</h4>
+            <ul>
+              <li>
+                <strong>Spring boot + JPA</strong> 기반의 백엔드와 데이터 처리
+                로직 구현
+              </li>
+              <li>
+                <strong>React</strong>를 활용한 사용자 중심의 프론트엔드 UI 개발
+              </li>
+              <li>
+                <strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로
+                보안성과 효율성 강화
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4">
+            <h4>기술스텍</h4>
+            <ul>
+              <li>Spring Boot 2.7.14</li>
+              <li>Spring Security 5.7.x</li>
+              <li>Spring Data JPA 2.7.x</li>
+              <li>Hibernate 5.6.x</li>
+              <li>Oracle 11</li>
+              <li>React 18.x</li>
+              <li>Axios 1.x</li>
+              <li>React Router v6</li>
+              <li>JWT</li>
+              <li>Git & GitHub</li>
+              <li>GitHub Actions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--CONTACT-->
+    <section class="p-5 mybg">
+      <h3 class="p-3 text-center text-white">Contact Me</h3>
+      <p class="text-center text-white">열정적인 개발자 보라에게 문의주세요!</p>
+
+      <div class="container shadow p-5 bg-white rounded">
+        <form action="/action_page.php">
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter email"
+              name="email"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="comment">Comments:</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              id="comment"
+              name="text"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <!--FOOTER-->
+    <!--글자를 페이지의 정중앙/배경색 좋아하는색상-->
+    <footer class="bg-secondary text-center p-5 text-white">
+      © copyrights bora 2026 all. rights reserved
+    </footer>
+  </body>
+</html>
+
+<!-- 
+1) https://look-93.github.io/2026-AI-FULLSTACK/ 
+2) https://본인아이디.github.io/저장소/
+-->
+
+<!-- <영역잡기 - ./img/bootstrap004_self.png 참조>
+https://www.w3schools.com/bootstrap5/
+
+header  -h1 nav-h2
+
+section -h3 슬라이딩윈도우
+
+section : 의미있는내용
+    h3
+    div div idv
+
+section
+    h3
+    div
+        div div div
+
+section
+    h3
+    form
+
+footer
+
+-->

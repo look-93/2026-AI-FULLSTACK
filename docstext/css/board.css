@@ -1,0 +1,137 @@
+body {
+  background: #f5f7fb;
+  font-family: sans-serif;
+}
+
+/* 전체 레이아웃 */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px;
+}
+
+/* 좌측 */
+.left {
+  width: 50%;
+}
+
+.left h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.left h2 {
+  font-size: 22px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.left p {
+  line-height: 1.6;
+  color: #444;
+}
+
+/* FIND */
+.find {
+  margin-top: 40px;
+}
+
+/* 우측 */
+.right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 프로필 */
+.profile img {
+  width: 220px;
+  border-radius: 50%;
+  background: #eee;
+  padding: 20px;
+}
+
+/* 스킬 카드 */
+.skills-card {
+  margin-top: 40px;
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 스킬 그룹 */
+.skill-group {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.skill-group span {
+  font-size: 14px;
+  color: #888;
+}
+
+/* 아이콘 묶음 */
+.icons {
+  display: flex;
+  gap: 12px;
+}
+
+/* 아이콘 카드 */
+.icon-card {
+  width: 55px;
+  height: 55px;
+  background: #f8f9fc;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icon-card:hover {
+  transform: translateY(-5px);
+}
+
+/* EXPERIENCE 카드 */
+.experience-card {
+  margin-top: 25px;
+  padding: 20px;
+  width: 160px;
+
+  background: #fff;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.experience-card h2 {
+  font-size: 32px;
+  margin: 0;
+  color: #111;
+}
+
+.experience-card p {
+  font-size: 13px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* hover 효과 */
+.experience-card:hover {
+  transform: translateY(-5px);
+}
