@@ -552,6 +552,34 @@
     </pre>
       <input type="button" id="age" value="무한반복-어린이나이" class="btn btn-primary" title="어린이의 나이를 0~5세사이만 입력하세요." />
       <script>
+      // window.addEventListener("load" , function(){
+      //     let age = document.getElementById("age");
+      //     age.addEventListener("click" , function(){
+      //         ageFn();
+      //     }); 
+      //     function ageFn (){
+      //         let answer = -1;
+      //         let result = "0~5세 사이가 아닙니다.";
+      //         while( !(answer >=0 && answer<= 5)  ){  // 0~5세사이가 아니라면
+      //           answer = prompt("어린이의 나이는 0~5 사이만 입력가능");
+      //           if( answer >= 0 && answer<=5 ){ result = "어린이의 나이는 " + answer ; }
+      //           alert(result);
+      //         }
+      //     }
+      // });
+
+      window.addEventListener("load" , function(){
+          document.getElementById("age").onclick = ad; 
+          function ad (){
+              for( ;;  ){  // 0~5세사이가 아니라면
+                let age = prompt("어린이의 나이는 0~5 사이만 입력가능");
+                if( age >= 0 && age<=5 ){ alert("어린이의 나이는 " + age ); break;}                
+              }
+          }
+      });
+
+    </script>
+      <!-- <script>
         window.addEventListener("load", function () {
           let agebtn = document.querySelector("#age");
           agebtn.onclick = () => {
@@ -576,7 +604,7 @@
           };
         });
 
-      </script>
+      </script> -->
     </div>
 
     <!--     -->
@@ -617,60 +645,124 @@
           </p>
         </fieldset>
       </form>
-      <script>
-        window.addEventListener("load",function(){
-          let calcbtn = document.querySelector("#calc");
-          let inputnum1 = document.querySelector("#num1");
-          let inputabc = document.querySelector("#abc");
-          let inputnum2 = document.querySelector("#num2");
-          let result1 = document.querySelector("#result1");
-          let num1;
-          let abc;
-          let num2;
+        <script>
+      window.addEventListener("load" , function(){
+        //1. 대상
+          let btn     = document.getElementById("calc"); //버튼
+          let targets = document.querySelectorAll("#calc_form  input"); 
+          console.log(targets); //#0  button //1: num1 , 2:abc, 3:num2, 4: result
+          let num1 = -1, num2=-1, op=' ', result=0;
 
-          calcbtn.onclick = () => {
-            for(;;){     
-              let result = 0;
-              inputnum1.value = "";
-              inputabc.value = "";
-              inputnum2.value = "";
-              result1.value ="";        
-              if(!(num1 >=0 && num1 <=100)){
-                num1 = prompt("0~100 사이의 숫자 입력"); 
-                continue;
-              }              
-              if(!(abc=="+" || abc=="-" || abc=="*" || abc=="/")){
-                abc = prompt("(+,-,*,/) 를 입력");
-                continue;
-              }          
-              if(!(num2 >=0 && num2 <=100)){
-                num2 = prompt("0~100 사이의 숫자 입력");
-                continue;
-              }
-
-              if(abc == "+"){
-                result = Number(num1)+Number(num2);
-              }else if(abc == "-"){
-                result = Number(num1)-Number(num2);
-              }else if(abc == "*"){
-                result = Number(num1)*Number(num2);
-              }else if(abc == "/"){
-                result = Number(num1)/Number(num2);
-              }
-              
-              inputnum1.value = num1;
-              inputabc.value = abc;
-              inputnum2.value = num2;
-              result1.value =result;
-              num1=-1;
-              abc="";
-              num2=-1;
-              break;
+          btn.addEventListener("click" , function(){
+            //2. 입력 (0~100사이 무한반복, 빈칸검사)
+            for(;;){  //초기값 num1 = -1, num2=-1, op=' '
+              if(   !(num1>=0  &&  num1<=100) | num1==""  ){ //0~100사이가 아니거나  빈문자열
+                 num1 = prompt("1. 정수입력 0~100"); // 50
+              }else if(!(num2>=0  &&  num2<=100) | num2==""){
+                 num2 = prompt("2. 정수입력 0~100"); //3
+              }else if( !(op == '+' || op == '-' || op == '*' || op == '/') ){
+                 op = prompt("3. 연산자입력 (+,-,*,/)");  //+
+              }else{ break;}
             }
-          };
-        });
+            //3. 처리
+            switch(op){
+              case '+' : result = Number(num1) + Number(num2); break;
+              case '-' : result = Number(num1) - Number(num2); break;
+              case '*' : result = Number(num1) * Number(num2); break;
+              case '/' : result = Number(num1) / Number(num2); break;
+            }
+            //4. 각 value 각각 셋팅
+            targets[1].value = num1;
+            targets[2].value = op;
+            targets[3].value = num2;
+            targets[4].value = op!='/'? result: result.toFixed(2); //소수점 2
+            
+          });
+      });
+    </script>
+      <!-- <script>
 
-      </script>
+        window.addEventListener("load", function(){
+          let btn = document.getElementById("calc");
+          let targets = document.querySelectorAll("#calc_form input");
+          let num1=-1;
+          let abc ="";
+          let num2 =-1;
+          let result=0;
+          btn.addEventListener("click",function(){
+          for(;;){
+               if((!(num1 >=0 && num1 <=100) | num1 =="")){
+                num1 = prompt("0~100 사이의 숫자 입력"); 
+              }else if(!(abc=="+" || abc=="-" || abc=="*" || abc=="/")){
+                abc = prompt("(+,-,*,/) 를 입력");
+              }else if((!(num2 >=0 && num2 <=100) | num2 =="")){
+                num2 = prompt("0~100 사이의 숫자 입력");
+              }else{break;}
+          }
+
+          switch(abc){
+            case "+" : result = Number(num1)+Number(num2); break;
+            case "-" : result = Number(num1)-Number(num2); break;
+            case "*" : result = Number(num1)*Number(num2); break;
+            case "/" : result = Number(num1)/Number(num2); break;
+          }
+          targets[1].value = num1;
+          targets[2].value = abc;
+          targets[3].value = num2;
+          targets[4].value = abc!="/" ? result : result.toFixed(2); //소수점2
+          });
+        }); 
+
+        // window.addEventListener("load",function(){
+        //   let calcbtn = document.querySelector("#calc");
+        //   let inputnum1 = document.querySelector("#num1");
+        //   let inputabc = document.querySelector("#abc");
+        //   let inputnum2 = document.querySelector("#num2");
+        //   let result1 = document.querySelector("#result1");
+        //   // console.log(targets)
+        //   let num1=-1;
+        //   let abc ="";
+        //   let num2 =-1;
+
+        //   calcbtn.onclick = () => {
+        //     for(;;){     
+        //       let result = 0;
+        //       inputnum1.value = "";
+        //       inputabc.value = "";
+        //       inputnum2.value = "";
+        //       result1.value ="";      
+
+        //       if(!(num1 >=0 && num1 <=100)){
+        //         num1 = prompt("0~100 사이의 숫자 입력"); 
+        //         continue;
+        //       }else if(!(abc=="+" || abc=="-" || abc=="*" || abc=="/")){
+        //         abc = prompt("(+,-,*,/) 를 입력");
+        //         continue;
+        //       }else if(!(num2 >=0 && num2 <=100)){
+        //         num2 = prompt("0~100 사이의 숫자 입력");
+        //         continue;
+        //       }
+
+        //       if(abc == "+"){
+        //         result = Number(num1)+Number(num2);
+        //       }else if(abc == "-"){
+        //         result = Number(num1)-Number(num2);
+        //       }else if(abc == "*"){
+        //         result = Number(num1)*Number(num2);
+        //       }else if(abc == "/"){
+        //         result = Number(num1)/Number(num2);
+        //       }
+              
+        //       inputnum1.value = num1;
+        //       inputabc.value = abc;
+        //       inputnum2.value = num2;
+        //       result1.value =result;
+        //       break;
+        //     }
+        //   };
+        // });
+
+      // </script>-->
     </div> <!-- end contianer  -->
 
 
