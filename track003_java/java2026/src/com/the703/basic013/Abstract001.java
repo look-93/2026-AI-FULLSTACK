@@ -8,6 +8,8 @@ Abstract(is A) 일반클래스 + 설계
 	  Animal 	{name / eat(), sleep(), poo()}
 	↑		↑ 
    Cat	   Dog	{@eat(), @sleep(), @poo()}
+
+abstract : 공통의 속성을 뽑아서 일반화
 */
 abstract class Animal{
 	String name; // 인스턴스 변수 - heap area - new o - this 각각
@@ -35,7 +37,7 @@ public class Abstract001 {
 		//1. abstract : 일반클래스 + 설계
 		//Animal ani = new Animal(); //new 메모리빌리고 객체생성, Animal 초기화{} 구현부가 없음
 		//Cannot instantiate the type Animal
-		//abstract void eat(); => eat, sleep, poo 구현부가없음
+		//abstract void eat(); => eat, sleep, poo 구현부가없음 -> 틀만 제공하고 실제 동작을 구현하는 부분은 하위클래스에서 구현
 		
 		Animal ani = null;
 		ani = new Cat(); // 부모=자식, 업캐스팅, 타입캐스팅 필요x

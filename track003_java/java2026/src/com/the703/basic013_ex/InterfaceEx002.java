@@ -52,8 +52,8 @@ public class InterfaceEx002 {
 // 리턴값   메서드명(파라미터) {   }
 	      		//car, mo 두개의 값을 다 담을 수 있는 자료형 부모-자식
 // void 		 drive(Vehicle v)
-	      driver.drive(car);
-	      driver.drive(mo);
+	      driver.drive(car); //리턴값 메서드명(재료)
+	      driver.drive(mo);  //void drive(재료)
 	}
 
 }
