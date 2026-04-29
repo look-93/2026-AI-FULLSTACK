@@ -7,31 +7,51 @@ import java.util.Objects;
 import java.util.Scanner;
 
 //1. 아이스크림정보 클래스
-class IceCreamDTO{
+class IceCreamDTO {
 	private String name;
 	private int price;
-	
-	//생성자, 필요하다면 추가, toString, getter/setter , hashCode/equals
-	public IceCreamDTO() { super(); }		
+
+	// 생성자, 필요하다면 추가, toString, getter/setter , hashCode/equals
+	public IceCreamDTO() {
+		super();
+	}
+
 	public IceCreamDTO(String name, int price) {
 		super();
 		this.name = name;
 		this.price = price;
 	}
+
 	@Override
 	public String toString() {
 		return "- " + name + " (" + price + ")";
 	}
-	
-	public IceCreamDTO(String removeName) { this.name = removeName;}
-	public String getName() { return name; }
-	public void setName(String name) { this.name = name; }
-	public int getPrice() { return price; }
-	public void setPrice(int price) { this.price = price; }
+
+	public IceCreamDTO(String removeName) {
+		this.name = removeName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,102 +63,101 @@ class IceCreamDTO{
 		IceCreamDTO other = (IceCreamDTO) obj;
 		return Objects.equals(name, other.name);
 	}
-	
+
 }
 
 //2. list 사용클래스
 public class ListEx003 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String name=""; int price=0, choice=-1;
+		String name = "";
+		int price = 0, choice = -1;
 		List<IceCreamDTO> ic = new ArrayList<>();
-		System.out.println("❄️🍦 Welcome to the Magical IceCream Land 🍦❄️\r\n"
-				+ "✨ 오늘도 달콤한 하루가 시작됩니다! ✨\r\n"
-				+ "🛎️ 손님~ 어떤 아이스크림을 원하시나요?\r\n"
-				+ "--------------------------------------------------\r\n");
-		while(choice !=0) {
-			System.out.print("📋 메뉴판 \r\n"
-					+ "🍧 IceCream Menu 🍧  \r\n"
-					+ "1️ 아이스크림 추가\r\n"
-					+ "2️ 아이스크림 목록 보기\r\n"
-					+ "3️ 아이스크림 제거\r\n"
-					+ "4️ 아이스크림 존재 확인\r\n"
-					+ "5️ 총 아이스크림 개수\r\n"
-					+ "0️ 종료\r\n"
+		System.out.println("❄️🍦 Welcome to the Magical IceCream Land 🍦❄️\r\n" + "✨ 오늘도 달콤한 하루가 시작됩니다! ✨\r\n"
+				+ "🛎️ 손님~ 어떤 아이스크림을 원하시나요?\r\n" + "--------------------------------------------------\r\n");
+		while (choice != 0) {
+			System.out.print("📋 메뉴판 \r\n" + "🍧 IceCream Menu 🍧  \r\n" + "1️ 아이스크림 추가\r\n" + "2️ 아이스크림 목록 보기\r\n"
+					+ "3️ 아이스크림 제거\r\n" + "4️ 아이스크림 존재 확인\r\n" + "5️ 총 아이스크림 개수\r\n" + "6️ 정렬하기\r\n" + "0️ 종료\r\n"
 					+ "👉 선택:");
-			
+
 			choice = sc.nextInt();
-			
-			if(choice == 0 ) {
+
+			if (choice == 0) {
 				System.out.println("아이스크림 가게를 닫습니다. 다음에 또 만나요!");
-			}else if(choice == 1) {
+			} else if (choice == 1) {
 				System.out.println("🍧아이스크림 추가🍧");
 				System.out.print("아이스크림 이름 : ");
 				name = sc.next();
 				System.out.print("가격: ");
 				price = sc.nextInt();
 				System.out.println(name + "추가 완료!");
-				ic.add(new IceCreamDTO(name,price));				
-			}else if(choice == 2) {
+				ic.add(new IceCreamDTO(name, price));
+			} else if (choice == 2) {
 				System.out.println("🍧아이스크림 목록 보기🍧");
-				if(ic.size()==0) {
+				if (ic.size() == 0) {
 					System.out.println("아직 등록된 아이스크림이 없습니다.");
 					continue;
-				}				
+				}
 				System.out.println("현재 아이스크림 목록 : ");
-				for(IceCreamDTO i : ic) {
+				for (IceCreamDTO i : ic) {
 //					System.out.println("- " + i.getName() + " (" + i.getPrice() + ")");
 					System.out.println(i);
-				}			
-			}else if(choice == 3) {
+				}
+			} else if (choice == 3) {
 				System.out.println("🍧아이스크림 제거🍧");
 				System.out.print("제거할 아이스크림 이름: ");
 				name = sc.next();
 //				System.out.println("contains > " + ic.contains(new IceCreamDTO(name)));
-				if(!(ic.contains(new IceCreamDTO(name)))) {
+				if (!(ic.contains(new IceCreamDTO(name)))) {
 					System.out.println("해당 아이스크림이 존재하지 않습니다.");
 					continue;
 				}
 //				IceCreamDTO removeIc = new IceCreamDTO(name);
 //				ic.remove(removeIc);
 //				System.out.println("제거완료!");
-				System.out.println(ic.remove(new IceCreamDTO(name) )? "제거완료" : "제거실패");
-			}else if(choice == 4) {
+				System.out.println(ic.remove(new IceCreamDTO(name)) ? "제거완료" : "제거실패");
+			} else if (choice == 4) {
 				System.out.println("🍧아이스크림 존재 확인🍧");
 				System.out.print("확인할 아이스크림 이름: ");
 				name = sc.next();
-				if(ic.size() == 0 /*!(ic.contains(new IceCreamDTO(name)))*/) {
+				if (ic.size() == 0 /* !(ic.contains(new IceCreamDTO(name))) */) {
 					System.out.println("해당 아이스크림이 존재하지 않습니다.");
 					continue;
 				}
-				System.out.println("존재합니다!");				
-			}else if(choice == 5) {
+				System.out.println("존재합니다!");
+			} else if (choice == 5) {
 				System.out.println("🍧아이스크림 존재 확인🍧");
-				System.out.println("총 아이스크림 개수: " + ic.size());			
-			}else if(choice == 6) {
-				int num=0;
+				System.out.println("총 아이스크림 개수: " + ic.size());
+			} else if (choice == 6) {
+				int num = 0;
 				System.out.println("🍧아이스크림 정렬🍧");
 				System.out.print("정렬 기준 선택: 1) 이름순  2) 가격순 > ");
 				num = sc.nextInt();
-				switch(num){				
+				switch (num) {
 				case 1:
-//					for(IceCreamDTO i : ic) {
-//						Collections.sort(i.getName());
-//				
-//					}
-					
+					//sort에서 a가 b보다 작으면 왼쪽정렬 - 12345 (음수-오름차순) 
+					// b.getName().compareTo(a.getName())); 반대면 내림차순 
+					ic.sort((a, b) -> a.getName().compareTo(b.getName()));
+					for (IceCreamDTO i : ic) {
+						System.out.println(i);
+					}
+
 					break;
-				case 2: break;
+				case 2:
+					ic.sort((a, b) -> a.getPrice() - b.getPrice());
+					for (IceCreamDTO i : ic) {
+						System.out.println(i);
+					}
+					break;
 				}
-				
+
 			}
-			
+
 		}
 
 	}
 
 }
-
 
 //패키지명 : com.company.java014_ex 
 //클래스명 : ListEx003
