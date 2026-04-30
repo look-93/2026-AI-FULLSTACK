@@ -2,6 +2,7 @@ package com.the703.basic014_ex;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -137,14 +138,20 @@ public class ListEx003 {
 				case 1:
 					//sort에서 a가 b보다 작으면 왼쪽정렬 - 12345 (음수-오름차순) 
 					// b.getName().compareTo(a.getName())); 반대면 내림차순 
-					ic.sort((a, b) -> a.getName().compareTo(b.getName()));
+					//Collections.sort(plateList, Comparator.comparing(Launch::getName).reversed()); 내림차순
+					// ver-1
+//					ic.sort((a, b) -> a.getName().compareTo(b.getName()));
+					// ver-2
+					Collections.sort(ic, Comparator.comparing(IceCreamDTO::getName));
 					for (IceCreamDTO i : ic) {
-						System.out.println(i);
-					}
+						System.out.println(i);					}
 
 					break;
 				case 2:
-					ic.sort((a, b) -> a.getPrice() - b.getPrice());
+					// ver-1
+//					ic.sort((a, b) -> a.getPrice() - b.getPrice());
+					// ver-2
+					Collections.sort(ic, Comparator.comparingInt(IceCreamDTO::getPrice));
 					for (IceCreamDTO i : ic) {
 						System.out.println(i);
 					}

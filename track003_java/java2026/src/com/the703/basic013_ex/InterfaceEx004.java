@@ -8,7 +8,7 @@ interface Launch {
 }
 class Burger      implements Launch{ 
    int price;
-   public Burger() { this.price = 3900; }
+   public Burger() { this.price = 6000; }
    @Override public String toString() { return "Burger"; }
    @Override public void eat() { System.out.println("Burger 냠냠!"); } 
 }
@@ -18,64 +18,52 @@ class KimchiStew  implements Launch{
    @Override public String toString() { return "KimchiStew"; }
    @Override public void eat() { System.out.println("KimchiStew 냠냠!"); } 
 }
-class User {  
-    int money;
-    int cnt=0;
-    String name;
-    Launch[] plat = new Launch[5];
-//- order(Launch a) 메서드로 메뉴 주문
-//  주문 시 메뉴 종류에 따라 가격 확인
-//  잔액 부족 시 주문 거절
-//  주문 성공 시 배열에 저장
-//- show() 메서드로 주문 내역 출력
-//  주문한 메뉴 목록
-//  총 주문 금액
-//  잔액
-//  오늘 날짜
-//  각 메뉴의 eat() 호출    
-    void order(Launch a) {
-    	System.out.println(a.toString() + "하나요~");
 
-    	if(a instanceof Burger) {
-    		((Burger)a).eat();
-    		money = money + ((Burger)a).price;
-    		plat[cnt++] = new Burger();
-    		
-    		
-    	}else if(a instanceof KimchiStew) {
-    		((KimchiStew)a).eat();
-    		money = money + ((KimchiStew)a).price;
-    		plat[cnt++] = new Burger();
-    	}
-    }
-
-    void show() {
-    	System.out.println("주문   : " + plat[0] + " " + plat[1] + " " + plat[2] + "\n" + 
-    					   "주문금액 : " + money + "\n" + 
-    					   "잔액    : " + (Launch.MONEY - money) + "\n" +
-    					   "오늘날짜 : " + LocalDate.now() 
-    					   
-    					  );
-    }
-    
+class User{
+	int money=0;
+	int cnt;
+	Launch[] plate= new Launch[3];
+	
+	void order(Launch a) {
+		System.out.println(money);
+		if(a instanceof Burger) {
+			System.out.println("버거 하나요~");
+			((Burger)a).eat();
+			
+			if(a.MONEY < money) {
+				System.out.println("잔액부족 주문거절");
+			}else {
+				plate[0] = new Burger();
+				money = money + ((Burger)a).price;
+			}
+		}else if(a instanceof KimchiStew) {
+			System.out.println("김치찌개 하나요~");
+			((KimchiStew)a).eat();
+			if(a.MONEY < money) {
+				System.out.println("잔액부족 주문거절");
+			}else {
+				plate[1] = new KimchiStew();
+				money = money + ((KimchiStew)a).price;
+			}
+		}
+	}
 }
-//4. 실행 예시 
-//버거하나요~ 
-//Burger 냠냠!
-//김치찌개하나요~ 
-//KimchiStew 냠냠!
-//버거하나요~ 
-//Burger 냠냠!
-//
-//
-//주문 :  Burger, KimchiStew, Burger
-//주문금액 : 11800
-//잔액    : -1800
-//2025년 9월 30일
-//Burger 냠냠!
-//KimchiStew 냠냠!
-//Burger 냠냠!
-//※ 실제 실행 결과는 날짜 및 주문 순서에 따라 달라질 수 있습니다.
+//class User {  
+//int money;
+//int cnt;
+//Launch[] plate;
+//- order(Launch a) 메서드로 메뉴 주문
+//주문 시 메뉴 종류에 따라 가격 확인
+//잔액 부족 시 주문 거절
+//주문 성공 시 배열에 저장
+//- show() 메서드로 주문 내역 출력
+//주문한 메뉴 목록
+//총 주문 금액
+//잔액
+//오늘 날짜
+//각 메뉴의 eat() 호출
+//}
+
 public class InterfaceEx004 {
 
 	public static void main(String[] args) {
@@ -85,7 +73,7 @@ public class InterfaceEx004 {
 		launch_order.order(new KimchiStew()); // Launch a = new Kimchi() 부모=자식
 		launch_order.order(new Burger()); // Launch a = new Burger() 부모=자식
 //
-		launch_order.show();// 리턴값 메서드명(파라미터)
+//		launch_order.show();// 리턴값 메서드명(파라미터)
 				// void   show(){}	
 	}
 
