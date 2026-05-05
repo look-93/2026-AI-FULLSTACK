@@ -35,7 +35,10 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <!--collapse : 모바일버전기능-->
-          <div class="collapse navbar-collapse" id="mynavbar">
+          <div
+            class="collapse navbar-collapse justify-content-center"
+            id="mynavbar"
+          >
             <ul class="mynavitem navbar-nav">
               <!--ms-auto-->
               <!--me-auto 마진앤드 ms-auto 마진스타트 ul태그 좌우이동-->
@@ -56,12 +59,8 @@
               </li>
             </ul>
           </div>
-          <div
-            class="collapse navbar-collapse"
-            id="mynavbar2"
-            style="font-size: 10px"
-          >
-            <ul class="navbar-nav ms-auto">
+          <div id="mynavbar2" style="font-size: 10px">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <p class="nav-card">
                   <a
@@ -84,7 +83,7 @@
       <div class="container">
         <h3 class="text-center myhidden">About Me</h3>
         <div class="row">
-          <div class="col-sm-6 p-3">
+          <div class="col-sm-7">
             <h2>
               Hi, i'm
               <span style="color: rgb(163, 129, 162)">Bora Kim</span>
@@ -101,49 +100,118 @@
               </p>
             </div>
           </div>
-          <div class="col-sm-6 p-5">
-            <p>
+          <div class="col-sm-5">
+            <div class="picture-wrapper">
+              <div class="picture-glow"></div>
+              <div class="picture">
+                <img
+                  src="./img/one.png"
+                  alt="Los Angeles"
+                  class="w-75 mx-auto"
+                />
+              </div>
+            </div>
+            <!-- <p style="text-align: center">
               <img src="./img/one.png" alt="Los Angeles" class="w-50 mx-auto" />
-            </p>
-
+            </p> -->
             <!-- <h4 class="myhidden">Kim Bo Ra</h4> -->
           </div>
         </div>
       </div>
     </section>
-    <section class="p-5" id="section2">
+
+    <!--Skills-->
+    <section class="p-5 skill-section" id="section2">
       <h3 class="myhidden">SKILLS</h3>
       <div class="container">
         <div class="skills-card">
           <div class="icons">
-            <!-- <p>SKILLS</p> -->
             <h4>Skills</h4>
             <div class="icon-group">
-              <h3>Frontend</h3>
-              <p class="icon-card">
-                <img src="./img/javascript.png" alt="javascript" />
-              </p>
-              <p class="icon-card">
-                <img src="./img/react.png" alt="react" />
-              </p>
-              <p class="icon-card">
-                <img src="./img/css3.png" alt="css3" />
-              </p>
-            </div>
-            <div class="icon-group">
-              <h3>Backend</h3>
-              <p class="icon-card">
-                <img src="./img/java.png" alt="java" />
-              </p>
-              <p class="icon-card">
-                <img src="./img/spring.png" alt="spring" />
-              </p>
-            </div>
-            <div class="icon-group">
-              <h3>Database</h3>
-              <p class="icon-card">
-                <img src="./img/mssql.png" alt="mssql" />
-              </p>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!--js-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/javascript.png" alt="javascript" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%
+                      </div>
+                    </div>
+                  </div>
+                  <!--react-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/react.png" alt="react" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%"
+                      </div>
+                    </div>
+                  </div>
+                  <!--css3-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/css3.png" alt="css3" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%"
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <!--html5-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/html5.png" alt="html5" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%"
+                      </div>
+                    </div>
+                  </div>
+                  <!--java-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/java.png" alt="java" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%"
+                      </div>
+                    </div>
+                  </div>
+                  <!--spring-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/spring.png" alt="spring" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 50%">
+                        50%"
+                      </div>
+                    </div>
+                  </div>
+                  <!--mssql-->
+                  <div>
+                    <p class="icon-card">
+                      <img src="./img/mssql.png" alt="mssql" />
+                    </p>
+                    <div class="progress" style="height: 10px">
+                      <div class="progress-bar skill-bar" style="width: 80%">
+                        80%"
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -178,22 +246,49 @@
     </section>
 
     <!-- EXPERIENCE EUCATION-->
-    <section class="p-5" id="section4">
+    <section class="experience-section p-5" id="section4">
       <div class="container">
-        <h4>Experience</h4>
-        <!-- <div style="display: flex">
-          <div class="experience-card">
-            <h2>2+</h2>
-            <p>Years Experience</p>
-            <p>SQL 중심</p>
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>Experience</h4>
+            <div
+              class="mt-3 mb-3"
+              style="width: 50px; border-bottom: 5px solid #bcbcbc"
+            ></div>
+            <ul style="list-style: none">
+              <li>
+                <strong>(주)에이비</strong><br />
+                <span style="color: gray; font-size: 14px"
+                  >2022.11 ~ 2025.04</span
+                >
+              </li>
+              <li>MSSQL기반 ERP 시스템 구축</li>
+            </ul>
           </div>
-          <div class="experience-card">
-            <h3>AI Full-stack</h3>
-            <p>Bootcamp</p>
-            <span>In Progress</span>
+          <div class="col-sm-6">
+            <h4>Education</h4>
+            <div
+              class="mt-3 mb-3"
+              style="width: 50px; border-bottom: 5px solid #bcbcbc"
+            ></div>
+            <ul style="list-style: none">
+              <li>
+                <strong>더조은컴퓨터아트학원</strong><br />
+                <span style="color: gray; font-size: 14px"
+                  >2026.03 ~ 2026.10</span
+                >
+              </li>
+              <li>AI활용 풀스텍(프론트엔드,백엔드)부트캠프</li>
+              <li>
+                <strong>한국소프트인재개발원</strong><br />
+                <span style="color: gray; font-size: 14px"
+                  >2022.04 ~ 2022.10</span
+                >
+              </li>
+              <li>ELK활용 빅데이터 분석서비스 플랫폼개발자양성</li>
+            </ul>
           </div>
-        </div> -->
-        <h4>Education</h4>
+        </div>
       </div>
     </section>
 
@@ -205,7 +300,6 @@
           <div class="row mb-3 mt-3">
             <div class="col-sm-7">
               <textarea
-                type="email"
                 class="form-control"
                 rows="2"
                 id="email"

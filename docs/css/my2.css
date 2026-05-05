@@ -19,7 +19,9 @@
 
 body {
   position: relative;
-  background: #f5f7fb;
+  /* background: #f5f7fb; */
+  /* background: #ececec; */
+  background: linear-gradient(135deg, #f9fafb 0%, #faf5ff 50%, #fdf2f8 100%);
   /*구글폰트*/
   font-family: "Gowun Dodum", sans-serif;
   font-weight: 400;
@@ -29,7 +31,8 @@ body {
 .navbar {
   position: fixed;
   /* z-index: 9999; */
-  background-color: #f5f7fb;
+  /* background-color: #f5f7fb; */
+  /* background: #ececec; */
 }
 
 /*안보이게 숨김*/
@@ -50,13 +53,13 @@ body {
 }
 
 .mynav {
-  font-size: 15px;
+  font-size: 20px;
 }
 .mynav:hover {
   font-weight: bold;
 }
 .mynavitem {
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 3px;
 }
 .mynavitem ul li {
@@ -68,7 +71,7 @@ body {
 }
 
 .nav-card img {
-  width: 20px;
+  width: 25px;
   transition: all 0.3s;
 }
 
@@ -110,18 +113,10 @@ body {
   }
 }
 /* 스킬 아이콘 */
-.skills-card {
-  margin-top: 40px;
-  /* width: 100%; */
-  /* background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); */
-}
 .icons {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  /* gap: 5px; */
 }
 .icon-group h3 {
   font-size: 14px;
@@ -129,23 +124,23 @@ body {
   color: #555;
 }
 .icon-group {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  /* display: flex; */
+  /* align-items: center; */
+  /* gap: 5px; */
 }
 
 .icon-card {
-  width: 50px;
-  height: 45px;
-  text-align: center;
-  line-height: 40px;
+  width: 25px;
+  height: 35px;
+  /* text-align: center; */
+  line-height: 45px;
   /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px; */
   /* background: #f8f9fc; */
 }
 
 .icon-card img {
-  width: 30px;
+  width: 25px;
 }
 
 /* EXPERIENCE 카드 */
@@ -189,4 +184,51 @@ body {
 
 .contact textarea {
   background: #f8f9fc;
+}
+
+.skill-section {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.experience-section {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.skill-bar {
+  background: linear-gradient(to right, #fbbf24, #d97706);
+}
+.picture-wrapper {
+  /* flex-shrink: 0; */
+  position: relative;
+}
+.picture-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #c084fc, #f9a8d4);
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.picture {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  background: linear-gradient(135deg, #f3e8ff, #fce7f3);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 8rem; */
 }
