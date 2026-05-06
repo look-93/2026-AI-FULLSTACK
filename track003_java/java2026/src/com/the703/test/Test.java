@@ -1,40 +1,186 @@
-//## 📘 연습문제3) Collection Framework + 중첩 HashMap
-//패키지명 : com.company.basic014_ex
-//클래스명 : MapEx003
-//
-//### 요구사항
-//1. 중첩 Map 구조 만들기  
-//   - Map<String, Map<String, BookDTO>> library = new HashMap<>();  
-//   - 첫 번째 Key : 도서관 지점 이름 (예: "서울점", "부산점")  
-//   - 두 번째 Key : ISBN  
-//   - Value : BookDTO 객체  
-//
-//2. DTO 클래스  
-//   java
-//   class BookDTO {
-//       private String title;
-//       private String author;
-//       // 생성자, getter/setter, toString()
-//   }
-//   
-//
-//3. 출력하기  
-//   - 각 지점별 도서 목록 출력  
-//
-//4. 사용자 입력받기  
-//   - 지점 이름과 ISBN을 입력받아 해당 도서 정보 출력  
-//
-//### 📌 실행 예시 
-//=== 도서관 전체 목록 ===
-//📚 서울점
-//978-11111 | 자바의 정석 | 남궁성
-//978-22222 | 파이썬 기초 | 홍길동
-//---------------------
-//📚 부산점
-//978-33333 | 자료구조와 알고리즘 | 이순신
-//978-44444 | 파이썬 심화 | 홍길동
-//---------------------
-//지점 이름 입력> 서울점
-//ISBN 입력> 978-22222
-//
-//📖 선택한 도서 정보: 파이썬 기초 / 저자: 홍길동
+package com.the703.test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
+class Milk{
+	private String mname; 
+	private int mprice;
+	public Milk() {
+		super();
+	}
+	public Milk(String mname, int mprice) {
+		super();
+		this.mname = mname;
+		this.mprice = mprice;
+	}
+	@Override
+	public String toString() {
+		return "MilkDto [mname=" + mname + ", mprice=" + mprice + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(mname, mprice);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Milk other = (Milk) obj;
+		return Objects.equals(mname, other.mname) && mprice == other.mprice;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public int getMprice() {
+		return mprice;
+	}
+	public void setMprice(int mprice) {
+		this.mprice = mprice;
+	}
+	
+	
+}
+
+public class Test {
+
+	public static void main(String[] args) {
+		List<Milk> milks = new ArrayList<>();
+		milks.add(new Milk("바나나우유", 1300));
+		milks.add(new Milk("메론맛우유", 1800));
+		milks.add(new Milk("커피우유", 1500));
+		milks.add(new Milk("커피우유", 1500));
+//		1     바나나우유       1300
+//		2     메론맛우유       1800
+//		3     커피우유         1500
+//		4     커피우유         1500
+		for(int i=0;i<milks.size();i++) {
+			System.out.println((i+1) + " " + milks.get(i).getMname() + " " + milks.get(i).getMprice());
+		}
+		
+		System.out.println();
+//		5. sets 이름으로 HashSet 만들기  
+		Set<Milk> sets = new HashSet<>();
+		
+//		6. 다음의 데이터 넣기  
+//		   new Milk("바나나우유", 1300),  
+//		   new Milk("메론맛우유", 1800),  
+//		   new Milk("커피우유", 1500),  
+//		   new Milk("커피우유", 1500) 
+		
+		sets.add(new Milk("바나나우유", 1300));
+		sets.add(new Milk("메론맛우유", 1800));
+		sets.add(new Milk("커피우유", 1500));
+		sets.add(new Milk("커피우유", 1500));
+//		7. Iterator 이용해서 데이터 출력  
+		Iterator<Milk> m = sets.iterator();
+		int cnt=0;
+		while(m.hasNext()) {
+			Milk value = m.next();
+			System.out.println(++cnt +" "+value.getMname() + " " + value.getMprice());
+		}
+		
+		
+		System.out.println();System.out.println();
+//		8. maps 이름으로 HashMap 만들기  
+		Map<String, Milk> maps = new HashMap<>();
+		
+		
+//		9. 다음의 데이터 넣기 (Key-Value 구조)  
+//		   maps.put("banana", new Milk("바나나우유", 1300));  
+//		   maps.put("melon", new Milk("메론맛우유", 1800));  
+//		   maps.put("coffee", new Milk("커피우유", 1500));  
+//		   maps.put("coffee2", new Milk("커피우유", 1500));  
+		maps.put("banana", new Milk("바나나우유", 1300));
+		maps.put("melon", new Milk("메론맛우유", 1800));
+		maps.put("coffee", new Milk("커피우유", 1500));
+		maps.put("coffee2", new Milk("커피우유", 1500));
+
+//		10. for-each + keySet 이용해서 데이터 출력  
+//		```
+//		banana    바나나우유       1300
+//		melon     메론맛우유       1800
+//		coffee    커피우유         1500
+//		coffee2   커피우유         1500
+//		``` 
+		for(String key : maps.keySet()) {
+			System.out.println(key + " " + maps.get(key).getMname() + " " + maps.get(key).getMprice());
+		}
+		
+	}
+
+}
+
+
+/*
+Q1. 빈칸 채우기
+1.  List는 순서가 [ 있는 ] 구조로 데이터를 관리하며, 중복을 [ 허용 ]
+    - 주요 메서드: add, get, size, remove, contains
+2. Set은 순서가[ 없는 ] 구조로 데이터를 관리하며,  중복을 [ 허용안함 ]
+    - 주요 메서드: 
+3. Map은 [_key___]와 [_value___]의 쌍으로 데이터를 관리한다. 
+    - 주요 메서드: 
+ 
+---
+
+Q2. ArrayList, HashSet, HashMap을 작성하시오.  
+
+1. Milk Dto 클래스 만들기  
+   - 속성 : private String mname; private int mprice  
+
+2. milks 이름으로 ArrayList 만들기  
+3. 다음의 데이터 넣기  
+   new Milk("바나나우유", 1300),  
+   new Milk("메론맛우유", 1800),  
+   new Milk("커피우유", 1500),  
+   new Milk("커피우유", 1500)  
+4. for + size 이용해서 데이터 출력  
+```
+1     바나나우유       1300
+2     메론맛우유       1800
+3     커피우유         1500
+4     커피우유         1500
+```
+ 
+5. sets 이름으로 HashSet 만들기  
+6. 다음의 데이터 넣기  
+   new Milk("바나나우유", 1300),  
+   new Milk("메론맛우유", 1800),  
+   new Milk("커피우유", 1500),  
+   new Milk("커피우유", 1500)  
+7. Iterator 이용해서 데이터 출력   
+```
+1     바나나우유       1300
+2     메론맛우유       1800
+3     커피우유         1500
+```
+ 
+8. maps 이름으로 HashMap 만들기  
+9. 다음의 데이터 넣기 (Key-Value 구조)  
+   maps.put("banana", new Milk("바나나우유", 1300));  
+   maps.put("melon", new Milk("메론맛우유", 1800));  
+   maps.put("coffee", new Milk("커피우유", 1500));  
+   maps.put("coffee2", new Milk("커피우유", 1500));  
+
+10. for-each + keySet 이용해서 데이터 출력  
+```
+banana    바나나우유       1300
+melon     메론맛우유       1800
+coffee    커피우유         1500
+coffee2   커피우유         1500
+``` 
+
+*/
