@@ -41,6 +41,9 @@ public class MapEx001 {
 		System.out.print("KING > ");
 		name = sc.next();
 		
+//		System.out.println( maps.containsKey(name) ? 
+//				"ㅁ" + name+":"+ maps.get(name) : "찾으시는 왕이 없어요~!");
+		
 		if(!(maps.containsKey(name))) {
 			System.out.println("피구왕, 제빵왕, 요리왕 중 입력해주세요"); return;
 		}

@@ -73,7 +73,10 @@ public class MapEx002 {
 
 		System.out.print("ISBN을 입력하세요 > ");
 		isbn = sc.next();
-
+		
+//		System.out.println(maps.containsKey(isbn)
+//				? "📖 선택한 도서 정보: "  + maps.get(isbn).getTitle()+" / 저자: "  + maps.get(isbn).getAuthor()  : "ISBN 확인바람"); 
+		
 		if (!(maps.containsKey(isbn))) {
 			System.out.println("도서 정보가 없습니다.");
 			return;
