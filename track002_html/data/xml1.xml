@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<item>
+    <name>apple</name>
+    <price>1600</price>
+</item>
+
+<!--데이터 전송 목적으로 내가 만든 형식의 태그 : xml-->
