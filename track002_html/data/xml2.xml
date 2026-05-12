@@ -4,4 +4,8 @@
         <name>사과</name>
         <price>1000</price>
     </item> 
+    <item>
+        <name>레몬</name>
+        <price>1000</price>
+    </item> 
 </items>

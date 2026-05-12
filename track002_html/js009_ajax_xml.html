@@ -98,17 +98,140 @@
             // console.log(xmlDoc.getElementsByTagName("item"))
             let item = xmlDoc.getElementsByTagName("item");
             let result = "";
-            // console.log(item);
-            for (let i = 0; i < item.length; i++) {
-              result += `<div class="alert alert-warning">
-                        <strong>${item[i].getElementsByTagName("name")[i].textContent}</strong>
-                        <spen>${item[i].getElementsByTagName("price")[i].textContent}</spen>
-                      </div>`
+            // let item   = xmlDoc.getElementsByTagName("item")
+            // let name    = item[0].getElementsByTagName("name")[0].textContent;  //태그에서
+            // let price   = item[0].getElementsByTagName("price")[0].textContent; //text뽑기
+            // document.getElementById("xml2").innerHTML = 
+            //    `<div  class="alert alert-info">
+            //         <strong  class="text-warning w-25">${name}</strong>
+            //         <span>${price}</span>
+            //     </div>`;
+
+
+            for (let item_node of item) { // 가져온 item태그들을 순회
+              result += `<div class="alert alert-warning">${item_node.textContent}</div> `
             }
+            // console.log(result)
             document.getElementById("xml2").innerHTML = result;
           })
           .catch(err => {
             document.getElementById("xml2").innerHTML = err.message;
+          });
+      }
+    </script>
+  </div>
+  </div>
+
+  <!-- STEP4 XML -->
+  <div class="container my-5 card-body">
+    <h4>Q3. Ajax-xml (fetch)</h4>
+    <pre>
+      1. fetch()로 로컬 XML 파일 가져오기
+         경로: ./data/xml3.xml
+         예시 내용:
+         <items>
+           <item><name>사과</name><price>1000</price></item>
+           <item><name>바나나</name><price>2000</price></item>
+           <item><name>포도</name><price>3000</price></item>
+         </items>
+      2. 응답을 .text()로 받아서 DOMParser로 XML 파싱
+      3. item 태그를 순회하며 name, price 출력하기
+    </pre>
+    <p><input type="button" id="btnXml" value="fetch-xml" class="btn btn-outline-primary" onclick="showXml3()" /></p>
+    <div class="alert alert-primary result xml3" id="xml3"></div>
+    <script>
+      function showXml3() {
+        fetch("./data/xml3.xml")
+          .then(res => {
+            if (!res.ok) { throw new Error("에러발생~~!!!!!, 에러코드 : " + res.status) }
+            return res.text();
+          })
+          .then(xml => {
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(xml, "application/xml");
+            let items = xmlDoc.getElementsByTagName("item");
+            let result = "";
+
+            for (let item of items) {
+              let name = item.getElementsByTagName("name")[0].textContent;
+              let price = item.getElementsByTagName("price")[0].textContent;
+              result += `<div class="alert alert-warning">${name} ${price}</div>`
+            }
+            // for (let item_node of item) {
+            //   result += `<div class="alert alert-warning">${item_node.textContent}</div>`
+            // }
+            document.getElementById("xml3").innerHTML = result
+          })
+          .catch(err => {
+            document.getElementById("xml3").innerHTML = err.message;
+          });
+      }
+
+    </script>
+  </div>
+  </div>
+
+  <!-- STEP4 XML -->
+  <div class="container my-5 card-body">
+    <h4>Q4. Ajax-xml (fetch)</h4>
+    <pre>
+      1. fetch()로 로컬 XML 파일 가져오기
+         경로: ./data/xml4.xml
+         예시 내용:
+          <?xml version="1.0" encoding="UTF-8"?>
+          <members>
+            <member>
+              <name>홍길동</name>
+              <age>30</age>
+              <address>서울특별시 강남구</address>
+              <mobile>010-1234-5678</mobile>
+            </member>
+            <member>
+              <name>김철수</name>
+              <age>25</age>
+              <address>인천광역시 부평구</address>
+              <mobile>010-9876-5432</mobile>
+            </member>
+            <member>
+              <name>이영희</name>
+              <age>28</age>
+              <address>부산광역시 해운대구</address>
+              <mobile>010-5555-7777</mobile>
+            </member>
+          </members>
+      2. 응답을 .text()로 받아서 DOMParser로 XML 파싱
+      3. item 태그를 순회하며 name, price 출력하기
+    </pre>
+    <p><input type="button" id="btnXml" value="fetch-xml" class="btn btn-outline-primary" onclick="showXml4()" /></p>
+    <div class="alert alert-primary result xml4" id="xml4"></div>
+    <script>
+      function showXml4() {
+        fetch("./data/xml4.xml")
+          .then(res => {
+            if (!res.ok) { throw new Error("에러발생~~!!!!!, 에러코드 : " + res.status) }
+            return res.text();
+          })
+          .then(xml => {
+            let parser = new DOMParser();
+            let xmlDom = parser.parseFromString(xml, "application/xml");
+            let members = xmlDom.getElementsByTagName("member");
+            let result = "";
+            // for(let i=0; i<members.length;i++){
+            //   let name = members[i].getElementsByTagName("name")[0].textContent;
+            //   let age = members[i].getElementsByTagName("age")[0].textContent;
+            //   let address = members[i].getElementsByTagName("address")[0].textContent;
+            //   let mobile = members[i].getElementsByTagName("mobile")[0].textContent;
+            //   // console.log(name)
+            //   result += `<div class="alert alert-info">${name} ${age} ${address} ${mobile}</div>`
+            // }
+
+            for (let member of members) {
+              result += `<div class="alert alert-info"> ${member.textContent}</div>`
+            }
+            document.getElementById("xml4").innerHTML = result;
+          })
+          .catch(err => {
+            document.getElementById("xml4").innerHTML = err.message
           });
       }
     </script>
