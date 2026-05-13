@@ -4,131 +4,131 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class BankInfo {
-	private String id;
-	private String pass;
-	private double balance;
-
-	public BankInfo() {
-		super();
-	}
-
-	public BankInfo(String id, String pass, double balance) {
-		super();
-		this.id = id;
-		this.pass = pass;
-		this.balance = balance;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-}
-
-class Bank {
-	Scanner sc = new Scanner(System.in);
-	List<BankInfo> list = new ArrayList<>();
-
-	public void showMenu() {
-		System.out.println("WELCOME TO BANK SYSTEM");
-		System.out.println("======BANK======");
-		System.out.println("[1] ➕계좌추가");
-		System.out.println("[2] 🔍계좌조회");
-		System.out.println("[3] 💵계좌입금");
-		System.out.println("[4] 💸계좌출금");
-		System.out.println("[5] 🗑️계좌삭제");
-		System.out.println("[9] ⛔종료");
-		System.out.print("👉 번호를 선택하세요 : ");
-	}
-
-	public void addBankInfo() {
-		System.out.print("ID 입력: ");
-		String id = sc.next();
-		System.out.print("PASS 입력: ");
-		String pass = sc.next();
-		System.out.print("금액 입력: ");
-		double balance = sc.nextDouble();
-		list.add(new BankInfo(id, pass, balance));
-	}
-
-	public BankInfo ahthUser() {
-		System.out.print("ID 입력: ");
-		String inputId = sc.next();
-		System.out.print("PASS 입력: ");
-		String inputPass = sc.next();
-
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId().equals(inputId) && list.get(i).getPass().equals(inputPass)) {
-				return (BankInfo) list.get(i);
-			}
-		}
-		System.out.println("계좌를 찾을 수 없습니다.");
-		return null;
-	}
-
-	public void showBankInfo() {
-		BankInfo bankInfo = this.ahthUser();
-
-		if (bankInfo != null) {
-			System.out.println("BALANCE : " + bankInfo.getBalance());
-			System.out.println("BALANCE : " + bankInfo.getBalance());
-			System.out.println("BALANCE : " + bankInfo.getBalance());
-		}
-
-	}
-
-	public void deposit() {
-		BankInfo bankInfo = this.ahthUser();
-		double inputBalance = 0;
-
-		if (bankInfo != null) {
-			System.out.print("금액 입력 : ");
-			inputBalance = sc.nextDouble();
-			bankInfo.setBalance(bankInfo.getBalance() + inputBalance);
-			System.out.println("잔액 : " + bankInfo.getBalance());
-		}
-	}
-
-	public void Withdrawal() {
-		BankInfo bankInfo = this.ahthUser();
-		double inputBalance = 0;
-
-		if (bankInfo != null) {
-			System.out.print("금액 입력 : ");
-			inputBalance = sc.nextDouble();
-			bankInfo.setBalance(bankInfo.getBalance() - inputBalance);
-			System.out.println("잔액 : " + bankInfo.getBalance());
-		}
-	}
-
-	public void removeBankInfo() {
-		BankInfo bankInfo = this.ahthUser();
-		if (bankInfo != null) {
-			list.remove(bankInfo);
-			System.out.println("계좌가 삭제되었습니다.");
-		}
-	}
-}
+//class BankInfo {
+//	private String id;
+//	private String pass;
+//	private double balance;
+//
+//	public BankInfo() {
+//		super();
+//	}
+//
+//	public BankInfo(String id, String pass, double balance) {
+//		super();
+//		this.id = id;
+//		this.pass = pass;
+//		this.balance = balance;
+//	}
+//
+//	public String getId() {
+//		return id;
+//	}
+//
+//	public void setId(String id) {
+//		this.id = id;
+//	}
+//
+//	public String getPass() {
+//		return pass;
+//	}
+//
+//	public void setPass(String pass) {
+//		this.pass = pass;
+//	}
+//
+//	public double getBalance() {
+//		return balance;
+//	}
+//
+//	public void setBalance(double balance) {
+//		this.balance = balance;
+//	}
+//}
+//
+//class Bank {
+//	Scanner sc = new Scanner(System.in);
+//	List<BankInfo> list = new ArrayList<>();
+//
+//	public void showMenu() {
+//		System.out.println("WELCOME TO BANK SYSTEM");
+//		System.out.println("======BANK======");
+//		System.out.println("[1] ➕계좌추가");
+//		System.out.println("[2] 🔍계좌조회");
+//		System.out.println("[3] 💵계좌입금");
+//		System.out.println("[4] 💸계좌출금");
+//		System.out.println("[5] 🗑️계좌삭제");
+//		System.out.println("[9] ⛔종료");
+//		System.out.print("👉 번호를 선택하세요 : ");
+//	}
+//
+//	public void addBankInfo() {
+//		System.out.print("ID 입력: ");
+//		String id = sc.next();
+//		System.out.print("PASS 입력: ");
+//		String pass = sc.next();
+//		System.out.print("금액 입력: ");
+//		double balance = sc.nextDouble();
+//		list.add(new BankInfo(id, pass, balance));
+//	}
+//
+//	public BankInfo ahthUser() {
+//		System.out.print("ID 입력: ");
+//		String inputId = sc.next();
+//		System.out.print("PASS 입력: ");
+//		String inputPass = sc.next();
+//
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list.get(i).getId().equals(inputId) && list.get(i).getPass().equals(inputPass)) {
+//				return (BankInfo) list.get(i);
+//			}
+//		}
+//		System.out.println("계좌를 찾을 수 없습니다.");
+//		return null;
+//	}
+//
+//	public void showBankInfo() {
+//		BankInfo bankInfo = this.ahthUser();
+//
+//		if (bankInfo != null) {
+//			System.out.println("BALANCE : " + bankInfo.getBalance());
+//			System.out.println("BALANCE : " + bankInfo.getBalance());
+//			System.out.println("BALANCE : " + bankInfo.getBalance());
+//		}
+//
+//	}
+//
+//	public void deposit() {
+//		BankInfo bankInfo = this.ahthUser();
+//		double inputBalance = 0;
+//
+//		if (bankInfo != null) {
+//			System.out.print("금액 입력 : ");
+//			inputBalance = sc.nextDouble();
+//			bankInfo.setBalance(bankInfo.getBalance() + inputBalance);
+//			System.out.println("잔액 : " + bankInfo.getBalance());
+//		}
+//	}
+//
+//	public void Withdrawal() {
+//		BankInfo bankInfo = this.ahthUser();
+//		double inputBalance = 0;
+//
+//		if (bankInfo != null) {
+//			System.out.print("금액 입력 : ");
+//			inputBalance = sc.nextDouble();
+//			bankInfo.setBalance(bankInfo.getBalance() - inputBalance);
+//			System.out.println("잔액 : " + bankInfo.getBalance());
+//		}
+//	}
+//
+//	public void removeBankInfo() {
+//		BankInfo bankInfo = this.ahthUser();
+//		if (bankInfo != null) {
+//			list.remove(bankInfo);
+//			System.out.println("계좌가 삭제되었습니다.");
+//		}
+//	}
+//}
 
 public class BankProjectArrayList001 {
 
@@ -151,16 +151,16 @@ public class BankProjectArrayList001 {
 
 				switch (num) {
 				case 2:
-					bank.showBankInfo();
+//					bank.showBankInfo();
 					break;
 				case 3:
-					bank.deposit();
+//					bank.deposit();
 					break;
 				case 4:
-					bank.Withdrawal();
+//					bank.Withdrawal();
 					break;
 				case 5:
-					bank.removeBankInfo();
+//					bank.removeBankInfo();
 					break;
 				}
 

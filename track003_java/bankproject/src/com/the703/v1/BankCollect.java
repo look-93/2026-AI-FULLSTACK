@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //1. Dto 데이터전송목적
-//class BankDto{
+//class BankDto1{
 //	private String id;
 //	private String pass;
 //	private double balance;
@@ -18,7 +18,7 @@ import java.util.List;
 //	
 //}
 //
-//class Bank{
+//class Bank1{
 //	List<BankDto>  users;   // 객체를 생성하는게 아니라 정보만 받을 목적
 //	
 //	public Bank() { super(); }
@@ -41,8 +41,8 @@ import java.util.List;
 //}
 public class BankCollect {
 	public static void main(String[] args) {
-//		List<BankDto>  users = new ArrayList<>();
-//		Bank      controller = new Bank(users);
+//		List<BankDto1>  users = new ArrayList<>();
+//		Bank1      controller = new Bank1(users);
 //		controller.menu();
 		
 		//테스트용
