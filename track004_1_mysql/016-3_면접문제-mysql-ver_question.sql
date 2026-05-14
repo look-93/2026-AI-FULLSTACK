@@ -85,8 +85,7 @@ INSERT INTO TESTEMP VALUES (7854,'홍양숙','세일즈',400, 1500,0,6321,'2001-
 INSERT INTO TESTEMP VALUES (7872,'신현욱','사무직',100, 1500,NULL,6311,'2001-02-12') ;
 INSERT INTO TESTEMP VALUES (7920,'조성미','사무직',300, 1050,NULL,6351,'2001-03-18');
 INSERT INTO TESTEMP VALUES (7901,'마동석','연구직',NULL, 3000,NULL,NULL,'2001-12-03');
-
-INSERT INTO TESTEMP VALUER (7933,'박재영','사무직',200,1050, NULL,6361, '02/01/02');
+INSERT INTO TESTEMP VALUES (7933,'박재영','사무직',200,1050, NULL,6361, '02/01/02');
 
 
 3. 급여를 3000이상 받는 사원이 소속된 부서와  동일한 부서에서 근무하는 사원들의 정보를 구하시오.
@@ -109,7 +108,6 @@ select *
   from TESTEMP as A  
  where A.DEPT_ID in (select distinct DEPT_ID
                        from TESTEMP as B
-                      where B.DEPT_ID = A.DEPT_ID
                         and B.SAL >= 3000                      
                     );
 
@@ -199,6 +197,10 @@ select *
                      where JOB = "사무직"
                     );
 
+select * 
+  from TESTDEPT as A
+  join TESTEMP  as B on B.DEPT_ID = A.DEPT_ID
+ WHERE B.JOB = "사무직";
 
 8.  이름에 '최'를 포함하고 있는 사원들과 같은 부서에서 근무하고 있는 사원 정보검색하시오.
     EMP_ID EMP_NAME   JOB           DEPT_ID        SAL      BONUS     MGR_ID HIREDATE
@@ -209,7 +211,7 @@ select *
 
 select *
   from TESTEMP
- where DEPT_ID in (select DEPT_ID
+ where DEPT_ID in (select distinct  DEPT_ID
                      from TESTEMP
                     where EMP_NAME like '%최%'
                    );
@@ -277,20 +279,33 @@ select *
                );
 
 
-13.    각 부서의 평균 급여보다 급여를 많이 받는 사원의 정보를 검색
+13.    각 부서의 평균 급여보다 급여를 많이 받는 사원의 정보를 검색 
         EMP_ID EMP_NAME   JOB           DEPT_ID        SAL      BONUS     MGR_ID HIREDATE
     ---------- ---------- ---------- ---------- ---------- ---------- ---------- --------
           6200 민병권     대표이사          200       5000                       97/12/17
           6311 송지연     부장              100       3500                  6200 98/12/17
           6321 정순진     부장              400       3800        500       6200 99/04/20
           6361 홍경일     부장              200       3200                  6200 00/06/09
-select *
-  from TESTEMP as a
- where a.SAL > (select avg(b.SAL)
-                  from TESTEMP as b
-                 where b.DEPT_ID = a.DEPT_ID
-               );
+
+-- 내가 추가 설명
+-- 부서의 평균급여의 가장 큰 값보다 많이 받는 사원 정보
+  
+SELECT *
+FROM TESTEMP
+WHERE SAL > (
+    SELECT MAX(AVG_SAL)
+    FROM (
+        SELECT AVG(SAL) AS AVG_SAL
+        FROM TESTEMP
+        GROUP BY DEPT_ID
+    ) A
+);
+
 select * from testemp  where  sal  > all (   select  avg(sal) from testemp  group by dept_id );
+
+구문	  의미	  결과  기준
+> ALL	전부보다  큼	  최댓값
+> ANY	하나라도  큼	  최솟값
 
 14.  홍양숙 사원의 부서명(dname)을 검색하시오.
     DNAME
