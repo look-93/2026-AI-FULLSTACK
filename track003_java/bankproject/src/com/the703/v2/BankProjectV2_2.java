@@ -1,8 +1,8 @@
-package com.the703.v1;
+package com.the703.v2;
 
 import java.util.Scanner;
 
-public class BankProjectV2 {
+public class BankProjectV2_2 {
 
 	public static void main(String[] args) {
 		String[] id = new String[3]; // one two three

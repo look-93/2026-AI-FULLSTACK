@@ -1,9 +1,9 @@
-package com.the703.v1;
+package com.the703.v3;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class BankProjectV3 {
+public class BankProject {
 	// 변수 0 1 2
 	////////////////////////////////////////////////////
 	static String[] id = new String[3]; // one two three

@@ -1,8 +1,8 @@
-package com.the703.v1;
+package com.the703.v2;
 
 import java.util.Scanner;
 
-public class BankProjectV1 {
+public class BankProjectV2_1_switch {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

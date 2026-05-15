@@ -1,71 +1,10 @@
-package com.the703.v1;
+package com.the703.v4;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-class BankInfo {
-	private String id;
-	private String pass;
-	private double balance;
-
-	public BankInfo() {
-		super();
-	}
-
-	public BankInfo(String id, String pass, double balance) {
-		super();
-		this.id = id;
-		this.pass = pass;
-		this.balance = balance;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-	
-	// HashCode/ equals
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, pass);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BankInfo other = (BankInfo) obj;
-		return Objects.equals(id, other.id) && Objects.equals(pass, other.pass);
-	}
-
-}
-
-class Bank {
+public class Bank {
 	Scanner sc = new Scanner(System.in);
 	List<BankInfo> list = new ArrayList<>();
 
@@ -139,47 +78,3 @@ class Bank {
 	}
 }
 
-public class BankProjectArrayList003 {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int num = 0;
-
-		Bank bank = new Bank();
-
-		while (num != 9) {
-
-			bank.showMenu();
-			num = sc.nextInt();
-
-			if (num == 9) {
-				System.out.println("종료기능입니다.");
-			} else if (num == 1) {
-				bank.addBankInfo();
-			} // ## 아이디중복검사추가
-			else {
-				BankInfo bankInfo = bank.ahthUser();
-				if (bankInfo == null) {
-					System.out.println("유저정보를 확인");
-					continue;
-				}
-				switch (num) {
-				case 2:
-					bank.showBankInfo(bankInfo);
-					break;
-				case 3:
-					bank.deposit(bankInfo);
-					break;
-				case 4:
-					bank.Withdrawal(bankInfo);
-					break;
-				case 5:
-					bank.removeBankInfo(bankInfo);
-					break;
-				}
-
-			}
-
-		}
-	}
-}

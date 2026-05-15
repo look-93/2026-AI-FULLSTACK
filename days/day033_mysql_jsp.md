@@ -52,7 +52,7 @@ create database mbasic;
 create table userinfo(
 no int not null priymary key auto_increment,
 name varchar(100) not null,
-age int not null
+age int not nu,ll
 );
 
 3. 다음을 수정
