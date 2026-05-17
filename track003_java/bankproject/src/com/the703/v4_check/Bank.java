@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.the703.v5.BankInfo;
-
 public class Bank {
 	Scanner sc = new Scanner(System.in);
 	List<BankInfo> list = new ArrayList<>();

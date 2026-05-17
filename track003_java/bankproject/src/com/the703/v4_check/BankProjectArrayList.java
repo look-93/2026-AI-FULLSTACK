@@ -9,6 +9,7 @@ public class BankProjectArrayList {
 		int num = 0;
 
 		Bank bank = new Bank();
+		
 
 		while (num != 9) {
 
@@ -23,7 +24,7 @@ public class BankProjectArrayList {
 			else {
 				BankInfo bankInfo = bank.ahthUser();
 				if (bankInfo == null) {
-					System.out.println("유저정보를 확인");
+					System.out.println("유저정보를 확인하세요.");
 					continue;
 				}
 				switch (num) {
