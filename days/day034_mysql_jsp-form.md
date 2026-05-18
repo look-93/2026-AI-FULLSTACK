@@ -1,3 +1,29 @@
+- Todo1:  MYSQL
+- Todo2:  JSP 
+
+
+
+---
+### ■1.  MYSQL 
+1) WEB BASIC - HTML + CSS + JS ( 화면단 )
+2) JAVA ( 프로그래밍 )
+3) MYSQL/ORACLE (DB)
+4) JSP (Html+Java)
+
+##### TABLE
+##### ALTER
+
+
+ 
+---
+### ■2.  JSP
+1. project
+2. ws vs  was
+
+
+---
+### ■3.  복습문제
+
 -- STEP1)
 -- 1. 데이터베이스 언어 - 다음과 같은형식으로 빈칸 채우기
 -- DDL( 정의어 ) create, drop, alter

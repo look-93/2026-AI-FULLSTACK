@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInterface{
 	private int orderNumber = 0; // 주문번호
-	
+	Scanner sc = new Scanner(System.in);
 	List<Burger> menus = new ArrayList<>();
 	
 	//조리대기
@@ -41,7 +41,7 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 	}
 
 	@Override
-	public void sales() {
+	public void sales() { // 매출조회
 		// TODO Auto-generated method stub
 		
 	}
@@ -53,8 +53,7 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 	}
 
 	@Override
-	public void storeOpen() {
-		Scanner sc = new Scanner(System.in);
+	public void storeOpen() { // 가게 오픈
 		int menu = -1;
 		
 		while(menu != 9) {
@@ -82,12 +81,13 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 	}
 
 
-
 	@Override
-	public void order() {
+	public void order() { // 주문하기
 		Order order = new Order();
+		int  menuNum = -1;
+		String answer = "";
+		List<Integer> bugerIds = new ArrayList<>(); 
 		//order.burgerIds - 장바구니리스트
-		showMenus();
 		//주문하실 메뉴를 고르세요.
 		//선택
 		//더 주문하시겠습니까?
@@ -95,11 +95,55 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		//아니오시 -> 몇개()메뉴를 주문하시겠습니까?
 		//예/취소 -> 취소 -> 그냥종료 / 예-> 주문대기에 넣고 주문번호 주고 종료 orderNumber++
 		
+		showMenus();
+		System.out.print("🍔 어떤 버거를 드시겠어요? > ");
+		menuNum = sc.nextInt();
+		bugerIds.add(menuNum);
+		
+		System.out.print("더 주문하시겠습니까? > ");
+		answer = sc.next();
+		if(answer.equals("y")) {
+			showMenus();
+			System.out.print("🍔 버거 추가 > ");
+			menuNum = sc.nextInt();
+			bugerIds.add(menuNum);
+			order.setOrderNumber(++orderNumber);			
+			order.setBurgerIds(bugerIds);
+			waitingList.add(order);
+			
+			System.out.println(bugerIds.size() + "개 주문 완료! \n" 
+							 + "주문번호 : " + orderNumber
+							  );
+			
+			storeOpen();
+			return;
+		}else {
+			System.out.print(bugerIds.size() + "개 주문 하시겠습니까? > "); 
+			answer = sc.next();
+			
+			if(answer.equals("y")) {
+				order.setOrderNumber(++orderNumber);
+				order.setBurgerIds(bugerIds);			
+				waitingList.add(order);
+				
+				System.out.println(bugerIds.size() + "개 주문 완료! \n" 
+							     + "주문번호 : " + orderNumber
+						          );
+				
+				storeOpen();
+				return;
+				
+			}else {
+				System.out.println("취소하셨습니다. \n메뉴 리스트로 이동합니다.");	
+				storeOpen();
+				return;
+			}			
+		}
 	}
 
 	@Override
-	public void orderCancel() {
-		// 
+	public void orderCancel() { // 주문취소
+		// if (waitingList (조리대기)) {취소} else if (조리중) {조리중입니다} else if(주문완료) {주문완료되었습니다} 
 		
 	}
 
@@ -110,14 +154,14 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 	}
 
 	@Override
-	public void showMenus() {
+	public void showMenus() { // 버거메뉴판
 		for(int i=0; i<menus.size(); i++) {
-		System.out.println(menus.get(i).getBurgerId()   + ". \n" 
-						 + menus.get(i).getBurgerName() + " "
-						 + menus.get(i).getPrice() + " "
-						 + menus.get(i).getMenuDscription() + " "
-						 + menus.get(i).getVegan() + " "
-						 + menus.get(i).getTime() + " "
+		System.out.println(menus.get(i).getBurgerId()   + ". " 
+					     + menus.get(i).getBurgerName() + " \n"
+					     + "가격 : " + menus.get(i).getPrice() + " \n"
+					     + "버거설명 : " + menus.get(i).getMenuDscription() + " \n"
+					     + "vegan : " + menus.get(i).getVegan() + " \n"
+					     + "조리시간 : " + menus.get(i).getTime() + " \n"
 						  );
 		}
 	}
