@@ -46,13 +46,14 @@
 					  title="성적처리하러가기"       >성적처리</button>
 			</div><!-- end kor    text-end-->			
 		</form>
+
 		
 		<script>
 			function check(){
 				let kor = document.querySelector("#kor");
 				let eng = document.querySelector("#eng");
 				let math = document.querySelector("#math");
-				
+				console.log(kor.value.trim());
 				if(kor.value.trim() == ""){
 					alert("국어 성적을 입력해주세요.");
 					kor.focus;
@@ -67,17 +68,11 @@
 					return false;
 				}
 				return true;
+			}
 		</script>
 	</div>
 </body>
 </html> 
-
-
-
-<!-- 
-
- -->
-
 
 
 

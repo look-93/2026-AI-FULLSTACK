@@ -86,7 +86,10 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		Order order = new Order();
 		int  menuNum = -1;
 		String answer = "";
-		List<Integer> bugerIds = new ArrayList<>(); 
+		List<Integer> bugerIds = new ArrayList<>();
+		
+		
+		
 		//order.burgerIds - 장바구니리스트
 		//주문하실 메뉴를 고르세요.
 		//선택
@@ -94,6 +97,7 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		//예/아니오
 		//아니오시 -> 몇개()메뉴를 주문하시겠습니까?
 		//예/취소 -> 취소 -> 그냥종료 / 예-> 주문대기에 넣고 주문번호 주고 종료 orderNumber++
+		
 		
 		showMenus();
 		System.out.print("🍔 어떤 버거를 드시겠어요? > ");

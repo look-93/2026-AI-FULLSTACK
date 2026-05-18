@@ -19,7 +19,7 @@
         int eng = Integer.parseInt(request.getParameter("eng"));
         int math = Integer.parseInt(request.getParameter("math"));
         int total = kor+eng+math;     
-        String avg = String.format("%.2f",total/3f);
+        String avg = String.format("%.2f",total/3.0);
       %>
 	    <table class="table table-striped table-bordered">
 	        <thead>
