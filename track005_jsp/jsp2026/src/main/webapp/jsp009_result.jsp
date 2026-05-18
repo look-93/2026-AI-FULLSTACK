@@ -26,11 +26,11 @@
 	    <table class="table table-striped table-bordered">
 	        <thead>
 	          <tr>
-	            <th>KOR</th>
-	            <th>ENG</th>
-	            <th>MATH</th>
-	            <th>TOTAL</th>
-	            <th>AVG</th>
+	            <th scope="col">KOR</th>
+	            <th scope="col">ENG</th>
+	            <th scope="col">MATH</th>
+	            <th scope="col">TOTAL</th>
+	            <th scope="col">AVG</th>
 	          </tr>
 	        </thead>
 	        <tbody>
