@@ -15,13 +15,11 @@
    <div class="container card my-5">
       <h3 class="card-header">성적 처리 정보</h3>
       <% 
-      	String kor = request.getParameter("kor");
-        String eng = request.getParameter("eng");
-        String math = request.getParameter("math");
-        String total = String.valueOf(Integer.parseInt(kor) + 
-				        			  Integer.parseInt(eng) + 
-				        			  Integer.parseInt(math));        
-        String avg = String.format("%.2f",Double.parseDouble(total)/3);
+      	int kor = Integer.parseInt(request.getParameter("kor"));
+        int eng = Integer.parseInt(request.getParameter("eng"));
+        int math = Integer.parseInt(request.getParameter("math"));
+        int total = kor+eng+math;     
+        String avg = String.format("%.2f",total/3f);
       %>
 	    <table class="table table-striped table-bordered">
 	        <thead>
