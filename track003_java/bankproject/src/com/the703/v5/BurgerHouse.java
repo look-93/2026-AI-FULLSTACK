@@ -14,12 +14,12 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 	
 	
 	public BurgerHouse() {	
-		menus.add(new Burger(1, "더조은버거", 1000, "시그니처 버거!", "4s", false));
-		menus.add(new Burger(2, "불고기버거", 1500, "달달한 불고기 소스가 들어간 한국식 햄버거!", "4s", false));		
-		menus.add(new Burger(3, "치즈버거", 1200, "기본 햄버거에 치즈 추가, 클래식 버거", "4s", false));
-		menus.add(new Burger(4, "징거버거", 1600, "바삭한 치킨 패티에 살짝 매콤한 맛이 특징!", "4s", true));
-		menus.add(new Burger(5, "새우버거", 1400, "탱글한 식감, 해산물 향 가득~", "4s", true));
-		menus.add(new Burger(6, "가자미버거", 1300, "가자미를 튀긴 담백한 버거", "4s", true));	
+		menus.add(new Burger(1, "더조은버거", 1000, "시그니처 버거!", 4, false));
+		menus.add(new Burger(2, "불고기버거", 1500, "달달한 불고기 소스가 들어간 한국식 햄버거!", 4, false));		
+		menus.add(new Burger(3, "치즈버거", 1200, "기본 햄버거에 치즈 추가, 클래식 버거", 4, false));
+		menus.add(new Burger(4, "징거버거", 1600, "바삭한 치킨 패티에 살짝 매콤한 맛이 특징!", 4, true));
+		menus.add(new Burger(5, "새우버거", 1400, "탱글한 식감, 해산물 향 가득~", 4, true));
+		menus.add(new Burger(6, "가자미버거", 1300, "가자미를 튀긴 담백한 버거", 4, true));	
 		
 		System.out.println( "╔══════════════════════╗ \n"
 				  		  + "     BURGER HOUSE        \n"
@@ -83,13 +83,6 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 
 	@Override
 	public void order() { // 주문하기
-		Order order = new Order();
-		int  menuNum = -1;
-		String answer = "";
-		List<Integer> bugerIds = new ArrayList<>();
-		
-		
-		
 		//order.burgerIds - 장바구니리스트
 		//주문하실 메뉴를 고르세요.
 		//선택
@@ -97,52 +90,39 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		//예/아니오
 		//아니오시 -> 몇개()메뉴를 주문하시겠습니까?
 		//예/취소 -> 취소 -> 그냥종료 / 예-> 주문대기에 넣고 주문번호 주고 종료 orderNumber++
+		Order order = new Order();
+		int  menuNum = -1;
+		String answer = "";
+		List<Integer> bugerIds = new ArrayList<>();
 		
-		
-		showMenus();
-		System.out.print("🍔 어떤 버거를 드시겠어요? > ");
-		menuNum = sc.nextInt();
-		bugerIds.add(menuNum);
-		
-		System.out.print("더 주문하시겠습니까? > ");
-		answer = sc.next();
-		if(answer.equals("y")) {
+		do {
 			showMenus();
-			System.out.print("🍔 버거 추가 > ");
+			System.out.print("🍔 어떤 버거를 드시겠어요? (취소:999) > ");
 			menuNum = sc.nextInt();
-			bugerIds.add(menuNum);
-			order.setOrderNumber(++orderNumber);			
-			order.setBurgerIds(bugerIds);
-			waitingList.add(order);
 			
+			if(menuNum == 999) return;
+			
+			bugerIds.add(menuNum);
+			System.out.print("더 추가하시겠습니까? (y/n)> ");
+			answer = sc.next();
+			
+		}while(answer.equals("y"));
+		
+		if(menuNum == 999) {storeOpen(); return;}
+		
+		System.out.print("장바구니에" + bugerIds.size() + "건 담겼습니다. \n주문하시겠습니까? (y/n)");
+		answer = sc.next();
+		
+		if(answer.equals("y")) {
+			order.setOrderNumber(++orderNumber);	
+			waitingList.add(order);			
 			System.out.println(bugerIds.size() + "개 주문 완료! \n" 
 							 + "주문번호 : " + orderNumber
 							  );
-			
-			storeOpen();
-			return;
-		}else {
-			System.out.print(bugerIds.size() + "개 주문 하시겠습니까? > "); 
-			answer = sc.next();
-			
-			if(answer.equals("y")) {
-				order.setOrderNumber(++orderNumber);
-				order.setBurgerIds(bugerIds);			
-				waitingList.add(order);
-				
-				System.out.println(bugerIds.size() + "개 주문 완료! \n" 
-							     + "주문번호 : " + orderNumber
-						          );
-				
-				storeOpen();
-				return;
-				
-			}else {
-				System.out.println("취소하셨습니다. \n메뉴 리스트로 이동합니다.");	
-				storeOpen();
-				return;
-			}			
+		}else {			
+			System.out.println("주문 취소 하셨습니다. 메뉴리스트로 이동합니다.");			
 		}
+		storeOpen();
 	}
 
 	@Override

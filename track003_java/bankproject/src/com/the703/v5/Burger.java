@@ -5,14 +5,14 @@ public class Burger {
 	private String burgerName;
 	private double price;
 	private String menuDscription;
-	private String time;
+	private int time;
 	private boolean vegan;
 	
 	public Burger() {
 		super();
 	}
 
-	public Burger(int burgerId, String burgerName, double price, String menuDscription, String time, boolean vegan) {
+	public Burger(int burgerId, String burgerName, double price, String menuDscription, int time, boolean vegan) {
 		super();
 		this.burgerId = burgerId;
 		this.burgerName = burgerName;
@@ -54,11 +54,11 @@ public class Burger {
 		this.menuDscription = menuDscription;
 	}
 
-	public String getTime() {
+	public int getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public void setTime(int time) {
 		this.time = time;
 	}
 
