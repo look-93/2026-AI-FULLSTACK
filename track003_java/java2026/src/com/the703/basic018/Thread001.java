@@ -7,7 +7,7 @@ public class Thread001 {
 	public static void main(String[] args) {
 		System.out.println("001. Thread");
 		//1. 코어(일꾼수)
-		int core=Runtime.getRuntime().availableProcessors();
+		int core = Runtime.getRuntime().availableProcessors();
 		System.out.println("1. 일꾼수 : " + core); //ctrl + alt + del - 작업관리자 - 성능(코어)
 		
 		//2.   ˙Ꙫ˙ ˙Ꙫ˙ ˙Ꙫ˙ ˙Ꙫ˙ ˙Ꙫ˙ 

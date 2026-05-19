@@ -1,17 +1,27 @@
 package com.the703.v5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInterface{
-	private int orderNumber = 0; // 주문번호
+	private int orderNumber = 0; 	// 주문번호
+	private int  menuNum = -1;		// 메뉴리스트 번호
+	private String answer = "";		// 응답(y/n)
 	Scanner sc = new Scanner(System.in);
+	
+	// 햄버거 메뉴
 	List<Burger> menus = new ArrayList<>();
 	
 	//조리대기
-	List<Order> waitingList = new ArrayList<>();
-	
+	Map<Integer, Order> waitingList = new HashMap<>();	
+	//조리중
+	Map<Integer, Order> cookingList = new HashMap<>();
+	//조리완료
+	Map<Integer, Order> cookingCompleted = new HashMap<>();
 	
 	public BurgerHouse() {	
 		menus.add(new Burger(1, "더조은버거", 1000, "시그니처 버거!", 4, false));
@@ -91,8 +101,6 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		//아니오시 -> 몇개()메뉴를 주문하시겠습니까?
 		//예/취소 -> 취소 -> 그냥종료 / 예-> 주문대기에 넣고 주문번호 주고 종료 orderNumber++
 		Order order = new Order();
-		int  menuNum = -1;
-		String answer = "";
 		List<Integer> bugerIds = new ArrayList<>();
 		
 		do {
@@ -100,7 +108,11 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 			System.out.print("🍔 어떤 버거를 드시겠어요? (취소:999) > ");
 			menuNum = sc.nextInt();
 			
-			if(menuNum == 999) return;
+			if(menuNum == 999) {
+				System.out.println("주문 취소 하셨습니다. 메뉴리스트로 이동합니다.");
+				storeOpen();
+				return;
+			}
 			
 			bugerIds.add(menuNum);
 			System.out.print("더 추가하시겠습니까? (y/n)> ");
@@ -115,7 +127,7 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 		
 		if(answer.equals("y")) {
 			order.setOrderNumber(++orderNumber);	
-			waitingList.add(order);			
+			waitingList.put(orderNumber, order);	
 			System.out.println(bugerIds.size() + "개 주문 완료! \n" 
 							 + "주문번호 : " + orderNumber
 							  );
@@ -127,12 +139,31 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 
 	@Override
 	public void orderCancel() { // 주문취소
-		// if (waitingList (조리대기)) {취소} else if (조리중) {조리중입니다} else if(주문완료) {주문완료되었습니다} 
+		System.out.println("🍔 주문 취소 하기");
 		
+		System.out.print("주문번호를 입력하세요. > ");
+		orderNumber = sc.nextInt();
+		
+		// 조리대기 리스트에 있으면 취소
+		System.out.println(waitingList.size());
+		if(waitingList.containsKey(orderNumber)) {
+			System.out.print("정말 주문 취소하시겠습니까? (y/n) ");
+			answer = sc.next();
+			
+			if(answer.equals("n")) {
+				System.out.println("기존 주문이 유지됩니다.");
+			}else {
+				System.out.println("정상 취소 되었습니다.");
+				waitingList.remove(orderNumber);				
+			}			
+		}//else if (){// 조리중 리스트에 있으면 취소불가 조리중입니다.}
+		//else if (){// 조리완료 리스트에 있으면 취소불가 조리완료되었습니다.}
+		System.out.println(waitingList.size());
+		storeOpen();
 	}
 
 	@Override
-	public void checkingOrder() {
+	public void checkingOrder() { // 메뉴 상태 확인
 		// TODO Auto-generated method stub
 		
 	}
@@ -149,5 +180,24 @@ public class BurgerHouse implements OrderInterface, KitchenInterface, AdminInter
 						  );
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(waitingList);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BurgerHouse other = (BurgerHouse) obj;
+		return Objects.equals(waitingList, other.waitingList);
+	}
+	
+	
 	
 }
