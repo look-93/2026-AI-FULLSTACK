@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Bank {
+public class Bank implements BankInterface{
 	Scanner sc = new Scanner(System.in);
 	List<BankInfo> list = new ArrayList<>();
-
+	
+	@Override
 	public void showMenu() {
 		System.out.println("WELCOME TO BANK SYSTEM");
 		System.out.println("======BANK======");
@@ -19,7 +20,8 @@ public class Bank {
 		System.out.println("[9] ⛔종료");
 		System.out.print("👉 번호를 선택하세요 : ");
 	}
-
+	
+	@Override
 	public void addBankInfo() {
 		System.out.print("ID 입력: ");
 		String inputId = sc.next();
@@ -35,7 +37,8 @@ public class Bank {
 		
 		list.add(new BankInfo(inputId, inputPass, inputBalance));
 	}
-
+	
+	@Override
 	public BankInfo ahthUser() {
 		System.out.print("ID 입력: ");
 		String inputId = sc.next();
@@ -50,47 +53,37 @@ public class Bank {
 		System.out.println("계좌를 찾을 수 없습니다.");
 		return null;
 	}
-
+	
+	@Override
 	public void showBankInfo(BankInfo bankInfo) {
-//	      BankInfo bankInfo = this.ahthUser();
-		//
-//	      if (bankInfo != null) {
 		System.out.println("BALANCE : " + bankInfo.getBalance());
 		System.out.println("BALANCE : " + bankInfo.getBalance());
 		System.out.println("BALANCE : " + bankInfo.getBalance());
-//	      }
-
 	}
-
+	
+	@Override
 	public void deposit(BankInfo bankInfo) {
 		double inputBalance = 0;
-//	      BankInfo bankInfo = this.ahthUser();
-		//
-//	      if (bankInfo != null) {
+
 		System.out.print("금액 입력 : ");
 		inputBalance = sc.nextDouble();
 		bankInfo.setBalance(bankInfo.getBalance() + inputBalance);
 		System.out.println("잔액 : " + bankInfo.getBalance());
-//	      }
 	}
-
+	
+	@Override
 	public void Withdrawal(BankInfo bankInfo) {
 		double inputBalance = 0;
 
-//	      BankInfo bankInfo = this.ahthUser();
-//	      if (bankInfo != null) {
 		System.out.print("금액 입력 : ");
 		inputBalance = sc.nextDouble();
 		bankInfo.setBalance(bankInfo.getBalance() - inputBalance);
 		System.out.println("잔액 : " + bankInfo.getBalance());
-//	      }
 	}
-
+	
+	@Override
 	public void removeBankInfo(BankInfo bankInfo) {
-//	      BankInfo bankInfo = this.ahthUser();
-//	      if (bankInfo != null) {
 		list.remove(bankInfo);
 		System.out.println("계좌가 삭제되었습니다.");
-//	      }
 	}
 }
