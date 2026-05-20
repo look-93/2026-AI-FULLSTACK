@@ -1,3 +1,9 @@
+### ■1. mysql
+
+order by
+
+### ■2. jsp
+
 - jsp -> mysql db 연동
 
 ---
