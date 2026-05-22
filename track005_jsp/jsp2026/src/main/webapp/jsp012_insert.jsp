@@ -39,7 +39,7 @@
 	
 	// jdbc 연동끊기 close
 	if(pstmt != null){pstmt.close();}
-	if(conn != null){conn.close();}
+	if(conn  != null){conn.close();}
     
     
 	}catch(Exception e){

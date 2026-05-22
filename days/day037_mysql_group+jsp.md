@@ -88,7 +88,7 @@ password:
 dir - 경로에 파일 있음
 --
 
-### ■5. jsp
+### ■3. jsp
 
 - jsp012_milk.jsp 완성!
 
