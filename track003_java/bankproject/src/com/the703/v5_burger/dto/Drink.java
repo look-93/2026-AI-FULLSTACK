@@ -1,4 +1,4 @@
-package com.the703.v5_burger;
+package com.the703.v5_burger.dto;
 
 public class Drink extends Item{
 

@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 
 public class Chat001_Server {
+	
 	public static void main(String[] args) {
 		// 1) 서버소켓(a/s 센터), 포트 바인딩(문 열어 놓기)
 		ServerSocket ascenter = null;
