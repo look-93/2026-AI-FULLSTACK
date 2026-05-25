@@ -11,7 +11,7 @@ public class Kiosk {
 	Scanner sc = new Scanner(System.in);
 	Map<Integer, Item> burger = new HashMap<>(); // 버거
 	Map<Integer, Item> drink = new HashMap<>();  // 음료
-	List<Integer> cart = new ArrayList<>(); // 장바구니
+	List<Item> cart = new ArrayList<>(); // 장바구니
 	
 	public Kiosk() {		
 		burger.put(1, new Burger("빅맥", 5500));
@@ -25,11 +25,21 @@ public class Kiosk {
 	}
 
 	public void startKiosk() { // 키오스크 시작
-		int categoryNum = showCategory();
-		int menuNum     = showMenu(categoryNum);
-		addCart(menuNum);
+		String answer;
+		int categoryNum;
+		Item menu;
+		
+		do {
+			categoryNum = showCategory();
+			menu        = showMenu(categoryNum);	
+			answer      = addCart(menu);			
+		}while(answer.equals("y"));
+		
+		if(answer.equals("n")) {
+			System.out.println("주문하기로 이동합니다.");
+			order();		
+		}
 	}
-
 
 	public Integer showCategory() { // 카테고리 조회		
 		int categoryNum = -1;
@@ -50,7 +60,7 @@ public class Kiosk {
 		return categoryNum;
 	}
 	
-	public Integer showMenu(int categoryNum) { // 카테고리메뉴 1.버거, 2.음료
+	public Item showMenu(int categoryNum) { // 카테고리메뉴 1.버거, 2.음료
 		int menuNum = 0;
 		System.out.println();
 		if(categoryNum == 1) {		
@@ -61,28 +71,37 @@ public class Kiosk {
 		System.out.println();
 		System.out.print("👉 주문할 메뉴 번호 : ");		
 		menuNum = sc.nextInt();
-		return menuNum;
+		
+		return categoryNum == 1 ? burger.get(menuNum) : drink.get(menuNum); 
 	}
 	
-	public void addCart(int menuNum) {
-		cart.add(menuNum);
+	public String addCart(Item menu) {
+		cart.add(menu);
 		String answer="";
 		
 		System.out.println();
-		System.out.print("장바구니에 " + cart.size() + "개 담겼습니다.\n추가 하시겠습니까?");
+		System.out.print("장바구니에 " + cart.size() + "개 담겼습니다.\n👉 추가 하시겠습니까? (y/n) : ");
 		answer = sc.next();
 		
-		if(answer.equals("n")) {
-			System.out.println("주문하기로 이동합니다.");
-			
-		}
-		
-		
-		
+		System.out.println();
+		return answer;		
 	}
 	
 	public void order() {
+		int cnt = 0;
+		int sum = 0;
 		
+		System.out.println("╔══════════════════════╗");
+		System.out.println("       🍔 주문 확인 🥤    ");
+		System.out.println("╚══════════════════════╝");
+
+		for(Item cart : cart) {
+			System.out.println(++cnt + ". name : " + cart.getName() + ", price : " + cart.getPrice());
+			sum += cart.getPrice();
+		}
+		
+		System.out.println("👉 총 : " + cart.size() + "개");
+		System.out.println("👉 합 계 : " + sum + "원");
 		
 	}	
 	
