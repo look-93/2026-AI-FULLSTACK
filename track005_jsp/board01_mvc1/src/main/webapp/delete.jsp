@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+request.setCharacterEncoding("UTF-8");
+int bno = Integer.parseInt(request.getParameter("bno"));
+%>
+	
 <%@include file="./inc/header.jsp" %>
 	<div class="container card my-5">
 		<h3 class="card-header my-3">Q N A 삭 제</h3>
-		<form action="#" method="post" onsubmit="return check()">
+		<form action="delete_action.jsp?bno=<%=bno %>" method="post" onsubmit="return check()">
 			<div class="my-3">
 				<label for="bpass">비밀번호</label> <input type="password"
 					class="form-control" id="bpass" name="bpass" />

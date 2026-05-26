@@ -1,7 +1,7 @@
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%-- <%int i=40/0;  %> 에러발생 테스트--%>
 <%@include file="./inc/header.jsp"%>
 
 <!--content-->
@@ -16,6 +16,8 @@
 			<thead>
 				<tr>
 					<!--scope 읽히는 방향설정(보이진않지만 스크린리더기?에서 읽힐때사용)-->
+					<th scope="col">ORDERBY</th>
+					<th scope="col">CNT</th>
 					<th scope="col">NO</th>
 					<th scope="col">TITLE</th>
 					<th scope="col">WRITER</th>
@@ -25,47 +27,60 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%
-			try{
-					Connection conn = null;
-					PreparedStatement pstmt = null;
-					ResultSet rset = null;
-					String sql = "select * from   mvcboard1 order by bno desc";
-					String url = "jdbc:mysql://localhost:3306/mbasic";
-					String user = "root", pass = "1234";
+				<%
+				try { 
+							Connection conn = null;
+							PreparedStatement pstmt = null;
+							ResultSet rset = null;
+							String sql = "select bno, btitle, bname, bdate, bhit, row_number() over(order by bno) as 'orderNum', (select count(*) from mvcboard1) as 'cnt'" 
+									   + "from mvcboard1 order by bno desc";
+							
+							String url = "jdbc:mysql://localhost:3306/mbasic";
+							String user = "root", pass = "1234";
 
-					Class.forName("com.mysql.cj.jdbc.Driver");
+							Class.forName("com.mysql.cj.jdbc.Driver");
 
-					conn = DriverManager.getConnection(url, user, pass);
+							conn = DriverManager.getConnection(url, user, pass);
+							
+							//sql 구문처리
+							//pstmt = conn.prepareStatement(sql);
+							
+							pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);// 다시 처음으로 표부터 처리
 
-					pstmt = conn.prepareStatement(sql);
+							rset = pstmt.executeQuery(); // 표
 
-					rset = pstmt.executeQuery(); // 표
+		 					//1) 먼저 전체클 갯수 출력
+							int cnt = -1;
+							// 줄
+							if(rset.next()){
+								 cnt = rset.getInt("cnt"); // 칸
+								 rset.beforeFirst(); // 다시 처음표부터 처리
+							}
+							 
+							while (rset.next()) {
+								out.println("<tr >"
+										+ "<td>" + rset.getString("orderNum") +"</td>" 
+										+ "<td>" + cnt-- + "</td>" 
+										+ "<td>" + rset.getString("bno") + "</td>" + "<td>" + "<a href='detail.jsp?bno="
+										+ rset.getInt("bno") + "'>" + rset.getString("btitle") + "</a></td>" + "<td>"
+										+ rset.getString("bname") + "</td>" + "<td>" + rset.getDate("bdate") + "</td>" + "<td>"
+										+ rset.getInt("bhit") + "</td>" + "</tr>");
+							}
 
-					while (rset.next()) {
-						out.println("<tr onclick='location.href=\"detail.jsp?bno=" + rset.getString("bno") + "\"'>"
-								   + "<td>" + rset.getString("bno")    + "</td>" 
-								   + "<td>" + rset.getString("btitle") + "</td>" 
-								   + "<td>" + rset.getString("bname")  + "</td>" 
-								   + "<td>" + rset.getDate("bdate")    + "</td>" 
-								   + "<td>" + rset.getInt("bhit")      + "</td>" 
-								   + "</tr>");
-					}
+							if (rset != null) {
+								rset.close();
+							}
+							if (pstmt != null) {
+								pstmt.close();
+							}
+							if (conn != null) {
+								conn.close();
+							}
 
-					if (rset != null) {
-						rset.close();
-					}
-					if (pstmt != null) {
-						pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			%>
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+				%>
 			</tbody>
 		</table>
 		<div class="text-end">

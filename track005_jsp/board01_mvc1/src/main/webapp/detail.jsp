@@ -76,11 +76,6 @@ try {
 				<label for="bname">이름</label> <input type="text"
 					class="form-control" id="bname" value="<%= bname %>" name="bname"  disabled/>
 			</div>
-			
-			<div class="my-3">
-				<label for="bpass">비밀번호</label> <input type="password"
-					class="form-control" id="bpass" name="bpass" />
-			</div> 
 
 			<div class="my-3">
 				<label for=btitle></label>제목<input type="text"
@@ -92,27 +87,12 @@ try {
 				<textarea class="form-control" rows="5" id="bcontent" name="bcontent" disabled><%= bcontent %></textarea>
 			</div>
 			<div class="my-3 text-end"> <!-- 비밀번호 맞으면 수정 삭제 가능하게  -->
-				<a href="#" onclick="check(<%=bpass%>,<%=bno%>)" class="btn btn-light p-2 rounded text-dark" title="글수정">수정</a>
-				<a href="delete.jsp" class="btn btn-light p-2 rounded text-dark" title="글삭제">삭제</a>
+				<a href="edit.jsp?bno=<%=bno%>" class="btn btn-light p-2 rounded text-dark" title="글수정">수정</a>
+				<a href="delete.jsp?bno=<%=bno%>" class="btn btn-light p-2 rounded text-dark" title="글삭제">삭제</a>
 				<a href="list.jsp" class="btn btn-light p-2 rounded text-dark"  title="목록보러가기">목록보기</a>
 			</div>
 		<!--</form>-->
 
 	</div>
-	<script>
-		function check(bpass,bno){
-			let inputpass = document.querySelector("#bpass");
-			
-			if(inputpass.value.trim() == ""){
-				alert("비밀번호를 입력하세요.");
-				bpass.focus();
-				return false;
-			}
-			if(inputpass.value != bpass){
-				alert("비밀번호가 틀립니다.");
-				return false;				
-			}
-			location.href = "edit.jsp?bno=?"+bno;
-		}
-	</script> 
+	
 <%@include file="./inc/footer.jsp" %> 

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("UTF-8");
 	int bno = Integer.parseInt(request.getParameter("bno"));
 	String bname ="";
 	String btitle = "";
@@ -41,7 +42,7 @@
 <%@include file="./inc/header.jsp" %>
 	<div class="container my-25">
 		<h3 class="card-header my-3">Q N A 수 정 하 기</h3>
-		<form action="edit_action.jsp" method="post" onsubmit="return check()">
+		<form action="edit_action.jsp?bno=<%=bno%>" method="post" onsubmit="return check()">
 			<div class="my-3">
 				<label for="bname">이름</label> <input type="text"
 					class="form-control" id="bname" value="<%=bname %>" name="bname" disabled/>
