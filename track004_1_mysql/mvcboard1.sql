@@ -1,22 +1,22 @@
-create table mvcboard1(
-	bno int not null primary key auto_increment,
-    bname varchar(200) not null,
-    bpass varchar(50) not null,
-    btitle varchar(1000),
-    bcontent text not null,
-    bdate timestamp default current_timestamp,
-    bhit int not null default 0,
-    bip varchar(50) not null
-);
-delete from mvcboard1;
+-- create table mvcboard1(
+-- 	bno int not null primary key auto_increment,
+--     bname varchar(200) not null,
+--     bpass varchar(50) not null,
+--     btitle varchar(1000),
+--     bcontent text not null,
+--     bdate timestamp default current_timestamp,
+--     bhit int not null default 0,
+--     bip varchar(50) not null
+-- );
+-- delete from mvcboard1;
 desc mvcboard1;
 select*from mvcboard1;
 
-insert into mvcboard1 (bname, bpass, bcontent,bhit,bip) values ("1", "1" , "1",1,"dd");
-insert into mvcboard1 (bname, bpass, bcontent,bhit,bip) values ("2", "2" , "2",2,"dd");
+-- insert into mvcboard1 (bname, bpass, bcontent,bhit,bip) values ("1", "1" , "1",1,"dd");
+-- insert into mvcboard1 (bname, bpass, bcontent,bhit,bip) values ("2", "2" , "2",2,"dd");
 select * from mvcboard1 order by bno desc;
 select * from mvcboard1 where bno=5;
-show tables;
+-- show tables;
 
 use mbasic;
 
@@ -42,18 +42,21 @@ order by bno desc;
 
 desc users;
 
-create table users(
-uno int not null primary key auto_increment,
-nickname varchar(20) not null,
-bpass varchar(50) not null,
-email varchar(100) not null,
-mobile varchar(50) not null,
-udate  timestamp  not null default  CURRENT_TIMESTAMP,
-bip varchar(50 )not null
-);
+-- create table users(
+-- uno int not null primary key auto_increment,
+-- nickname varchar(20) not null,
+-- bpass varchar(50) not null,
+-- email varchar(100) not null,
+-- mobile varchar(50) not null,
+-- udate  timestamp  not null default  CURRENT_TIMESTAMP,
+-- bip varchar(50 )not null
+-- );
 select*From users;
+select * from users where email="dd@dd1" and nickname="1";
 -- 회원가입
 -- insert into users (nickname, bpass, email, mobile) value(?,?,?,?,?);
 select * from users where email= 'dd@dd3' and bpass = 3;
 -- 로그인
 -- select * from users where email= ? and bpass = ?
+
+select *, date_format(udate, '%Y-%m-%d %H:%i-%s') as formatDate from users;

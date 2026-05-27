@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp"%>
-<div class="container card my-25">
+<div class="container card  my-5">
 	<h3 class="card-header my-3">회원가입</h3>
 	
 	<form action="signup_action.jsp" method="post" onsubmit="return check()">	

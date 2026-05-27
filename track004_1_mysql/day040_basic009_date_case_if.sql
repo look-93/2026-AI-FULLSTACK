@@ -146,7 +146,7 @@ select date_add(now(), interval 5 day); -- 결론
 select date_add(now(), interval (6-weekday(now())) day); -- 결론: 내일이와도 가장 가까운 오는 일요일
 
 -- 지난일요일
-
+select date_add(now(), interval -(weekday(now()) +1) day);
 
 -- ■ 3. CRUD (SELECT Function-IF , CASE)
 -- mysql> desc control;

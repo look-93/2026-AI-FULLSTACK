@@ -63,7 +63,7 @@ try {
 
 <%@include file="./inc/header.jsp" %>
 
-<div class="container card my-25">
+<div class="container card my-5">
 		<h3 class="card-header my-3">Q N A 상 세 보 기</h3>
 
 		 <!--  <form action="#" method="post" onsubmit="return check()">-->

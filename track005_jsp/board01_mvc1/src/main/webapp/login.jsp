@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp" %>
 
-	<div class="container card my-25">
+	<div class="container card my-5">
 		<h3 class="card-header my-3">로그인</h3>
 		
 		<form action="login_action.jsp" method="post" onsubmit="return check()">		
@@ -17,7 +17,8 @@
 			</div>
 			
 			<div class="my-3 text-end">			
-				<button type="reset" class="btn btn-outline-primary p-2 rounded" title="글취소">취소</button>
+				<button type="reset" class="btn btn-outline-primary p-2 rounded " title="글취소">취소</button>	
+				<a href="findId.jsp" class="btn btn-outline-primary p-2 rounded" title="로그인">아이디찾기</a>
 				<button type="submit" class="btn btn-primary p-2 rounded text-white" title="로그인">로그인</button>
 			</div>
 		</form>

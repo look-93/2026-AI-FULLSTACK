@@ -40,7 +40,7 @@
 	}
 %>
 <%@include file="./inc/header.jsp" %>
-	<div class="container my-25">
+	<div class="container my-5">
 		<h3 class="card-header my-3">Q N A 수 정 하 기</h3>
 		<form action="edit_action.jsp?bno=<%=bno%>" method="post" onsubmit="return check()">
 			<div class="my-3">
