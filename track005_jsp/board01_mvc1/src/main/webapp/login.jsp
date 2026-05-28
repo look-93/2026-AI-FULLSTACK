@@ -14,7 +14,23 @@
 			<div class="my-3">
 				<label for="bpass">비밀번호</label>
 				<input type="password" class="form-control" id="bpass" name="bpass"/>
+			</div>		
+			<div class="my-3">
+
+			<%
+			if (request.getAttribute("findEmail") != null) {
+			%>
+			
+			<div class='alert alert-success'>
+				회원님의 이메일 아이디는 <strong> <%= request.getAttribute("findEmail")%>
+				</strong>
 			</div>
+			
+			<%
+			}
+			%>
+
+		</div>
 			
 			<div class="my-3 text-end">			
 				<button type="reset" class="btn btn-outline-primary p-2 rounded " title="글취소">취소</button>	

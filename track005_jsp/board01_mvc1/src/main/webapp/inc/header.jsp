@@ -32,12 +32,20 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="mynavbar">
+					<%
+					if (session.getAttribute("email") != null) {
+					%>
 					<a class="navbar-brand" href="javascript:void(0)">QNA게시판</a>
 					<ul class="navbar-nav ms-auto">
-						<li class="nav-item"><a class="nav-link active" href="list.jsp">목록</a>
-						</li>
+
+						<li class="nav-item"><a class="nav-link active"
+							href="list.jsp">목록</a></li>
 						<li class="nav-item"><a class="nav-link" href="write.jsp">QNA등록</a></li>
+						<li class="nav-item"><a class="nav-link" href="logout.jsp">로그아웃</a></li>
 					</ul>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</nav>
@@ -45,6 +53,5 @@
 	<!--/header-->
 	<!--/header-->
 	<!--/header-->
-	
+
 	<!--/jsp014.header.jsp-->
-	

@@ -3,7 +3,8 @@
 	pageEncoding="UTF-8"%>
 
 <%
-String email = request.getParameter("email");
+//String email = request.getParameter("email");
+String email = (String) session.getAttribute("email");
 String url = "jdbc:mysql://localhost:3306/mbasic";
 String user = "root", password = "1234";
 PreparedStatement pstmt = null;
@@ -28,27 +29,6 @@ try {
 		udate = rset.getString("udate");
 		formatDate = rset.getString("formatDate");
 		bip = rset.getString("bip");
-		/* 				out.println("<tr>" 
-						   + "<th>닉네임</th>"				
-						   + "<td>" + nickname + "</td>"
-						   + "</tr>"
-						   + "<tr>" 
-						   + "<th>이메일</th>"				
-						   + "<td>" + email + "</td>"
-						   + "</tr>"
-						   + "<tr>" 
-						   + "<th>휴대폰</th>"				
-						   + "<td>" + mobile + "</td>"
-						   + "</tr>"			   
-						   + "<tr>" 
-						   + "<th>가입일</th>"				
-						   + "<td>" + formatDate + "</td>"
-						   + "</tr>"				   
-						   + "<tr>" 
-						   + "<th>가입IP</th>"				
-						   + "<td>" + bip + "</td>"
-						   + "</tr>" 
-						);	*/
 	}
 
 	if (rset != null) {
@@ -69,7 +49,10 @@ try {
 
 <%@ include file="./inc/header.jsp"%>
 <div class="container card my-5">
-	<h3 class="card-header my-3">마이페이지</h3>
+	<div class="card-header my-3 d-flex justify-content-between">
+		<h3>마이페이지</h3>
+		<a href="#" class="card-link text-decoration-none text-black">수정</a>
+	</div>
 	<table class="table table-bordered">
 		<tbody>
 			<tr>

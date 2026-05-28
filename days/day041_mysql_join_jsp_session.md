@@ -8,6 +8,8 @@ join
 
 ### ■3. jsp
 
+session
+
 
 ### ■4. 복습문제
 
@@ -116,12 +118,16 @@ order by  deptno asc;
 -- 15 rows in set (0.00 sec)
 
 
+
+
 select    d.DEPTNO , DNAME    , EMPNO , ENAME ,JOB  , SAL  
-from      dept d  left join emp  e    on   d.deptno = e.deptno
+from      dept d  
+left join emp  e    on   d.deptno = e.deptno
 order  by  d.deptno, ename;
 
 select    d.DEPTNO , DNAME    , EMPNO , ENAME ,JOB  , SAL  
-from      emp  e     right join  dept d    on   d.deptno = e.deptno
+from      emp  e     
+right join  dept d    on   d.deptno = e.deptno
 order  by  d.deptno, ename;
 
 

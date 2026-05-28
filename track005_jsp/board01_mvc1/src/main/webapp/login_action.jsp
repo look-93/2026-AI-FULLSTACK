@@ -20,15 +20,15 @@ try{
 	
 	ResultSet rset = pstmt.executeQuery();
 	if(rset.next()){
-		//session.setAttribute("loginId", email);
-		out.println("<script> alert('로그인 성공!'); location.href = 'mypage.jsp?email=" + email +"'; </script>");
+		session.setAttribute("email", email);
+		out.println("<script> alert('로그인 성공!'); location.href = 'mypage.jsp'; </script>");
 	}else {
 		out.println("<script> alert('아이디/비밀번호를 확인하세요.'); history.go(-1);  </script>");
 	}
 
-	if(rset != null){rset.close();}
+	if(rset  != null){rset.close();}
 	if(pstmt != null){pstmt.close();}
-	if(conn != null){conn.close();}
+	if(conn  != null){conn.close();}
 	
 	
 }catch(Exception e){

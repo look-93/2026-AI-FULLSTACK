@@ -23,10 +23,10 @@ try{
 	ResultSet rset = pstmt.executeQuery();
 	if(rset.next()){
 		findEmail = rset.getString("email");
-		//request.setAttribute("email", findEmail);
-		//request.getRequestDispatcher("findId.jsp").forward(request, response);
+		request.setAttribute("findEmail", findEmail);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 		
-		response.sendRedirect("findId.jsp?findEmail="+findEmail);
+		//response.sendRedirect("findId.jsp?findEmail="+findEmail);
 	}else {
 		out.println("<script> alert('아이디/닉네임을 확인하세요.'); history.go(-1); </script>");
 	}

@@ -44,18 +44,14 @@
 		<%
 		if (session.getAttribute("email") != null) {
 		%>
+		
 		<div class="alert alert-warning">
 			반갑습니다.
 			<%=session.getAttribute("email")%>
 
 		</div>
-		<%
-		if (session.getAttribute("email") != null) {
-		%>
 		<a href="jsp016_logout.jsp"> 로그아웃 </a>
-		<%
-		}
-		%>
+	
 		<%
 		}
 		%>

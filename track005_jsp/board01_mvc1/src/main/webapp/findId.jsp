@@ -18,22 +18,6 @@
 				class="form-control" id="nickname" placeholder="닉네임을 입력하세요."
 				name="nickname" />
 		</div>
-		<div class="my-3">
-
-
-			<%
-			if (request.getParameter("foundId") != null) {
-			%>
-			<p class='alert alert-success'>
-				회원님의 아이디는 <strong> <%= request.getParameter("foundId")%>
-				</strong>
-			</p>
-			<%
-			}
-			%>
-
-		</div>
-
 		<div class="my-3 text-end">
 			<button type="reset" class="btn btn-outline-primary p-2 rounded "
 				title="글취소">취소</button>
