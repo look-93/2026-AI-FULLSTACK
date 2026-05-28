@@ -33,8 +33,9 @@
 		</div>
 			
 			<div class="my-3 text-end">			
-				<button type="reset" class="btn btn-outline-primary p-2 rounded " title="글취소">취소</button>	
-				<a href="findId.jsp" class="btn btn-outline-primary p-2 rounded" title="로그인">아이디찾기</a>
+				<button type="reset" class="btn btn-outline-primary p-2 rounded " title="취소">취소</button>	
+				<a href="findId.jsp" class="btn btn-outline-primary p-2 rounded" title="아이디찾기">아이디찾기</a>
+				<a href="signup.jsp" class="btn btn-outline-primary p-2 rounded" title="회원가입">회원가입</a>
 				<button type="submit" class="btn btn-primary p-2 rounded text-white" title="로그인">로그인</button>
 			</div>
 		</form>

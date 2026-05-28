@@ -51,7 +51,12 @@ try {
 <div class="container card my-5">
 	<div class="card-header my-3 d-flex justify-content-between">
 		<h3>마이페이지</h3>
-		<a href="#" class="card-link text-decoration-none text-black">수정</a>
+		<div>
+			<a href="member_update.jsp?email=<%=email%>"
+				class="card-link text-decoration-none text-black">수정</a> <a
+				href="member_withdraw.jsp?email=<%=email%>"
+				class="card-link text-decoration-none text-danger">탈퇴</a>
+		</div>
 	</div>
 	<table class="table table-bordered">
 		<tbody>

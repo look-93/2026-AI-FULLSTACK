@@ -41,6 +41,7 @@
 						<li class="nav-item"><a class="nav-link active"
 							href="list.jsp">목록</a></li>
 						<li class="nav-item"><a class="nav-link" href="write.jsp">QNA등록</a></li>
+						<li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a></li>
 						<li class="nav-item"><a class="nav-link" href="logout.jsp">로그아웃</a></li>
 					</ul>
 					<%

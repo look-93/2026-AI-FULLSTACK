@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.net.URLEncoder;
 @WebServlet("/MilkInsert")
 public class Jsp019 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +32,6 @@ public class Jsp019 extends HttpServlet {
 		
 		
 		//3. 처리결과 + 경로로 넘기기 > jsp019_index.jsp 넘길경로
-		response.sendRedirect("jsp019_index.jsp?oname=" + oname);
+		response.sendRedirect("jsp019_index.jsp?oname=" + URLEncoder.encode(oname, "UTF-8"));
 	}
 }
