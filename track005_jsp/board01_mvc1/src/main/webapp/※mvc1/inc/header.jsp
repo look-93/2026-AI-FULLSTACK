@@ -1,8 +1,8 @@
-<%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,25 +32,21 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="mynavbar">
-<%-- 				<c:if test="${ empty sessionScope.email}">
+					<%
+					if (session.getAttribute("email") != null) {
+					%>
 					<a class="navbar-brand" href="javascript:void(0)">QNA게시판</a>
 					<ul class="navbar-nav ms-auto">
-					<!-- 애플리케이션 루트 기준/url -->
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/LoginAction">회원가입</a></li>
-					</ul>
-				</c:if> --%>
-				
-				<c:if test="${not empty sessionScope.email}">
-					<a class="navbar-brand" href="javascript:void(0)">QNA게시판</a>
-					<ul class="navbar-nav ms-auto">
-					<!-- 애플리케이션 루트 기준/url -->
+
 						<li class="nav-item"><a class="nav-link active"
 							href="list.jsp">목록</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MyAction">마이페이지</a></li>
-						<!--  <li class="nav-item"><a class="nav-link" href="logout.jsp">로그아웃</a></li>-->
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/LogoutAction">로그아웃</a></li>
+						<li class="nav-item"><a class="nav-link" href="write.jsp">QNA등록</a></li>
+						<li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a></li>
+						<li class="nav-item"><a class="nav-link" href="logout.jsp">로그아웃</a></li>
 					</ul>
-				</c:if>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</nav>

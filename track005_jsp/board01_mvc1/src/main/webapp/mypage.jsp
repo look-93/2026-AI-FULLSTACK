@@ -1,60 +1,22 @@
+<%@page import="com.the703.servlet.User"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%
-//String email = request.getParameter("email");
-String email = (String) session.getAttribute("email");
-String url = "jdbc:mysql://localhost:3306/mbasic";
-String user = "root", password = "1234";
-PreparedStatement pstmt = null;
-String nickname = "";
-String mobile = "";
-String udate = "";
-String bip = "";
-String formatDate = "";
-
-try {
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(url, user, password);
-	pstmt = conn.prepareStatement(
-	"select *, date_format(udate, '%Y-%m-%d %H:%i-%s') as formatDate from users where email=?");
-	pstmt.setString(1, email);
-
-	ResultSet rset = pstmt.executeQuery();
-
-	while (rset.next()) {
-		nickname = rset.getString("nickname");
-		mobile = rset.getString("mobile");
-		udate = rset.getString("udate");
-		formatDate = rset.getString("formatDate");
-		bip = rset.getString("bip");
-	}
-
-	if (rset != null) {
-		rset.close();
-	}
-	if (pstmt != null) {
-		pstmt.close();
-	}
-	if (conn != null) {
-		conn.close();
-	}
-
-} catch (Exception e) {
-	e.printStackTrace();
-}
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=UTF-8");
+User userInfo = (User) request.getAttribute("userInfo");
 %>
 
-
 <%@ include file="./inc/header.jsp"%>
+
 <div class="container card my-5">
 	<div class="card-header my-3 d-flex justify-content-between">
 		<h3>마이페이지</h3>
 		<div>
-			<a href="member_update.jsp?email=<%=email%>"
+			<a href="member_update.jsp"
 				class="card-link text-decoration-none text-black">수정</a> <a
-				href="member_withdraw.jsp?email=<%=email%>"
+				href="member_withdraw.jsp?email=${userInfo.email }"
 				class="card-link text-decoration-none text-danger">탈퇴</a>
 		</div>
 	</div>
@@ -62,23 +24,23 @@ try {
 		<tbody>
 			<tr>
 				<th>닉네임</th>
-				<td><%=nickname%></td>
+				<td>${userInfo.nickname}</td>
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td><%=email%></td>
+				<td>${userInfo.email}</td>
 			</tr>
 			<tr>
 				<th>휴대폰</th>
-				<td><%=mobile%></td>
+				<td>${userInfo.mobile}</td>
 			</tr>
 			<tr>
 				<th>가입일</th>
-				<td><%=formatDate%></td>
+				<td>${userInfo.udate }</td>
 			</tr>
 			<tr>
 				<th>가입IP</th>
-				<td><%=bip%></td>
+				<td>${userInfo.bip }</td>
 			</tr>
 		</tbody>
 	</table>

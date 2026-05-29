@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>   
 <%
 request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=UTF-8");
+
 String bpass = request.getParameter("bpass");
 
 String url = "jdbc:mysql://localhost:3306/mbasic";
@@ -20,6 +22,7 @@ try{
 	
 	int result = pstmt.executeUpdate();
 	if(result>0){
+		session.invalidate();
 		out.println("<script>alert('탈퇴성공!'); location.href='login.jsp';</script>");
 		
 	}else{

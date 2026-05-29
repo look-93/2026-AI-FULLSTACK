@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>   
 <%
 request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=UTF-8");
 
 String email = request.getParameter("email");
 String bpass = request.getParameter("bpass");

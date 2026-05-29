@@ -20,9 +20,16 @@
 ---
 
 ### ■2. JSP
+※ tomcat 셋팅
+- 프로젝트 임포트 시 톰캣 오류나면 확인하기
+- The superclass "jakarta.servlet.http.HttpServlet" was not found on the Java Build Path
+1. 프로젝트 우클릭 - Properties - java build path / project fecets 자바버전수정
+
 
 1. project
 2. ws vs was
+
+
 
 ---
 

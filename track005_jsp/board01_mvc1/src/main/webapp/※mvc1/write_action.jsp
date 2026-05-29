@@ -5,7 +5,6 @@
 <%
 // insert into mvcboard1(bname, bpass, btitle, bcontent, bip) values(?,?,?,?)
 request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
 
 String bname    = request.getParameter("bname");
 String bpass    = request.getParameter("bpass");
