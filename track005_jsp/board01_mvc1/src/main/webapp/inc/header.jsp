@@ -41,7 +41,7 @@
 				</c:if> --%>
 				
 				<c:if test="${not empty sessionScope.email}">
-					<a class="navbar-brand" href="javascript:void(0)">QNA게시판</a>
+					<a class="navbar-brand" href="javascript:void(0)">QNA게시판.</a>
 					<ul class="navbar-nav ms-auto">
 					<!-- 애플리케이션 루트 기준/url -->
 						<li class="nav-item"><a class="nav-link active"
