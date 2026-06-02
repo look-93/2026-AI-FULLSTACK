@@ -47,6 +47,337 @@
   장점 : 코드단순화 / 결합도 제거
 
 
+---------------------
+#3.  Bean
+---------------------
+
+1.  xml   vs  Annotation
+>> xml : 운영
+>> Annotation : 개발
+XML - [운영] , 모든 Bean을 명시적으로 xml에 등록
+    - 여러개발자가 같은 설정파일을 공유해서 개발하면 
+      수정시 충돌이 일어날 경우가 많음.
+
+2.@Component
+- @Component 일반적인 컴포넌트  <bean> 스프링이 관리하는 객체
+- @Component 구체화된 형식
+   @Controller  웹요청받아서 응답
+   @Service     서비스 레이어, 비즈니스 로직
+   @Repository  데이터베이스
+
+3. Bean 의존관계주입
+   1. @Autowired - 정밀한 의존관계 
+      - 프로퍼티, setter, 생성자,, 적용
+   2. @Qualifier - 동일한타입의 bean 구분
+   3. @Value  단순값
+   4. @Resource - 자원연결(  .properties)   
+
+4. component-scan
+<context:component-scan  base-package="경로설정"/>
+
+
+---------------------
+#4.   DB  + Mybatis
+---------------------
+1. DataSource
++ SimpleDrdiverDataSource   - 가장단순한버젼
+
+2. mybatis
+- sql을 별도로 파일분리해서 관리
+- orm (object relational mapping) 프레임워크
+
+3. 설정내용
+root-context.xml   환경정보설정
+db.propertis       db정보설정
+SqlSessionFacotryBean  : SqlSession 생성 및 관리
+SqlSession           :  sql 실행 , 트랜잭션
+mapper.xml
+
+
+```
+	<dependencies>
+	<!-- TEST Unit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- spring di, context-info 어떤정보를 가지고있어라고 알려주는 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.27.RELEASE</version>
+		</dependency>
+		
+        <!-- spring test - spring 로딩시켜주세요 , 테스트 툴 들어가있음-->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.27.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- LOMBOK : getters/setters, constructor, toString -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.18</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- MYSQL/ORACLE <dependency> <groupId>com.oracle.database.jdbc</groupId> 
+			<artifactId>ojdbc11</artifactId> <version>21.9.0.0</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.28</version>
+		</dependency>
+
+
+        <!-- spring-jdbc  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.20.RELEASE</version>
+		</dependency>
+
+        <!-- mybatis - mapper -->
+		<!-- MYBATIS -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+
+        <!-- HikariCP : connector pool / jdbc 연동-->
+		<!-- HikariCP -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>2.7.4</version>
+		</dependency>
+
+        <!-- sql query : sql이 화면상에 어떻게 들어가있는지 확인하는 도구 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>
+
+	</dependencies>
+
+
+```
+# jar 파일 다운후(dependence) db연동 xml 설정파일 (보통 한번 설정하면 변경x)
+- 드라이버연동
+1. src/main/java ctrl+n -> spring 
+2. spring bean configuration file
+3. root-context.xml -> next 
+-> beans (관리하는객체이런거야)
+-> context() 
+-> jdbc(db연동) 
+-> mybatis-spring
+(설정잘못했다 ? -> 하단 namespaces에 다시 설정가능)
+
+# db.properties
+1. src/main/java/config +  ctrl+n -> file 
+-> filename(db.properties)
+```
+#db.driverClass=oracle.jdbc.driver.OracleDriver
+#db.url=jdbc:oracle:thin:@localhost:1521:xe
+#db.username=scott
+#db.password=tiger
+
+db.driverClass=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/mbasic
+db.username=root
+db.password=1234
+```
+# Test file
+1. src/test/java ctrl+n -> class
+2. ModelTest001
+
+<!--이러이러한 거 있으니까 spring 아 너가 생명주기 관리해서 나한테 보여줘 하는 친구들-->
+@RunWith(SpringJUnit4ClassRunner.class) // 1. spring 구동
+@ContextConfiguration(locations ="classpath:config/root-context.xml") // 2. 설정파일
+@Autowired	ApplicationContext context; // 3. Been (스프링이 관리하는 객체)생성~소멸
+@Autowired DataSource dataSource; //import javax.sql.DataSource;
+
+
+```
+ex)
+	//부품단위로 테스트
+	
+	@Ignore //이거무시해 //@Test
+	public void test1() {
+		System.out.println(context);
+	}
+	
+	@Test
+	public void test2() {
+		System.out.println(dataSource);
+	}
+
+```
+
+# de셋팅
+	
+1. SqlSessionFactoryBeen : 스프링에서 SqlSession 객체들을 생성 및 관리
+	  - private Resource configLocation;	    - 설정파일
+	  - private Resource[] mapperLocations;	- mapper.xml (sql 구문파일)
+	  - private DataSource dataSource;		- db연동
+
+
+2. SqlSesstionTemplate : sql 구문처리(crud)
+
+
+- mybatis 설정
+https://mybatis.org/mybatis-3/ko/index.html
+
+mybatis? -db <-마이바티스-> 스프링 중간에서 연결해주는놈
+
+- template 만들기
+window -> preferences -> XML Files > Editor > Templates 
+-> new - Context : New XML : #1/#2 각각 붙여놓고 -> ok -> close
+
+- #1 mybatis-config
+```
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+</configuration>
+
+```
+
+- #2 mybatis-mapper
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper"> <!-- org.mybatis.example.BlogMapper 지우기 -->
+  <select id="selectBlog" resultType="Blog">
+    select * from Blog where id = #{id}
+  </select>
+</mapper>
+
+```
+
+- #3 템플릿 사용 최종 파일 만들기
+mybatis-config.xml /test.mapper.xml / userinfo.mapper.xml
+```
+config - ctrl+n ->XML file -> next -> mybatis-config.xml
+->next -> create file from a template -> 내가만들 템플릿 선택 (mybatis-config.xml/ mybatis-mapper.xml)
+```
+
+- #4 연결 test
+```
+	@Test
+	public void test3() {
+		System.out.println(sqlSession);
+	}
+
+```
+
+# 테이블 만들기, crud
+ - day045_spring_dbtest.sql 참고
+
+# userinfo.mapper.xml 작성
+
+# root-context.xml 
+- MapperScannerConfigurer 추가
+
+Mapper 인터페이스가 있을 때 하나씩 
+
+```
+<bean id="userMapper"
+      class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface"
+              value="com.test.mapper.UserMapper"/>
+    <property name="sqlSessionFactory"
+              ref="sqlSessionFactory"/>
+</bean> 
+```
+
+bean 을 등록해야 하는 것을 
+
+```
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage"
+              value="com.test.mapper"/>
+</bean>
+```
+
+만 쓰면 자동으로 bean에 등록됨
+    
+# test
+```
+@Autowired TestMapper test; 
+@Test
+public void test4() {
+    System.out.println(test.now());
+}
+```	
+
+# com.the703.dto > UserInfoMapper.java
+- @Data 객체 셋팅 
+
+# userinfo.mapper.xml
+- UserInfoMapper.java 보고 id parameterType resultType 맞추기
+- 리턴값:resultType,메서드명:id,파라미터:parameterType
+
+# test
+```
+@Autowired UserInfoDto userinfo;
+
+	@Test
+	public void test6() {
+		// 5.삭제
+		System.out.println(userInfo.delete(2));
+		
+		// 4.수정
+//		UserInfoDto dto = new UserInfoDto();
+//		dto.setEmail("hello@gmail.com");
+//		dto.setAge(40);
+//		dto.setNo(2);
+//		System.out.println(userInfo.update(dto));
+		
+		// 3.한명검색
+		//System.out.println(userInfo.select(2));
+		
+		// 2.삽입		
+		//UserInfoDto dto = new UserInfoDto(); dto.setEmail("hi@gamil.com");
+		//dto.setAge(10); System.out.println(userInfo.insert(dto));	 
+
+		// 1. 전체검색
+		//System.out.println(userInfo.selectAll());
+	}
+
+
+```
+
 
 ▶ Step3.  실습
 ===================
@@ -359,3 +690,52 @@ public void test1() {
     IceCreamShop shop = (IceCreamShop) context.getBean("iceCreamShop");
     shop.print();
 }
+
+===================
+실습 2026-06-02
+===================
+
+> 실습
+1. project 만들기
+    1. dynamic web project - ex02
+    2. configure  - [Convert to Maven Project]
+    3. spring      - add Spring project Nature
+    4. java se-11 / project facts, build path
+    5. build path - add Libraries - JUnit 4
+    
+2. pom.xml 에  jar 파일 다운로드 받기
+
+3. root-context 에   내용설정
+   1) DataSource
+   2) Mybatis
+   3) Mapper
+4. 각종 설정파일들설정
+    com.the703.dao   - @Mapper 
+    com.the703.dto    
+    config       
+      ㄴ db.properties
+      ㄴ mybatis-config.xml
+      ㄴ test-mapper.xml
+      ㄴ board-mapper.xml
+5. 테스트파일설정
+  
+6. test-mapper.xml
+select now()   
+    
+7. mvcboard
+mysql> desc mvcboard2;
++----------+---------------+------+-----+-------------------+-------------------+
+| Field    | Type          | Null | Key | Default           | Extra             |
++----------+---------------+------+-----+-------------------+-------------------+
+| bno      | int           | NO   | PRI | NULL              | auto_increment    |
+| bname    | varchar(20)   | NO   |     | NULL              |                   |
+| bpass    | varchar(50)   | NO   |     | NULL              |                   |
+| btitle   | varchar(1000) | NO   |     | NULL              |                   |
+| bcontent | text          | NO   |     | NULL              |                   |
+| bdate    | timestamp     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| bhit     | int           | NO   |     | 0                 |                   |
+| bip      | varchar(50)   | NO   |     | NULL              |                   |
++----------+---------------+------+-----+-------------------+-------------------+
+8 rows in set (0.00 sec)
+
+mysql>      

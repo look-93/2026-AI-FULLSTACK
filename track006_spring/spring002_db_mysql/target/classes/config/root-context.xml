@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
+
+	<!--   private String basePackage;
+  		   private Class<? extends Annotation> annotationClass;  -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.the703.dao" />
+		<property name="annotationClass" value="com.the703.dao.Mapper" /> 
+		<!-- @Mapper 어노테이션도 직접 우리가 설정할수도 있음  
+			즉 @Mapper이렇게 어노테이션 달면 MapperScannerConfigurer가 읽어들임
+		-->
+	</bean>
+
+	<!-- STEP2 mybatis 
+	db셋팅할거아니까 니가 처리해
+	
+	부품명
+	   ctrl+클릭
+	1. SqlSessionFactoryBeen : 스프링에서 SqlSession 객체들을 생성 및 관리
+	
+	  private Resource configLocation;	    - 설정파일
+	  private Resource[] mapperLocations;	- mapper.xml (sql 구문파일)
+	  private DataSource dataSource;		- db연동
+  
+	2. SqlSesstionTemplate : sql 구문처리(crud)	
+	
+	-->
+	
+	<!-- mybatis-config.xml / test.mapper.xml / userinfo.mapper.xml-->
+	<context:component-scan base-package="com.the703" />
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /> <!-- step1 id="dataSource" -->
+		<property name="configLocation" value="classpath:config/mybatis-config.xml" /> 
+		<property name="mapperLocations">
+			<list> <!-- java collection framework -->
+ 				<value>classpath:config/test.mapper.xml </value> 
+				<value>classpath:config/userinfo.mapper.xml </value>	
+			</list>		
+		</property>
+	</bean>
+	
+	<!-- 아이디값 첫 스펠링 무조건 소문자 -->
+	<!-- sql 구문처리(crud)	 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/> 
+	</bean>
+	
+	
+	<!-- 드라이버 연동해줄게  ctrl+클릭 -->
+<!-- 	public SimpleDriverDataSource(Driver driver, String url, String username, String password) {
+		setDriver(driver);
+		setUrl(url);
+		setUsername(username);
+		setPassword(password);
+	} -->
+	<!-- STEP1 dataSource - SimpleDriverDataSource : setter -->					
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mbasic" />
+		<property name="username"  value="root"/>
+		<property name="password" value="1234"/>
+	</bean> -->
+	
+	<!-- db.properties 작석 후 -->
+	<context:property-placeholder location="classpath:config/db.properties"/>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${db.driverClass}" />
+		<property name="url" value="${db.url}" />
+		<property name="username"  value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+	</bean>
+	
+</beans>
