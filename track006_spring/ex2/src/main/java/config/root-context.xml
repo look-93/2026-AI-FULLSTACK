@@ -24,7 +24,7 @@
 		<property name="mapperLocations">
 			<list> 
 				<value>classpath:config/test-mapper.xml </value>	
-				<!-- <value>classpath:config/board-mapper.xml </value>	 -->
+				<value>classpath:config/board-mapper.xml </value>
 			</list>		
 		</property>
 	</bean>

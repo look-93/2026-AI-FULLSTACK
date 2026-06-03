@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.mybatis.example.BlogMapper">
-  <select id="selectBlog" resultType="Blog">
-    select * from Blog where id = #{id}
-  </select>
+<mapper namespace="com.the703.dao.MvcBoardMapper">
+
+	<select id="selectAll" resultType="MvcBoardDto">
+		select * from mvcboard2
+	</select>
+
+	<select id="select" resultType="MvcBoardDto" parameterType="int">
+		select * from mvcboard2 where bno=#{bno}
+	</select>
+	
+	<insert id="insert" parameterType="MvcBoardDto">
+		insert into mvcboard2 (bname, bpass, btitle, bcontent, bdate, bhit, bip) 
+		value(#{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bdate}, #{bhit}, #{bip})
+	</insert>
+	
+	<update id="update" parameterType="MvcBoardDto">
+		update mvcboard2 set btitle=#{btitle} where bno=#{bno}
+	</update>
+	
+	<update id="delete" parameterType="int">
+		delete from mvcboard2 where bno=#{bno}
+	</update>
+
 </mapper>
