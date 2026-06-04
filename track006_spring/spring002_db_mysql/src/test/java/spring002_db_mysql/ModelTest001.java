@@ -56,7 +56,7 @@ public class ModelTest001 {
 	@Test
 	public void test6() {
 		// 5.삭제
-		System.out.println(userInfo.delete(2));
+//		System.out.println(userInfo.delete(2));
 		
 		// 4.수정
 //		UserInfoDto dto = new UserInfoDto();
@@ -73,6 +73,6 @@ public class ModelTest001 {
 		//dto.setAge(10); System.out.println(userInfo.insert(dto));	 
 
 		// 1. 전체검색
-		//System.out.println(userInfo.selectAll());
+		System.out.println(userInfo.selectAll());
 	}
 }

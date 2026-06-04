@@ -15,7 +15,7 @@
 -- desc userinfo_e;
 -- create table userinfo_e select * from userinfo where 1=2;
 -- alter table userinfo_e modify no int not null primary key auto_increment;
-
+alter table userinfo_e change name email varchar(100) not null ;
 -- >2. crud - insert, select, update, delete
 -- insert : 
 insert into userinfo_e(email,age) values (?,?);
@@ -31,3 +31,18 @@ where no = ?;
 -- delete (해당번호 삭제) : 
 delete from userinfo_e where no = ?;
 
+use mbasic;
+CREATE TABLE mvcboard2 (
+    bno INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    bname VARCHAR(20) NOT NULL,
+    bpass VARCHAR(50) NOT NULL,
+    btitle VARCHAR(1000) NOT NULL,
+    bcontent TEXT NOT NULL,
+    bdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    bhit INT NOT NULL DEFAULT 0,
+    bip VARCHAR(50) NOT NULL
+);
+
+
+desc users;
+select*from users;
