@@ -13,16 +13,20 @@
 	</select>
 	
 	<insert id="insert" parameterType="MvcBoardDto">
-		insert into mvcboard2 (bname, bpass, btitle, bcontent, bdate, bhit, bip) 
-		value(#{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bdate}, #{bhit}, #{bip})
+		insert into mvcboard2 (bname, bpass, btitle, bcontent, bip) 
+		value(#{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip})
 	</insert>
 	
 	<update id="update" parameterType="MvcBoardDto">
-		update mvcboard2 set btitle=#{btitle} where bno=#{bno}
+		update mvcboard2 set btitle=#{btitle} where bno=#{bno} and bpass=#{bpass}
 	</update>
 	
-	<update id="delete" parameterType="int">
-		delete from mvcboard2 where bno=#{bno}
-	</update>
+	<delete id="delete" parameterType="MvcBoardDto">
+		delete from mvcboard2 where bno=#{bno} and bpass=#{bpass}
+	</delete>
+	
+	<select id="detail" parameterType="int"  resultType="MvcBoardDto">
+		select * from mvcboard2 where bno=#{bno}
+	</select>	
 
 </mapper>

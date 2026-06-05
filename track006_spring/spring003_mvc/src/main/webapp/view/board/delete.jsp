@@ -4,9 +4,25 @@
 <!-- 	header		 -->
 <!-- 	header		 -->
 
+<script>
+window.addEventListener("load", function(){
+	let result = '${result}' //el문법
+		//console.log(result);
+		
+		if(result == "비빌번호 확인"){
+			// 알림창 띄우고 뒤로가기
+			alert(result); 
+			history.go(-1); 
+		}else if(result.length != 0){
+			alert(result)
+		}
+})
+
+</script>
+
    <div class="container  my-5">
       <h3 >글 삭제</h3>
-      <form  action ="#"  method="post"   onsubmit="return checkForm()"> 
+      <form  action ="${pageContext.request.contextPath}/board/delete.do?bno=${param.bno}"  method="post"   onsubmit="return checkForm()"> 
       	<div  class="my-3">
       		<label for="bpass"   class="form-label">비밀번호</label>
       		<input type="password"   class="form-control"    id="bpass"  name="bpass"  />

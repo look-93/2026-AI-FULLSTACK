@@ -12,35 +12,42 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.the703.dao" />
-		<property name="annotationClass" value="com.the703.dao.Mapper" /> 
+		<property name="annotationClass"
+			value="com.the703.dao.Mapper" />
 
 	</bean>
 
-	<!-- mybatis-config.xml / test.mapper.xml / userinfo.mapper.xml-->
-	<context:component-scan base-package="com.the703" />
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- mybatis-config.xml / test.mapper.xml / userinfo.mapper.xml -->
+	<context:component-scan
+		base-package="com.the703" />
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /> <!-- step1 id="dataSource" -->
-		<property name="configLocation" value="classpath:config/mybatis-config.xml" /> 
+		<property name="configLocation"
+			value="classpath:config/mybatis-config.xml" />
 		<property name="mapperLocations">
-			<list> 
-				<value>classpath:config/test-mapper.xml </value>	
+			<list>
+				<value>classpath:config/test-mapper.xml </value>
 				<value>classpath:config/board-mapper.xml </value>
-			</list>		
+			</list>
 		</property>
 	</bean>
-	
 
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"/> 
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	
 
-	<context:property-placeholder location="classpath:config/db.properties"/>
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+
+	<context:property-placeholder
+		location="classpath:config/db.properties" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="${db.driverClass}" />
 		<property name="url" value="${db.url}" />
-		<property name="username"  value="${db.username}"/>
-		<property name="password" value="${db.password}"/>
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
 	</bean>
 
 

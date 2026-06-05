@@ -9,6 +9,7 @@ public interface MvcBoardMapper {
 	public List<MvcBoardDto> selectAll();
 	public MvcBoardDto select(int bno);
 	public int insert(MvcBoardDto dto);
-	public int delete(int bno);
+	public int delete(MvcBoardDto dto);
+	public MvcBoardDto detail(int bno);
 	public int update(MvcBoardDto dto);
 }

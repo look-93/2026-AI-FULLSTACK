@@ -7,7 +7,7 @@
    <div class="container  my-5">
       <h3>글 등록</h3>
       <!--  	1. 처리 : write_action.jsp  2. 데이터 주소표시창줄 노출 x  3. 보관용기이름 file이름   -->
-      <form  action ="write_action.jsp"  method="post"   onsubmit="return checkForm()">
+      <form  action = "${pageContext.request.contextPath}/board/write.do"  method="post"   onsubmit="return checkForm()">
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
       		<input type="text"   class="form-control"    id="bname"  name="bname"  />

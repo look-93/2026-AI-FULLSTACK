@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.the703.dao.MvcBoardMapper;
 import com.the703.dao.TestMapper;
 import com.the703.dto.MvcBoardDto;
+import com.the703.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/root-context.xml")
@@ -24,13 +25,44 @@ public class ModelTest001 {
 	@Autowired SqlSession sqlSession;
 	@Autowired TestMapper test;
 	@Autowired MvcBoardMapper mvcBoardMapper;
+	@Autowired BoardService boardService;
+	
+	@Test
+	public void test7() {
+		//삭제
+		//System.out.println(boardService.delete(2));
+		
+		
+		//수정
+		/*MvcBoardDto dto = new MvcBoardDto();
+		dto.setBtitle("TEST");
+		dto.setBno(2);
+		System.out.println(boardService.edit(dto));*/
+		
+		
+		//검색
+		//System.out.println(boardService.detail(2));
+	
+		
+		//삽입
+		/*MvcBoardDto dto = new MvcBoardDto();
+		dto.setBname("haha");
+		dto.setBpass("123");
+		dto.setBtitle("title");
+		dto.setBcontent("content");
+		dto.setBdate("2026-06-04");
+		System.out.println(boardService.insert(dto));*/
+		
+		//전체리스트
+		System.out.println(boardService.selectAll());
+	}
 	
 	@Ignore //@Test
 	public void test1() {
 		System.out.println(test.now());
 	}
 	
-	@Test
+	@Ignore //@Test
 	public void test2() {
 		System.out.println(mvcBoardMapper.selectAll());
 	}
@@ -61,8 +93,8 @@ public class ModelTest001 {
 		System.out.println(mvcBoardMapper.update(dto));
 	}
 	
-	@Ignore //@Test
-	public void test6() {
-		System.out.println(mvcBoardMapper.delete(1));
-	}
+//	@Ignore //@Test
+//	public void test6() {
+//		System.out.println(mvcBoardMapper.delete(1));
+//	}
 }

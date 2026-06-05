@@ -7,10 +7,10 @@
 
    <div class="container  my-5">
       <h3>글 수정</h3>
-      <form  action ="#"  method="post"   onsubmit="return checkForm()">
+      <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  method="post"   onsubmit="return checkForm()">
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
-      		<input type="text"   class="form-control"    id="bname"  name="bname"   readonly />
+      		<input type="text"   class="form-control" value="${dto.bname }"   id="bname"  name="bname"   readonly />
       	</div> 
       	<div  class="my-3">
       		<label for="bpass"   class="form-label">비밀번호</label>
@@ -18,11 +18,11 @@
       	</div>
       	<div  class="my-3">
       		<label for="btitle"  class="form-label">제목</label>
-      		<input type="text"   class="form-control"    id="btitle"  name="btitle"  />
+      		<input type="text"   class="form-control" value="${dto.btitle }"   id="btitle"  name="btitle"  />
       	</div>
       	<div  class="my-3">
       		<label for="bcontent"  class="form-label">내용</label>
-      		<textarea  class="form-control"    id="bcontent"  name="bcontent"  ></textarea>
+      		<textarea  class="form-control"  id="bcontent"  name="bcontent"  >${dto.bcontent }</textarea>
       	</div>
       	<div  class="my-3  text-end"> 
       		<button type="reset"   class="btn btn-outline-primary"  title="글수정취소">취소</button>
