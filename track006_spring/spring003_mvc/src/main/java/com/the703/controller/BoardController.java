@@ -44,7 +44,8 @@ public class BoardController {
 	//■3.글 상세보기
 	@RequestMapping("/board/detail.do")
 	public String detail(int bno,Model model) {
-		model.addAttribute("dto", service.detail(bno));
+		service.updateBhit(bno);
+		model.addAttribute("dto", service.detail(bno));		
 		return "board/detail"; // /view(폴더)/board(폴더)/list(파일명).jsp(확장자)
 	}
 	
@@ -62,9 +63,11 @@ public class BoardController {
 		
 		if(service.edit(dto) > 0) {
 			result ="글수정 성공!";
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/board/detail.do?bno=" + dto.getBno();
 		}		
 		rttr.addFlashAttribute("result", result);
-		return "redirect:/board/detail.do?bno=" + dto.getBno(); // /view(폴더)/board(폴더)/list(파일명).jsp(확장자)
+		return "redirect:/board/edit.do?bno=" + dto.getBno(); // /view(폴더)/board(폴더)/list(파일명).jsp(확장자)
 	}	
 	
 	//■5.글삭제 폼경로
@@ -80,12 +83,12 @@ public class BoardController {
 
 		if(service.delete(dto)>0) {
 			result = "글삭제 성공";
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/board/list.do";		
 		}
 		
 		rttr.addFlashAttribute("result", result);
-		return "redirect:/board/list.do";
-		
-
+		return "redirect:/board/delete.do?bno="+ dto.getBno();	
 	}	
-
+	
 }

@@ -57,4 +57,10 @@ public class BoardServiceImpl implements BoardService {
 		return result;
 	}
 
+	@Override
+	public int updateBhit(int bno) {
+		
+		return dao.updateBhit(bno);
+	}	
+
 }

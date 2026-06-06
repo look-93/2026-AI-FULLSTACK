@@ -17,4 +17,6 @@ public interface BoardService {
 	public int edit(MvcBoardDto dto);
 	//■5. 글삭제 기능	- 비밀번호가 맞는지 확인 후 글삭제
 	public int delete(MvcBoardDto dto);
+	
+	public int updateBhit(int bno);
 }

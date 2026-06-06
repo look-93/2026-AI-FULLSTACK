@@ -18,7 +18,7 @@
 	</insert>
 	
 	<update id="update" parameterType="MvcBoardDto">
-		update mvcboard2 set btitle=#{btitle} where bno=#{bno} and bpass=#{bpass}
+		update mvcboard2 set btitle=#{btitle}, bcontent=#{bcontent}  where bno=#{bno} and bpass=#{bpass}
 	</update>
 	
 	<delete id="delete" parameterType="MvcBoardDto">
@@ -27,6 +27,11 @@
 	
 	<select id="detail" parameterType="int"  resultType="MvcBoardDto">
 		select * from mvcboard2 where bno=#{bno}
-	</select>	
+	</select>
+	
+	<!-- 조회수 올리기 -->
+	<update id="updateBhit" parameterType="int">
+		update mvcboard2 set bhit = bhit+1 where bno=#{bno} 	
+	</update>
 
 </mapper>

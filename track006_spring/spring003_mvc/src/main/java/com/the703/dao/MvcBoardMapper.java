@@ -12,4 +12,5 @@ public interface MvcBoardMapper {
 	public int delete(MvcBoardDto dto);
 	public MvcBoardDto detail(int bno);
 	public int update(MvcBoardDto dto);
+	public int updateBhit(int bno);
 }

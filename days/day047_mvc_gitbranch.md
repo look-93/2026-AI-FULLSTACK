@@ -9,7 +9,7 @@
 ### ■3. spring
 spring003_mvc 연장
 
-# service (db+view 연동)
+- service (db+view 연동)
 1. com.the703.service
 2. interface 
     - BoardService.java
@@ -71,7 +71,7 @@ spring003_mvc 연장
 
     ```
 
-# git branch
+- git branch
 ■1.  git branch
 
 🛠️ 팀장 작업 흐름

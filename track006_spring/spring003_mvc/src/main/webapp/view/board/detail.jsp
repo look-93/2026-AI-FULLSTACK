@@ -4,6 +4,18 @@
 <%@include file="../inc/header.jsp"  %>
 <!-- 	header		 -->
 <!-- 	header		 -->
+<script>
+window.addEventListener("load", function(){
+	let result = '${result}' //el문법
+		//console.log(result);
+		
+		if(result == "비빌번호 확인"){
+			alert(result);  
+		}else if(result.length != 0){
+			alert(result)
+		}
+})
+</script>
    <div class="container my-5">
       <h3>글 상세보기</h3>
       <form  action ="#"  method="post">

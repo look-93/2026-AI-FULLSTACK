@@ -4,7 +4,18 @@
 <%@include file="../inc/header.jsp"  %>
 <!-- 	header		 -->
 <!-- 	header		 -->
-
+<script>
+window.addEventListener("load", function(){
+	let result = '${result}' //el문법
+		//console.log(result);
+		
+		if(result == "비빌번호 확인"){
+			alert(result);  
+		}else if(result.length != 0){
+			alert(result)
+		}
+})
+</script>
    <div class="container  my-5">
       <h3>글 수정</h3>
       <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  method="post"   onsubmit="return checkForm()">
