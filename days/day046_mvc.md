@@ -109,11 +109,7 @@ HikariCp: 연결해주는 소켓 만들어놓고 꺼내쓰고 반납 close() 안
         <artifactId>log4j-api</artifactId>
         <version>2.17.2</version>
     </dependency>
-    <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-slf4j-impl</artifactId>
-        <version>2.17.2</version>
-    </dependency>
+
     ```
 
  5. 테스트진행

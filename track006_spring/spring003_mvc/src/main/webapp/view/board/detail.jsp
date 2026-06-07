@@ -6,11 +6,13 @@
 <!-- 	header		 -->
 <script>
 window.addEventListener("load", function(){
-	let result = '${result}' //el문법
+	let result = '${result}'; //el문법
 		//console.log(result);
-		
+		console.log("result =", result);
+
 		if(result == "비빌번호 확인"){
-			alert(result);  
+			alert(result); 
+			history.go(-1);
 		}else if(result.length != 0){
 			alert(result)
 		}

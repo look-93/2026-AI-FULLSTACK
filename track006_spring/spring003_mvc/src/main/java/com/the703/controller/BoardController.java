@@ -24,8 +24,7 @@ public class BoardController {
 	
 	//■2. 글쓰기 폼경로
 	@RequestMapping(value="board/write.do", method = RequestMethod.GET)
-	public String write(Model model) {
-		model.addAttribute("list", service.selectAll());
+	public String write() {
 		return "board/write"; // /view(폴더)/board(폴더)/list(파일명).jsp(확장자)
 	}
 	
@@ -84,6 +83,8 @@ public class BoardController {
 		if(service.delete(dto)>0) {
 			result = "글삭제 성공";
 			rttr.addFlashAttribute("result", result);
+			
+			
 			return "redirect:/board/list.do";		
 		}
 		
