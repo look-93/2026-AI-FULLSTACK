@@ -86,7 +86,7 @@ git clone https://github.com/sally03915/2026-ai_branch.git
 cd 2026-ai_branch
 
 2. 브랜치 생성하기
-git branch              - 브랜치 확인
+git branch -a             - 브랜치 확인
 git checkout -b feature-브랜치이름
 git branch 브랜치명     -- 브랜치바꾸기
 

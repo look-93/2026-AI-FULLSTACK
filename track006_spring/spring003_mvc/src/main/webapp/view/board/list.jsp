@@ -20,28 +20,55 @@ window.addEventListener("load" , function(){
         <h3> MultiBoard </h3>
         <pre>
         페이징: ${paging }
-        전체리스트:${list }
+        전체리스트:${pstartno }
         </pre>
         <table  class="table  table-striped  table-bordered table-hover">
-            <caption> BOARD 목록 </caption>
-           
-            
+            <caption> BOARD 목록 </caption>          
+            <thead>
+                <tr>
+                    <th scope="col">NO</th>
+                    <th scope="col">TITLE</th>
+                    <th scope="col">WRITER</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">HIT</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<c:forEach var="item" items="${list}" varStatus="status">
+            		<tr>
+  
+            			<td>${list.size()-(list.size()-status.index-1) + paging.pstartno}</td>
+            			<td><a href="${pageContext.request.contextPath }/board/detail.do?bno=${item.bno}">${item.btitle}</a> </td>
+            			<td>${item.bcontent}</td>
+            			<td>${item.bdate}</td>
+            			<td>${item.bhit}</td>
+            			
+            		</tr>
+            	</c:forEach>
             </tbody>
-            	<tfoot><tr><td colspan="5">
+            	<tfoot>
+            	<tr><td colspan="5">
             	<ul class="pagination  justify-content-center"> 
             		<!-- 이전 -->
-            		<!-- 1,2,3,4,5,6 -->
+            		<li class="page-item " onclick="goPrevious()">
+            			<a class="page-link" href="#"> < </a>
+            		</li>
+            		
+            		<!-- 1,2,3,4,5,6 -->            		
             		<c:forEach var="i" begin="${paging.start}" end="${paging.end}">
             			<li class="page-item <c:if test="${i==paging.current}"> active </c:if>">
             				<a href="?pstartno=${i}" class="page-link">${i}</a>
             			</li>
             		</c:forEach>
+            		
             		<!-- 다음 -->
-            	</ul></td></tr>
-            	</tfoot>
-            	
+            		<li class="page-item" onclick="goNext()">
+            			<a class="page-link" href="#"> > </a>
+            		</li>
+            	</ul>
+            	</td></tr>
+            	</tfoot>          	
 
-            
         </table>
 
         <div  class="text-end">
@@ -49,6 +76,26 @@ window.addEventListener("load" , function(){
         </div>
 
     </section>
+    <script>
+    	function goPrevious(){
+    		const current = ${paging.current}
+    		console.log(current)
+    		if(current > 1 ){
+    			//alert("ddd")
+    			location.href="?pstartno=" + (current -1)
+    		}
+    		
+    	}
+    	
+    	function goNext(){
+    		const current = ${paging.current} 
+    		const pagetotal = ${paging.pagetotal} 
+    		if(current < pagetotal){
+    			location.href="?pstartno=" + (current + 1)
+    		}    		
+    	}
+    
+    </script>
 
  
 <!-- 	footer		 -->

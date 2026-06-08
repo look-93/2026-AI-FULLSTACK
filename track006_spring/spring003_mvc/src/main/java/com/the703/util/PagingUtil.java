@@ -16,7 +16,7 @@ public class PagingUtil {
 	private int start;			//#7) 시작 11
 	private int end;			//#8) 마지막 20
 	
-	public PagingUtil(int listtotal, int pagetotal) { //전체페이지수, 시작하는 번호 1 2 3 4 5...
+	public PagingUtil(int listtotal, int pstartno) { //전체페이지수, 시작하는 번호 1 2 3 4 5...
 		super();
 		this.listtotal = listtotal; //#1
 		this.onepagelist = 10; // #2
