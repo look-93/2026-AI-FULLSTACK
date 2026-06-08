@@ -1,46 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>   
+	pageEncoding="UTF-8"%>
 
-<%@include file="../inc/header.jsp"  %>
+<%@include file="../inc/header.jsp"%>
 <!-- 	header		 -->
 <!-- 	header		 -->
 <script>
-window.addEventListener("load", function(){
-	let result = '${result}'; //el문법
-		//console.log(result);
-		console.log("result =", result);
+	window.addEventListener("load", function() {
+		let result = '${result}'; // el
+		console.log(result);
 
-		if(result == "비빌번호 확인"){
-			alert(result); 
+		if (result == "비밀번호 확인!" || result == "이미 등록된 이미지입니다.") {
+			alert(result);
 			history.go(-1);
-		}else if(result.length != 0){
-			alert(result)
+		} // 알림창, 뒤로 가기
+		else if (result.length != 0) {
+			alert(result);
 		}
-})
+	});
 </script>
-   <div class="container my-5">
-      <h3>글 상세보기</h3>
-      <form  action ="#"  method="post">
-      	<div  class="my-3">
-      		<label for="bname"   class="form-label">이름</label>
-      		<input type="text"   class="form-control"  value="${dto.bname}"  id="bname"  name="bname"   readonly />
-      	</div>  
-      	<div  class="my-3">
-      		<label for="btitle"  class="form-label">제목</label>
-      		<input type="text"   class="form-control"  value="${dto.btitle}"  id="btitle"  name="btitle"   readonly />
-      	</div>
-      	<div  class="my-3">
-      		<label for="bcontent"  class="form-label">내용</label>
-      		<textarea  class="form-control"  id="bcontent"  name="bcontent"  readonly >${dto.bcontent}</textarea>
-      	</div>
-      	<div  class="my-3  text-end"> 
-      		<a href="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}" class="btn btn-outline-primary"  title="글수정">수정</a>
-      		<a href="${pageContext.request.contextPath}/board/delete.do?bno=${dto.bno}" class="btn btn-outline-primary" class="btn btn-outline-success"  title="글삭제">삭제</a>
-      		<a href="${pageContext.request.contextPath}/board/list.do" class="btn btn-outline-primary"    class="btn btn-primary"  title="목록보러가기">목록</a>
-      	</div>
-      </form> 
-		 
-   </div>
+<div class="container my-5">
+	<h3>글 상세보기</h3>
+	<form action="#" method="post">
+		<div class="my-3">
+			<label for="bname" class="form-label">이름</label> <input type="text"
+				class="form-control" value="${dto.bname}" id="bname" name="bname"
+				readonly />
+		</div>
+		<div class="my-3">
+			<label for="btitle" class="form-label">제목</label> <input type="text"
+				class="form-control" value="${dto.btitle}" id="btitle" name="btitle"
+				readonly />
+		</div>
+		<div class="my-3">
+			<label for="bcontent" class="form-label">내용</label>
+			<textarea class="form-control" id="bcontent" name="bcontent" readonly>${dto.bcontent}</textarea>
+		</div>
+		<div class="my-3">
+			<img src="${pageContext.request.contextPath}/upload/${dto.bfile}" alt="${dto.btitle}" class="w-50"/>
+		</div>
+		<div class="my-3  text-end">
+			<a
+				href="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"
+				class="btn btn-outline-primary" title="글수정">수정</a> <a
+				href="${pageContext.request.contextPath}/board/delete.do?bno=${dto.bno}"
+				class="btn btn-outline-primary" class="btn btn-outline-success"
+				title="글삭제">삭제</a> <a
+				href="${pageContext.request.contextPath}/board/list.do"
+				class="btn btn-outline-primary" class="btn btn-primary"
+				title="목록보러가기">목록</a>
+		</div>
+	</form>
+
+</div>
 <!-- 	footer		 -->
 <!-- 	footer		 -->
-<%@include file="../inc/footer.jsp"  %>
+<%@include file="../inc/footer.jsp"%>

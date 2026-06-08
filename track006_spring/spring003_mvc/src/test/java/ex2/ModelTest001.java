@@ -1,5 +1,7 @@
 package ex2;
 
+import java.util.HashMap;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,7 +29,20 @@ public class ModelTest001 {
 	@Autowired MvcBoardMapper mvcBoardMapper;
 	@Autowired BoardService boardService;
 	
+	
 	@Test
+	public void test8() {
+		//최신글 10개씩
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("start", 0);
+		map.put("end", 10);
+		System.out.println(mvcBoardMapper.select10(map));
+		
+		
+		System.out.println(mvcBoardMapper.selectCnt());
+	}
+	
+	@Ignore //@Test
 	public void test7() {
 		//삭제
 		//System.out.println(boardService.delete(2));

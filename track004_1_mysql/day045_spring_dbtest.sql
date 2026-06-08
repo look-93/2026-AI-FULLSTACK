@@ -44,5 +44,16 @@ CREATE TABLE mvcboard2 (
 );
 
 
-desc users;
-select*from users;
+desc mvcboard2;
+select*from mvcboard2;
+
+select bname, bpass, btitle, bcontent, bip, bfile from mvcboard2;
+
+alter table mvcboard2 add bfile varchar(500) null default "the703.png";
+
+insert into mvcboard2(bname, bpass, btitle, bcontent, bip, bfile) 
+select bname, bpass, btitle, bcontent, bip, bfile from mvcboard2;
+
+select count(*) as cnt from mvcboard2;
+
+select * from mvcboard2 order by bno desc limit 10 ;

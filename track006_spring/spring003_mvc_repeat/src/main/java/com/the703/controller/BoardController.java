@@ -64,7 +64,7 @@ public class BoardController {
 		rttr.addFlashAttribute("result", result);
 		return "redirect:/board/edit.do?bno="+dto.getBno();
 	}
-	
+		
 	@RequestMapping(value="/board/delete.do", method = RequestMethod.GET)
 	public String delete() {
 		return "board/delete";

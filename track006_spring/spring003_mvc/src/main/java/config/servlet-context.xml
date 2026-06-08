@@ -12,18 +12,27 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
 
 
-	
+
 	<!-- MVC Controller -->
-	<context:component-scan base-package="com.the703" /> 
+	<context:component-scan
+		base-package="com.the703" />
 	<mvc:annotation-driven /> 		<!-- @Controller, @RequestMapping com.the703패키지에서 Controller 같은 해결사 찾아줄게 -->
-	<mvc:default-servlet-handler/> 	<!-- 이미지나 정적 리소스 -->
+	<mvc:default-servlet-handler /> 	<!-- 이미지나 정적 리소스 -->
 
 	<!-- View Resolver : 화면단처리 -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/view/" />
-		<property name="suffix" value=".jsp"/> <!-- 확장자 -->
-	
+		<property name="suffix" value=".jsp" /> <!-- 확장자 -->
 	</bean>
 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760"></property> <!-- 1kb=2^10 => 1mb=2^10*2^10=> 10MB -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	<!-- <mvc:resources mapping="/resources/upload/" location="/resources/upload/**" ></mvc:resources> -->
+
+	<mvc:resources mapping="/upload/**" location="file:///C:/file/"></mvc:resources>
 </beans>
  

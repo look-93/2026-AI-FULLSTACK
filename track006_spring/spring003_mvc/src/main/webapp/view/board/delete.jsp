@@ -4,19 +4,7 @@
 <!-- 	header		 -->
 <!-- 	header		 -->
 
-<script>
-window.addEventListener("load", function(){
-	let result = '${result}' //el문법
-		//console.log(result);
-		
-		if(result == "비빌번호 확인"){
-			// 알림창 띄우고 뒤로가기
-			alert(result);  
-		}else if(result.length != 0){
-			alert(result)
-		}
-})
-</script>
+
    <div class="container  my-5">
       <h3 >글 삭제</h3>
       <form  action ="${pageContext.request.contextPath}/board/delete.do?bno=${param.bno}"  method="post"   onsubmit="return checkForm()"> 

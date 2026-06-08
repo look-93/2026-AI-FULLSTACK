@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
+public class BasicController {
 	@RequestMapping("/")
 	public String index() {
 		//구동시작점 - db 컨트롤러 : index.jsp (원래 index.jsp)

@@ -13,4 +13,5 @@ public class MvcBoardDto {
 	private int bhit;
 	private String bip;
 	
+	private String bfile;
 }

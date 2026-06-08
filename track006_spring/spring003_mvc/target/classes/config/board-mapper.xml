@@ -13,16 +13,16 @@
 	</select>
 	
 	<insert id="insert" parameterType="MvcBoardDto">
-		insert into mvcboard2 (bname, bpass, btitle, bcontent, bip) 
-		value(#{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip})
+		insert into mvcboard2 (bname, bpass, btitle, bcontent, bip, bfile) 
+		value(#{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip}, #{bfile})
 	</insert>
 	
 	<update id="update" parameterType="MvcBoardDto">
-		update mvcboard2 set btitle=#{btitle}, bcontent=#{bcontent}  where bno=#{bno} and bpass=#{bpass}
+		update mvcboard2 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile}  where bno=#{bno} and bpass=#{bpass}
 	</update>
 	
-	<delete id="delete" parameterType="MvcBoardDto">
-		delete from mvcboard2 where bno=#{bno} and bpass=#{bpass}
+	<delete id="delete" parameterType="int">
+		delete from mvcboard2 where bno=#{bno} <!-- and bpass=#{bpass} -->
 	</delete>
 	
 	<select id="detail" parameterType="int"  resultType="MvcBoardDto">
@@ -33,5 +33,14 @@
 	<update id="updateBhit" parameterType="int">
 		update mvcboard2 set bhit = bhit+1 where bno=#{bno} 	
 	</update>
+	
+	<!-- paging -->
+	<select id="select10" resultType="MvcBoardDto" parameterType="java.util.HashMap">
+		select * from mvcboard2 order by bno desc limit #{start}, ${end}
+	</select>
+	
+	<select id="selectCnt" resultType="int">
+		select count(*) from mvcboard2
+	</select>
 
 </mapper>

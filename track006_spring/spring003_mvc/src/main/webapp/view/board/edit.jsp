@@ -4,21 +4,12 @@
 <%@include file="../inc/header.jsp"  %>
 <!-- 	header		 -->
 <!-- 	header		 -->
-<script>
-window.addEventListener("load", function(){
-	let result = '${result}' //el문법
-		//console.log(result);
-		
-		if(result == "비빌번호 확인"){
-			alert(result);  
-		}else if(result.length != 0){
-			alert(result)
-		}
-})
-</script>
+
    <div class="container  my-5">
       <h3>글 수정</h3>
-      <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  method="post"   onsubmit="return checkForm()">
+      <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  method="post"   onsubmit="return checkForm()"
+    	  enctype="multipart/form-data"
+      >
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
       		<input type="text"   class="form-control" value="${dto.bname }"   id="bname"  name="bname"   readonly />
@@ -35,6 +26,17 @@ window.addEventListener("load", function(){
       		<label for="bcontent"  class="form-label">내용</label>
       		<textarea  class="form-control"  id="bcontent"  name="bcontent"  >${dto.bcontent }</textarea>
       	</div>
+      	
+		<div class="my-3">
+			<label for="file" class="form-label">파일업로드</label> 
+			<input type="file" id="file" name="file" class="form-control" />
+		</div>		
+		
+		<div class="my-3">
+			<label for="bfile" class="form-label">파일업로드</label> 
+			<input type="text" id="bfile" name="bfile" value="${dto.bfile }" class="form-control" readonly />
+		</div>	
+				
       	<div  class="my-3  text-end"> 
       		<button type="reset"   class="btn btn-outline-primary"  title="글수정취소">취소</button>
       		<a href=""             class="btn btn-outline-success"  title="목록보러가기">목록</a>
