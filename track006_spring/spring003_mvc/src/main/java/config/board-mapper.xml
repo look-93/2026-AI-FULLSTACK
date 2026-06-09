@@ -18,7 +18,9 @@
 	</insert>
 	
 	<update id="update" parameterType="MvcBoardDto">
-		update mvcboard2 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile}  where bno=#{bno} and bpass=#{bpass}
+		update mvcboard2 
+		   set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile}  
+		 where bno=#{bno} and bpass=#{bpass}
 	</update>
 	
 	<delete id="delete" parameterType="int">

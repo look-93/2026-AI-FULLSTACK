@@ -24,8 +24,7 @@ public class UserServiceImpl implements UserService {
 			dto.setBip(InetAddress.getLocalHost().getHostAddress());
 			dto.setBpass(pwencoder.encode(dto.getBpass()));
 		} catch (UnknownHostException e) {
-			//e.printStackTrace();
-			System.out.println(dto.getBip());
+			e.printStackTrace();
 		}
 		
 		return dao.insert(dto);
