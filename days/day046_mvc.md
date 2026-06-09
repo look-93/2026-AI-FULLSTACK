@@ -132,7 +132,7 @@ HikariCp: 연결해주는 소켓 만들어놓고 꺼내쓰고 반납 close() 안
     ```
 
 # spring003_mvc
-    - ex2 복사 후 프로젝트 변경
+    - ex2 복사 후 프로젝트 변경(안전한복사)
       * 복사해서 만든 프로젝트는 아래 진행
         - properties -> web project setting -> context root -> spring003_mvc
         - pom.xml 수정
@@ -140,6 +140,11 @@ HikariCp: 연결해주는 소켓 만들어놓고 꺼내쓰고 반납 close() 안
             <groupId>spring003_mvc</groupId>
             <artifactId>spring003_mvc</artifactId>
             ```
+        - web.xml 수정
+            ```
+            <display-name>spring003_mvc</display-name>
+            ```
+            
 
     - pom.xml 추가
         - spring-webmvc

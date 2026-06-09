@@ -20,7 +20,7 @@ window.addEventListener("load" , function(){
         <h3> MultiBoard </h3>
         <pre>
         페이징: ${paging }
-        전체리스트:${pstartno }
+        전체리스트:${list }
         </pre>
         <table  class="table  table-striped  table-bordered table-hover">
             <caption> BOARD 목록 </caption>          
@@ -36,8 +36,11 @@ window.addEventListener("load" , function(){
             <tbody>
             	<c:forEach var="item" items="${list}" varStatus="status">
             		<tr>
-  
-            			<td>${list.size()-(list.size()-status.index-1) + paging.pstartno}</td>
+            		<!-- 1. 256(전체갯수)-1 
+            			 2. 전체개수-0 224~215 / 전체갯수-20 214~205 /  전체갯수-30 204~195        			 
+            		-->
+  						<td>${paging.listtotal - paging.pstartno - status.index }</td>
+            			<%-- <td>${list.size()-(list.size()-status.index-1) + paging.pstartno}</td> --%>
             			<td><a href="${pageContext.request.contextPath }/board/detail.do?bno=${item.bno}">${item.btitle}</a> </td>
             			<td>${item.bcontent}</td>
             			<td>${item.bdate}</td>
@@ -50,9 +53,14 @@ window.addEventListener("load" , function(){
             	<tr><td colspan="5">
             	<ul class="pagination  justify-content-center"> 
             		<!-- 이전 -->
-            		<li class="page-item " onclick="goPrevious()">
+            		<c:if test="${paging.start > paging.bottomlist}" > 
+	            		<li class="page-item">
+	            			<a class="page-link" href="?pstartno= ${paging.start-1}"> < </a>
+	            		</li>
+            		</c:if>            		
+<!--             		<li class="page-item " onclick="goPrevious()">
             			<a class="page-link" href="#"> < </a>
-            		</li>
+            		</li> -->
             		
             		<!-- 1,2,3,4,5,6 -->            		
             		<c:forEach var="i" begin="${paging.start}" end="${paging.end}">
@@ -62,9 +70,14 @@ window.addEventListener("load" , function(){
             		</c:forEach>
             		
             		<!-- 다음 -->
-            		<li class="page-item" onclick="goNext()">
+            		<c:if test="${paging.pagetotal > paging.end}" > 
+	            		<li class="page-item">
+	            			<a class="page-link" href="?pstartno= ${paging.end+1}"> > </a>
+	            		</li>
+            		</c:if>
+            		<!--             		<li class="page-item" onclick="goNext()">
             			<a class="page-link" href="#"> > </a>
-            		</li>
+            		</li> -->
             	</ul>
             	</td></tr>
             	</tfoot>          	

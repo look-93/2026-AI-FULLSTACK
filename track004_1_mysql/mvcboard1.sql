@@ -51,7 +51,12 @@ desc users;
 -- udate  timestamp  not null default  CURRENT_TIMESTAMP,
 -- bip varchar(50 )not null
 -- );
+
+insert into users (nickname, bpass, email, mobile,  bip)
+value("ddd", "111","dd@gmail.com", "010-1111-1111",  "00");
+
 select*From users;
+-- truncate table users;
 select * from users where email="dd@dd1" and nickname="1";
 -- 회원가입
 -- insert into users (nickname, bpass, email, mobile) value(?,?,?,?,?);

@@ -194,9 +194,9 @@ ioc인 경우 - [ 개발자 ← ( Class A)
 
 
 ```
-
+------------------
 # 5.   MVC
-
+------------------
 ▶STEP1. MVC
 >> 서로 영향없이 쉽게 고칠수 있는 애플리케이션을 만들수 있음.
 - MODEL   데이터 ( dto, dao, service )
@@ -235,7 +235,57 @@ ioc인 경우 - [ 개발자 ← ( Class A)
 ⑥ View 응답생성 - response
 
 
+------------------
+# 6.security
+------------------
+▶ 1. Security?
+ - 애플리케이션의 보안(인증, 인가)을 담당
+ - Filter의 흐름에 따라 처리
+
+▶ 2. 인증  VS  인가
+ - 인증  Authentication - [본인]이 맞는지 확인
+ - 인가  Authorization  - 인증된사용자가 [접근가능]
+
+▶ 3. Security 아키텍쳐
+
+=====================
+       ② [UsernamePasswordAuthentication Token]
+          ↓
+① Http Request  →     [AuthenticationFilter] ③ ...  →  [Authentication  Manager]
+         ↓⑩               ⑨     ←
+          [SecurityContextHolder]
+=====================
+
+-1. 사용자가 로그인 폼태그 시도 (username + password 전달)
+-2. UsernamePasswordAuthentication 요청정보  Authentication 를 생성
+-3. Authentication 인증처리
+★UsernamePasswordAuthentication
+
+-10. 인증 완료가 [사용자정보]   SecurityContextHolder 담기
+    - AuthenticationSuccessHandler   를 실행( 성공 )
+    - AuthenticationFailureHandler   를 실행( 실패 )
+
+=====================
+ [AuthenticationFilter] ③   → [Authentication  Manager] → ④[AuthenticationProvider(s)]
+                                            ← ⑨       ↑   ↓⑤   
+                     ↑                            [ UserDetailsService ]    
+                        ProviderManager                ↑   ↓⑥
+                                                 [ UserDetails ]   
+
+=====================
+-4. Authentication  Manager  인증담당
+★UsernamePasswordAuthentication  Token은 Provider를 찾는데 사용
+ 
+AuthenticationProvider
+★ 로그인정보 DB정보와 비교
+
+UserDetailsService
+★ DB에 있는 [사용자정보]가져오기
+
 -------------------------------------
+
+
+
 
 
 # jar 파일 다운후(dependence) db연동 xml 설정파일 (보통 한번 설정하면 변경x)

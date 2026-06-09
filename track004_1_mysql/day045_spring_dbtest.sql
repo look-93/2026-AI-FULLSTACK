@@ -56,4 +56,4 @@ select bname, bpass, btitle, bcontent, bip, bfile from mvcboard2;
 
 select count(*) as cnt from mvcboard2;
 
-select * from mvcboard2 order by bno desc limit 10 ;
+

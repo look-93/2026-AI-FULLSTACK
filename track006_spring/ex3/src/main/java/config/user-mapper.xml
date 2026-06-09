@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.the703.dao.UserMapper">
+	
+	<!-- 회원가입 -->
+  <insert id="insert" parameterType="UserDto">
+    insert into users (nickname, bpass, email, mobile,  bip)
+    value(#{nickname}, #{bpass}, #{email}, #{mobile},  #{bip})
+  </insert>
+  
+  <!-- 로그인 -->
+  <select id="findLogin" parameterType="UserDto" resultType="int">
+	select count(*) from users where email=#{email} and bpass=#{bpass}
+  </select>
+  
+  <!-- 마이페이지 -->
+  <select id="findMypage" parameterType="int" resultType="UserDto">
+	select * from users where uno = #{uno}
+  </select>
+  
+  <!-- 중복검사 -->
+  <select id="findEmail" parameterType="string" resultType="string">
+ 	select email from users where email=#{email}
+  </select>
+  
+  <!-- authorities -->
+  <!-- authorities -->
+  <insert   id="insertAuth"  parameterType="AuthDto">
+     insert into  authorities (email, auth) values ( #{email} , #{auth} ) 
+  </insert>
+  <select     resultMap="authListMap"   id="readAuth"  parameterType="AuthDto">
+     select     u.email,  u.bpass,  a.auth
+     from      users u    left   join authorities a    on u.email   = a.email  
+     where     u.email =#{email} 
+  </select>
+  <resultMap  id="authListMap"          type="AuthListDto">
+       <result  property="email"         column="email"  />
+       <result  property="bpass"         column="bpass"  />
+       <collection  property="authList"  resultMap="authMap"  />
+  </resultMap>
+  <resultMap  id="authMap"       type="AuthDto" >
+       <result  property="email"     column="email"  />
+       <result  property="auth"      column="auth"   />
+  </resultMap> 
+</mapper>
+
+
+<!-- 1)  insert 구문찾기    first@gmail.com  /  ROLE_MEMBER
+     insert into  authorities (email, auth) values ( #{email} , #{auth} ) 
+
+2)  JOIN 이용해서    first@gmail.com의   email, bpass, auth 필드값찾기 
+  select     u.email,  u.bpass,  a.auth
+  from      users u    left   join authorities a    on u.email   = a.email  
+  where     u.email =#{email}  -->
