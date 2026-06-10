@@ -16,6 +16,7 @@ public class CustomUser extends User{ //## 사용자정보
 
 	private static final long serialVersionUID = 8898560806394691845L;
 	AuthListDto dto;
+	//String email;
 	
 	//2. 유저아이디와 비밀번호를 받아서 권한이 있는지 체크
 	public CustomUser(String username, 
@@ -33,7 +34,7 @@ public class CustomUser extends User{ //## 사용자정보
 			  .map(auth->new SimpleGrantedAuthority(auth.getAuth()))
 			  .collect(Collectors.toList()) 
 			 );
-		
+		//email = dto.getEmail(); 이렇게하면 jsp -> principal.dto.email
 		this.dto = dto; // dto에 꽂아줌 
 	}	
 }

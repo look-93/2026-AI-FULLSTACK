@@ -47,7 +47,7 @@
 	<!-- ver-2 authentication-manager-->
 	<security:authentication-manager>
 		<security:authentication-provider user-service-ref="custonUserDetailsService">
-			<security:password-encoder ref="passwordEncoder" /> <!-- 암호화된 비밀번호 -->
+			<security:password-encoder ref="passwordEncoder" /> <!-- 암호화된 비밀번호를 비교하기 위해-->
 		</security:authentication-provider>
 	</security:authentication-manager>
 	

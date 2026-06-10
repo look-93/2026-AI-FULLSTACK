@@ -20,7 +20,8 @@ public class CustonUserDetailsService implements UserDetailsService{
 		AuthDto adto = new AuthDto(); adto.setEmail(username); 
 		AuthListDto dto = userService.readAuth(adto);
 		
-		return dto == null ? null : new CustomUser(dto);
+		return dto == null ? null : new CustomUser(dto);//여기에 인증정보가 담겼다
+		
 	}
 }
 
