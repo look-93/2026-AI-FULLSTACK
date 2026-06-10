@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.the703.dao.UserMapper;
+import com.the703.dto.AuthDto;
+import com.the703.dto.AuthListDto;
 import com.the703.dto.UserDto;
 
 @Service
@@ -18,11 +20,15 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int insert(UserDto dto) {
-		
+		AuthDto adto = new AuthDto();
+		adto.setEmail(dto.getEmail());
+		adto.setAuth("ROLE_MEMBER");
+		dao.insertAuth(adto); // 권한추가
+		dto.setBpass(pwencoder.encode(dto.getBpass()));
 		
 		try {
 			dto.setBip(InetAddress.getLocalHost().getHostAddress());
-			dto.setBpass(pwencoder.encode(dto.getBpass()));
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -45,4 +51,17 @@ public class UserServiceImpl implements UserService {
 		return dao.findEmail(email);
 	}
 
+	@Override
+	public AuthListDto readAuth(AuthDto dto) {
+		return dao.readAuth(dto);
+	}
+
+	@Override
+	public UserDto findUser(String email) {
+		return dao.findUser(email);
+	}
+	
+	
+
+	
 }

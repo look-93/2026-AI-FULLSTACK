@@ -145,7 +145,7 @@ UserDetailsService
 	<security:authentication-manager> <!-- provider에 인가 -->
 		<security:authentication-provider> <!-- (db정보비교) -->
 			<security:user-service> <!-- (db정보 가져오기) -->
-				<security:user name="member" password="{noop}member" authorities="ROLE"/> <!--어디까지 권한이 있나?  ROLE:기본권한-->
+				<security:user name="member" password="member" authorities="ROLE_MEMBER"/> <!--어디까지 권한이 있나?  ROLE:기본권한-->
 			</security:user-service>		
 		</security:authentication-provider>	
 	</security:authentication-manager>
@@ -161,7 +161,7 @@ UserDetailsService
 <param-value>classpath:/config/*-context.xml</param-value>
 ``
 
-- DispatcherServlet가 경로를 훔쳐오기 전에 실행되야함
+- DispatcherServlet가 경로를 훔쳐오기 전에 실행되어 필터링
 - Security동작하게 해주세요
 ```
 	<filter>

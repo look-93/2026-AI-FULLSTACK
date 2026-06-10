@@ -26,7 +26,16 @@ public class ModelTest002 {
 	@Autowired @Qualifier("passwordEncoder") PasswordEncoder pwencoder;
 	
 	/*security*/
+	
 	@Test
+	public void test3() {
+		AuthDto dto2 = new AuthDto();
+		dto2.setEmail("a@a");
+		System.out.println(userService.readAuth(dto2));
+	}	
+	
+	
+	@Ignore //@Test
 	public void test2() throws UnknownHostException {
 		
 		/* 로그인시 인가 */

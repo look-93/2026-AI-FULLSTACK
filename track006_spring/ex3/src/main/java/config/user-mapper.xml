@@ -7,7 +7,7 @@
 	<!-- 회원가입 -->
   <insert id="insert" parameterType="UserDto">
     insert into users (nickname, bpass, email, mobile,  bip)
-    value(#{nickname}, #{bpass}, #{email}, #{mobile},  #{bip})
+    values(#{nickname}, #{bpass}, #{email}, #{mobile},  #{bip})
   </insert>
   
   <!-- 로그인 -->
@@ -18,6 +18,11 @@
   <!-- 마이페이지 -->
   <select id="findMypage" parameterType="int" resultType="UserDto">
 	select * from users where uno = #{uno}
+  </select>
+  
+  <!-- email 검색시 해당유저 정보 가져오기 -->
+  <select id="findUser" parameterType="string" resultType="UserDto">
+  	select * from users where email=#{email}
   </select>
   
   <!-- 중복검사 -->

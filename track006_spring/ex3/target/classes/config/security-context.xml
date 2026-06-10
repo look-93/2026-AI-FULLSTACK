@@ -9,24 +9,55 @@
 	
 	<!-- 암호화 -->
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />	
+	
 	<!-- 로그인성공 -->
+	<bean id="successHandler" class="com.the703.security.LoginSuccessHandler" />
 	<!-- 로그인실패 -->
-	<!-- 유저정보 -->
+	<bean id="deniedHandler" class="com.the703.security.DeniedHandler" />
+	<!-- 유저정보 --> <!-- 유저정보받아서 셋팅해줄거데 아이디비번 다를경우 실제db와 다를경우 셋팅 -->
+	<bean id="custonUserDetailsService" class="com.the703.security.CustonUserDetailsService" /> <!-- 실제db정보 가져오는 -->
 	
+	<!-- permitAll:모두다접근가능 
+		 hasRole('ROLE_MEMBER') : ROLE_MEMBER 권한
+		 isAuthenticated() : 인증된사용자(로그인)
+		  ※ 구체적인 패턴을 위해 , 포괄패턴은 아래 / 우선순위있음
+	-->		
 	<!-- Dispatcher가 훔치기 전에 -->
-	<security:http>
-		<security:intercept-url pattern="/security/all"  access="permitAll" />
-		<security:intercept-url pattern="/security/member"  access="hasRole('ROLE_MEMBER')" /> 
-		<security:form-login/> <!-- 로그인정보 -->
-	</security:http>
+   <security:http>
+      <security:intercept-url  pattern="/board/**"         access="permitAll" />   
+      <security:intercept-url  pattern="/security/all"     access="permitAll" />
+      <security:intercept-url  pattern="/security/member"  access="hasRole('ROLE_MEMBER')" />
+      
+      <security:intercept-url  pattern="/security/join"    access="permitAll" />      
+      <security:intercept-url  pattern="/security/login"   access="permitAll" /> 
+      
+      <security:intercept-url  pattern="/security/doubleEmail"   access="permitAll" /> 
+         
+      <security:intercept-url  pattern="/security/**"      access="isAuthenticated()" />      
+      
+      <security:form-login     login-page="/security/login" 
+                         authentication-success-handler-ref="successHandler"
+                         authentication-failure-forward-url="/security/fail"/>
+      
+      <security:logout         logout-url="/security/logout"
+                         logout-success-url="/security/login" 
+                         invalidate-session="true"   />
+   </security:http>
 	
-	<!-- security:authentication-manager provider에 인가 -> provider(db정보비교) -> UserDetailsService (db정보 가져오기)-->
-	<security:authentication-manager> <!-- provider에 인가 -->
-		<security:authentication-provider> <!-- (db정보비교) -->
-			<security:user-service> <!-- (db정보 가져오기) -->
-				<security:user name="member" password="member" authorities="ROLE_MEMBER"/> <!--어디까지 권한이 있나?  ROLE:기본권한-->
+	<!-- ver-2 authentication-manager-->
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="custonUserDetailsService">
+			<security:password-encoder ref="passwordEncoder" /> <!-- 암호화된 비밀번호 -->
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!--ver-1 security:authentication-manager provider에 인가 -> provider(db정보비교) -> UserDetailsService (db정보 가져오기)-->
+	<!-- <security:authentication-manager>  provider에 인가
+		<security:authentication-provider> (db정보비교)
+			<security:user-service>  (db정보 가져오기) 
+				<security:user name="member" password="member" authorities="ROLE_MEMBER"/> 어디까지 권한이 있나?  ROLE:기본권한
 			</security:user-service>		
 		</security:authentication-provider>	
-	</security:authentication-manager>
+	</security:authentication-manager> -->
 
 </beans>

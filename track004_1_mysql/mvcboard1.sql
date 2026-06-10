@@ -55,7 +55,7 @@ desc users;
 insert into users (nickname, bpass, email, mobile,  bip)
 value("ddd", "111","dd@gmail.com", "010-1111-1111",  "00");
 
-select*From users;
+
 -- truncate table users;
 select * from users where email="dd@dd1" and nickname="1";
 -- 회원가입
@@ -65,3 +65,20 @@ select * from users where email= 'dd@dd3' and bpass = 3;
 -- select * from users where email= ? and bpass = ?
 
 select *, date_format(udate, '%Y-%m-%d %H:%i-%s') as formatDate from users;
+
+create table authorities(
+email varchar(50) not null ,
+auth  varchar(50) not null 
+);
+delete from users;
+delete from authorities;
+select*From users;
+
+select * from users where email="a@a";
+
+
+select*From authorities;
+desc authorities;
+
+alter table authorities modify auth varchar(50) not null ;
+alter table users   modify  bpass varchar(500) not null;

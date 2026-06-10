@@ -11,6 +11,8 @@ public interface UserMapper {
 	public UserDto findMypage(int uno);
 	public String findEmail(String email);	
 	
+	public UserDto findUser(String email);
+	
 	/*security*/
 	public int insertAuth(AuthDto dto);
 	public AuthListDto readAuth(AuthDto dto);
