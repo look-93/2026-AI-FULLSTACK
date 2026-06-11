@@ -442,6 +442,9 @@
                     <url-pattern>/*</url-pattern>
                 </filter-mapping>     
             ```
+0. dto -> mybatis-config 꼭
+1. insert, findUser, findUser ,findEmail, findNickname
+2. security-context -> logout
 
 ## 능력단위시험!
 내일 능력단위 시험입니다~~! 
@@ -454,3 +457,4 @@
 #3. 회원가입  - 회원가입시 권한 일반멤버 'MEMBER_ROLE' 추가
 #4. 마이페이지
 #5. 로그아웃
+

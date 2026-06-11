@@ -60,7 +60,7 @@ public class SecurityController {
 		System.out.println("....." + principal);
 		System.out.println("....." + principal.getName()); // username -> email
 		// model.addAttribute("email", principal.getName());
-		 model.addAttribute("dto", userService.findUser(principal.getName()));
+		//model.addAttribute("dto", userService.findUser(principal.getName()));
 
 		Object dto = userService.findUser(principal.getName());
 
