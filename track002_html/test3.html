@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>MOIT Admin</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.wrap{
+    display:flex;
+    height:100vh;
+}
+
+/* 사이드바 */
+
+.sidebar{
+    width:240px;
+    background:#fff;
+    border-right:1px solid #ddd;
+}
+
+.logo{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#4a7dff;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    padding:18px 25px;
+    cursor:pointer;
+}
+
+.menu li:hover{
+    background:#edf3ff;
+}
+
+.menu .active{
+    background:#4a7dff;
+    color:white;
+}
+
+/* 컨텐츠 */
+
+.content{
+    flex:1;
+    padding:25px;
+}
+
+/* 상단 */
+
+.topbar{
+    height:70px;
+    background:white;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+}
+
+.profile{
+    width:40px;
+    height:40px;
+    background:#ddd;
+    border-radius:50%;
+}
+
+/* 통계 */
+
+.cards{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    height:120px;
+    padding:20px;
+}
+
+.card h3{
+    color:#666;
+}
+
+.card h1{
+    margin-top:15px;
+}
+
+/* 탭 */
+
+.tabs{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+}
+
+.tab{
+    background:white;
+    padding:12px 20px;
+    border-radius:10px;
+}
+
+/* 검색 */
+
+.search{
+    margin-top:20px;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+
+    display:flex;
+    gap:10px;
+}
+
+.search input,
+.search select{
+    padding:10px;
+}
+
+.search button{
+    padding:10px 20px;
+}
+
+/* 버튼 */
+
+.actions{
+    margin-top:20px;
+}
+
+.actions button{
+    padding:10px 15px;
+    margin-right:10px;
+}
+
+/* 테이블 */
+
+.table{
+    margin-top:20px;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+}
+
+thead{
+    background:#edf3ff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #eee;
+}
+
+/* 페이징 */
+
+.pagination{
+    margin-top:20px;
+    text-align:center;
+}
+
+.pagination span{
+    display:inline-block;
+    padding:10px 15px;
+    background:white;
+    margin:0 3px;
+    border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <!-- 좌측메뉴 -->
+    <div class="sidebar">
+
+        <div class="logo">
+            MOIT
+        </div>
+
+        <ul class="menu">
+            <li class="active">회원관리</li>
+            <li>관리자관리</li>
+            <li>지역관리</li>
+            <li>카테고리관리</li>
+            <li>공지사항</li>
+            <li>행사관리</li>
+            <li>광고관리</li>
+        </ul>
+
+    </div>
+
+    <!-- 우측 -->
+    <div class="content">
+
+        <div class="topbar">
+            <h2>회원관리</h2>
+            <div class="profile"></div>
+        </div>
+
+        <!-- 통계 -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>전체회원</h3>
+                <h1>1,245</h1>
+            </div>
+
+            <div class="card">
+                <h3>활동회원</h3>
+                <h1>1,002</h1>
+            </div>
+
+            <div class="card">
+                <h3>경고회원</h3>
+                <h1>95</h1>
+            </div>
+
+            <div class="card">
+                <h3>정지회원</h3>
+                <h1>148</h1>
+            </div>
+
+        </div>
+
+        <!-- 기능탭 -->
+        <div class="tabs">
+            <div class="tab">회원목록</div>
+            <div class="tab">회원등록</div>
+            <div class="tab">상태변경</div>
+            <div class="tab">비밀번호초기화</div>
+        </div>
+
+        <!-- 검색 -->
+        <div class="search">
+
+            <input type="text" placeholder="회원 검색">
+
+            <select>
+                <option>전체상태</option>
+            </select>
+
+            <button>검색</button>
+
+        </div>
+
+        <!-- 버튼 -->
+        <div class="actions">
+            <button>등록</button>
+            <button>수정</button>
+            <button>삭제</button>
+        </div>
+
+        <!-- 목록 -->
+        <div class="table">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>상태</th>
+                        <th>가입일</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>user01</td>
+                        <td>홍길동</td>
+                        <td>활동</td>
+                        <td>2026-06-10</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>user02</td>
+                        <td>김철수</td>
+                        <td>경고</td>
+                        <td>2026-06-09</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="pagination">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
