@@ -76,6 +76,7 @@ select*From users;
 
 select * from users where email="a@a";
 
+select*from mvcboard2;
 
 select*From authorities;
 desc authorities;
