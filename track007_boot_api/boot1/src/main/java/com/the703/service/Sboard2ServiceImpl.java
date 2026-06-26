@@ -47,25 +47,19 @@ public class Sboard2ServiceImpl implements Sboard2Service{
 	}
 	
 	//4. 입력기능 ( 이미지 올리기 )
-	@Override
-	public int insert(MultipartFile file, Sboard2Dto dto) {
-		//이미지 업로드기능
-		if(file.isEmpty()) {
-			try {
-				dto.setBfile(upload.fileUpload(file));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		//ip셋팅
-		try {
-			dto.setBip(InetAddress.getLocalHost().getHostAddress());
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		return dao.insert(dto);
-	}
+   @Override 
+   public int insert(MultipartFile file, Sboard2Dto dto) {
+	   // 이미지 업로드기능
+	 if(!file.isEmpty()) {		 
+		 try { dto.setBfile( upload.fileUpload(file)  ); } 
+		 catch (IOException e) { e.printStackTrace(); }
+	 }
+	 // ip셋팅
+	 try { dto.setBip(InetAddress.getLocalHost().getHostAddress()); } 
+	 catch (UnknownHostException e) { e.printStackTrace(); }
+
+	 return dao.insert(dto); 
+   }
 	
 	//5. 수정폼
 	@Override
@@ -76,20 +70,36 @@ public class Sboard2ServiceImpl implements Sboard2Service{
 	//6. 수정기능 ( 이미지 올리기 )
 	@Override
 	public int update(MultipartFile file, Sboard2Dto dto) {
-		if(file.isEmpty()) {
+		int result = -1;
+		
+		Sboard2Dto find = dao.selectById(dto);
+		
+		if(!file.isEmpty()) {
 			try {
 				dto.setBfile(upload.fileUpload(file));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}	
+		
+		if(find.getBpass().equals(dto.getBpass())) {
+			result = dao.update(dto);
 		}		
-		return dao.update(dto);
+	
+		return result;
 	}
 	
 	//7. 삭제기능
 	@Override
 	public int delete(Sboard2Dto dto) {
-		return dao.delete(dto);
+		int result = -1;
+		Sboard2Dto find = dao.selectById(dto);
+		if(find.getBpass().equals(dto.getBpass())) {
+			result = dao.delete(dto);
+		}
+		
+		/* System.out.println(dto.getId()); */
+		return result;
 	}
 	
 }
