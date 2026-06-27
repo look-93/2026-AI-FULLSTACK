@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head lang="ko">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOIT | 모집글 목록</title>
+<link rel="stylesheet" th:href="@{/css/userStyle.css}">
+</head>
+
+<body>
+
+<header>
+    <div class="container header-inner">
+
+        <div class="logo">MOIT</div>
+
+        <div class="header-slogan">
+            나에게 딱 맞는 모임을 찾는 공간
+        </div>
+
+        <div class="header-right">
+            
+            <nav>
+                <a href="#" class="nav-btn-primary">모집찾기</a>
+                <a href="#" class="nav-btn-secondary">관리자문의</a>
+            </nav>
+
+            <div class="user-box">
+                <div class="alarm">🔔</div>
+                <div class="profile">
+                    <div class="profile-img">J</div>
+                    <div class="profile-info">
+                        <strong>예진님</strong>
+                        <span>일반회원</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="page">
+
+        <aside class="sidebar">
+
+            <h3>카테고리</h3>
+
+            <div class="category">
+
+                <a href="#" class="active">전체</a>
+                <a href="#">운동/스포츠</a>
+                <a href="#">문화/예술</a>
+                <a href="#">스터디</a>
+                <a href="#">봉사활동</a>
+                <a href="#">게임</a>
+                <a href="#">여행</a>
+                <a href="#">음악</a>
+
+            </div>
+
+            <div class="sidebar-ad">
+
+                <div class="ad-tag">
+                    ADVERTISEMENT
+                </div>
+
+                <h3>
+                    신규 회원<br>
+                    특별 혜택
+                </h3>
+
+                <p>
+                    가입만 해도<br>
+                    할인 쿠폰 지급
+                </p>
+
+                <a href="#">
+                    지금 확인하기
+                </a>
+
+            </div>
+
+        </aside>
+
+        <section class="content">
+
+            <div class="top-ad">
+
+                <div class="top-ad-left">
+                    <h3>🔥 신규 제휴업체 오픈</h3>
+                    <p>
+                        가입 회원 대상 20% 할인 쿠폰 지급
+                    </p>
+                </div>
+
+                <a href="#" class="top-ad-btn">
+                    바로가기
+                </a>
+
+            </div>
+
+            <div class="filter-box">
+
+                <input
+                type="text"
+                placeholder="모임명 검색">
+
+                <select>
+                    <option>전체 지역</option>
+                    <option>서울</option>
+                    <option>인천</option>
+                    <option>경기</option>
+                </select>
+
+                <select>
+                    <option>최신순</option>
+                    <option>인기순</option>
+                    <option>마감임박순</option>
+                </select>
+
+                <button>검색</button>
+
+            </div>
+
+            <div class="card-grid">
+
+                <div class="card">
+
+                    <div class="card-img"></div>
+
+                    <div class="card-body">
+
+                        <span class="badge">
+                            모집중
+                        </span>
+
+                        <h4>러닝 크루 모집</h4>
+
+                        <p>🏃 운동/스포츠</p>
+                        <p>📍 서울</p>
+                        <p>👥 8 / 10명</p>
+
+                        <div class="card-footer">
+                            <span>2026.06.15</span>
+                            <span class="like">❤️ 34</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-img"></div>
+
+                    <div class="card-body">
+
+                        <span class="badge">
+                            모집중
+                        </span>
+
+                        <h4>독서 스터디</h4>
+
+                        <p>📚 스터디</p>
+                        <p>📍 인천</p>
+                        <p>👥 5 / 8명</p>
+
+                        <div class="card-footer">
+                            <span>2026.06.14</span>
+                            <span class="like">❤️ 21</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-img"></div>
+
+                    <div class="card-body">
+
+                        <span class="badge badge-close">
+                            마감
+                        </span>
+
+                        <h4>보드게임 모임</h4>
+
+                        <p>🎲 게임</p>
+                        <p>📍 경기</p>
+                        <p>👥 10 / 10명</p>
+
+                        <div class="card-footer">
+                            <span>2026.06.10</span>
+                            <span class="like">❤️ 48</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-img"></div>
+
+                    <div class="card-body">
+
+                        <span class="badge">
+                            모집중
+                        </span>
+
+                        <h4>주말 등산 모임</h4>
+
+                        <p>⛰️ 운동</p>
+                        <p>📍 서울</p>
+                        <p>👥 12 / 15명</p>
+
+                        <div class="card-footer">
+                            <span>2026.06.12</span>
+                            <span class="like">❤️ 62</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-body">
+                        <span class="badge">모집중</span>
+                        <h4>영화 같이 볼 사람</h4>
+                        <p>🎬 문화</p>
+                        <p>📍 부천</p>
+                        <p>👥 7 / 10명</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-body">
+                        <span class="badge">모집중</span>
+                        <h4>카페 투어 모임</h4>
+                        <p>☕ 문화</p>
+                        <p>📍 서울</p>
+                        <p>👥 4 / 8명</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pagination">
+
+                <a href="#">‹</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">›</a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- <footer>
+    <div class="container">
+        <div class="footer-inner">
+            
+            <div class="footer-info">
+                <div class="footer-logo">MOIT</div>
+                <p>나에게 딱 맞는 모임을 찾는 공간, 모잇입니다.<br>
+                   다양한 사람들과 함께 새로운 취미와 일상을 공유해보세요.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-link-group">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="#">모집찾기</a></li>
+                        <li><a href="#">모임만들기</a></li>
+                        <li><a href="#">인기모임</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h4>고객지원</h4>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자주 묻는 질문</a></li>
+                        <li><a href="#">관리자문의</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h4>약관 및 정책</h4>
+                    <ul>
+                        <li><a href="#" style="font-weight: bold;">개인정보처리방침</a></li>
+                        <li><a href="#">이용약관</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</footer> -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-links">
+            <a href="#">회사소개</a>
+            <a href="#">인재채용</a>
+            <a href="#">제휴제안</a>
+            <a href="#">이용약관</a>
+            <a href="#" class="policy-bold">개인정보처리방침</a>
+            <a href="#">청소년보호정책</a>
+            <a href="#">모잇 정책</a>
+            <a href="#">고객센터</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; MOIT Corp.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
