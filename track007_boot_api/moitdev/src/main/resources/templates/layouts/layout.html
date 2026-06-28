@@ -10,12 +10,9 @@
 <body>
 	<th:block th:replace="~{fragments/header :: header}" />
 	<div class="container">
-		<div class="page">
-			<th:block th:replace="~{fragments/sidebar :: sidebar}" />
 			<div layout:fragment="content">
 				<!-- 페이지 내용 -->
 			</div>
-		</div>
 	</div>
 	<th:block th:replace="~{fragments/footer :: footer}" />
 </body>
