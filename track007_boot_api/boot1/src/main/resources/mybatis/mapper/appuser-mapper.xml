@@ -5,17 +5,24 @@
 <mapper namespace="com.the703.dao.AppUserDao">
 
   <insert id="insertAppUser" parameterType="AppUserDto">
-	insert into APPUSER(APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID, CREATED_AT, UFILE, MOBILE, NICKNAME, PROVIDER, PROVIDER_ID)
-	values(appuser_seq.nextval, #{email}, #{password}, #{mbtiTypeId}, #{createdAt}, #{ufile}, #{mobile}, #{nickname}, #{provider}, #{providerId})
+	insert into APPUSER(APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID,  UFILE, MOBILE, NICKNAME, PROVIDER, PROVIDER_ID)
+	values(appuser_seq.nextval, #{email}, #{password}, #{mbtiTypeId}, #{ufile}, #{mobile}, #{nickname}, #{provider}, #{providerId})
   </insert>
   
-  <select id="readAuthByEmail" resultType="AppUserAuthDto" parameterType="AppUserDto">
-	select u.email, u.password, a.auth
-	from APPUSER           u
-	left join AUTHORITIES  a on a.EMAIL = u.EMAIL
-	where u.email = #{email}
-  </select>
+  <resultMap id="AppUserAuthResultMap" type="AppUserAuthDto">
+    <result property="email" column="email"/>
+    <result property="password" column="password"/>  
+    <collection property="authList" ofType="com.the703.dto.AuthDto">
+        <result  property="auth"  column="auth"   />
+    </collection>
+  </resultMap>
   
+  <select  id="readAuthByEmail"  resultMap="AppUserAuthResultMap" parameterType="AppUserDto">
+   select   u.email ,  u.password, a.auth
+   from     appuser u  left join  authorities a  on   u.email = a.email
+   where    u.email = #{email}
+  </select>
+
   <select id="findByEmail" resultType="AppUserDto" parameterType="AppUserDto">
 	select * from APPUSER where email = #{email}
   </select>
@@ -26,13 +33,22 @@
   
   <update id="updateAppUser" parameterType="AppUserDto">
     update APPUSER
-    set PASSWORD = #{password},
+	<set>
+	  <!-- <if test="password != null">password=#{password},</if> -->
+	  <if test="mbtiTypeId != null">MBTI_TYPE_ID=#{mbtiTypeId},</if>
+	  <if test="ufile != null">UFILE=#{ufile},</if>
+	  <if test="nickname != null">NICKNAME=#{nickname},</if>
+	  <if test="mobile != null">MOBILE=#{mobile},</if>
+	  <if test="provider != null">PROVIDER=#{provider},</if>
+	  <if test="providerId != null">PROVIDER_ID=#{providerId}</if>
+	</set>
+<!--     set PASSWORD = #{password},
         MBTI_TYPE_ID = #{mbtiTypeId},
         UFILE = #{ufile},
         NICKNAME = #{nickname},
         MOBILE = #{mobile}, 
         PROVIDER = #{provider},
-        PROVIDER_ID = #{providerId}
+        PROVIDER_ID = #{providerId} -->
     where APP_USER_ID = #{appUserId}
   </update>
   
