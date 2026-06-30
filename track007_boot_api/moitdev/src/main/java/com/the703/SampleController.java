@@ -9,16 +9,16 @@ public class SampleController {
 	
 	// 탬플릿 샘플
 	@GetMapping("/tmptAdmin")
-	public String tmptAdmin() {return "/base/tmptAdmin"; } //prefix(/templates) + tmpt + suffix(.html)
+	public String tmptAdmin() {return "/admin/temp/tmptAdmin"; } //prefix(/templates) + tmpt + suffix(.html)
 	
 	@GetMapping("/tmptMain")
-	public String tmptMain() {return "/base/tmptMain"; } //prefix(/templates) + tmpt + suffix(.html)
+	public String tmptMain() {return "/user/temp/tmptMain"; } //prefix(/templates) + tmpt + suffix(.html)
 
 	@GetMapping("/tmptMeetupList")
-	public String tmptMeetupList() {return "/base/tmptMeetupList"; } //prefix(/templates) + tmpt + suffix(.html)
+	public String tmptMeetupList() {return "/user/temp/tmptMeetupList"; } //prefix(/templates) + tmpt + suffix(.html)
 	
 	@GetMapping("/tmptMypage")
-	public String tmptMypage() {return "/base/tmptMypage"; } //prefix(/templates) + tmpt + suffix(.html)
+	public String tmptMypage() {return "/user/temp/tmptMypage"; } //prefix(/templates) + tmpt + suffix(.html)
 
 	// admin 페이지 샘플 
 	@GetMapping("/samplePage/admin")
