@@ -16,7 +16,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception  { 
 		
 		//1. 허용경로
-		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users/join", "/users/login", "/api/**").permitAll()
+		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users/join", "/users/login", "/users/iddouble" , "/api/**").permitAll()
 											   .requestMatchers("/users/mypage", "/users/update", "/users/delete").authenticated()
 											   .anyRequest().permitAll()
 				

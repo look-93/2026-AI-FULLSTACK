@@ -34,6 +34,7 @@ public class SampleController {
 	
 	// mypage 페이지 샘플 
 	@GetMapping("/samplePage/mypage")
-	public String mypage() {return "/samplePage/mypage"; }			
+	public String mypage() {return "/samplePage/mypage"; }		
+	
 	
 }
