@@ -1,5 +1,6 @@
 package com.the703.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,12 +9,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.the703.oauth2.Oauth2UserService;
+
+import lombok.RequiredArgsConstructor;
+
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor // @config 파일은 @Autowired 사용x / @RequiredArgsConstructor 과 @Autowired 동일
 public class SecurityConfig {
+	private final Oauth2UserService oauth2UserService; // @config 파일은 Autowide 사용x 
+	
 	// http 경로설정
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception  { 
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception  { 		
 		
 		//1. 허용경로
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users/join", "/users/login", "/users/iddouble" , "/api/**").permitAll()
@@ -34,7 +42,14 @@ public class SecurityConfig {
 										  .invalidateHttpSession(true) //session 지우기
 										  .clearAuthentication(true)
 										  .permitAll()
-								  )//4. csrf 예외처리								  
+								  )// outh2 - social
+								  .oauth2Login(oauth2 -> oauth2
+										  .loginPage("/users/login")
+										  .defaultSuccessUrl("/users/mypage", true)
+										  .userInfoEndpoint(userinfo -> userinfo.userService(oauth2UserService)) // 소셜에서 로그인하면 값 여기다 넘겨줄게
+										  )
+								  
+								  //4. csrf 예외처리								  
 								  .csrf(csrf -> csrf
 										  .ignoringRequestMatchers("/users/join", "/users/update", "/users/delete")
 										  // Spring Security는 POST, PUT, DELETE 등의 요청에 CSRF 토큰이 있는지 검사

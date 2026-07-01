@@ -19,3 +19,6 @@ target/
 *.DS_Store
 Thumbs.db
 /.metadata/
+
+# OAuth Secret
+application-oauth.properties
