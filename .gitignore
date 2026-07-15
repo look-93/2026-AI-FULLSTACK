@@ -22,3 +22,11 @@ Thumbs.db
 
 # OAuth Secret
 application-oauth.properties
+
+
+node_modules/
+.env
+.env.*
+dist/
+build/
+coverage/
