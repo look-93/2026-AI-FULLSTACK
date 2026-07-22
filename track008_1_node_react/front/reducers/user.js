@@ -33,6 +33,10 @@ export const FIND_USER_EMAIL_REQUEST = 'FIND_USER_EMAIL_REQUEST' //이메일 조
 export const FIND_USER_EMAIL_SUCCESS = 'FIND_USER_EMAIL_SUCCESS' //이메일 조회 성공
 export const FIND_USER_EMAIL_FAILURE = 'FIND_USER_EMAIL_FAILURE' //이메일 조회 실패
 
+export const FIND_USER_NICKNAME_REQUEST = 'FIND_USER_NICKNAME_REQUEST' //닉네임 조회 요청
+export const FIND_USER_NICKNAME_SUCCESS = 'FIND_USER_NICKNAME_SUCCESS' //닉네임 조회 성공
+export const FIND_USER_NICKNAME_FAILURE = 'FIND_USER_NICKNAME_FAILURE' //닉네임 조회 실패
+
 // 2. user 초기상태
 export const initialState = {
     me: null,  // 로그인사용자정보 {id, email, nickname}
@@ -40,8 +44,9 @@ export const initialState = {
     isLoading: false, // api 요청 중 여부
     error: null,      // 에러메시지
     signUpDone: false, // 회원가입완료여부
-    emailUser: null, //이메일중복검사
-    emailCheckDone: false,
+    checkEmail: null, //이메일중복검사
+    //checkEmailDone: false,
+    checkNickName: null,
 };
 
 // 3. reducer 함수
@@ -55,6 +60,7 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
             case UPDATE_NICKNAME_REQUEST:
             case DELETE_USER_REQUEST:
             case FIND_USER_EMAIL_REQUEST:
+            case FIND_USER_NICKNAME_REQUEST:
                 return {...state, isLoading: true, error: null}; // 로딩중 true...
 
         // 성공 액션 -> 상태업데이트]
@@ -81,15 +87,12 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
             case DELETE_USER_SUCCESS:
                 return { ...state, isLoading: false , 
                     me : state.me?.id === action.data.id? null : state.me , 
-                    emailUser: state.users.filter(  (u) => u.id !== action.data.id )
+                    users: state.users.filter(  (u) => u.id !== action.data.id )
                 };
             case FIND_USER_EMAIL_SUCCESS:
-                return {
-                    ...state, 
-                    isLoading: false,
-                    emailUser: action.data,
-                    emailCheckDone: true,
-                }
+                return {...state, isLoading: false, checkEmail: action.data};
+            case FIND_USER_NICKNAME_SUCCESS:
+                return {...state, isLoading: false, checkNickName: action.data};
         // 실패 액션 -> 에러메시지 저장
             case LOG_IN_FAILURE:
             case LOG_OUT_FAILURE:
@@ -97,10 +100,9 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
             case LOAD_USER_FAILURE:
             case UPDATE_NICKNAME_FAILURE:
             case DELETE_USER_FAILURE:
-            
+            case FIND_USER_EMAIL_FAILURE:              
+            case FIND_USER_NICKNAME_FAILURE:   
                 return {...state, isLoading: false, error: action.error?.message || action.error};
-            case FIND_USER_EMAIL_FAILURE:
-                return {...state, isLoading: false, emailCheckDone: true}
         // 기본값 - 상태변경없음
         default:
             return state;

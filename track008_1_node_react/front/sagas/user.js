@@ -23,6 +23,7 @@ import reducer, {
     UPDATE_NICKNAME_REQUEST , UPDATE_NICKNAME_SUCCESS , UPDATE_NICKNAME_FAILURE , 
     DELETE_USER_REQUEST , DELETE_USER_SUCCESS , DELETE_USER_FAILURE ,
     FIND_USER_EMAIL_FAILURE, FIND_USER_EMAIL_SUCCESS, FIND_USER_EMAIL_REQUEST,
+    FIND_USER_NICKNAME_FAILURE, FIND_USER_NICKNAME_SUCCESS, FIND_USER_NICKNAME_REQUEST,
     
 }  from '../reducers/user';
 
@@ -170,7 +171,7 @@ export function findUserByEmailApi(email){
 export function* findUserByEmail(action){
     try{
         const result = yield call(findUserByEmailApi, action.data.email);
-        console.log(result); // API 응답
+        //console.log(result); // API 응답
         yield put({type:FIND_USER_EMAIL_SUCCESS, data:result.data});
     }catch(err){
         yield put({type:FIND_USER_EMAIL_FAILURE, err: err.response?.data || err.message});
@@ -178,6 +179,23 @@ export function* findUserByEmail(action){
 }
 function* watchFindUserByEmail(){
     yield takeLatest(FIND_USER_EMAIL_REQUEST, findUserByEmail)
+}
+
+//닉네임 중복검사
+export function findUserByNicknameApi(nickname){
+    return client.get(`/user/check-nickname/${nickname}`);
+}
+export function* findUserByNickname(action){
+    try{
+        const result = yield call(findUserByNicknameApi, action.data.nickname);
+        //console.log(result); // API 응답
+        yield put({type:FIND_USER_NICKNAME_SUCCESS, data:result.data});
+    }catch(err){
+        yield put({type:FIND_USER_NICKNAME_FAILURE, err: err.response?.data || err.message});
+    }
+}
+function* watchFindUserByNickname(){
+    yield takeLatest(FIND_USER_NICKNAME_REQUEST, findUserByNickname)
 }
 
 export default function* userSaga(){ //index.js 의 import userSaga 이름이랑 같아야함
@@ -189,6 +207,7 @@ export default function* userSaga(){ //index.js 의 import userSaga 이름이랑
         fork(watchUpdateNickname),
         fork(watchDeleteUser),
         fork(watchFindUserByEmail),
+        fork(watchFindUserByNickname),
     ]);
 }
 

@@ -237,13 +237,43 @@ router.delete('/:id', isAuthenticated, async(req, res)=>{
 router.get('/check-email/:email', async(req, res)=>{
     try{
         const users = await findUserByEmail(req.params.email);
-          console.log(users);   // ★ 여기 찍어보기
+        //console.log(users);   // ★ 여기 찍어보기
         res.json(users);
     }catch(err){
         console.error('findUserByEmail', err);
         res.status(500).json({message: '이메일중복조회 실패'})
     }
 });
+
+// get  : /user/check-email/email 사용자이메일중복검사
+/**
+*  @swagger
+*  /user/check-nickname/{nickname}:
+*    get:
+*      summary: 사용자닉네임중복검사
+*      description: 사용자닉네임중복검사
+*      parameters:
+*        - in: path
+*          name: nickname
+*          required: true
+*          schema: { type: string }
+*      responses:
+*        200:
+*          description: 사용자 목록 반환
+*        401:
+*          description: 인증 필요
+*/
+router.get('/check-nickname/:nickname', async(req, res)=>{
+    try{
+        const users = await findUserByNickname(req.params.nickname);
+        //console.log(users);   // ★ 여기 찍어보기
+        res.json(users);
+    }catch(err){
+        console.error('findUserByNickname', err);
+        res.status(500).json({message: '닉네임중복조회 실패'})
+    }
+});
+
 
 //3. export
 module.exports = router;

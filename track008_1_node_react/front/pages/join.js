@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
 // useRouter - 경로
 import { useRouter } from 'next/router';
-import { SIGN_UP_REQUEST, FIND_USER_EMAIL_REQUEST } from '../reducers/user'
+import { SIGN_UP_REQUEST, FIND_USER_EMAIL_REQUEST, FIND_USER_NICKNAME_REQUEST } from '../reducers/user'
 
 export default function JoinPage(){
     // 1. 코드
@@ -12,7 +12,7 @@ export default function JoinPage(){
     
     const dispatch = useDispatch();
     const router = useRouter();
-    const {me, isLoading, error, signUpDone, emailUser, emailCheckDone} = useSelector((state)=> state.user); //1. store : 전역상태감지
+    const {me, isLoading, error, signUpDone, checkEmail, checkNickName} = useSelector((state)=> state.user); //1. store : 전역상태감지
 
     //      변수 변수함수셋팅
     const [email, setEmail] = useState('');
@@ -55,33 +55,29 @@ export default function JoinPage(){
     }, [signUpDone, router]);
 
     //로그인시... me 값이 있다면
-    useEffect(()=>{
-        if(me) router.push('/users');
-    }, [me, router]);
+    // useEffect(()=>{
+    //     if(me) router.push('/users');
+    // }, [me, router]);
 
     //이메일 중복확인
-    const [emailChecked, setEmailChecked] = useState(false);
-    
-
+    const [emailChecked, setEmailChecked] = useState(false);   
     const emailCheck = (email) => {
         setEmailChecked(true);
-
         dispatch({
             type: FIND_USER_EMAIL_REQUEST,
             data: { email }
         });
     };
 
-    useEffect(() => {
-
-        if (!emailCheckDone) return;
-
-        if (emailUser) {
-            alert("이미 사용중인 이메일입니다.");
-        } else {
-            alert("사용 가능한 이메일입니다.");
-        }
-    }, [emailUser, emailChecked]);
+    //닉네임 중복확인
+    const [nicknameChecked, setNicknameChecked] = useState(false);   
+    const nicknameCheck = (nickname) => {
+        setNicknameChecked(true);
+        dispatch({
+            type: FIND_USER_NICKNAME_REQUEST,
+            data: { nickname }
+        });
+    };
 
     // 2. 뷰 - 렌더링
     return (
@@ -96,16 +92,26 @@ export default function JoinPage(){
                     <button type="button" className="btn btn-success" style={{ width: '120px'}} onClick={()=>emailCheck(email)}>중복확인</button>
                 </div>
                 <div className="mb-3">
-                    <div type="text" className='text-danger'>dddd</div>
+                    { emailChecked && (checkEmail ?
+                    <div type="text" className='text-danger'>이미 사용중인 이메일입니다.</div>
+                    :<div type="text" className='text-success'>사용 가능한 이메일입니다.</div>
+                    )}
                 </div>
                  {/* 비밀번호 입력 */}
                 <div className="mb-3">
                     <input type="password" className="form-control" placeholder="비밀번호" title="비밀번호입력" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                 </div>
                  {/* 닉네임 입력 */}
-                <div className="mb-3">
+                <div className="mb-3 d-flex">
                     <input type="nickname" className="form-control" placeholder="닉네임" title="닉네임입력" value={nickname} onChange={(e)=> setNickname(e.target.value)}/>
+                    <button type="button" className="btn btn-success" style={{ width: '120px'}} onClick={()=>nicknameCheck(nickname)}>중복확인</button>
                 </div>           
+                 <div className="mb-3">
+                    { nicknameChecked && (checkNickName ?
+                    <div type="text" className='text-danger'>이미 사용중인 닉네임입니다.</div>
+                    :<div type="text" className='text-success'>사용 가능한 닉네임입니다.</div>
+                    )}
+                </div>               
                  {/* 버튼 입력 */}
                 <div className="mb-3">
                     <button type="button" type="submit" className="btn btn-primary w-100">회원가입</button>

@@ -35,8 +35,9 @@ export default function LoginPage(){
         }
         if(!password.trim()){
             alert('비밀번호를 입력해주세요.'); return;
-        }
+        }    
         dispatch({type: LOG_IN_REQUEST, data:{email, password}});
+        
     }
     
     //1-3. 로그인 후 페이지 이동
