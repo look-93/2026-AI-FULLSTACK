@@ -216,31 +216,35 @@ router.delete('/:id', isAuthenticated, async(req, res)=>{
 });
 
 
-// get  : /user/check-email/email 사용자이메일중복검사
+// get  : /user/check-email 사용자이메일중복검사
 /**
 *  @swagger
-*  /user/check-email/{email}:
+*  /user/check-email:
 *    get:
 *      summary: 사용자이메일중복검사
 *      description: 사용자이메일중복검사
 *      parameters:
-*        - in: path
+*        - in: query
 *          name: email
 *          required: true
 *          schema: { type: string }
 *      responses:
 *        200:
-*          description: 사용자 목록 반환
-*        401:
-*          description: 인증 필요
+*          description: 사용가능한 이메일
+*        409:
+*          description: 이미 사용중인 이메일
 */
-router.get('/check-email/:email', async(req, res)=>{
+router.get('/check-email', async(req, res)=>{
     try{
-        const users = await findUserByEmail(req.params.email);
-        //console.log(users);   // ★ 여기 찍어보기
-        res.json(users);
+        const {email} = req.query;
+        const user = await findUserByEmail(email);
+        //console.log(user);   // ★ 여기 찍어보기
+        if(user){return res.status(200).json({
+            isAvailable:false, message:'이미 사용중인 이메일입니다.'
+        });}
+        return res.status(200).json({isAvailable:true, message:'사용 가능한 이메일입니다.'});
     }catch(err){
-        console.error('findUserByEmail', err);
+        //console.error('findUserByEmail', err);
         res.status(500).json({message: '이메일중복조회 실패'})
     }
 });

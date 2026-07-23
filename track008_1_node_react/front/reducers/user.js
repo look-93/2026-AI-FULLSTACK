@@ -45,8 +45,8 @@ export const initialState = {
     error: null,      // 에러메시지
     signUpDone: false, // 회원가입완료여부
     checkEmail: null, //이메일중복검사
-    //checkEmailDone: false,
     checkNickName: null,
+    isEmailAvailable: null
 };
 
 // 3. reducer 함수
@@ -62,6 +62,7 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
             case FIND_USER_EMAIL_REQUEST:
             case FIND_USER_NICKNAME_REQUEST:
                 return {...state, isLoading: true, error: null}; // 로딩중 true...
+            
 
         // 성공 액션 -> 상태업데이트]
             case LOG_IN_SUCCESS:
@@ -90,9 +91,9 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
                     users: state.users.filter(  (u) => u.id !== action.data.id )
                 };
             case FIND_USER_EMAIL_SUCCESS:
-                return {...state, isLoading: false, checkEmail: action.data};
+                return {...state, isLoading: false, isEmailAvailable: action.data.isAvailable};
             case FIND_USER_NICKNAME_SUCCESS:
-                return {...state, isLoading: false, checkNickName: action.data};
+                return {...state, isLoading: false, isEmailAvailable: action.data.isAvailable};
         // 실패 액션 -> 에러메시지 저장
             case LOG_IN_FAILURE:
             case LOG_OUT_FAILURE:
@@ -100,9 +101,11 @@ const reducer = (state=initialState, action) => { //현재상태 / 요청액션 
             case LOAD_USER_FAILURE:
             case UPDATE_NICKNAME_FAILURE:
             case DELETE_USER_FAILURE:
-            case FIND_USER_EMAIL_FAILURE:              
+                      
             case FIND_USER_NICKNAME_FAILURE:   
                 return {...state, isLoading: false, error: action.error?.message || action.error};
+            case FIND_USER_EMAIL_FAILURE:
+                return {...state, isLoading: false, error: action.error?.message || action.error, isEmailAvailable: false}
         // 기본값 - 상태변경없음
         default:
             return state;

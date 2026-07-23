@@ -166,7 +166,7 @@ function* watchDeleteUser(){
 
 //이메일 중복검사
 export function findUserByEmailApi(email){
-    return client.get(`/user/check-email/${email}`);
+    return client.get(`/user/check-email?email=${email}`);
 }
 export function* findUserByEmail(action){
     try{

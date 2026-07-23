@@ -12,7 +12,7 @@ export default function JoinPage(){
     
     const dispatch = useDispatch();
     const router = useRouter();
-    const {me, isLoading, error, signUpDone, checkEmail, checkNickName} = useSelector((state)=> state.user); //1. store : 전역상태감지
+    const {me, isLoading, error, signUpDone, isEmailAvailable, checkNickName} = useSelector((state)=> state.user); //1. store : 전역상태감지
 
     //      변수 변수함수셋팅
     const [email, setEmail] = useState('');
@@ -60,12 +60,15 @@ export default function JoinPage(){
     // }, [me, router]);
 
     //이메일 중복확인
-    const [emailChecked, setEmailChecked] = useState(false);   
-    const emailCheck = (email) => {
-        setEmailChecked(true);
+    const onCheckEmail  = (e) => {       
+        e.preventDefault();
+        if(!email.trim()){
+            alert('이메일을 입력해주세요.'); return;
+        }
+
         dispatch({
             type: FIND_USER_EMAIL_REQUEST,
-            data: { email }
+            data: {email} 
         });
     };
 
@@ -88,22 +91,22 @@ export default function JoinPage(){
             <form className="w-50 mx-auto" onSubmit={onSubmit}>
                 {/* 이메일 입력 */}
                 <div className="mb-3 d-flex">
-                    <input type="email" className="form-control" placeholder="이메일" title="이메일입력" value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                    <button type="button" className="btn btn-success" style={{ width: '120px'}} onClick={()=>emailCheck(email)}>중복확인</button>
+                    <input type="email" className="form-control" placeholder="이메일" title="이메일입력" value={email} onChange={(e)=> {setEmail(e.target.value)}}/>
+                    <button type="button" className="btn btn-success" style={{ width: '120px'}} onClick={onCheckEmail}>중복확인</button>
                 </div>
                 <div className="mb-3">
-                    { emailChecked && (checkEmail ?
-                    <div type="text" className='text-danger'>이미 사용중인 이메일입니다.</div>
-                    :<div type="text" className='text-success'>사용 가능한 이메일입니다.</div>
-                    )}
+                    {isEmailAvailable === false && <div type="text" className='text-danger'>이미 사용중인 이메일입니다.</div>}
+                    {isEmailAvailable === true && <div type="text" className='text-success'>사용 가능한 이메일입니다.</div>}                    
                 </div>
+
                  {/* 비밀번호 입력 */}
                 <div className="mb-3">
                     <input type="password" className="form-control" placeholder="비밀번호" title="비밀번호입력" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                 </div>
                  {/* 닉네임 입력 */}
                 <div className="mb-3 d-flex">
-                    <input type="nickname" className="form-control" placeholder="닉네임" title="닉네임입력" value={nickname} onChange={(e)=> setNickname(e.target.value)}/>
+                    <input type="nickname" className="form-control" placeholder="닉네임" title="닉네임입력" value={nickname} onChange={(e)=> {setNickname(e.target.value), 
+                                                                                                                                             setNicknameChecked(false)}}/>
                     <button type="button" className="btn btn-success" style={{ width: '120px'}} onClick={()=>nicknameCheck(nickname)}>중복확인</button>
                 </div>           
                  <div className="mb-3">
