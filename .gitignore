@@ -8,7 +8,6 @@ track005_jsp/tomcat9.0/
 
 # 빌드 결과물 무시
 /bin/
-/build/
 target/
 
 # IDE 관련
@@ -16,18 +15,31 @@ target/
 *.iml
 
 # OS별 임시파일
-*.DS_Store
+.DS_Store
 Thumbs.db
-/.metadata/
+.metadata/
 
 # OAuth Secret
 application-oauth.properties
-
 
 node_modules/
 .env
 .env.*
 dist/
-build/
 coverage/
 .next
+
+### Gradle ###
+.gradle/
+**/build/
+!src/**/build/
+
+gradle-app.setting
+
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+.gradletasknamecache
+
+### Java ###
+*.hprof
