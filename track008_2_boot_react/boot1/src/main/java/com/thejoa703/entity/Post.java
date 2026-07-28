@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter @Setter // @Builder
 @Table(name = "POSTS")
 public class Post {
 	
@@ -36,7 +36,7 @@ public class Post {
 	private String content;
 	
 	@Column
-	private Boolean deleted = false;	
+	private boolean deleted = false;	
 	
 	@Column(name="CREATED_AT", nullable = false)
 	private LocalDateTime createdAt;

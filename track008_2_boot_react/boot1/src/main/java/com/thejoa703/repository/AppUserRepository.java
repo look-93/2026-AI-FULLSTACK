@@ -10,6 +10,8 @@ import com.thejoa703.entity.AppUser;
 @Repository												//Entity, PK-자료형
 public interface AppUserRepository extends JpaRepository<AppUser, Long>{ //한줄만 적으면 알아서 생성,조회,삭제,업데이트 해줄게
 	Optional<AppUser> findByEmail(String email);
+	boolean existsByEmail(String email);
+	boolean existsByNickname(String nickname);
 }
 
 //아래 코드 자동으로 들어가있음

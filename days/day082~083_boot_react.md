@@ -1,4 +1,5 @@
 ### 1. back
+
 #### [실습] 3. oracle 유저셋팅
 
 ```sql
@@ -81,7 +82,8 @@ file:
 
 ```
 
-    ※ 기존 : (oracle db:table) → dto → mapper → service → controller → view
+    ※ 기존 : (oracle db:table) → mapper      → dto → service → controller → view
+    ※ @Entity                 → repository  → dto → service → controller → view
 - [ ] 4. entity (테이블을 객체로 처리)
     back1
         ㄴ src/main/java
@@ -124,10 +126,89 @@ file:
             ㄴ com.thejoa703.dto
                 - UserDto
                 - PostDto
-- [ ] 7. Service
-- [ ] 8. Controller
-- [ ] 9. View
-    
 
+- [ ] 7. Service
+    back1
+        ㄴ src/main/java
+            ㄴ com.thejoa703.service
+                - UserService
+                - PostService
+
+```
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true) //데이터 저장(insert)시 rollback / 
+// readOnly = true -> 변경 감지(Dirty Checking)를 하지 않음 , 성능이 조금 더 좋아짐, 실수로 
+
+
+
+데이터를 수정하는 것을 방지
+public class UserService {
+	private final AppUserRepository appUserRepository;
+}
+```
+7-1. 클래스 명   : UserService (package com.thejoa703.service;)
+메서드 명
+- createUser (회원가입 / 사용자 등록 기능)
+- getUser (사용자 단건 조회 기능)
+
+7-2. 클래스 명   : PostService
+- getAllPosts (모든 글)
+- getPostById (단건 조회)
+- getPostPaged (오라클 네이티브 페이징 조회)
+- createPost (게시글 생성)
+- updatePost (게시글 수정)
+- deletePost (게시글 삭제)
+
+- [ ] 8. Controller
+    back1
+        ㄴ src/main/java
+            ㄴ com.thejoa703.controller
+                - UserController
+                - PostController
+
+  1. User Api    - 사용자 관련 API
+  - POST   /api/users      회원가입
+  - GET      /api/users/{id}      사용자 단건조회
+
+  2. Post API     - 게시글 관련 API
+  - GET        /api/posts/{id}      게시글 단건 조회
+  - PUT        /api/posts/{id}      게시글 수정
+  - DELETE   /api/posts/{id}      게시글 삭제
+  - GET        /api/posts      전체 게시글 조회
+  - POST      /api/posts      게시글 작성
+
+...............................
+- [ ] 9. View
+
+1. 회원가입
+   ↓
+2. 마이페이지
+   ↓
+3. 글쓰기
+   ↓
+4. 글수정   
+   ↓
+5. 글삭제
+
+Step1) 프로젝트만들기
+```
+mkdir front1
+cd .\front1\
+npm init
+```
+Step2) 기본셋팅 (store)
+```
+package.json 셋팅
+npm install
+```
+Step3) reducer
+Step4) saga
+Step5) vide
+    
+##### [실습]  5.   Boot + React + 세션/쿠키  - ver2  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우)
+※ entity → repository  → service  →  controller 
+
+##### [실습]  6.   Boot + React + jwt+ security + redis  - ver3  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우 )
 
 2. 회원가입
