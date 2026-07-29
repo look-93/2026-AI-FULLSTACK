@@ -314,8 +314,8 @@ front/
 │      ├── postr.test.js        # 게시판 사가 테스트 코드
 │      └── user.test.js        #  유저   사가  테스트 코드
 │   ├── index.js            # 루트 사가
-│   ├── user.js             # 사용자 관련 사가
-│   └── post.js             # 게시판 관련 사가 
+│   ├── authSaga.js             # 사용자 관련 사가
+│   └── postSaga.js             # 게시판 관련 사가 
 ├── store/                  # Redux 스토어 설정 폴더
 │   ├── configureStore.js   # Redux 스토어 설정
 │   └── configureStore.test.js # 스토어 테스트 코드

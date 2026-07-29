@@ -205,7 +205,7 @@ npm install
 Step3) reducer
 Step4) saga
 Step5) vide
-    
+
 ##### [실습]  5.   Boot + React + 세션/쿠키  - ver2  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우)
 ※ entity → repository  → service  →  controller 
 
