@@ -25,7 +25,7 @@ function* watchSignup(){
 
 //--- 단건조회 get /api/users/1 ---
 //호출3
-export const fetchUserApi = (userId) => axios.get(`USRE_API_BASE/${userId}`);
+export const fetchUserApi = (userId) => axios.get(`${USRE_API_BASE}/${userId}`);
 //호출2
 export function* fetchUser(action){
     //action = {type: ,payload:{}}
