@@ -342,11 +342,82 @@ npm install
 ```
 Step3) reducer
 Step4) saga
-Step5) vide
+
+Step5) view
+1. 레이아웃
+2. 경로
+```
+├── pages/                # Next.js 라우팅 기반 페이지 폴더
+│   ├── posts/             
+│      └──new.js          #  글쓰기 파일
+│   ├── _app.js           # 전체 앱의 공통 설정 (Redux Provider, 글로벌 스타일 등)
+│   ├── signup.js         # 회원가입
+│   ├── mypage.js         # 마이페이지
+│   └── index.js          # 메인 페이지
+
+```
+<Link href="/">          index.js #메인페이지
+<Link href="/mypage">   mypage.js #마이페이지
+<Link href="/signup">   signup.js #회원가입
+<Link href="/posts/new"> index.js #글쓰기
+
     
 ##### [실습]  5.   Boot + React + 세션/쿠키  - ver2  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우)
 ※ entity → repository  → service  →  controller 
 
 ##### [실습]  6.   Boot + React + jwt+ security + redis  - ver3  (기본게시판 + 회원가입 + 이미지 / 해쉬태그 / 좋아요 / 팔로우 )
 
-2. 회원가입
+
+
+## (1) : 회원가입 + board (crud)
+##  (2) : 멤버기능 +  board (이미지업로드, 해쉬태그 , 좋아요)
+boot2 -  프로젝트만들기
+- table     →   mapper      (dto)   →  service    →   controller
+- @Entity   →   repository  (dto)   →  service    →   controller
+
+1) 유저는 많은 글을 쓸수 있다.
+<AppUser>  → <Post>
+
+<AppUser>
+@OneToMany( mappedBy = "user" ,cascade = CascadeType.ALL, orphanRemoval = true )
+private List<Post> posts = new ArrayList<>(); 
+
+<Post>
+```
+@ManyToOne   //1. 다대일 (테이블의 필드)
+@JoinColumn(name="APP_USER_ID" , nullable = false)
+private AppUser user; 
+```
+
+2) 글은 많은 이미지를 갖는다.
+<Post> → <Image>
+
+3) 글은 많은 해쉬태그를 갖는다.    / 해쉬태그는 많은 글을 갖는다.
+1) 다:다
+2) 중간테이블
+
+<Post> → <Hashtag>       하나 글(여러)은  많은 해쉬태그를 갖는다.
+
+@ManyToMany
+
+<Hashtag> → <Post>
+
+4) 글은 많은 좋아요를 갖는다.
+한 글에 여러 유저가 좋아요를 눌러요    
+<Post>                                    <Post_Like>
+@OneToMany List<Post_Like> likes;      @ManyToOne Appuser user;
+@OneToMany List<Post_Like> likes;      @ManyToOne Post post;
+<AppUser>
+
+좋아요번호 글번호 유저번호
+1         1     1
+2         1     2
+3         1     3
+
+5) 리트윗
+6) 팔로우
+
+- @ManyToOne 쪽 → @JoinColumn 사용
+- @OneToMany 쪽 → mappedBy 사용
+
+front2 - 프로젝트복사하기

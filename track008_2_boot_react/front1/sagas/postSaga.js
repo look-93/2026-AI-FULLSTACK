@@ -58,7 +58,7 @@ function* watchCreatePost(){
 export const updatePostApi = (postId, dto) => axios.put(`${POST_API_BASE}/${postId}`, dto);
 export function* updatePost(action){
     try{
-       const result = yield call(updatePostApi, action.payload.id, action.payload)
+       const result = yield call(updatePostApi, action.payload.postId, action.payload.dto)
        yield put(updatePostSuccess(result.data))
     }catch(err){
         yield put(updatePostFailure(err.response?.data?.message || err.message));
@@ -75,7 +75,7 @@ export function* deletePost(action){
        yield call(deletePostApi, action.payload);
        yield put(deletePostSuccess(action.payload));
     }catch(err){
-        yield put(deleteFailure(err.response?.data?.message || err.message));
+        yield put(deletePostFailure(err.response?.data?.message || err.message));
     }
 }
 function* watchDeletePost(){
