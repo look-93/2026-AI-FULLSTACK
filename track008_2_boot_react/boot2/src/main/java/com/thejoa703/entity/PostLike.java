@@ -14,11 +14,13 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name="POST_LIKES",uniqueConstraints = {@UniqueConstraint(columnNames={"APP_USER_ID","POST_ID"})})
 public class PostLike {
 	
@@ -37,10 +39,14 @@ public class PostLike {
 	@ManyToOne
 	@JoinColumn(name="POST_ID", nullable = false)
 	private Post post;
-	
-	
+		
 	@PrePersist
 	void onCreate() {
 		this.createdAt = LocalDateTime.now();
 	}
+	
+    public PostLike(AppUser user, Post post) {
+        this.user = user;
+        this.post = post;
+    }
 }
