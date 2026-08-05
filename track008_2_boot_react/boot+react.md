@@ -421,3 +421,30 @@ private AppUser user;
 - @OneToMany 쪽 → mappedBy 사용
 
 front2 - 프로젝트복사하기
+
+■ 과정명   : [취업기업확대]AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
+■ 훈련과목 : (비NCS)프로젝트(완성된 웹서비스 플랫폼 프로젝트 리뉴얼)
+> boot + security + jwt + redis / jpa( mybatis ) +oracle / react + next     → aws
+
+[4] Dto/ Service
+
+■ 멤버관리
+회원가입 (이메일중복검사, 닉네임중복검사)
+
+로그인 
+
+마이페이지 (닉네임변경, 프로필 이미지 변경, 회원탈퇴) ※팔로워/팔로앙
+
+(UserDto : UserRequestDto, UserResponseDto)
+UserRequestDto < email, password, nickname, ☆image(Multypart 무거워서 빠짐) / provider, mobile, mbtitype >
+UserResponseDto < email, 권한, nickname, image / >
+LoginRequest < email, password >
+
+■ 게시글관리
+게시글작성
+
+게시글목록(전체글/좋아요한글/내글+리트윗)
+- 각세부내용/수정/삭제
+- 각세부(좋아요,리트윗,댓글)
+
+[5] RestController
