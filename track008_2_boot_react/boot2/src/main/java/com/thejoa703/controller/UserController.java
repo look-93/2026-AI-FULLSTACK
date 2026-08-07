@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 
 @Tag(name="User Api", description="회원 인증 및 관리 관련 API (Session & Swagger 지원)") //swagger
 @RestController // @Controller + @ResponseBody
-@RequestMapping("/api/users")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class UserController {
 	private final UserService userService;

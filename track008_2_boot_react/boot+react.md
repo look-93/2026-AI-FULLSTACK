@@ -448,3 +448,30 @@ LoginRequest < email, password >
 - 각세부(좋아요,리트윗,댓글)
 
 [5] RestController
+
+- 20260806 day090
+> Ver2 . frontend
+1. 프로젝트만들기
+```
+mkdir front2
+npm init
+npm install
+```
+2. 프로그램설치
+```
+npm install
+```
+
+3. 개발
+<20260807>
+login.js 로그인
+닉네임수정
+이미지프로필 수정
+게시판 자성
+게시판 수정
+
+4. 보안 + 시큐리티
+
+1) reducer
+2) saga
+3) page
