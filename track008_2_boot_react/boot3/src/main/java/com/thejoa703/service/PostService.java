@@ -152,9 +152,14 @@ public class PostService {
 	
 	//6. 게시글삭제
 	@Transactional
-	public void deletedPost(Long postId) {
+	public void deletedPost(Long userId ,Long postId) {		
 		Post post = postRepository.findById(postId)
 								  .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 게시글입니다. Id" + postId));
+		
+		//###
+		if(!post.getUser().getId().equals(userId)) {
+			throw new SecurityException("본인 글만 삭제 할 수 있습니다.");
+		}
 		post.setDeleted(true); //저장메서드를 따로 호출하지 않아도 update 쿼리 반영 
 	}
 }

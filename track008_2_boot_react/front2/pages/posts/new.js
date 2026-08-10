@@ -27,18 +27,19 @@ export default function NewPostPage(){
         dispatch(createPostRequest({userId:user.id, dto, files}));
     };
 
-    // useSelect(전역) , useDispatch(알림), useState(변수), useEffect(이벤트변화감지), 리스트
-    useEffect(() => {
-        dispatch(resetPostState());
-    }, []);
-    useEffect(() => {
-    if (!success) return;
+    // useSelect(전역) / useDispatch(알림) / useState(변수) / useEffect(이벤트변화감지) / 리스트
+    useEffect( ()=> {
+        if(success){  
+            message.success("게시글이 성공적으로 작성되었습니다.");
+            setFileList([]); 
+            dispatch(resetPostState());
+            router.push("/");
+        } 
+        return ()=>{
+            if(success) {  dispatch(resetPostState());  }
+        };
 
-    message.success("게시글이 성공적으로 작성되었습니다.");
-    setFileList([]);
-    router.push("/");
-
-    }, [success, router]);
+    } , [success, router, dispatch]);
 
     ////////////////////////  Q1. view
     return (

@@ -27,6 +27,8 @@ export   default function Home(){
     } 
     const hadleEditSubmit=(values)=>{
         //console.log(values.hashtags)
+        //console.log("user:", user);
+        //console.log("user.id:", user?.id);
         dispatch(  updatePostRequest(   { 
              userId: user?.id, postId: editPost.id , 
              dto:{ content:values.content, 
