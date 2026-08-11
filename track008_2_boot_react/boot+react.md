@@ -491,10 +491,13 @@ login.js 로그인
   ㄴ userInfoOAuth2 (1)공통속성 추출
   ㄴ UserInfoGoogle / UserInfokakao / UserInfoNaver (2) 각 소셜마다 처리
   ㄴ CustomOAuth2User (3) Security: loacl + Oauth2: 소셜 - 유저정보
-  ㄴ  OAuth2SucceccHandler (4) 소셜로그인시 - redis / jwt 설정
-4) service
-5) controller
-6) react
+  ㄴ  OAuth2SucceccHandler (4) 소셜로그인시 - redis / jwt 설정 (소셜로그인시 유저저장, 토큰설정)
+4) service - 기존활용
+  ㄴ AuthUserJwtService (유저정보활용)
+5) controller - 
+  ㄴ UserController (로그인시 - access Token, refresh Token / cookie 설정)
+  ㄴ post 에서 AuthUserJwtService 활용해서 가져오기
+
 
 STEP1)
 ```
@@ -606,3 +609,24 @@ jwt:
   prefix: Bearer
 
 ```
+
+6) react (2026-08-11) day093
+
+1. 셋팅
+1)폴더만들기
+2)프로젝트설치
+3)reducer -> saga -> page
+4)jwt 사용
+  ㄴ api
+      ㄴaxios 사용
+
+```
+mkdir
+front3
+cd front3
+front2 프로젝트 .next/node-modules 빼고 복붙
+npm install
+```
+
+7) social
+> kako , naver, google 개발자사이트

@@ -148,7 +148,7 @@ public class UserController {
                 .path("/")
                 .maxAge(0)
                 .build();
-        response.addHeader(HttpHeaders.SET_COOKIE, deleteCookie.toString());
+        response.addHeader(HttpHeaders.SET_COOKIE, deleteCookie.toString()); //쿠키 delete
 
         return ResponseEntity.noContent().build();
     }
@@ -162,8 +162,7 @@ public class UserController {
 //			
 //		return ResponseEntity.ok(userService.getUser(userId));
 //
-//	}
-    
+//	}    
     @Operation(summary = "현재 로그인한 사용자 정보 조회")
     @GetMapping("/me")
     public ResponseEntity<UserResponseDto> me(HttpServletRequest request,
