@@ -1,339 +1,1031 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BORA</title>
-    <!-- Latest compiled and minified CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- google font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&family=Gowun+Dodum&family=Grape+Nuts&family=Namdhinggo:wght@400;500;600;700;800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="./css/my2.css" rel="stylesheet" />
-  </head>
-
-  <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
-    <!--HEADER-->
-    <header class="p-5">
-      <h1 class="myhidden">BORA</h1>
-      <nav
-        class="navbar navbar-expand-sm fixed-top"
-        style="
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(12px);
-        "
-      >
-        <h2 class="myhidden">주메뉴</h2>
-        <div class="container">
-          <a class="mynav navbar-brand" href="#">BORA</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mynavbar"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!--collapse : 모바일버전기능-->
-          <div
-            class="collapse navbar-collapse justify-content-center"
-            id="mynavbar"
-          >
-            <ul class="mynavitem navbar-nav">
-              <!--ms-auto-->
-              <!--me-auto 마진앤드 ms-auto 마진스타트 ul태그 좌우이동-->
-              <li class="nav-item">
-                <a class="nav-link" href="#section1">ABOUT</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#section2">SKILLS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#section3">PROJECTS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#section4">EXPERIENCE</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#section5">CONTACT</a>
-              </li>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio — Developer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link href="./css/my.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav>
+            <a href="#hero" class="nav-logo">Dev<span>.</span>Portfolio</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">소개</a></li>
+                <li><a href="#skills">스킬</a></li>
+                <li><a href="#projects">프로젝트</a></li>
+                <li><a href="#timeline">경력</a></li>
+                <li><a href="#contact">연락</a></li>
             </ul>
-          </div>
-          <div id="mynavbar2" style="font-size: 10px">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <p class="nav-card">
-                  <a
-                    href="https://github.com/look-93/2026-AI-FULLSTACK.git"
-                    title="mygithub"
-                    target="_blank"
-                  >
-                    <img src="./img/github.png" alt="github" />
-                  </a>
+            <button class="hamburger" id="hamburger" aria-label="메뉴">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-left">
+                <div class="hero-badge">FullStack Developer</div>
+                <h1 class="hero-name">
+                    김보라<span class="hero-name-italic">입니다.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    사용자 경험을 고민하는 개발자 김보라입니다.
                 </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!--INFO-->
-    <section class="p-5" id="section1">
-      <div class="container">
-        <h3 class="text-center myhidden">About Me</h3>
-        <div class="row">
-          <div class="col-sm-7">
-            <h2>
-              Hi, i'm
-              <span style="color: rgb(163, 129, 162)">Bora Kim</span>
-            </h2>
-            <p class="typing">FullStack Developer</p>
-            <br /><br />
-            <div>
-              <p>
-                사용자 경험을 고민하는 개발자 김보라입니다. <br />
-                SQL을 활용한 데이터 분석과 백엔드 개발에 강점을 가지고
-                있습니다.<br />
-                단순히 기능을 구현하는 것을 넘어, 유지보수성과 확장성을 고려한
-                코드를 작성하는 개발자가 되기 위해 꾸준히 학습하고 있습니다.
-              </p>
+                <p class="hero-desc">
+                    SQL을 활용한 데이터 분석과 백엔드 개발에 강점을 가지고
+                    있습니다.<br />
+                    단순히 기능을 구현하는 것을 넘어, 유지보수성과 확장성을
+                    고려한 코드를 작성하는 개발자가 되기 위해 꾸준히 학습하고
+                    있습니다.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-fill">프로젝트 보기 →</a>
+                    <a href="#contact" class="btn-outline">연락하기</a>
+                </div>
             </div>
-          </div>
-          <div class="col-sm-5">
-            <div class="picture-wrapper">
-              <div class="picture-glow"></div>
-              <div class="picture">
-                <img
-                  src="./img/one.png"
-                  alt="Los Angeles"
-                  class="w-75 mx-auto"
-                />
-              </div>
+            <div class="hero-right">
+                <div class="hero-right-deco"></div>
+                <div class="hero-right-dots">
+                    <!-- dot grid decoration -->
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="hero-tag hero-tag-1">✦ Available for Work</div>
+                <div class="hero-tag hero-tag-2">📍 서울, 대한민국</div>
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo-frame"></div>
+                    <!--
+          ★ 사진 교체 방법:
+          아래 div를 제거하고 img 태그를 사용하세요.
+          <img src="photo.jpg" alt="홍길동 프로필 사진" />
+        -->
+                    <div class="hero-photo-placeholder">
+                        <svg
+                            width="60"
+                            height="60"
+                            viewBox="0 0 60 60"
+                            fill="none"
+                        >
+                            <circle
+                                cx="30"
+                                cy="20"
+                                r="12"
+                                stroke="#4A3F2F"
+                                stroke-width="1.5"
+                            />
+                            <path
+                                d="M6 54c0-13.255 10.745-24 24-24s24 10.745 24 24"
+                                stroke="#4A3F2F"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                        <span
+                            >여기에 사진을 추가하세요<br /><code
+                                style="font-size: 0.65rem"
+                                >&lt;img src="photo.jpg"&gt;</code
+                            ></span
+                        >
+                    </div>
+                </div>
             </div>
-            <!-- <p style="text-align: center">
-              <img src="./img/one.png" alt="Los Angeles" class="w-50 mx-auto" />
-            </p> -->
-            <!-- <h4 class="myhidden">Kim Bo Ra</h4> -->
-          </div>
+        </section>
+
+        <!-- MARQUEE BAR -->
+        <div class="marquee-bar" aria-hidden="true">
+            <div class="marquee-track">
+                <span class="marquee-item">React</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Node.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">TypeScript</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Vue.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Spring Boot</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MySQL</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MongoDB</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Docker</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Git</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Figma</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <!-- duplicate for seamless loop -->
+                <span class="marquee-item">React</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Node.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">TypeScript</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Vue.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Spring Boot</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MySQL</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MongoDB</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Docker</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Git</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Figma</span
+                ><span class="marquee-item marquee-sep">✦</span>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <!--Skills-->
-    <section class="p-5 skill-section" id="section2">
-      <h3 class="myhidden">SKILLS</h3>
-      <div class="container">
-        <div class="skills-card">
-          <div class="icons">
-            <h4>Skills</h4>
-            <div class="icon-group">
-              <div class="row">
-                <div class="col-sm-6">
-                  <!--js-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/javascript.png" alt="javascript" />
-                    </p>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">00 — About Me</div>
+                        <h2 class="section-title">나를 <em>소개</em>합니다</h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text reveal rd1">
+                        <p>
+                            안녕하세요! 저는 사용자 중심의 웹 애플리케이션을
+                            개발하는 개발자 <strong>김보라</strong>입니다. 학원
+                            교육을 통해 풀스택 웹 개발을 체계적으로 배웠으며,
+                            여러 팀 프로젝트를 통해 협업 능력과 문제 해결 능력을
+                            키웠습니다.
+                        </p>
+                        <p>
+                            새로운 기술을 탐구하고 이를 실제 서비스에 적용하는
+                            것을 즐깁니다. 꼼꼼한 코드 작성과 깔끔한 UI 구현을
+                            지향하며, 항상 더 나은 개발자가 되기 위해 꾸준히
+                            성장하고 있습니다.
+                        </p>
+                    </div>
+                    <div class="about-cards reveal rd2">
+                        <div class="about-card-row">
+                            <span class="about-card-key">이름</span>
+                            <span class="about-card-val">김보라</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">거주지</span>
+                            <span class="about-card-val">인천광역시</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">이메일</span>
+                            <span
+                                class="about-card-val"
+                                style="color: var(--coral)"
+                                >qhfk0961@email.com</span
+                            >
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">교육</span>
+                            <span class="about-card-val"
+                                >AI 활용 풀스택 개발자 양성과정<small
+                                    >(수료 예정)</small
+                                ></span
+                            >
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">상태</span>
+                            <span class="about-card-val">
+                                <span class="status-pill">
+                                    <span class="status-dot"></span>구직 중
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%
-                      </div>
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">01 — Skills</div>
+                        <h2 class="section-title">기술 <em>스택</em></h2>
                     </div>
-                  </div>
-                  <!--react-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/react.png" alt="react" />
-                    </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%"
-                      </div>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal rd1">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-cat-title">Frontend</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
                     </div>
-                  </div>
-                  <!--css3-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/css3.png" alt="css3" />
-                    </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%"
-                      </div>
+                    <div class="skill-card reveal rd2">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">⚙️</div>
+                        <div class="skill-cat-title">Backend</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
                     </div>
-                  </div>
+                    <div class="skill-card reveal rd3">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🗄️</div>
+                        <div class="skill-cat-title">Database &amp; DevOps</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal rd1">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🛠️</div>
+                        <div class="skill-cat-title">Tools &amp; Etc</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Notion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" style="background: var(--cream2)">
+            <div class="section-inner">
+                <!-- PROJECT HEADER -->
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">02 — Projects</div>
+                        <h2 class="section-title">프로젝트 <em>작업물</em></h2>
+                    </div>
+                    <div class="section-rule"></div>
                 </div>
 
-                <div class="col-sm-6">
-                  <!--html5-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/html5.png" alt="html5" />
+                <!-- =====================================================
+             MOIT PROJECT
+        ====================================================== -->
+
+                <div class="project-intro reveal">
+                    <div class="project-num">PROJECT — 01</div>
+
+                    <h3 class="project-title">MOIT</h3>
+
+                    <p class="project-subtitle">
+                        관심사와 활동 목적을 기반으로 한<br />
+                        <strong>소모임 커뮤니티 플랫폼</strong>
                     </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%"
-                      </div>
-                    </div>
-                  </div>
-                  <!--java-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/java.png" alt="java" />
+
+                    <p class="project-desc">
+                        관심사와 활동 목적을 기반으로 원하는 소모임을 탐색하고
+                        참여할 수 있도록 설계한 커뮤니티 플랫폼입니다. 하나의
+                        프로젝트를 단계적으로 발전시키며 기술 스택과 시스템
+                        구조를 개선하고, 사용자 경험과 서비스 기능을 지속적으로
+                        고도화했습니다.
                     </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%"
-                      </div>
+
+                    <div class="project-stack">
+                        <span class="project-tech">Spring</span>
+                        <span class="project-tech">Spring Boot</span>
+                        <span class="project-tech">MyBatis</span>
+                        <span class="project-tech">JPA</span>
+                        <span class="project-tech">Oracle</span>
+                        <span class="project-tech">React</span>
+                        <span class="project-tech">Next.js</span>
+                        <span class="project-tech">TypeScript</span>
+                        <span class="project-tech">Ant Design</span>
+                        <span class="project-tech">Tailwind CSS</span>
+                        <span class="project-tech">React Query</span>
+                        <span class="project-tech">Redis</span>
+                        <span class="project-tech">JWT</span>
                     </div>
-                  </div>
-                  <!--spring-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/spring.png" alt="spring" />
-                    </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 50%">
-                        50%"
-                      </div>
-                    </div>
-                  </div>
-                  <!--mssql-->
-                  <div>
-                    <p class="icon-card">
-                      <img src="./img/mssql.png" alt="mssql" />
-                    </p>
-                    <div class="progress" style="height: 10px">
-                      <div class="progress-bar skill-bar" style="width: 80%">
-                        80%"
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!--PROJECTS-->
-    <section class="p-5" id="section3">
-      <div class="container">
-        <h4 class="pb-4">Projects</h4>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="projects">
-              <h5>포트폴리오1</h5>
-              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="projects">
-              <h5>포트폴리오2</h5>
-              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="projects">
-              <h5>포트폴리오3</h5>
-              <!-- <button class="btn btn-secondary">포트폴리오 더보기</button> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                <!-- =====================================================
+             MOIT V1
+        ====================================================== -->
 
-    <!-- EXPERIENCE EUCATION-->
-    <section class="experience-section p-5" id="section4">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>Experience</h4>
-            <div
-              class="mt-3 mb-3"
-              style="width: 50px; border-bottom: 5px solid #bcbcbc"
-            ></div>
-            <ul style="list-style: none">
-              <li>
-                <strong>(주)에이비</strong><br />
-                <span style="color: gray; font-size: 14px"
-                  >2022.11 ~ 2025.04</span
-                >
-              </li>
-              <li>MSSQL기반 ERP 시스템 구축</li>
-            </ul>
-          </div>
-          <div class="col-sm-6">
-            <h4>Education</h4>
-            <div
-              class="mt-3 mb-3"
-              style="width: 50px; border-bottom: 5px solid #bcbcbc"
-            ></div>
-            <ul style="list-style: none">
-              <li>
-                <strong>더조은컴퓨터아트학원</strong><br />
-                <span style="color: gray; font-size: 14px"
-                  >2026.03 ~ 2026.10</span
-                >
-              </li>
-              <li>AI활용 풀스텍(프론트엔드,백엔드)부트캠프</li>
-              <li>
-                <strong>한국소프트인재개발원</strong><br />
-                <span style="color: gray; font-size: 14px"
-                  >2022.04 ~ 2022.10</span
-                >
-              </li>
-              <li>ELK활용 빅데이터 분석서비스 플랫폼개발자양성</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+                <div class="moit-version reveal rd1">
+                    <div class="version-header">
+                        <div class="version-number">
+                            <span>V1</span>
+                            <small>기본 기능 구현</small>
+                        </div>
 
-    <!-- CONTACT -->
-    <section class="p-5" id="section5">
-      <div class="container contact">
-        <h4>Contact With Me</h4>
-        <form action="/action_page.php">
-          <div class="row mb-3 mt-3">
-            <div class="col-sm-7">
-              <textarea
-                class="form-control"
-                rows="2"
-                id="email"
-                placeholder="Email"
-                name="email"
-              ></textarea>
+                        <div class="version-date">MOIT — VERSION 01</div>
+                    </div>
+
+                    <div class="version-content">
+                        <!-- VIDEO -->
+                        <div class="version-media">
+                            <!--
+                    V1 영상이 YouTube에 있다면
+
+                    <iframe
+                        src="https://www.youtube.com/embed/영상ID"
+                        title="MOIT V1 시연 영상"
+                        allowfullscreen>
+                    </iframe>
+                    -->
+
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+
+                                <span>
+                                    MOIT V1<br />
+                                    시연 영상을 삽입하세요
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="version-info">
+                            <div class="version-label">VERSION 01</div>
+
+                            <h3>
+                                기본 기능 중심의<br />
+                                소모임 플랫폼 구축
+                            </h3>
+
+                            <p>
+                                소모임 플랫폼의 핵심 기능을 중심으로 기본적인
+                                서비스 구조를 구현했습니다. 회원과 모임을
+                                중심으로 문의, 후기, 신고, 광고 등의 기능을
+                                구성하여 서비스의 전체적인 흐름을 완성했습니다.
+                            </p>
+
+                            <div class="version-tech">
+                                <span>Spring Framework</span>
+                                <span>JSP</span>
+                                <span>MyBatis</span>
+                                <span>MySQL</span>
+                                <span>Ajax</span>
+                            </div>
+
+                            <ul class="version-features">
+                                <li>회원 가입 및 로그인</li>
+                                <li>소모임 등록 및 조회</li>
+                                <li>모임 참여 기능</li>
+                                <li>문의 및 후기 기능</li>
+                                <li>신고 및 광고 기능</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             MOIT V2
+        ====================================================== -->
+
+                <div class="moit-version reveal rd2">
+                    <div class="version-header">
+                        <div class="version-number">
+                            <span>V2</span>
+                            <small>Spring Boot 전환</small>
+                        </div>
+
+                        <div class="version-date">MOIT — VERSION 02</div>
+                    </div>
+
+                    <div class="version-content">
+                        <!-- VIDEO -->
+                        <div class="version-media">
+                            <!--
+                    <iframe
+                        src="https://www.youtube.com/embed/영상ID"
+                        title="MOIT V2 시연 영상"
+                        allowfullscreen>
+                    </iframe>
+                    -->
+
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+
+                                <span>
+                                    MOIT V2<br />
+                                    시연 영상을 삽입하세요
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="version-info">
+                            <div class="version-label">VERSION 02</div>
+
+                            <h3>
+                                Spring Boot 기반으로<br />
+                                서버 구조 개선
+                            </h3>
+
+                            <p>
+                                기존 Spring Framework 기반 프로젝트를 Spring
+                                Boot 환경으로 전환하고, 서버 설정과 개발 환경을
+                                단순화했습니다. MyBatis를 유지하면서 Oracle
+                                Database를 적용하여 데이터 관리 환경을
+                                개선했습니다.
+                            </p>
+
+                            <div class="version-tech">
+                                <span>Spring Boot</span>
+                                <span>Thymeleaf</span>
+                                <span>MyBatis</span>
+                                <span>Oracle</span>
+                            </div>
+
+                            <ul class="version-features">
+                                <li>Spring Boot 기반 프로젝트 전환</li>
+                                <li>Oracle Database 적용</li>
+                                <li>Thymeleaf 기반 화면 구성</li>
+                                <li>기존 기능 구조 개선</li>
+                                <li>서버 설정 및 개발 환경 단순화</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             MOIT V3
+        ====================================================== -->
+
+                <div class="moit-version reveal rd3">
+                    <div class="version-header">
+                        <div class="version-number">
+                            <span>V3</span>
+                            <small>서비스 고도화</small>
+                        </div>
+
+                        <div class="version-date">MOIT — VERSION 03</div>
+                    </div>
+
+                    <div class="version-content">
+                        <!-- VIDEO -->
+                        <div class="version-media">
+                            <!--
+                    <iframe
+                        src="https://www.youtube.com/embed/영상ID"
+                        title="MOIT V3 시연 영상"
+                        allowfullscreen>
+                    </iframe>
+                    -->
+
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+
+                                <span>
+                                    MOIT V3<br />
+                                    시연 영상을 삽입하세요
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="version-info">
+                            <div class="version-label">VERSION 03</div>
+
+                            <h3>
+                                React + REST API 기반의<br />
+                                서비스 고도화
+                            </h3>
+
+                            <p>
+                                프론트엔드와 백엔드를 분리하고 REST API 기반의
+                                구조로 전환했습니다. JWT 인증과 Redis를
+                                적용하고, 신뢰도 점수, 날씨 정보, AI 추천 등
+                                서비스의 핵심 기능을 고도화했습니다.
+                            </p>
+
+                            <div class="version-tech">
+                                <span>React</span>
+                                <span>Next.js</span>
+                                <span>Spring Boot</span>
+                                <span>JPA</span>
+                                <span>MyBatis</span>
+                                <span>Oracle</span>
+                                <span>Redis</span>
+                                <span>JWT</span>
+                            </div>
+
+                            <ul class="version-features">
+                                <li>React 기반 프론트엔드 구축</li>
+                                <li>REST API 기반 프론트·백엔드 분리</li>
+                                <li>JWT 기반 인증 및 권한 처리</li>
+                                <li>JPA 기반 데이터 처리 구조 적용</li>
+                                <li>Redis 기반 캐싱 및 TTL 기능</li>
+                                <li>모임 신뢰도 점수 시스템</li>
+                                <li>날씨 API 연동 및 알림 기능</li>
+                                <li>AI 기반 모임 추천 기능</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             MOIT V4
+        ====================================================== -->
+
+                <div class="moit-version reveal rd1">
+                    <div class="version-header">
+                        <div class="version-number">
+                            <span>V4</span>
+                            <small>예정</small>
+                        </div>
+
+                        <div class="version-date">MOIT — VERSION 04</div>
+                    </div>
+
+                    <div class="version-content">
+                        <!-- VIDEO -->
+                        <div class="version-media">
+                            <!--
+                    <iframe
+                        src="https://www.youtube.com/embed/영상ID"
+                        title="MOIT V4 시연 영상"
+                        allowfullscreen>
+                    </iframe>
+                    -->
+
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+
+                                <span>
+                                    MOIT V4<br />
+                                    시연 영상을 삽입하세요
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="version-info">
+                            <div class="version-label">VERSION 04</div>
+
+                            <h3>
+                                React 기반 프론트엔드<br />
+                                전환 및 사용자 경험 개선
+                            </h3>
+
+                            <p>예정</p>
+
+                            <div class="version-tech">예정</div>
+
+                            <ul class="version-features">
+                                예정
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             MOIT REPOSITORY
+        ====================================================== -->
+
+                <div class="project-final reveal">
+                    <div>
+                        <div class="section-eyebrow">
+                            MOIT — PROJECT REPOSITORY
+                        </div>
+
+                        <h3>
+                            하나의 프로젝트를 단계적으로 발전시키며<br />
+                            기술과 개발 경험을 확장했습니다.
+                        </h3>
+                    </div>
+
+                    <div class="project-links">
+                        <a
+                            href="깃허브주소"
+                            class="project-link gh"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <svg
+                                width="13"
+                                height="13"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38-.01-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                                />
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- =====================================================
+             JAVA PROJECT
+        ====================================================== -->
+
+                <div class="project-item reveal">
+                    <div class="project-media">
+                        <!--
+                Java 프로젝트 영상이 있다면
+
+                <iframe
+                    src="https://www.youtube.com/embed/영상ID"
+                    title="Java 계좌 관리 프로그램 시연 영상"
+                    allowfullscreen>
+                </iframe>
+                -->
+
+                        <div class="project-media-placeholder">
+                            <svg
+                                width="44"
+                                height="44"
+                                viewBox="0 0 44 44"
+                                fill="none"
+                            >
+                                <rect
+                                    x="3"
+                                    y="7"
+                                    width="38"
+                                    height="27"
+                                    rx="3"
+                                    stroke="#4A3F2F"
+                                    stroke-width="1.5"
+                                    opacity="0.4"
+                                />
+
+                                <path
+                                    d="M18 16l10 6-10 6V16z"
+                                    fill="#4A3F2F"
+                                    opacity="0.3"
+                                />
+                            </svg>
+
+                            <span>
+                                Java 프로젝트<br />
+                                시연 영상을 삽입하세요
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="project-info">
+                        <div class="project-num">Project — 02</div>
+
+                        <h3 class="project-title">
+                            Java 기반 콘솔<br />
+                            계좌 관리 프로그램
+                        </h3>
+
+                        <div class="project-stack">
+                            <span class="project-tech">Java</span>
+                            <span class="project-tech">OOP</span>
+                            <span class="project-tech">ArrayList</span>
+                            <span class="project-tech">Scanner</span>
+                        </div>
+
+                        <p class="project-desc">
+                            Java의 객체지향 프로그래밍과 컬렉션을 활용하여 계좌
+                            생성부터 조회, 입금, 출금, 삭제까지 기본적인 은행
+                            업무를 구현했습니다. 객체지향 설계와 Java 기본
+                            문법을 기반으로 프로그램의 데이터 처리 흐름을
+                            구성했습니다.
+                        </p>
+
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link gh"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <svg
+                                    width="13"
+                                    height="13"
+                                    viewBox="0 0 16 16"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38-.01-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                                    />
+                                </svg>
+
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row mb-3 mt-3">
-            <div class="col-sm-7">
-              <textarea
-                class="form-control"
-                rows="2"
-                id="comment"
-                placeholder="Message"
-                name="text"
-              ></textarea>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">04 — Contact</div>
+                        <h2 class="section-title" style="color: var(--cream)">
+                            함께 <em>일해요</em>
+                        </h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+
+                <div class="contact-inner">
+                    <div class="contact-left reveal rd1">
+                        <div class="contact-big">Let's<br /><em>talk.</em></div>
+                        <p class="contact-sub">
+                            채용 제안, 협업 아이디어, 또는 단순한 인사도
+                            환영합니다. 언제든 연락 주세요. 24시간 내에
+                            답장드리겠습니다.
+                        </p>
+                        <div class="contact-detail">
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-val"
+                                    ><a href="mailto:your@email.com"
+                                        >your@email.com</a
+                                    ></span
+                                >
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-val"
+                                    ><a
+                                        href="https://github.com/yourusername"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >github.com/yourusername</a
+                                    ></span
+                                >
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Location</span>
+                                <span
+                                    class="contact-val"
+                                    style="color: rgba(255, 252, 245, 0.6)"
+                                    >서울특별시, 대한민국</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <form
+                        class="contact-form reveal rd2"
+                        action="mailto:your@email.com"
+                        method="post"
+                        enctype="text/plain"
+                    >
+                        <div class="form-group">
+                            <label class="form-label" for="c-name">이름</label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="c-name"
+                                name="이름"
+                                placeholder="홍길동"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-email"
+                                >이메일</label
+                            >
+                            <input
+                                class="form-input"
+                                type="email"
+                                id="c-email"
+                                name="이메일"
+                                placeholder="your@email.com"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-subject"
+                                >제목</label
+                            >
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="c-subject"
+                                name="제목"
+                                placeholder="채용 제안드립니다"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-message"
+                                >메시지</label
+                            >
+                            <textarea
+                                class="form-textarea"
+                                id="c-message"
+                                name="메시지"
+                                placeholder="안녕하세요, 말씀드리고 싶은 내용을 자유롭게 적어 주세요."
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            메일 보내기 →
+                        </button>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="row mb-3 mt-3">
-            <div class="col-sm-7" style="text-align: right">
-              <button type="button" class="btn">Stay Connected</button>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <span class="footer-copy">© 2024 홍길동. All rights reserved.</span>
+            <div class="footer-links">
+                <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                >
+                <a href="mailto:your@email.com">Email</a>
+                <a href="#hero">맨 위로 ↑</a>
             </div>
-          </div>
-        </form>
-      </div>
-    </section>
-  </body>
+        </footer>
+
+        <script>
+            // Hamburger
+            const hamburger = document.getElementById("hamburger");
+            const navLinks = document.getElementById("navLinks");
+            hamburger.addEventListener("click", () =>
+                navLinks.classList.toggle("open"),
+            );
+            navLinks
+                .querySelectorAll("a")
+                .forEach((a) =>
+                    a.addEventListener("click", () =>
+                        navLinks.classList.remove("open"),
+                    ),
+                );
+
+            // Scroll reveal
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("visible");
+                            revealObserver.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+            document
+                .querySelectorAll(".reveal")
+                .forEach((el) => revealObserver.observe(el));
+
+            // Active nav
+            const navAnchors = document.querySelectorAll(".nav-links a");
+            const secObs = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            navAnchors.forEach((a) => {
+                                const isActive =
+                                    a.getAttribute("href") ===
+                                    "#" + e.target.id;
+                                a.style.background = isActive
+                                    ? "var(--coral)"
+                                    : "";
+                                a.style.color = isActive ? "#fff" : "";
+                            });
+                        }
+                    });
+                },
+                { rootMargin: "-40% 0px -50% 0px" },
+            );
+            document
+                .querySelectorAll("section[id]")
+                .forEach((s) => secObs.observe(s));
+
+            // Tab switcher
+            document.querySelectorAll(".tab-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    document
+                        .querySelectorAll(".tab-btn")
+                        .forEach((b) => b.classList.remove("active"));
+                    document
+                        .querySelectorAll(".tab-panel")
+                        .forEach((p) => p.classList.remove("active"));
+                    btn.classList.add("active");
+                    const panel = document.getElementById(
+                        "tab-" + btn.dataset.tab,
+                    );
+                    if (panel) panel.classList.add("active");
+                });
+            });
+        </script>
+    </body>
 </html>
