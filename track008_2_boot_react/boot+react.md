@@ -630,3 +630,15 @@ npm install
 
 7) social
 > kako , naver, google 개발자사이트
+> boot 의 .env 파일 바꾸지
+
+■boot3
+ㄴ service : public AppUser saveSocialUser() - @더티체크/Security 처리
+■front3
+ㄴ pages 
+    ㄴ oauth2
+      ㄴ callback.js
+■front3
+  ㄴ public 
+    ㄴ images  (이미지 파일들)
+        

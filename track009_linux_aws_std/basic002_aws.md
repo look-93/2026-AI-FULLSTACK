@@ -484,13 +484,22 @@ git push origin main
 5. 외부테스트
    http://3.39.195.166
 
+> 해결방안 1) 프로젝트가 망가졌다면
+1. boot 프로젝트 새로만들기 - com.the703
+2. .env, build.gradle 옮기기
+3. src 안에 덮기
+
+> 해결방안 2) 500에러 났다면
 ```
-오류시
-1. ssh 접속
+1. ssh 접속 - ssh -i "the703.pem" ubuntu@ec2-3-39-195-166.ap-northeast-2.compute.amazonaws.com
 2. pm2 list
 3. pm2 logs backend/frontend
-```
 
+#에러 더 확인하기
+pm2 logs backend --out --lines 200 | grep -E -A 5 "(Exception|Caused by|Error)"
+pm2 logs backend --lines 50
+```
+이유 - 테이블권한없음
 ---
 
 ■ Step4. HTTPS + DOMAIN

@@ -1,0 +1,18 @@
+services:
+    oracle:
+        image: gvenzl/oracle-xe:18.4.0
+        container_name: oracle-xe-18c
+        restart: unless-stopped
+
+        ports:
+            - '1521:1521'
+
+        environment:
+            ORACLE_PASSWORD: 'oracle'
+
+        volumes:
+            - oracle-data:/opt/oracle/oradata
+            - ./init:/container-entrypoint-initdb.d
+
+volumes:
+    oracle-data:

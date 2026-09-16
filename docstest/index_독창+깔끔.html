@@ -1,0 +1,1781 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>홍길동 | 개발자 포트폴리오</title>
+        <meta
+            name="description"
+            content="웹 개발자 홍길동의 포트폴리오입니다."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            /* ── RESET & BASE ── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --bg: #ffffff;
+                --bg-alt: #f6f6f3;
+                --ink: #0a0a0a;
+                --ink-soft: #5a5a6a;
+                --ink-muted: #9a9aa8;
+                --accent: #b5ff3e;
+                --accent-warm: #ff5038;
+                --accent-blue: #3e8bff;
+                --accent-purple: #a855f7;
+                --border: #0a0a0a;
+                --border-light: #e5e5e0;
+                --radius: 16px;
+                --radius-sm: 8px;
+            }
+            html {
+                scroll-behavior: smooth;
+                font-size: 16px;
+            }
+            body {
+                font-family: "Outfit", sans-serif;
+                background: var(--bg);
+                color: var(--ink);
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+            ::selection {
+                background: var(--accent);
+                color: var(--ink);
+            }
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--accent);
+                border-radius: 3px;
+            }
+
+            /* ── TYPOGRAPHY ── */
+            .display {
+                font-family: "Instrument Serif", serif;
+            }
+            .mono {
+                font-family: "JetBrains Mono", monospace;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: "Instrument Serif", serif;
+                line-height: 1.1;
+            }
+
+            /* ── LAYOUT ── */
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+            section {
+                padding: 96px 0;
+            }
+
+            /* ── SECTION LABEL ── */
+            .sec-label {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--ink-muted);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .sec-label::after {
+                content: "";
+                flex: 1;
+                max-width: 40px;
+                height: 1px;
+                background: var(--ink-muted);
+            }
+
+            /* ── NAVBAR ── */
+            #navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                padding: 0 24px;
+                transition: all 0.3s ease;
+            }
+            #navbar.scrolled {
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-light);
+            }
+            .nav-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .nav-logo {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 14px;
+                font-weight: 700;
+                text-decoration: none;
+                color: var(--ink);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .nav-logo span {
+                background: var(--accent);
+                color: var(--ink);
+                padding: 2px 8px;
+                border-radius: 4px;
+            }
+            .nav-links {
+                display: flex;
+                gap: 4px;
+                align-items: center;
+            }
+            .nav-links a {
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--ink-soft);
+                text-decoration: none;
+                padding: 6px 14px;
+                border-radius: 100px;
+                transition: all 0.2s;
+            }
+            .nav-links a:hover {
+                background: var(--accent);
+                color: var(--ink);
+            }
+            .nav-cta {
+                background: var(--ink) !important;
+                color: var(--bg) !important;
+                padding: 8px 18px !important;
+            }
+            .nav-cta:hover {
+                background: var(--accent-warm) !important;
+                color: white !important;
+            }
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                padding: 8px;
+                border: 2px solid var(--ink);
+                border-radius: var(--radius-sm);
+                background: var(--accent);
+            }
+            .hamburger span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: var(--ink);
+                transition: all 0.3s;
+            }
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: white;
+                z-index: 99;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+            .mobile-menu.open {
+                display: flex;
+            }
+            .mobile-menu a {
+                font-family: "Instrument Serif", serif;
+                font-size: 36px;
+                color: var(--ink);
+                text-decoration: none;
+                padding: 8px 24px;
+                transition: color 0.2s;
+            }
+            .mobile-menu a:hover {
+                color: var(--accent-warm);
+            }
+            .mobile-close {
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                font-size: 28px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                color: var(--ink);
+            }
+
+            /* ── HERO ── */
+            #hero {
+                min-height: 100vh;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 64px;
+                padding-top: 64px;
+            }
+            .hero-text {
+                padding: 64px 0;
+            }
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-family: "JetBrains Mono", monospace;
+                font-size: 12px;
+                font-weight: 700;
+                border: 1.5px solid var(--border-light);
+                border-radius: 100px;
+                padding: 6px 14px;
+                margin-bottom: 32px;
+                color: var(--ink-soft);
+            }
+            .hero-badge-dot {
+                width: 8px;
+                height: 8px;
+                background: var(--accent);
+                border-radius: 50%;
+                animation: pulse 2s ease-in-out infinite;
+            }
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.4);
+                    opacity: 0.7;
+                }
+            }
+            .hero-name {
+                font-size: clamp(52px, 7vw, 80px);
+                font-weight: normal;
+                letter-spacing: -0.02em;
+                margin-bottom: 8px;
+                line-height: 1.05;
+            }
+            .hero-name em {
+                font-style: italic;
+                color: var(--ink-soft);
+            }
+            .hero-role {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--accent-warm);
+                margin-bottom: 24px;
+                letter-spacing: 0.05em;
+            }
+            .hero-desc {
+                font-size: 17px;
+                color: var(--ink-soft);
+                line-height: 1.7;
+                max-width: 420px;
+                margin-bottom: 40px;
+            }
+            .hero-actions {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 13px 28px;
+                border-radius: 100px;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                border: 2px solid transparent;
+            }
+            .btn-primary {
+                background: var(--ink);
+                color: white;
+            }
+            .btn-primary:hover {
+                background: var(--accent);
+                color: var(--ink);
+                border-color: var(--ink);
+            }
+            .btn-outline {
+                background: transparent;
+                color: var(--ink);
+                border-color: var(--border-light);
+            }
+            .btn-outline:hover {
+                border-color: var(--ink);
+                background: var(--accent);
+            }
+
+            /* Hero Visual */
+            .hero-visual {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .photo-frame {
+                position: relative;
+                width: 380px;
+                height: 460px;
+            }
+            .photo-bg {
+                position: absolute;
+                inset: 0;
+                background: var(--bg-alt);
+                border-radius: 200px 200px 160px 160px;
+                border: 2px solid var(--border-light);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: var(--ink-muted);
+                text-align: center;
+                font-size: 14px;
+            }
+            .photo-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: none; /* Show when src is set */
+            }
+            .photo-placeholder {
+                padding: 32px;
+            }
+            .photo-placeholder .icon {
+                font-size: 48px;
+                margin-bottom: 12px;
+            }
+            .photo-placeholder p {
+                font-size: 13px;
+                color: var(--ink-muted);
+                line-height: 1.5;
+            }
+            /* Decorative accent blobs */
+            .deco-blob {
+                position: absolute;
+                border-radius: 50%;
+                pointer-events: none;
+            }
+            .deco-1 {
+                width: 120px;
+                height: 120px;
+                background: var(--accent);
+                top: -20px;
+                right: -20px;
+                border-radius: 50%;
+                z-index: -1;
+            }
+            .deco-2 {
+                width: 60px;
+                height: 60px;
+                background: var(--accent-warm);
+                bottom: 40px;
+                left: -16px;
+                border-radius: 12px;
+                transform: rotate(20deg);
+                z-index: -1;
+            }
+            .deco-3 {
+                width: 40px;
+                height: 40px;
+                background: var(--accent-blue);
+                bottom: -10px;
+                right: 60px;
+                border-radius: 50%;
+                z-index: -1;
+            }
+            /* Floating stat chips */
+            .stat-chip {
+                position: absolute;
+                background: white;
+                border: 1.5px solid var(--border-light);
+                border-radius: 12px;
+                padding: 10px 16px;
+                font-size: 12px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                white-space: nowrap;
+            }
+            .stat-chip-1 {
+                top: 40px;
+                left: -60px;
+            }
+            .stat-chip-2 {
+                bottom: 100px;
+                right: -50px;
+            }
+            .stat-chip-icon {
+                font-size: 18px;
+            }
+
+            /* ── ABOUT ── */
+            #about {
+                background: var(--bg-alt);
+                border-top: 1px solid var(--border-light);
+                border-bottom: 1px solid var(--border-light);
+            }
+            .about-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 64px;
+                align-items: start;
+            }
+            .about-heading {
+                font-size: clamp(36px, 4vw, 52px);
+                margin-bottom: 24px;
+            }
+            .about-heading em {
+                color: var(--accent-warm);
+                font-style: italic;
+            }
+            .about-body {
+                font-size: 17px;
+                color: var(--ink-soft);
+                line-height: 1.8;
+                margin-bottom: 32px;
+            }
+            .about-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .meta-row {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 16px;
+                background: white;
+                border: 1.5px solid var(--border-light);
+                border-radius: var(--radius);
+            }
+            .meta-label {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                font-weight: 500;
+                color: var(--ink-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .meta-value {
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--ink);
+            }
+
+            /* ── SKILLS ── */
+            #skills {
+            }
+            .skills-header {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                margin-bottom: 48px;
+                gap: 24px;
+            }
+            .skills-title {
+                font-size: clamp(36px, 4vw, 52px);
+            }
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+            .skill-category {
+                border: 1.5px solid var(--border-light);
+                border-radius: var(--radius);
+                padding: 28px;
+                transition:
+                    border-color 0.2s,
+                    transform 0.2s;
+            }
+            .skill-category:hover {
+                border-color: var(--ink);
+                transform: translateY(-2px);
+            }
+            .skill-cat-header {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .skill-cat-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+            .skill-cat-name {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .skill-tag {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 12px;
+                font-weight: 500;
+                padding: 5px 12px;
+                border-radius: 100px;
+                background: var(--bg-alt);
+                color: var(--ink-soft);
+                border: 1.5px solid var(--border-light);
+                transition: all 0.15s;
+                cursor: default;
+            }
+            .skill-tag:hover {
+                background: var(--accent);
+                color: var(--ink);
+                border-color: var(--ink);
+            }
+
+            /* ── PROJECTS ── */
+            #projects {
+                background: var(--ink);
+                color: white;
+            }
+            #projects .sec-label {
+                color: rgba(255, 255, 255, 0.4);
+            }
+            #projects .sec-label::after {
+                background: rgba(255, 255, 255, 0.2);
+            }
+            .projects-title {
+                font-size: clamp(36px, 4vw, 52px);
+                color: white;
+                margin-bottom: 48px;
+            }
+            .projects-title em {
+                color: var(--accent);
+                font-style: italic;
+            }
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .project-card {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: var(--radius);
+                overflow: hidden;
+                transition:
+                    border-color 0.2s,
+                    transform 0.2s;
+            }
+            .project-card:hover {
+                border-color: var(--accent);
+                transform: translateY(-3px);
+            }
+            .project-media {
+                aspect-ratio: 16/9;
+                background: rgba(255, 255, 255, 0.03);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            }
+            .project-media iframe {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            .media-placeholder {
+                text-align: center;
+                color: rgba(255, 255, 255, 0.2);
+            }
+            .media-placeholder .play-icon {
+                width: 56px;
+                height: 56px;
+                border: 2px solid rgba(255, 255, 255, 0.15);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 12px;
+                font-size: 20px;
+            }
+            .media-placeholder p {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+            }
+            .project-body {
+                padding: 24px;
+            }
+            .project-meta {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            .project-period {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.35);
+            }
+            .project-role {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                background: var(--accent);
+                color: var(--ink);
+                padding: 3px 10px;
+                border-radius: 100px;
+                font-weight: 700;
+            }
+            .project-title {
+                font-size: 20px;
+                color: white;
+                margin-bottom: 10px;
+            }
+            .project-desc {
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.55);
+                line-height: 1.7;
+                margin-bottom: 16px;
+            }
+            .project-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .project-tag {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                padding: 4px 10px;
+                border-radius: 100px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            /* ── TIMELINE ── */
+            #timeline {
+                background: var(--bg-alt);
+            }
+            .timeline-heading {
+                font-size: clamp(36px, 4vw, 52px);
+                margin-bottom: 56px;
+            }
+            .timeline-heading em {
+                color: var(--accent-warm);
+                font-style: italic;
+            }
+            .timeline-list {
+                position: relative;
+            }
+            .timeline-list::before {
+                content: "";
+                position: absolute;
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: var(--border-light);
+            }
+            .timeline-item {
+                display: grid;
+                grid-template-columns: 40px 1fr;
+                gap: 24px;
+                margin-bottom: 32px;
+                position: relative;
+            }
+            .timeline-dot {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 2px solid var(--border-light);
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+                transition: border-color 0.2s;
+            }
+            .timeline-item:hover .timeline-dot {
+                border-color: var(--ink);
+                background: var(--accent);
+            }
+            .timeline-card {
+                background: white;
+                border: 1.5px solid var(--border-light);
+                border-radius: var(--radius);
+                padding: 24px;
+                transition: border-color 0.2s;
+            }
+            .timeline-item:hover .timeline-card {
+                border-color: var(--ink);
+            }
+            .timeline-card-top {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 8px;
+                flex-wrap: wrap;
+            }
+            .badge {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 10px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                padding: 3px 10px;
+                border-radius: 100px;
+            }
+            .badge-work {
+                background: rgba(255, 80, 56, 0.12);
+                color: var(--accent-warm);
+            }
+            .badge-edu {
+                background: rgba(168, 85, 247, 0.12);
+                color: var(--accent-purple);
+            }
+            .timeline-period {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                color: var(--ink-muted);
+            }
+            .timeline-title {
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+            .timeline-org {
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--accent-warm);
+                margin-bottom: 8px;
+            }
+            .timeline-desc {
+                font-size: 14px;
+                color: var(--ink-soft);
+                line-height: 1.7;
+            }
+
+            /* ── CONTACT ── */
+            #contact {
+            }
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 80px;
+                align-items: start;
+            }
+            .contact-heading {
+                font-size: clamp(36px, 4vw, 52px);
+                margin-bottom: 20px;
+            }
+            .contact-heading em {
+                color: var(--accent-warm);
+                font-style: italic;
+            }
+            .contact-sub {
+                font-size: 17px;
+                color: var(--ink-soft);
+                line-height: 1.7;
+                margin-bottom: 40px;
+            }
+            .contact-links {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .contact-link {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 14px 18px;
+                border: 1.5px solid var(--border-light);
+                border-radius: var(--radius);
+                text-decoration: none;
+                color: var(--ink);
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.2s;
+            }
+            .contact-link:hover {
+                border-color: var(--ink);
+                background: var(--accent);
+            }
+            .contact-link-icon {
+                font-size: 20px;
+            }
+            .contact-link-info {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .contact-link-label {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 10px;
+                color: var(--ink-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .contact-link:hover .contact-link-label {
+                color: var(--ink-soft);
+            }
+            /* Form */
+            .contact-form {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .form-label {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--ink-muted);
+            }
+            .form-input,
+            .form-textarea {
+                width: 100%;
+                padding: 13px 16px;
+                border: 1.5px solid var(--border-light);
+                border-radius: var(--radius-sm);
+                font-family: "Outfit", sans-serif;
+                font-size: 15px;
+                color: var(--ink);
+                background: white;
+                transition: border-color 0.2s;
+                outline: none;
+            }
+            .form-input:focus,
+            .form-textarea:focus {
+                border-color: var(--ink);
+            }
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+                color: var(--ink-muted);
+            }
+            .form-textarea {
+                resize: vertical;
+                min-height: 140px;
+            }
+            .form-submit {
+                padding: 15px 32px;
+                background: var(--ink);
+                color: white;
+                border: 2px solid var(--ink);
+                border-radius: 100px;
+                font-family: "Outfit", sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+            .form-submit:hover {
+                background: var(--accent);
+                color: var(--ink);
+            }
+            .form-note {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 11px;
+                color: var(--ink-muted);
+                text-align: center;
+            }
+
+            /* ── FOOTER ── */
+            footer {
+                background: var(--ink);
+                color: rgba(255, 255, 255, 0.4);
+                padding: 32px 24px;
+                text-align: center;
+                font-size: 13px;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            footer strong {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            .footer-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 900px) {
+                #hero {
+                    grid-template-columns: 1fr;
+                    gap: 48px;
+                    padding-top: 96px;
+                }
+                .hero-visual {
+                    order: -1;
+                }
+                .photo-frame {
+                    width: 300px;
+                    height: 360px;
+                }
+                .stat-chip-1,
+                .stat-chip-2 {
+                    display: none;
+                }
+                .about-grid {
+                    grid-template-columns: 1fr;
+                }
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                }
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 48px;
+                }
+                .nav-links {
+                    display: none;
+                }
+                .hamburger {
+                    display: flex;
+                }
+                .skills-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .timeline-list::before {
+                    left: 19px;
+                }
+            }
+
+            /* ── ANIMATIONS ── */
+            .fade-in {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ── NAVBAR ── -->
+        <nav id="navbar">
+            <div class="nav-inner">
+                <a
+                    href="#hero"
+                    class="nav-logo"
+                    onclick="smoothTo(event, '#hero')"
+                >
+                    <span>&lt;/&gt;</span>개발자 포트폴리오
+                </a>
+                <div class="nav-links">
+                    <a href="#about" onclick="smoothTo(event, '#about')"
+                        >소개</a
+                    >
+                    <a href="#skills" onclick="smoothTo(event, '#skills')"
+                        >스킬</a
+                    >
+                    <a href="#projects" onclick="smoothTo(event, '#projects')"
+                        >프로젝트</a
+                    >
+                    <a href="#timeline" onclick="smoothTo(event, '#timeline')"
+                        >경력/학력</a
+                    >
+                    <a
+                        href="#contact"
+                        onclick="smoothTo(event, '#contact')"
+                        class="nav-cta btn"
+                        >연락하기</a
+                    >
+                </div>
+                <div class="hamburger" onclick="openMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-close" onclick="closeMenu()">✕</button>
+            <a
+                href="#about"
+                onclick="
+                    smoothTo(event, '#about');
+                    closeMenu();
+                "
+                >소개</a
+            >
+            <a
+                href="#skills"
+                onclick="
+                    smoothTo(event, '#skills');
+                    closeMenu();
+                "
+                >스킬</a
+            >
+            <a
+                href="#projects"
+                onclick="
+                    smoothTo(event, '#projects');
+                    closeMenu();
+                "
+                >프로젝트</a
+            >
+            <a
+                href="#timeline"
+                onclick="
+                    smoothTo(event, '#timeline');
+                    closeMenu();
+                "
+                >경력/학력</a
+            >
+            <a
+                href="#contact"
+                onclick="
+                    smoothTo(event, '#contact');
+                    closeMenu();
+                "
+                >연락하기</a
+            >
+        </div>
+
+        <!-- ── HERO ── -->
+        <section id="hero">
+            <div class="container" style="display: contents">
+                <div class="hero-text container fade-in">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        포트폴리오 2025
+                    </div>
+                    <h1 class="hero-name">
+                        안녕하세요,<br />
+                        저는 <em>홍길동</em>입니다
+                    </h1>
+                    <p class="hero-role">// Full-Stack Web Developer</p>
+                    <p class="hero-desc">
+                        사용자 경험을 중심으로 생각하는 풀스택 웹 개발자입니다.
+                        아이디어를 현실로 만드는 것을 좋아하고, 배움을 멈추지
+                        않습니다.
+                    </p>
+                    <div class="hero-actions">
+                        <a
+                            href="#projects"
+                            class="btn btn-primary"
+                            onclick="smoothTo(event, '#projects')"
+                            >프로젝트 보기 →</a
+                        >
+                        <a
+                            href="#contact"
+                            class="btn btn-outline"
+                            onclick="smoothTo(event, '#contact')"
+                            >연락하기</a
+                        >
+                    </div>
+                </div>
+
+                <div
+                    class="hero-visual container fade-in"
+                    style="--delay: 0.15s"
+                >
+                    <div class="photo-frame">
+                        <!-- Stat chips -->
+                        <div class="stat-chip stat-chip-1">
+                            <span class="stat-chip-icon">🚀</span>
+                            <div>
+                                <div
+                                    style="
+                                        font-family:
+                                            &quot;JetBrains Mono&quot;,
+                                            monospace;
+                                        font-size: 10px;
+                                        color: var(--ink-muted);
+                                    "
+                                >
+                                    프로젝트
+                                </div>
+                                <div style="font-weight: 700; font-size: 14px">
+                                    10+ 완료
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-chip stat-chip-2">
+                            <span class="stat-chip-icon">💻</span>
+                            <div>
+                                <div
+                                    style="
+                                        font-family:
+                                            &quot;JetBrains Mono&quot;,
+                                            monospace;
+                                        font-size: 10px;
+                                        color: var(--ink-muted);
+                                    "
+                                >
+                                    기술스택
+                                </div>
+                                <div style="font-weight: 700; font-size: 14px">
+                                    15+ 보유
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Decorative shapes -->
+                        <div class="deco-blob deco-1"></div>
+                        <div class="deco-blob deco-2"></div>
+                        <div class="deco-blob deco-3"></div>
+                        <!-- Photo -->
+                        <div class="photo-bg">
+                            <!--
+              💡 사진 교체 방법:
+              아래 img 태그의 display:none을 지우고 src에 사진 경로를 넣으세요.
+              <img src="./photo.jpg" alt="프로필 사진" />
+              그 다음 .photo-placeholder div를 삭제하면 됩니다.
+            -->
+                            <img src="" alt="프로필 사진" />
+                            <div class="photo-placeholder">
+                                <div class="icon">📸</div>
+                                <p>
+                                    여기에 내 사진을<br />넣으세요<br /><br /><span
+                                        style="
+                                            font-family:
+                                                &quot;JetBrains Mono&quot;,
+                                                monospace;
+                                            font-size: 11px;
+                                        "
+                                        >img src="./photo.jpg"</span
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ABOUT ── -->
+        <section id="about">
+            <div class="container">
+                <div class="sec-label">About Me</div>
+                <div class="about-grid fade-in">
+                    <div>
+                        <h2 class="about-heading">
+                            저에 대해<br /><em>소개합니다</em>
+                        </h2>
+                        <p class="about-body">
+                            안녕하세요! 저는 사용자 중심의 웹 서비스를 만드는
+                            것을 즐기는 웹 개발자입니다. 학원 수료 과정을 통해
+                            프론트엔드부터 백엔드까지 다양한 기술 스택을
+                            익혔으며, 여러 팀 프로젝트와 개인 프로젝트를 통해
+                            실무 역량을 키워왔습니다.
+                        </p>
+                        <p class="about-body" style="margin-top: -16px">
+                            새로운 기술 배우기를 두려워하지 않으며, 문제를
+                            논리적으로 분석하고 효율적인 해결책을 찾는 것을
+                            즐깁니다. 협업과 소통을 중요하게 생각합니다.
+                        </p>
+                    </div>
+                    <div class="about-meta">
+                        <div class="meta-row">
+                            <span class="meta-label">이름</span>
+                            <span class="meta-value">홍길동</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">위치</span>
+                            <span class="meta-value">대한민국, 서울</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">이메일</span>
+                            <span class="meta-value">your@email.com</span>
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">수료 과정</span>
+                            <span class="meta-value"
+                                >웹/앱 개발자 양성과정</span
+                            >
+                        </div>
+                        <div class="meta-row">
+                            <span class="meta-label">관심 분야</span>
+                            <span class="meta-value"
+                                >풀스택 웹 개발, UI/UX</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SKILLS ── -->
+        <section id="skills">
+            <div class="container">
+                <div class="sec-label">Skills</div>
+                <div class="skills-header">
+                    <h2 class="skills-title">기술 스택</h2>
+                </div>
+                <div class="skills-grid fade-in">
+                    <div class="skill-category">
+                        <div class="skill-cat-header">
+                            <div
+                                class="skill-cat-icon"
+                                style="background: rgba(181, 255, 62, 0.2)"
+                            >
+                                🎨
+                            </div>
+                            <span class="skill-cat-name">프론트엔드</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-cat-header">
+                            <div
+                                class="skill-cat-icon"
+                                style="background: rgba(62, 139, 255, 0.15)"
+                            >
+                                ⚙️
+                            </div>
+                            <span class="skill-cat-name">백엔드</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-cat-header">
+                            <div
+                                class="skill-cat-icon"
+                                style="background: rgba(255, 80, 56, 0.12)"
+                            >
+                                🛠️
+                            </div>
+                            <span class="skill-cat-name">도구 &amp; 기타</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Notion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PROJECTS ── -->
+        <section id="projects">
+            <div class="container">
+                <div class="sec-label">Projects</div>
+                <h2 class="projects-title">프로젝트 <em>모음</em></h2>
+                <div class="projects-grid fade-in">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-media">
+                            <!--
+              유튜브 영상 추가 방법:
+              videoId를 실제 YouTube 영상 ID로 바꾸세요 (URL의 v= 뒤 값)
+              예: https://www.youtube.com/watch?v=dQw4w9WgXcQ → dQw4w9WgXcQ
+            -->
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="쇼핑몰 웹사이트" allowfullscreen></iframe> -->
+                            <div class="media-placeholder">
+                                <div class="play-icon">▶</div>
+                                <p>YouTube 영상 ID를<br />입력하세요</p>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-period"
+                                    >2024.03 — 2024.05</span
+                                >
+                                <span class="project-role">풀스택 개발</span>
+                            </div>
+                            <h3 class="project-title">쇼핑몰 웹사이트</h3>
+                            <p class="project-desc">
+                                풀스택 이커머스 플랫폼. 사용자 인증, 상품 관리,
+                                장바구니, 결제 시스템을 구현했으며 관리자
+                                대시보드도 포함됩니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Express</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-media">
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="커뮤니티 게시판" allowfullscreen></iframe> -->
+                            <div class="media-placeholder">
+                                <div class="play-icon">▶</div>
+                                <p>YouTube 영상 ID를<br />입력하세요</p>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-period"
+                                    >2024.06 — 2024.08</span
+                                >
+                                <span class="project-role"
+                                    >프론트 + 백엔드</span
+                                >
+                            </div>
+                            <h3 class="project-title">커뮤니티 게시판</h3>
+                            <p class="project-desc">
+                                회원가입 · 로그인 기능이 있는 커뮤니티 게시판.
+                                게시물 CRUD, 댓글 기능, 파일 업로드를
+                                구현했습니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-media">
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="날씨 대시보드" allowfullscreen></iframe> -->
+                            <div class="media-placeholder">
+                                <div class="play-icon">▶</div>
+                                <p>YouTube 영상 ID를<br />입력하세요</p>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-period"
+                                    >2024.09 — 2024.10</span
+                                >
+                                <span class="project-role">단독 개발</span>
+                            </div>
+                            <h3 class="project-title">날씨 대시보드</h3>
+                            <p class="project-desc">
+                                OpenWeather API를 활용한 실시간 날씨 대시보드.
+                                위치 기반 날씨 정보, 5일 예보, 시각화 차트를
+                                제공합니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Chart.js</span>
+                                <span class="project-tag">OpenWeather API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <div class="project-media">
+                            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="포트폴리오" allowfullscreen></iframe> -->
+                            <div class="media-placeholder">
+                                <div class="play-icon">▶</div>
+                                <p>YouTube 영상 ID를<br />입력하세요</p>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-period">2024.11</span>
+                                <span class="project-role">단독 개발</span>
+                            </div>
+                            <h3 class="project-title">
+                                개인 포트폴리오 사이트
+                            </h3>
+                            <p class="project-desc">
+                                반응형 포트폴리오 웹사이트. 순수 HTML/CSS/JS로
+                                제작하여 GitHub Pages에 배포했습니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5</span>
+                                <span class="project-tag">CSS3</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TIMELINE ── -->
+        <section id="timeline">
+            <div class="container">
+                <div class="sec-label">Career &amp; Education</div>
+                <h2 class="timeline-heading">경력 &amp; <em>학력</em></h2>
+                <div class="timeline-list fade-in">
+                    <!-- Entry 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">💼</div>
+                        <div class="timeline-card">
+                            <div class="timeline-card-top">
+                                <span class="badge badge-work">경력</span>
+                                <span class="timeline-period"
+                                    >2025.01 — 현재</span
+                                >
+                            </div>
+                            <h3 class="timeline-title">웹 개발자</h3>
+                            <p class="timeline-org">회사명을 입력해주세요</p>
+                            <p class="timeline-desc">
+                                담당 업무 및 주요 성과를 입력해주세요. 어떤
+                                기술을 사용했는지, 어떤 결과를 냈는지 구체적으로
+                                적으면 좋습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Entry 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">🎓</div>
+                        <div class="timeline-card">
+                            <div class="timeline-card-top">
+                                <span class="badge badge-edu">학력/수료</span>
+                                <span class="timeline-period"
+                                    >2024.01 — 2024.12</span
+                                >
+                            </div>
+                            <h3 class="timeline-title">
+                                웹/앱 개발자 양성과정 수료
+                            </h3>
+                            <p class="timeline-org">학원명을 입력해주세요</p>
+                            <p class="timeline-desc">
+                                HTML/CSS/JavaScript부터 React, Node.js,
+                                데이터베이스까지 풀스택 웹 개발 전 과정을
+                                수료했습니다. 팀 프로젝트와 개인 프로젝트를 통해
+                                실무 역량을 키웠습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Entry 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">💼</div>
+                        <div class="timeline-card">
+                            <div class="timeline-card-top">
+                                <span class="badge badge-work">경력</span>
+                                <span class="timeline-period"
+                                    >2021.03 — 2023.08</span
+                                >
+                            </div>
+                            <h3 class="timeline-title">
+                                이전 직무를 입력해주세요
+                            </h3>
+                            <p class="timeline-org">
+                                이전 회사명을 입력해주세요
+                            </p>
+                            <p class="timeline-desc">
+                                이전 직무에서의 경험을 입력해주세요.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Entry 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">🎓</div>
+                        <div class="timeline-card">
+                            <div class="timeline-card-top">
+                                <span class="badge badge-edu">학력</span>
+                                <span class="timeline-period"
+                                    >2016.03 — 2020.02</span
+                                >
+                            </div>
+                            <h3 class="timeline-title">학사 졸업</h3>
+                            <p class="timeline-org">
+                                대학교 및 학과를 입력해주세요
+                            </p>
+                            <p class="timeline-desc">
+                                전공 관련 내용을 입력해주세요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT ── -->
+        <section id="contact">
+            <div class="container">
+                <div class="sec-label">Contact</div>
+                <div class="contact-grid fade-in">
+                    <div>
+                        <h2 class="contact-heading">
+                            함께<br /><em>일해요!</em>
+                        </h2>
+                        <p class="contact-sub">
+                            프로젝트 협업, 채용 문의, 혹은 그냥 인사도
+                            환영합니다. 아래 폼을 작성하시거나 직접 연락해
+                            주세요.
+                        </p>
+                        <div class="contact-links">
+                            <a
+                                href="mailto:your@email.com"
+                                class="contact-link"
+                            >
+                                <span class="contact-link-icon">📧</span>
+                                <div class="contact-link-info">
+                                    <span class="contact-link-label"
+                                        >Email</span
+                                    >
+                                    <span>your@email.com</span>
+                                </div>
+                            </a>
+                            <a
+                                href="https://github.com/yourid"
+                                target="_blank"
+                                rel="noopener"
+                                class="contact-link"
+                            >
+                                <span class="contact-link-icon">🐙</span>
+                                <div class="contact-link-info">
+                                    <span class="contact-link-label"
+                                        >GitHub</span
+                                    >
+                                    <span>github.com/yourid</span>
+                                </div>
+                            </a>
+                            <a
+                                href="https://linkedin.com/in/yourid"
+                                target="_blank"
+                                rel="noopener"
+                                class="contact-link"
+                            >
+                                <span class="contact-link-icon">💼</span>
+                                <div class="contact-link-info">
+                                    <span class="contact-link-label"
+                                        >LinkedIn</span
+                                    >
+                                    <span>linkedin.com/in/yourid</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="sendMail(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">이름</label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="홍길동"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">이메일</label>
+                            <input
+                                class="form-input"
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="hong@email.com"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">제목</label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="협업 문의드립니다"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message"
+                                >메시지</label
+                            >
+                            <textarea
+                                class="form-textarea"
+                                id="message"
+                                name="message"
+                                placeholder="안녕하세요! 프로젝트 관련해서 연락드립니다..."
+                                required
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="form-submit"
+                            id="submitBtn"
+                        >
+                            <span id="submitText">메일 보내기</span>
+                            <span>→</span>
+                        </button>
+                        <p class="form-note">
+                            버튼을 누르면 기본 메일 앱이 열립니다
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer>
+            <div class="footer-inner">
+                <span
+                    >© 2025 <strong>홍길동</strong>. All rights reserved.</span
+                >
+                <span>Made with ❤️ · Pure HTML/CSS/JS</span>
+                <span>GitHub Pages 배포용</span>
+            </div>
+        </footer>
+
+        <script>
+            // ── Smooth Scroll ──
+            function smoothTo(e, target) {
+                e.preventDefault();
+                const el = document.querySelector(target);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+
+            // ── Navbar scroll effect ──
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 40);
+            });
+
+            // ── Mobile menu ──
+            function openMenu() {
+                document.getElementById("mobileMenu").classList.add("open");
+            }
+            function closeMenu() {
+                document.getElementById("mobileMenu").classList.remove("open");
+            }
+
+            // ── Contact form → mailto ──
+            function sendMail(e) {
+                e.preventDefault();
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const subject = document.getElementById("subject").value.trim();
+                const message = document.getElementById("message").value.trim();
+
+                const mailSubject = encodeURIComponent(
+                    `[포트폴리오 문의] ${subject}`,
+                );
+                const mailBody = encodeURIComponent(
+                    `보내는 분: ${name}\n답장 이메일: ${email}\n\n─────────────────\n\n${message}`,
+                );
+
+                // ⚠️ 아래 your@email.com을 실제 이메일로 바꾸세요
+                window.location.href = `mailto:your@email.com?subject=${mailSubject}&body=${mailBody}`;
+
+                const btn = document.getElementById("submitText");
+                btn.textContent = "✅ 메일 앱이 열렸어요!";
+                setTimeout(() => {
+                    btn.textContent = "메일 보내기";
+                }, 4000);
+            }
+
+            // ── Scroll-triggered fade-in ──
+            const fadeEls = document.querySelectorAll(".fade-in");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry, i) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(
+                                () => entry.target.classList.add("visible"),
+                                i * 80,
+                            );
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+            fadeEls.forEach((el) => observer.observe(el));
+
+            // ── Active nav link highlight ──
+            const sections = document.querySelectorAll("section[id]");
+            const navAs = document.querySelectorAll(
+                ".nav-links a:not(.nav-cta)",
+            );
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach((sec) => {
+                    if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+                });
+                navAs.forEach((a) => {
+                    a.style.background =
+                        a.getAttribute("href") === "#" + current
+                            ? "var(--bg-alt)"
+                            : "";
+                    a.style.color =
+                        a.getAttribute("href") === "#" + current
+                            ? "var(--ink)"
+                            : "";
+                });
+            });
+        </script>
+    </body>
+</html>

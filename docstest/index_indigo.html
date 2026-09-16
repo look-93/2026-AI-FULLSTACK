@@ -1,0 +1,2048 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio — Developer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --cream: #f7f5ef; /* 전체 배경 */
+                --cream2: #eeece4; /* 섹션 구분 */
+                --ink: #252a27; /* 메인 텍스트 */
+                --ink2: #5e655f; /* 서브 텍스트 */
+
+                --coral: #c96f55; /* 기존 코랄 → 차분한 테라코타 */
+                --indigo: #526b63; /* 기존 인디고 → 세이지 그린 */
+                --mint: #5d8a7c; /* 기존 민트 → muted green */
+                --yellow: #c7a85b; /* 기존 노랑 → muted gold */
+
+                --border: rgba(37, 42, 39, 0.12);
+
+                --font-display: "Fraunces", serif;
+                --font-body: "Inter", sans-serif;
+                --font-mono: "JetBrains Mono", monospace;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--cream);
+                color: var(--ink);
+                font-family: var(--font-body);
+                font-size: 16px;
+                line-height: 1.65;
+                overflow-x: hidden;
+            }
+
+            ::selection {
+                background: var(--coral);
+                color: #fff;
+            }
+
+            ::-webkit-scrollbar {
+                width: 4px;
+            }
+            ::-webkit-scrollbar-track {
+                background: var(--cream);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--coral);
+                border-radius: 2px;
+            }
+
+            /* ─── NAV ─────────────────────────────────────── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.1rem 4rem;
+                background: rgba(255, 252, 245, 0.88);
+                backdrop-filter: blur(14px);
+                border-bottom: 1.5px solid var(--border);
+            }
+
+            .nav-logo {
+                font-family: var(--font-display);
+                font-size: 1.3rem;
+                font-weight: 900;
+                font-style: italic;
+                color: var(--ink);
+                text-decoration: none;
+                letter-spacing: -0.02em;
+            }
+
+            .nav-logo span {
+                color: var(--coral);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 0;
+                list-style: none;
+            }
+
+            .nav-links a {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                color: var(--ink2);
+                text-decoration: none;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.4rem 1rem;
+                border-radius: 999px;
+                transition:
+                    background 0.2s,
+                    color 0.2s;
+            }
+
+            .nav-links a:hover {
+                background: var(--coral);
+                color: #fff;
+            }
+
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 4px;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--ink);
+                border-radius: 2px;
+                transition:
+                    transform 0.3s,
+                    opacity 0.3s;
+            }
+
+            /* ─── HERO ────────────────────────────────────── */
+            #hero {
+                min-height: 100vh;
+                padding-top: 72px;
+                display: grid;
+                grid-template-columns: 55% 45%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero-left {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 5rem 3rem 5rem 4rem;
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                background: var(--yellow);
+                color: var(--ink);
+                padding: 0.4rem 0.9rem;
+                border-radius: 999px;
+                margin-bottom: 2rem;
+                width: fit-content;
+                font-weight: 500;
+            }
+
+            .hero-badge::before {
+                content: "";
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--coral);
+                display: inline-block;
+            }
+
+            .hero-name {
+                font-family: var(--font-display);
+                font-size: clamp(3.8rem, 7vw, 7rem);
+                font-weight: 900;
+                line-height: 0.95;
+                letter-spacing: -0.03em;
+                margin-bottom: 1rem;
+            }
+
+            .hero-name-italic {
+                font-style: italic;
+                color: var(--coral);
+                display: block;
+            }
+
+            .hero-subtitle {
+                font-family: var(--font-display);
+                font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+                font-weight: 400;
+                font-style: italic;
+                color: var(--ink2);
+                margin-bottom: 2rem;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+                color: var(--ink2);
+                max-width: 38ch;
+                line-height: 1.85;
+                margin-bottom: 3rem;
+            }
+
+            .hero-cta {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .btn-fill {
+                font-family: var(--font-mono);
+                font-size: 0.78rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.9rem 2.2rem;
+                background: var(--coral);
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                border-radius: 4px;
+                transition:
+                    background 0.2s,
+                    transform 0.15s;
+            }
+
+            .btn-fill:hover {
+                background: var(--ink);
+                transform: translateY(-2px);
+            }
+
+            .btn-outline {
+                font-family: var(--font-mono);
+                font-size: 0.78rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.9rem 2.2rem;
+                border: 1.5px solid var(--border);
+                color: var(--ink2);
+                text-decoration: none;
+                border-radius: 4px;
+                transition:
+                    border-color 0.2s,
+                    color 0.2s;
+            }
+
+            .btn-outline:hover {
+                border-color: var(--coral);
+                color: var(--coral);
+            }
+
+            /* Hero right — photo column */
+            .hero-right {
+                position: relative;
+                background: var(--cream2);
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .hero-right-deco {
+                position: absolute;
+                inset: 0;
+                background-image:
+                    radial-gradient(
+                        circle at 80% 20%,
+                        rgba(255, 92, 53, 0.12) 0%,
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        circle at 20% 80%,
+                        rgba(67, 56, 202, 0.1) 0%,
+                        transparent 55%
+                    );
+            }
+
+            .hero-right-dots {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+
+            .hero-right-dots span {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: var(--border);
+                display: block;
+            }
+
+            .hero-photo-wrap {
+                position: relative;
+                z-index: 2;
+                width: min(340px, 85%);
+                aspect-ratio: 3/4;
+                margin-bottom: 0;
+            }
+
+            .hero-photo-frame {
+                position: absolute;
+                bottom: 24px;
+                right: -20px;
+                width: 100%;
+                height: 100%;
+                border: 2px solid var(--coral);
+                border-radius: 4px;
+                z-index: -1;
+            }
+
+            .hero-photo-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                border-radius: 4px;
+            }
+
+            .hero-photo-placeholder {
+                width: 100%;
+                height: 100%;
+                background: #ede8dc;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.25rem;
+                border-radius: 4px;
+            }
+
+            .hero-photo-placeholder svg {
+                opacity: 0.35;
+            }
+
+            .hero-photo-placeholder span {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                color: var(--ink2);
+                text-align: center;
+                line-height: 1.7;
+                letter-spacing: 0.05em;
+            }
+
+            .hero-tag {
+                position: absolute;
+                background: #fff;
+                border: 1.5px solid var(--border);
+                border-radius: 6px;
+                padding: 0.5rem 0.9rem;
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+                z-index: 5;
+            }
+
+            .hero-tag-1 {
+                top: 20%;
+                left: -3rem;
+                color: var(--coral);
+                border-color: rgba(255, 92, 53, 0.3);
+            }
+
+            .hero-tag-2 {
+                bottom: 30%;
+                left: -2rem;
+                color: var(--indigo);
+                border-color: rgba(67, 56, 202, 0.3);
+            }
+
+            /* ─── SECTION BASE ────────────────────────────── */
+            .section-inner {
+                max-width: 1160px;
+                margin: 0 auto;
+                padding: 7rem 4rem;
+            }
+
+            .section-header {
+                display: flex;
+                align-items: flex-end;
+                gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .section-eyebrow {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--coral);
+                margin-bottom: 0.5rem;
+            }
+
+            .section-title {
+                font-family: var(--font-display);
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 900;
+                line-height: 1;
+                letter-spacing: -0.025em;
+            }
+
+            .section-title em {
+                font-style: italic;
+                color: var(--coral);
+            }
+
+            .section-rule {
+                flex: 1;
+                height: 1.5px;
+                background: var(--border);
+                margin-bottom: 0.7rem;
+            }
+
+            /* ─── ABOUT ───────────────────────────────────── */
+            #about {
+                background: var(--cream);
+            }
+
+            .about-grid {
+                display: grid;
+                grid-template-columns: 3fr 2fr;
+                gap: 5rem;
+                align-items: start;
+            }
+
+            .about-text p {
+                color: var(--ink2);
+                line-height: 1.9;
+                font-size: 1.05rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-text p:last-child {
+                margin-bottom: 0;
+            }
+
+            .about-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                border: 1.5px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .about-card-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1.25rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .about-card-row:last-child {
+                border-bottom: none;
+            }
+
+            .about-card-key {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--ink2);
+            }
+
+            .about-card-val {
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            .status-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                background: rgba(13, 148, 136, 0.1);
+                color: var(--mint);
+                padding: 0.25rem 0.7rem;
+                border-radius: 999px;
+                font-size: 0.82rem;
+                font-weight: 500;
+            }
+
+            .status-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--mint);
+            }
+
+            /* ─── SKILLS ──────────────────────────────────── */
+            #skills {
+                background: var(--cream2);
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 1.25rem;
+            }
+
+            .skill-card {
+                background: #fff;
+                border: 1.5px solid var(--border);
+                border-radius: 10px;
+                padding: 1.75rem;
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+            }
+
+            .skill-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+            }
+
+            .skill-card-accent {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+            }
+
+            .skill-card:nth-child(1) .skill-card-accent {
+                background: var(--coral);
+            }
+            .skill-card:nth-child(2) .skill-card-accent {
+                background: var(--indigo);
+            }
+            .skill-card:nth-child(3) .skill-card-accent {
+                background: var(--mint);
+            }
+            .skill-card:nth-child(4) .skill-card-accent {
+                background: #b88a45;
+            }
+
+            .skill-icon {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .skill-cat-title {
+                font-family: var(--font-display);
+                font-size: 1.1rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+            }
+
+            .skill-tag {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                padding: 0.3rem 0.65rem;
+                background: var(--cream2);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                color: var(--ink);
+                cursor: default;
+                transition: background 0.15s;
+            }
+
+            .skill-tag:hover {
+                background: #f1e8e2;
+                border-color: rgba(201, 111, 85, 0.3);
+            }
+
+            /* ─── PROJECTS ────────────────────────────────── */
+            #projects {
+                background: var(--cream);
+            }
+
+            .projects-list {
+                display: flex;
+                flex-direction: column;
+                gap: 5rem;
+            }
+
+            .project-item {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+
+            .project-item:nth-child(even) {
+                direction: rtl;
+            }
+            .project-item:nth-child(even) > * {
+                direction: ltr;
+            }
+
+            .project-media {
+                position: relative;
+                aspect-ratio: 16/9;
+                background: var(--cream2);
+                border-radius: 10px;
+                overflow: hidden;
+                border: 1.5px solid var(--border);
+            }
+
+            .project-media iframe,
+            .project-media video {
+                width: 100%;
+                height: 100%;
+                border: none;
+                display: block;
+            }
+
+            .project-media-placeholder {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+                color: var(--ink2);
+            }
+
+            .project-media-placeholder span {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                text-align: center;
+                line-height: 1.7;
+                letter-spacing: 0.06em;
+            }
+
+            .project-info {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .project-num {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--coral);
+            }
+
+            .project-title {
+                font-family: var(--font-display);
+                font-size: clamp(1.6rem, 3vw, 2.3rem);
+                font-weight: 900;
+                line-height: 1.05;
+                letter-spacing: -0.02em;
+            }
+
+            .project-stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .project-tech {
+                background: rgba(82, 107, 99, 0.08);
+                border-color: rgba(82, 107, 99, 0.18);
+                color: var(--indigo);
+            }
+
+            .project-desc {
+                color: var(--ink2);
+                font-size: 0.93rem;
+                line-height: 1.8;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .project-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.55rem 1.1rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: transform 0.15s;
+            }
+
+            .project-link:hover {
+                transform: translateY(-1px);
+            }
+
+            .project-link.gh {
+                background: var(--ink);
+                color: #fff;
+            }
+
+            .project-link.demo {
+                border: 1.5px solid var(--coral);
+                color: var(--coral);
+            }
+
+            /* ─── TIMELINE ────────────────────────────────── */
+            #timeline {
+                background: var(--cream2);
+            }
+
+            .timeline-tabs {
+                display: flex;
+                gap: 0;
+                border: 1.5px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+                width: fit-content;
+                margin-bottom: 3rem;
+            }
+
+            .tab-btn {
+                font-family: var(--font-mono);
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.7rem 1.75rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--ink2);
+                transition:
+                    background 0.2s,
+                    color 0.2s;
+            }
+
+            .tab-btn.active {
+                background: var(--coral);
+                color: #fff;
+            }
+            .tab-btn:not(.active):hover {
+                background: var(--cream2);
+            }
+
+            .tab-panel {
+                display: none;
+            }
+            .tab-panel.active {
+                display: block;
+            }
+
+            .timeline-items {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .timeline-entry {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                gap: 2rem;
+                padding: 2rem 0;
+                border-bottom: 1px solid var(--border);
+                position: relative;
+            }
+
+            .timeline-entry:last-child {
+                border-bottom: none;
+            }
+
+            .tl-left {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .tl-date {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                color: var(--coral);
+                letter-spacing: 0.08em;
+            }
+
+            .tl-type {
+                font-family: var(--font-mono);
+                font-size: 0.65rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--ink2);
+            }
+
+            .tl-right {
+            }
+
+            .tl-role {
+                font-family: var(--font-display);
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.2rem;
+            }
+
+            .tl-org {
+                font-size: 0.88rem;
+                color: var(--indigo);
+                font-weight: 500;
+                margin-bottom: 0.65rem;
+            }
+
+            .tl-desc {
+                font-size: 0.88rem;
+                color: var(--ink2);
+                line-height: 1.75;
+            }
+
+            .tl-badge {
+                display: inline-block;
+                font-family: var(--font-mono);
+                font-size: 0.62rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.2rem 0.55rem;
+                border-radius: 3px;
+                margin-bottom: 0.5rem;
+            }
+
+            .tl-badge.career {
+                background: rgba(255, 92, 53, 0.1);
+                color: var(--coral);
+            }
+            .tl-badge.edu {
+                background: rgba(67, 56, 202, 0.1);
+                color: var(--indigo);
+            }
+
+            /* ─── CONTACT ─────────────────────────────────── */
+            #contact {
+                background: #2f3632;
+                color: var(--cream);
+            }
+
+            #contact .section-eyebrow {
+                color: #d1b878;
+            }
+
+            #contact .section-title em {
+                color: #d1b878;
+            }
+
+            #contact .section-rule {
+                background: rgba(247, 245, 239, 0.14);
+            }
+
+            .contact-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6rem;
+                align-items: start;
+            }
+
+            .contact-left {
+            }
+
+            .contact-big {
+                font-family: var(--font-display);
+                font-size: clamp(3rem, 6vw, 5.5rem);
+                font-weight: 900;
+                line-height: 0.95;
+                letter-spacing: -0.03em;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-big em {
+                font-style: italic;
+                color: var(--yellow);
+                display: block;
+            }
+
+            .contact-sub {
+                color: rgba(255, 252, 245, 0.6);
+                font-size: 1rem;
+                max-width: 34ch;
+                line-height: 1.8;
+                margin-bottom: 2.5rem;
+            }
+
+            .contact-detail {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .contact-label {
+                font-family: var(--font-mono);
+                font-size: 0.65rem;
+                color: rgba(255, 252, 245, 0.4);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                min-width: 5rem;
+            }
+
+            .contact-val {
+                font-size: 0.92rem;
+            }
+            .contact-val a {
+                color: var(--yellow);
+                text-decoration: none;
+            }
+            .contact-val a:hover {
+                text-decoration: underline;
+            }
+
+            .contact-form {
+                display: flex;
+                flex-direction: column;
+                gap: 1.1rem;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            .form-label {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                color: rgba(255, 252, 245, 0.5);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            .form-input,
+            .form-textarea {
+                background: rgba(255, 252, 245, 0.05);
+                border: 1.5px solid rgba(255, 252, 245, 0.12);
+                color: var(--cream);
+                font-family: var(--font-body);
+                font-size: 0.95rem;
+                padding: 0.85rem 1rem;
+                border-radius: 6px;
+                outline: none;
+                transition: border-color 0.2s;
+                width: 100%;
+            }
+
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+                color: rgba(255, 252, 245, 0.25);
+            }
+
+            .form-input:focus,
+            .form-textarea:focus {
+                border-color: var(--yellow);
+            }
+
+            .form-textarea {
+                min-height: 130px;
+                resize: vertical;
+            }
+
+            .form-submit {
+                font-family: var(--font-mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 1rem 2.5rem;
+                background: var(--yellow);
+                color: var(--ink);
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 500;
+                align-self: flex-start;
+                transition:
+                    background 0.2s,
+                    transform 0.15s;
+            }
+
+            .form-submit:hover {
+                background: #fff;
+                transform: translateY(-2px);
+            }
+
+            /* ─── FOOTER ──────────────────────────────────── */
+            footer {
+                background: var(--ink);
+                border-top: 1px solid rgba(255, 252, 245, 0.08);
+                padding: 2rem 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .footer-copy {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                color: rgba(255, 252, 245, 0.35);
+                letter-spacing: 0.06em;
+            }
+
+            .footer-links {
+                display: flex;
+                gap: 1.75rem;
+            }
+
+            .footer-links a {
+                font-family: var(--font-mono);
+                font-size: 0.68rem;
+                color: rgba(255, 252, 245, 0.35);
+                text-decoration: none;
+                letter-spacing: 0.06em;
+                transition: color 0.2s;
+            }
+
+            .footer-links a:hover {
+                color: var(--yellow);
+            }
+
+            /* ─── DECORATIVE ──────────────────────────────── */
+            .marquee-bar {
+                background: var(--coral);
+                color: #fff;
+                padding: 0.65rem 0;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .marquee-track {
+                display: inline-flex;
+                gap: 0;
+                animation: marquee 22s linear infinite;
+            }
+
+            .marquee-item {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 0 2rem;
+            }
+
+            .marquee-sep {
+                opacity: 0.4;
+            }
+
+            @keyframes marquee {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* ─── REVEAL ──────────────────────────────────── */
+            .reveal {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: none;
+            }
+            .rd1 {
+                transition-delay: 0.08s;
+            }
+            .rd2 {
+                transition-delay: 0.18s;
+            }
+            .rd3 {
+                transition-delay: 0.28s;
+            }
+
+            /* ─── RESPONSIVE ──────────────────────────────── */
+            @media (max-width: 920px) {
+                nav {
+                    padding: 1rem 1.5rem;
+                }
+
+                .nav-links {
+                    display: none;
+                    position: fixed;
+                    top: 59px;
+                    left: 0;
+                    right: 0;
+                    flex-direction: column;
+                    gap: 0;
+                    background: rgba(255, 252, 245, 0.97);
+                    border-bottom: 1.5px solid var(--border);
+                    padding: 0.5rem 0;
+                }
+
+                .nav-links.open {
+                    display: flex;
+                }
+                .nav-links li {
+                    border-bottom: 1px solid var(--border);
+                }
+                .nav-links a {
+                    border-radius: 0;
+                    padding: 0.9rem 2rem;
+                }
+                .hamburger {
+                    display: flex;
+                }
+
+                #hero {
+                    grid-template-columns: 1fr;
+                    padding-top: 64px;
+                }
+                .hero-right {
+                    min-height: 55vw;
+                    padding: 3rem 1.5rem 0;
+                    order: -1;
+                }
+                .hero-photo-wrap {
+                    width: 160px;
+                }
+                .hero-tag-1,
+                .hero-tag-2 {
+                    display: none;
+                }
+                .hero-left {
+                    padding: 2rem 1.5rem 3.5rem;
+                }
+                .hero-name {
+                    font-size: clamp(2.8rem, 10vw, 4rem);
+                }
+
+                .section-inner {
+                    padding: 4.5rem 1.5rem;
+                }
+                .section-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.4rem;
+                }
+                .section-rule {
+                    display: none;
+                }
+
+                .about-grid {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+                .skills-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .project-item,
+                .project-item:nth-child(even) {
+                    grid-template-columns: 1fr;
+                    direction: ltr;
+                    gap: 2rem;
+                }
+
+                .timeline-entry {
+                    grid-template-columns: 1fr;
+                    gap: 0.5rem;
+                }
+
+                .contact-inner {
+                    grid-template-columns: 1fr;
+                    gap: 3rem;
+                }
+                .contact-big {
+                    font-size: 3rem;
+                }
+
+                footer {
+                    flex-direction: column;
+                    gap: 1.25rem;
+                    text-align: center;
+                    padding: 1.75rem 1.5rem;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav>
+            <a href="#hero" class="nav-logo">Dev<span>.</span>Portfolio</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">소개</a></li>
+                <li><a href="#skills">스킬</a></li>
+                <li><a href="#projects">프로젝트</a></li>
+                <li><a href="#timeline">경력</a></li>
+                <li><a href="#contact">연락</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="메뉴">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-left">
+                <div class="hero-badge">Frontend Developer</div>
+                <h1 class="hero-name">
+                    홍길동<span class="hero-name-italic">입니다.</span>
+                </h1>
+                <p class="hero-subtitle">웹을 만들고, 경험을 설계합니다</p>
+                <p class="hero-desc">
+                    사용자 경험을 최우선으로 생각하는 개발자입니다. 아이디어를
+                    코드로, 코드를 가치 있는 서비스로 변환합니다. 함께 멋진 것을
+                    만들어 봐요.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-fill">프로젝트 보기 →</a>
+                    <a href="#contact" class="btn-outline">연락하기</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-right-deco"></div>
+                <div class="hero-right-dots">
+                    <!-- dot grid decoration -->
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span
+                    ><span></span><span></span> <span></span><span></span
+                    ><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="hero-tag hero-tag-1">✦ Available for Work</div>
+                <div class="hero-tag hero-tag-2">📍 서울, 대한민국</div>
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo-frame"></div>
+                    <!--
+          ★ 사진 교체 방법:
+          아래 div를 제거하고 img 태그를 사용하세요.
+          <img src="photo.jpg" alt="홍길동 프로필 사진" />
+        -->
+                    <div class="hero-photo-placeholder">
+                        <svg
+                            width="60"
+                            height="60"
+                            viewBox="0 0 60 60"
+                            fill="none"
+                        >
+                            <circle
+                                cx="30"
+                                cy="20"
+                                r="12"
+                                stroke="#4A3F2F"
+                                stroke-width="1.5"
+                            />
+                            <path
+                                d="M6 54c0-13.255 10.745-24 24-24s24 10.745 24 24"
+                                stroke="#4A3F2F"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                        <span
+                            >여기에 사진을 추가하세요<br /><code
+                                style="font-size: 0.65rem"
+                                >&lt;img src="photo.jpg"&gt;</code
+                            ></span
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARQUEE BAR -->
+        <div class="marquee-bar" aria-hidden="true">
+            <div class="marquee-track">
+                <span class="marquee-item">React</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Node.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">TypeScript</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Vue.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Spring Boot</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MySQL</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MongoDB</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Docker</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Git</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Figma</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <!-- duplicate for seamless loop -->
+                <span class="marquee-item">React</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Node.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">TypeScript</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Vue.js</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Spring Boot</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MySQL</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">MongoDB</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Docker</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Git</span
+                ><span class="marquee-item marquee-sep">✦</span>
+                <span class="marquee-item">Figma</span
+                ><span class="marquee-item marquee-sep">✦</span>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">00 — About Me</div>
+                        <h2 class="section-title">나를 <em>소개</em>합니다</h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text reveal rd1">
+                        <p>
+                            안녕하세요! 저는 사용자 중심의 웹 애플리케이션을
+                            개발하는 개발자 <strong>홍길동</strong>입니다. 학원
+                            교육을 통해 풀스택 웹 개발을 체계적으로 배웠으며,
+                            여러 팀 프로젝트를 통해 협업 능력과 문제 해결 능력을
+                            키웠습니다.
+                        </p>
+                        <p>
+                            새로운 기술을 탐구하고 이를 실제 서비스에 적용하는
+                            것을 즐깁니다. 꼼꼼한 코드 작성과 깔끔한 UI 구현을
+                            지향하며, 항상 더 나은 개발자가 되기 위해 꾸준히
+                            성장하고 있습니다.
+                        </p>
+                    </div>
+                    <div class="about-cards reveal rd2">
+                        <div class="about-card-row">
+                            <span class="about-card-key">이름</span>
+                            <span class="about-card-val">홍길동</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">거주지</span>
+                            <span class="about-card-val">서울특별시</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">이메일</span>
+                            <span
+                                class="about-card-val"
+                                style="color: var(--coral)"
+                                >your@email.com</span
+                            >
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">교육</span>
+                            <span class="about-card-val">웹 개발 부트캠프</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-key">상태</span>
+                            <span class="about-card-val">
+                                <span class="status-pill">
+                                    <span class="status-dot"></span>구직 중
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">01 — Skills</div>
+                        <h2 class="section-title">기술 <em>스택</em></h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal rd1">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-cat-title">Frontend</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">SCSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal rd2">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">⚙️</div>
+                        <div class="skill-cat-title">Backend</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal rd3">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🗄️</div>
+                        <div class="skill-cat-title">Database &amp; DevOps</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal rd1">
+                        <div class="skill-card-accent"></div>
+                        <div class="skill-icon">🛠️</div>
+                        <div class="skill-cat-title">Tools &amp; Etc</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">Jira</span>
+                            <span class="skill-tag">Slack</span>
+                            <span class="skill-tag">Notion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" style="background: var(--cream2)">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">02 — Projects</div>
+                        <h2 class="section-title">프로젝트 <em>작업물</em></h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="projects-list">
+                    <!-- Project 1 -->
+                    <div class="project-item reveal">
+                        <div class="project-media">
+                            <!--
+              YouTube 삽입:
+              <iframe src="https://www.youtube.com/embed/영상ID" allowfullscreen></iframe>
+
+              로컬 동영상:
+              <video src="demo1.mp4" controls></video>
+            -->
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+                                <span
+                                    >YouTube 영상 ID<br />또는 동영상 파일을
+                                    삽입하세요</span
+                                >
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-num">Project — 01</div>
+                            <h3 class="project-title">
+                                쇼핑몰 웹 애플리케이션
+                            </h3>
+                            <div class="project-stack">
+                                <span class="project-tech">React</span>
+                                <span class="project-tech">Node.js</span>
+                                <span class="project-tech">MongoDB</span>
+                                <span class="project-tech">Redux</span>
+                            </div>
+                            <p class="project-desc">
+                                팀 프로젝트로 개발한 풀스택 이커머스
+                                플랫폼입니다. 상품 검색, 장바구니, 결제 연동,
+                                관리자 대시보드 기능을 구현했습니다. JWT 인증과
+                                카카오페이 API를 활용했으며, 반응형 디자인을
+                                적용했습니다.
+                            </p>
+                            <div class="project-links">
+                                <a href="#" class="project-link gh">
+                                    <svg
+                                        width="13"
+                                        height="13"
+                                        viewBox="0 0 16 16"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                                        />
+                                    </svg>
+                                    GitHub
+                                </a>
+                                <a href="#" class="project-link demo"
+                                    >Live Demo →</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-item reveal">
+                        <div class="project-media">
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+                                <span
+                                    >YouTube 영상 ID<br />또는 동영상 파일을
+                                    삽입하세요</span
+                                >
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-num">Project — 02</div>
+                            <h3 class="project-title">커뮤니티 SNS 플랫폼</h3>
+                            <div class="project-stack">
+                                <span class="project-tech">Vue.js</span>
+                                <span class="project-tech">Spring Boot</span>
+                                <span class="project-tech">MySQL</span>
+                                <span class="project-tech">WebSocket</span>
+                            </div>
+                            <p class="project-desc">
+                                실시간 채팅과 피드 기능을 갖춘 커뮤니티
+                                플랫폼입니다. WebSocket을 활용한 실시간 알림,
+                                게시글 CRUD, 팔로우 시스템, 이미지 업로드 기능을
+                                구현했습니다.
+                            </p>
+                            <div class="project-links">
+                                <a href="#" class="project-link gh">
+                                    <svg
+                                        width="13"
+                                        height="13"
+                                        viewBox="0 0 16 16"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                                        />
+                                    </svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-item reveal">
+                        <div class="project-media">
+                            <div class="project-media-placeholder">
+                                <svg
+                                    width="44"
+                                    height="44"
+                                    viewBox="0 0 44 44"
+                                    fill="none"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="7"
+                                        width="38"
+                                        height="27"
+                                        rx="3"
+                                        stroke="#4A3F2F"
+                                        stroke-width="1.5"
+                                        opacity="0.4"
+                                    />
+                                    <path
+                                        d="M18 16l10 6-10 6V16z"
+                                        fill="#4A3F2F"
+                                        opacity="0.3"
+                                    />
+                                </svg>
+                                <span
+                                    >YouTube 영상 ID<br />또는 동영상 파일을
+                                    삽입하세요</span
+                                >
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-num">Project — 03</div>
+                            <h3 class="project-title">
+                                칸반 보드 일정 관리 앱
+                            </h3>
+                            <div class="project-stack">
+                                <span class="project-tech">React</span>
+                                <span class="project-tech">TypeScript</span>
+                                <span class="project-tech">Firebase</span>
+                                <span class="project-tech">Tailwind</span>
+                            </div>
+                            <p class="project-desc">
+                                드래그 앤 드롭으로 일정을 관리할 수 있는 칸반
+                                보드 앱입니다. Firebase 실시간 DB로 팀원과
+                                동기화되며, 마감일 알림과 우선순위 관리 기능을
+                                제공합니다.
+                            </p>
+                            <div class="project-links">
+                                <a href="#" class="project-link gh">
+                                    <svg
+                                        width="13"
+                                        height="13"
+                                        viewBox="0 0 16 16"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                                        />
+                                    </svg>
+                                    GitHub
+                                </a>
+                                <a href="#" class="project-link demo"
+                                    >Live Demo →</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section id="timeline">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">
+                            03 — Career &amp; Education
+                        </div>
+                        <h2 class="section-title">경력 &amp; <em>교육</em></h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+
+                <div class="reveal">
+                    <div class="timeline-tabs">
+                        <button class="tab-btn active" data-tab="career">
+                            경력사항
+                        </button>
+                        <button class="tab-btn" data-tab="education">
+                            교육 이수
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 경력 -->
+                <div class="tab-panel active reveal rd1" id="tab-career">
+                    <div class="timeline-items">
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2024.03 — 현재</div>
+                                <div class="tl-type">재직 중</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge career">경력</div>
+                                <div class="tl-role">프론트엔드 개발자</div>
+                                <div class="tl-org">회사명 주식회사</div>
+                                <p class="tl-desc">
+                                    React 기반 웹 애플리케이션 개발 및 유지보수.
+                                    사용자 인터페이스 개선과 성능 최적화 업무를
+                                    담당했습니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2023.06 — 2024.02</div>
+                                <div class="tl-type">9개월</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge career">경력</div>
+                                <div class="tl-role">웹 개발 인턴</div>
+                                <div class="tl-org">스타트업 코리아</div>
+                                <p class="tl-desc">
+                                    회사 홈페이지 리뉴얼 및 관리자 페이지 개발에
+                                    참여. HTML/CSS/JS 실무 경험을 쌓았습니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2022.09 — 2023.05</div>
+                                <div class="tl-type">8개월</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge career">경력</div>
+                                <div class="tl-role">프리랜서 개발자</div>
+                                <div class="tl-org">프리랜서</div>
+                                <p class="tl-desc">
+                                    소규모 기업 웹사이트 제작 및 랜딩페이지
+                                    개발. 클라이언트 요구사항 분석 및 일정
+                                    관리를 경험했습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 교육 -->
+                <div class="tab-panel reveal rd1" id="tab-education">
+                    <div class="timeline-items">
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2023.01 — 2023.06</div>
+                                <div class="tl-type">6개월</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge edu">교육</div>
+                                <div class="tl-role">
+                                    풀스택 웹 개발 부트캠프
+                                </div>
+                                <div class="tl-org">○○ IT 아카데미</div>
+                                <p class="tl-desc">
+                                    HTML/CSS/JS 기초부터 React, Node.js, DB
+                                    설계까지 6개월 집중 과정 수료. 팀 프로젝트
+                                    3회 진행.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2022.07 — 2022.12</div>
+                                <div class="tl-type">6개월</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge edu">교육</div>
+                                <div class="tl-role">
+                                    Java &amp; Spring 백엔드 과정
+                                </div>
+                                <div class="tl-org">국비지원 교육센터</div>
+                                <p class="tl-desc">
+                                    Java, Spring Framework, MyBatis, Oracle DB를
+                                    활용한 웹 서비스 개발 과정 수료.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-entry">
+                            <div class="tl-left">
+                                <div class="tl-date">2018.03 — 2022.02</div>
+                                <div class="tl-type">4년</div>
+                            </div>
+                            <div class="tl-right">
+                                <div class="tl-badge edu">학력</div>
+                                <div class="tl-role">컴퓨터공학과 졸업</div>
+                                <div class="tl-org">○○ 대학교</div>
+                                <p class="tl-desc">
+                                    소프트웨어 공학, 알고리즘, 운영체제 등 CS
+                                    기초 전공. 졸업 프로젝트로 모바일 앱 기획 및
+                                    개발 수행.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <div>
+                        <div class="section-eyebrow">04 — Contact</div>
+                        <h2 class="section-title" style="color: var(--cream)">
+                            함께 <em>일해요</em>
+                        </h2>
+                    </div>
+                    <div class="section-rule"></div>
+                </div>
+
+                <div class="contact-inner">
+                    <div class="contact-left reveal rd1">
+                        <div class="contact-big">Let's<br /><em>talk.</em></div>
+                        <p class="contact-sub">
+                            채용 제안, 협업 아이디어, 또는 단순한 인사도
+                            환영합니다. 언제든 연락 주세요. 24시간 내에
+                            답장드리겠습니다.
+                        </p>
+                        <div class="contact-detail">
+                            <div class="contact-item">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-val"
+                                    ><a href="mailto:your@email.com"
+                                        >your@email.com</a
+                                    ></span
+                                >
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-val"
+                                    ><a
+                                        href="https://github.com/yourusername"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >github.com/yourusername</a
+                                    ></span
+                                >
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">Location</span>
+                                <span
+                                    class="contact-val"
+                                    style="color: rgba(255, 252, 245, 0.6)"
+                                    >서울특별시, 대한민국</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <form
+                        class="contact-form reveal rd2"
+                        action="mailto:your@email.com"
+                        method="post"
+                        enctype="text/plain"
+                    >
+                        <div class="form-group">
+                            <label class="form-label" for="c-name">이름</label>
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="c-name"
+                                name="이름"
+                                placeholder="홍길동"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-email"
+                                >이메일</label
+                            >
+                            <input
+                                class="form-input"
+                                type="email"
+                                id="c-email"
+                                name="이메일"
+                                placeholder="your@email.com"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-subject"
+                                >제목</label
+                            >
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="c-subject"
+                                name="제목"
+                                placeholder="채용 제안드립니다"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="c-message"
+                                >메시지</label
+                            >
+                            <textarea
+                                class="form-textarea"
+                                id="c-message"
+                                name="메시지"
+                                placeholder="안녕하세요, 말씀드리고 싶은 내용을 자유롭게 적어 주세요."
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            메일 보내기 →
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <span class="footer-copy">© 2024 홍길동. All rights reserved.</span>
+            <div class="footer-links">
+                <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                >
+                <a href="mailto:your@email.com">Email</a>
+                <a href="#hero">맨 위로 ↑</a>
+            </div>
+        </footer>
+
+        <script>
+            // Hamburger
+            const hamburger = document.getElementById("hamburger");
+            const navLinks = document.getElementById("navLinks");
+            hamburger.addEventListener("click", () =>
+                navLinks.classList.toggle("open"),
+            );
+            navLinks
+                .querySelectorAll("a")
+                .forEach((a) =>
+                    a.addEventListener("click", () =>
+                        navLinks.classList.remove("open"),
+                    ),
+                );
+
+            // Scroll reveal
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("visible");
+                            revealObserver.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+            document
+                .querySelectorAll(".reveal")
+                .forEach((el) => revealObserver.observe(el));
+
+            // Active nav
+            const navAnchors = document.querySelectorAll(".nav-links a");
+            const secObs = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            navAnchors.forEach((a) => {
+                                const isActive =
+                                    a.getAttribute("href") ===
+                                    "#" + e.target.id;
+                                a.style.background = isActive
+                                    ? "var(--coral)"
+                                    : "";
+                                a.style.color = isActive ? "#fff" : "";
+                            });
+                        }
+                    });
+                },
+                { rootMargin: "-40% 0px -50% 0px" },
+            );
+            document
+                .querySelectorAll("section[id]")
+                .forEach((s) => secObs.observe(s));
+
+            // Tab switcher
+            document.querySelectorAll(".tab-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    document
+                        .querySelectorAll(".tab-btn")
+                        .forEach((b) => b.classList.remove("active"));
+                    document
+                        .querySelectorAll(".tab-panel")
+                        .forEach((p) => p.classList.remove("active"));
+                    btn.classList.add("active");
+                    const panel = document.getElementById(
+                        "tab-" + btn.dataset.tab,
+                    );
+                    if (panel) panel.classList.add("active");
+                });
+            });
+        </script>
+    </body>
+</html>
