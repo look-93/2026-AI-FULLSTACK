@@ -88,7 +88,7 @@ class UsersPage extends ConsumerWidget {
                       onPressed: () {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
-                          '/',
+                          '/post-list',
                           (route) => false,
                         );
                       },
