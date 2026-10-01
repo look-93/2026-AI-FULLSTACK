@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright # playwright 동기 api 불러�
 # ver-1   SEARCH_KEYWORD = "JAVA SPRING 개발자"
 
 # ==================== [ 검색 조건 설정 ] ====================
-SEARCH_KEYWORD = "JAVA 백엔드" # ★ 검색키워드 설정
+SEARCH_KEYWORD = "스프링부트" # ★ 검색키워드 설정
 
 # 지역 코드 (서울: 101000, 경기: 102000, 인천: 108000)
 # (전국으로 하려면 LOC_CODE = "" 로 설정)
@@ -19,11 +19,14 @@ EXP_MIN = 1  # 1년차부터
 EXP_MAX = 3  # 3년차까지
 EXP_CD = 1 # 신입
 EXP_NONE = "y" # 경력무관
+
+PAGE_START = 1
+
 # ============================================================
 
 # True: 테스트 모드 (클릭 대기만 함)
 # False: 실제 클릭 제출
-DRY_RUN = True # 실제 제출안누르고 탐색/확인 
+DRY_RUN = False # 실제 제출안누르고 탐색/확인 
 # MAX_APPLY = 5  # 한 번 실행 시 처리할 최대 공고 수 ★
 MAX_APPLY = None
 
@@ -73,6 +76,18 @@ def close_apply_layer(page):
     except Exception:
         pass  # 에러나더라도 무시하고진행
 
+# 다음 페이지 버튼 찾는 함수
+def next_button_find(page, current_page):
+    next_page = current_page + 1
+    
+    next_btn = page.locator(
+        f"a.page.page_move[page='{next_page}']"
+    )
+    if next_btn.count() > 0 and next_btn.first.is_visible():
+        return next_btn.first
+    
+    return None
+    
 
 def find_apply_button_in_card(card):
     """목록 카드 내부의 작은 지원 버튼 탐색"""
@@ -162,6 +177,7 @@ def run_agent():
             "https://www.saramin.co.kr/zf_user/search/recruit"
             f"?searchword={quote(SEARCH_KEYWORD)}"
             f"&loc_mcd={LOC_CODE}" # 서울/경기/인천
+            f"&recruitPage={PAGE_START}"
             f"&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7" # 일반채용정보
             f"&loc_cd=102150%2C102160%2C102170%2C102140%2C102070&" # 경기 부천시, 소사구, 오정구,원미구, 경기 과명시
             f"&exp_cd={EXP_CD}&exp_min={EXP_MIN}&exp_max={EXP_MAX}&exp_none={EXP_NONE}"
@@ -197,72 +213,97 @@ def run_agent():
         except Exception:
             pass
         
-        # # 공고카드 가져오기
-        cards, card_sel = get_cards(page)
-        card_count = cards.count()
-        print(f"🔍 총 {card_count}개 카드 스캔 완료.")
 
         mode = "드라이런(테스트 모드)" if DRY_RUN else "🔥 실제 입사지원 모드"
         print(f"▶ 현재 모드: {mode} (최대 {MAX_APPLY}개 실행)\n")
 
         # 시도/지원한 공고 수 카운터
         processed = 0
+        current_page = PAGE_START
+        
+        while True:        
+        
+            # # 공고카드 가져오기
+            cards, card_sel = get_cards(page)
+            card_count = cards.count()
+            print(f"🔍 총 {card_count}개 카드 스캔 완료.")
+                
+            for i in range(card_count):
+                # if processed >= MAX_APPLY: # 설정한 최대 지원 수에 도달하면 중단
+                #     print(f"🎯 설정 수량({MAX_APPLY}개) 완료로 종료합니다.")
+                #     break
 
-        for i in range(card_count):
-            # if processed >= MAX_APPLY: # 설정한 최대 지원 수에 도달하면 중단
-            #     print(f"🎯 설정 수량({MAX_APPLY}개) 완료로 종료합니다.")
-            #     break
-
-            try:
-                # 잔여 레이어 팝업 깔끔히 정리
-                close_apply_layer(page)
-
-                current_cards, _ = get_cards(page)
-                if i >= current_cards.count():
-                    break
-
-                card = current_cards.nth(i) # 해당 번호 카드 지정
-
-                # 해당공고 카드가 화면에 오도록 스크롤이동
                 try:
-                    card.evaluate("el => el.scrollIntoView({block: 'center'})")
-                    time.sleep(0.3)
-                except Exception:
+                    # 잔여 레이어 팝업 깔끔히 정리
+                    close_apply_layer(page)
+
+                    current_cards, _ = get_cards(page)
+                    if i >= current_cards.count():
+                        break
+
+                    card = current_cards.nth(i) # 해당 번호 카드 지정
+
+                    # 해당공고 카드가 화면에 오도록 스크롤이동
+                    try:
+                        card.evaluate("el => el.scrollIntoView({block: 'center'})")
+                        time.sleep(0.3)
+                    except Exception:
+                        continue
+                    
+                    # 공고 카드안에 입사지원 버튼찾기
+                    list_btn = find_apply_button_in_card(card)
+                    if not list_btn:
+                        continue
+                    
+                    # 지원카운트 1증가
+                    processed += 1
+                    # print(f"[{processed}/{MAX_APPLY}] 카드 #{i} 목록 지원 버튼 클릭...")
+                    print(f"[{processed}] 카드 #{i} 목록 지원 버튼 클릭...")
+                    
+                    # force=True로 다른 레이어가 일부 남아있어도 클릭 강제 실행
+                    list_btn.click(force=True)
+                    time.sleep(2.5)  # 레이어 로딩 대기
+
+                    # 우측 레이어 제출 버튼 클릭
+                    success = click_red_layer_submit_button(context)
+
+                    if success:
+                        if not DRY_RUN:
+                            time.sleep(2.5)
+                            print("  🎉 입사지원 제출 완료!")
+                    else:
+                        print("  ⚠️ 우측 레이어 내부의 빨간색 제출 버튼을 찾지 못함")
+                        page.screenshot(path=os.path.join(DEBUG_DIR, f"fail_{processed}.png"))
+
+                    # 완료 후 팝업 완전히 닫기
+                    close_apply_layer(page)
+                    time.sleep(random.uniform(1.5, 2.5)) # 빠른요청으로 인한 탐지막기 랜덤대기
+
+                except Exception as e:
+                    print(f"  ⚠️ 오류 발생: {e}")
+                    close_apply_layer(page) # 에러발생 시 팝업닫고 다음진행
                     continue
                 
-                # 공고 카드안에 입사지원 버튼찾기
-                list_btn = find_apply_button_in_card(card)
-                if not list_btn:
-                    continue
-                  
-                # 지원카운트 1증가
-                processed += 1
-                # print(f"[{processed}/{MAX_APPLY}] 카드 #{i} 목록 지원 버튼 클릭...")
-                print(f"[{processed}] 카드 #{i} 목록 지원 버튼 클릭...")
+            next_btn = next_button_find(page, current_page)
                 
-                # force=True로 다른 레이어가 일부 남아있어도 클릭 강제 실행
-                list_btn.click(force=True)
-                time.sleep(2.5)  # 레이어 로딩 대기
-
-                # 우측 레이어 제출 버튼 클릭
-                success = click_red_layer_submit_button(context)
-
-                if success:
-                    if not DRY_RUN:
-                        time.sleep(2.5)
-                        print("  🎉 입사지원 제출 완료!")
-                else:
-                    print("  ⚠️ 우측 레이어 내부의 빨간색 제출 버튼을 찾지 못함")
-                    page.screenshot(path=os.path.join(DEBUG_DIR, f"fail_{processed}.png"))
-
-                # 완료 후 팝업 완전히 닫기
-                close_apply_layer(page)
-                time.sleep(random.uniform(1.5, 2.5)) # 빠른요청으로 인한 탐지막기 랜덤대기
-
-            except Exception as e:
-                print(f"  ⚠️ 오류 발생: {e}")
-                close_apply_layer(page) # 에러발생 시 팝업닫고 다음진행
-                continue
+            if not next_btn:
+                print("다음 페이지가 없어 종료합니다.")
+                break
+            
+            current_page += 1
+            print(f"{current_page}페이지로 이동합니다.")
+            
+            next_btn.click()
+            time.sleep(2)
+            
+            try:
+                page.wait_for_selector(
+                    ",".join(CARD_SELECTORS),
+                    state="attached",
+                    timeout=10000
+                )
+            except Exception:
+                pass
 
         print("\n✨ 모든 입사지원 작업이 완료되었습니다.")
         input("엔터 키를 누르면 브라우저를 종료합니다...")
